@@ -39,10 +39,15 @@
 	define('QA_MYSQL_PASSWORD', 'kerol');
 	define('QA_MYSQL_DATABASE', 'tokactive');  */
 
-	define('QA_MYSQL_HOSTNAME', 'sql309.epizy.com'); 
+	/* define('QA_MYSQL_HOSTNAME', 'sql309.epizy.com'); 
 	define('QA_MYSQL_USERNAME', 'epiz_26405887');
 	define('QA_MYSQL_PASSWORD', '4G0xa5U0sh3P');
-	define('QA_MYSQL_DATABASE', 'epiz_26405887_tokactive'); 
+	define('QA_MYSQL_DATABASE', 'epiz_26405887_tokactive');  */
+
+	define('QA_MYSQL_HOSTNAME', 'lg7j30weuqckmw07.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	'); 
+	define('QA_MYSQL_USERNAME', 'il5dkoopuz22tzy5');
+	define('QA_MYSQL_PASSWORD', 'lk5ohsobrn1mygui');
+	define('QA_MYSQL_DATABASE', 'y39e7llnfuselsl2'); 
 
 /*
 	Ultra-concise installation instructions:
