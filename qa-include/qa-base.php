@@ -208,7 +208,7 @@ function qa_initialize_constants_1()
 	// password_hash compatibility for 5.3-5.4
 	define('QA_PASSWORD_HASH', !qa_php_version_below('5.3.7'));
 	if (QA_PASSWORD_HASH) {
-		require_once './qa-include/vendor/password_compat.php';
+		require_once 'qa-include/vendor/password_compat.php';
 	}
 
 	// http://php.net/manual/en/function.hash-equals.php#115635
