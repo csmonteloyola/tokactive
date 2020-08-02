@@ -34,15 +34,15 @@
 	define('QA_MYSQL_PORT', '3306');
 */
 
-	define('QA_MYSQL_HOSTNAME', 'localhost'); 
+	/* define('QA_MYSQL_HOSTNAME', 'localhost'); 
 	define('QA_MYSQL_USERNAME', 'kerol');
 	define('QA_MYSQL_PASSWORD', 'kerol');
-	define('QA_MYSQL_DATABASE', 'tokactive'); 
+	define('QA_MYSQL_DATABASE', 'tokactive');  */
 
-	/* define('QA_MYSQL_HOSTNAME', 'sql309.epizy.com'); 
+	define('QA_MYSQL_HOSTNAME', 'sql309.epizy.com'); 
 	define('QA_MYSQL_USERNAME', 'epiz_26405887');
 	define('QA_MYSQL_PASSWORD', '4G0xa5U0sh3P');
-	define('QA_MYSQL_DATABASE', 'epiz_26405887_tokactive');  */
+	define('QA_MYSQL_DATABASE', 'epiz_26405887_tokactive'); 
 
 /*
 	Ultra-concise installation instructions:
