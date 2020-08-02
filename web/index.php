@@ -24,11 +24,11 @@
 
 
 
-/* 
+
 define('QA_BASE_DIR', dirname(empty($_SERVER['SCRIPT_FILENAME']) ? __FILE__ : $_SERVER['SCRIPT_FILENAME']) . '/');
- */
+
 require '../vendor/autoload.php';
 
 echo "AAA";
-/* require 'qa-include/qa-index.php'; */
+require '/qa-include/qa-index.php';
 ?>
