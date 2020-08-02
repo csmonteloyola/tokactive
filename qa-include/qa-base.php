@@ -174,11 +174,11 @@ function qa_initialize_constants_1()
 	if (!defined('QA_BASE_DIR'))
 		define('QA_BASE_DIR', dirname(dirname(__FILE__)) . '/'); // try out best if not set in index.php or qa-index.php - won't work with symbolic links
 
-	define('QA_EXTERNAL_DIR', QA_BASE_DIR . 'qa-external/');
-	define('QA_INCLUDE_DIR', QA_BASE_DIR . 'qa-include/');
-	define('QA_LANG_DIR', QA_BASE_DIR . 'qa-lang/');
-	define('QA_THEME_DIR', QA_BASE_DIR . 'qa-theme/');
-	define('QA_PLUGIN_DIR', QA_BASE_DIR . 'qa-plugin/');
+	define('QA_EXTERNAL_DIR', QA_BASE_DIR . '/qa-external/');
+	define('QA_INCLUDE_DIR', QA_BASE_DIR . '/qa-include/');
+	define('QA_LANG_DIR', QA_BASE_DIR . '/qa-lang/');
+	define('QA_THEME_DIR', QA_BASE_DIR . '/qa-theme/');
+	define('QA_PLUGIN_DIR', QA_BASE_DIR . '/qa-plugin/');
 
 	if (!file_exists(QA_BASE_DIR . 'qa-config.php'))
 		qa_fatal_error('The config file could not be found. Please read the instructions in qa-config-example.php.');
