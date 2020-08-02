@@ -133,7 +133,7 @@ function qa_send_email($params)
 
 	// @error_log(print_r($params, true));
 
-	require_once QA_INCLUDE_DIR . 'vendor/PHPMailer/PHPMailerAutoload.php';
+	include_once QA_INCLUDE_DIR . 'vendor/PHPMailer/PHPMailerAutoload.php';
 
 	PHPMailer::$validator = 'php';
 	$mailer = new PHPMailer();
