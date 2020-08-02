@@ -19,8 +19,8 @@
 	More about this license: http://www.question2answer.org/license.php
 */
 
-require_once QA_INCLUDE_DIR.'db/maxima.php';
-require_once QA_INCLUDE_DIR.'util/string.php';
+include_once QA_INCLUDE_DIR.'db/maxima.php';
+include_once QA_INCLUDE_DIR.'util/string.php';
 
 class qa_filter_basic
 {

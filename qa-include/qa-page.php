@@ -24,7 +24,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/page.php';
+include_once QA_INCLUDE_DIR . 'app/page.php';
 
 
 // Below are the steps that actually execute for this file - all the above are function definitions

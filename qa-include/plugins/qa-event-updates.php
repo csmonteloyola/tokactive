@@ -26,8 +26,8 @@ class qa_event_updates
 		if (@$params['silent']) // don't create updates about silent edits, and possibly other silent events in future
 			return;
 
-		require_once QA_INCLUDE_DIR . 'db/events.php';
-		require_once QA_INCLUDE_DIR . 'app/events.php';
+		include_once QA_INCLUDE_DIR . 'db/events.php';
+		include_once QA_INCLUDE_DIR . 'app/events.php';
 
 		switch ($event) {
 			case 'q_post':

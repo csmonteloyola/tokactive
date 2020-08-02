@@ -24,11 +24,11 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/users.php';
-require_once QA_INCLUDE_DIR . 'app/format.php';
-require_once QA_INCLUDE_DIR . 'app/users.php';
-require_once QA_INCLUDE_DIR . 'db/selects.php';
-require_once QA_INCLUDE_DIR . 'util/image.php';
+include_once QA_INCLUDE_DIR . 'db/users.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'app/users.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'util/image.php';
 
 
 // Check we're not using single-sign on integration, that we're logged in
@@ -71,7 +71,7 @@ $pending_confirmation = $doconfirms && !$isconfirmed;
 if (qa_post_limit_exceeded())
 	$errors['avatar'] = qa_lang('main/file_upload_limit_exceeded');
 else {
-	require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+	include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 
 	if (qa_clicked('dosaveprofile') && !$isblocked) {
 		$inhandle = $changehandle ? qa_post_text('handle') : $useraccount['handle'];
@@ -121,7 +121,7 @@ else {
 				if ($avatarfileerror === 1)
 					$errors['avatar'] = qa_lang('main/file_upload_limit_exceeded');
 				elseif ($avatarfileerror === 0 && $_FILES['file']['size'] > 0) {
-					require_once QA_INCLUDE_DIR . 'app/limits.php';
+					include_once QA_INCLUDE_DIR . 'app/limits.php';
 
 					switch (qa_user_permit_error(null, QA_LIMIT_UPLOADS)) {
 						case 'limit':

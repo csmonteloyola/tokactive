@@ -24,8 +24,8 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/admin.php';
-require_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'app/admin.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 
 // Get current list of widgets and determine the state of this admin page
@@ -131,7 +131,7 @@ if (qa_clicked('docancel'))
 	qa_redirect('admin/layout');
 
 elseif (qa_clicked('dosavewidget')) {
-	require_once QA_INCLUDE_DIR . 'db/admin.php';
+	include_once QA_INCLUDE_DIR . 'db/admin.php';
 
 	if (!qa_check_form_security_code('admin/widgets', qa_post_text('code')))
 		$securityexpired = true;

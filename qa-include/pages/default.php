@@ -24,8 +24,8 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/selects.php';
-require_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
 
 
 // Determine whether path begins with qa or not (question and answer listing can be accessed either way)
@@ -123,7 +123,7 @@ if (!$explicitqa && !$countslugs && qa_opt('show_custom_home')) {
 
 // If we got this far, it's a good old-fashioned Q&A listing page
 
-require_once QA_INCLUDE_DIR . 'app/q-list.php';
+include_once QA_INCLUDE_DIR . 'app/q-list.php';
 
 qa_set_template('qa');
 $questions = qa_any_sort_and_dedupe(array_merge($questions1, $questions2));

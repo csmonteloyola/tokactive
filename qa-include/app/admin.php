@@ -34,7 +34,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 function qa_admin_check_privileges(&$qa_content)
 {
 	if (!qa_is_logged_in()) {
-		require_once QA_INCLUDE_DIR . 'app/format.php';
+		include_once QA_INCLUDE_DIR . 'app/format.php';
 
 		$qa_content = qa_content_prepare();
 
@@ -231,7 +231,7 @@ function qa_admin_match_options()
  */
 function qa_admin_permit_options($widest, $narrowest, $doconfirms = true, $dopoints = true)
 {
-	require_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
 
 	$options = array(
 		QA_PERMIT_ALL => qa_lang_html('options/permit_all'),
@@ -499,7 +499,7 @@ function qa_admin_single_click($entityid, $action)
 	$userid = qa_get_logged_in_userid();
 
 	if (!QA_FINAL_EXTERNAL_USERS && ($action == 'userapprove' || $action == 'userblock')) { // approve/block moderated users
-		require_once QA_INCLUDE_DIR . 'db/selects.php';
+		include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 		$useraccount = qa_db_select_with_pending(qa_db_user_account_selectspec($entityid, true));
 
@@ -507,14 +507,14 @@ function qa_admin_single_click($entityid, $action)
 			switch ($action) {
 				case 'userapprove':
 					if ($useraccount['level'] <= QA_USER_LEVEL_APPROVED) { // don't demote higher level users
-						require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+						include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 						qa_set_user_level($useraccount['userid'], $useraccount['handle'], QA_USER_LEVEL_APPROVED, $useraccount['level']);
 						return true;
 					}
 					break;
 
 				case 'userblock':
-					require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+					include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 					qa_set_user_blocked($useraccount['userid'], $useraccount['handle'], true);
 					return true;
 					break;
@@ -522,7 +522,7 @@ function qa_admin_single_click($entityid, $action)
 		}
 
 	} else { // something to do with a post
-		require_once QA_INCLUDE_DIR . 'app/posts.php';
+		include_once QA_INCLUDE_DIR . 'app/posts.php';
 
 		$post = qa_post_get_full($entityid);
 
@@ -566,7 +566,7 @@ function qa_admin_single_click($entityid, $action)
 					break;
 
 				case 'clearflags':
-					require_once QA_INCLUDE_DIR . 'app/votes.php';
+					include_once QA_INCLUDE_DIR . 'app/votes.php';
 
 					if (!qa_user_post_permit_error('permit_hide_show', $post)) {
 						qa_flags_clear_all($post, $userid, qa_get_logged_in_handle(), null);

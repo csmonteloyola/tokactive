@@ -54,7 +54,7 @@ class qa_recaptcha_captcha
 
 		$error = null;
 		if (!strlen($pub) || !strlen($pri)) {
-			require_once $this->directory.'recaptchalib.php';
+			include_once $this->directory.'recaptchalib.php';
 			$error = 'To use reCAPTCHA, you must <a href="'.qa_html(ReCaptcha::getSignupUrl()).'" target="_blank">sign up</a> to get these keys.';
 		}
 
@@ -134,7 +134,7 @@ class qa_recaptcha_captcha
 	 */
 	public function validate_post(&$error)
 	{
-		require_once $this->directory.'recaptchalib.php';
+		include_once $this->directory.'recaptchalib.php';
 
 		if (ini_get('allow_url_fopen'))
 			$recaptcha = new ReCaptcha(qa_opt('recaptcha_private_key'));

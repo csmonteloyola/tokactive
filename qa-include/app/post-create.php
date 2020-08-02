@@ -24,11 +24,11 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/maxima.php';
-require_once QA_INCLUDE_DIR . 'db/post-create.php';
-require_once QA_INCLUDE_DIR . 'db/points.php';
-require_once QA_INCLUDE_DIR . 'db/hotness.php';
-require_once QA_INCLUDE_DIR . 'util/string.php';
+include_once QA_INCLUDE_DIR . 'db/maxima.php';
+include_once QA_INCLUDE_DIR . 'db/post-create.php';
+include_once QA_INCLUDE_DIR . 'db/points.php';
+include_once QA_INCLUDE_DIR . 'db/hotness.php';
+include_once QA_INCLUDE_DIR . 'util/string.php';
 
 
 /**
@@ -68,14 +68,14 @@ function qa_combine_notify_email($userid, $notify, $email)
 function qa_question_create($followanswer, $userid, $handle, $cookieid, $title, $content, $format, $text, $tagstring, $notify, $email,
 	$categoryid = null, $extravalue = null, $queued = false, $name = null)
 {
-	require_once QA_INCLUDE_DIR . 'db/selects.php';
+	include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 	$postid = qa_db_post_create($queued ? 'Q_QUEUED' : 'Q', @$followanswer['postid'], $userid, isset($userid) ? null : $cookieid,
 		qa_remote_ip_address(), $title, $content, $format, $tagstring, qa_combine_notify_email($userid, $notify, $email),
 		$categoryid, isset($userid) ? null : $name);
 
 	if (isset($extravalue)) {
-		require_once QA_INCLUDE_DIR . 'db/metas.php';
+		include_once QA_INCLUDE_DIR . 'db/metas.php';
 		qa_db_postmeta_set($postid, 'qa_q_extra', $extravalue);
 	}
 
@@ -280,10 +280,10 @@ function qa_update_q_counts_for_a($questionid)
  */
 function qa_comment_create($userid, $handle, $cookieid, $content, $format, $text, $notify, $email, $question, $parent, $commentsfollows, $queued = false, $name = null)
 {
-	require_once QA_INCLUDE_DIR . 'app/emails.php';
-	require_once QA_INCLUDE_DIR . 'app/options.php';
-	require_once QA_INCLUDE_DIR . 'app/format.php';
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'app/emails.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	if (!isset($parent))
 		$parent = $question; // for backwards compatibility with old answer parameter

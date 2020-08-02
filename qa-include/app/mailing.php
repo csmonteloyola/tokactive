@@ -30,7 +30,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
  */
 function qa_mailing_start()
 {
-	require_once QA_INCLUDE_DIR . 'db/admin.php';
+	include_once QA_INCLUDE_DIR . 'db/admin.php';
 
 	if (strlen(qa_opt('mailing_last_userid')) == 0) {
 		qa_opt('mailing_last_timestamp', time());
@@ -58,8 +58,8 @@ function qa_mailing_stop()
  */
 function qa_mailing_perform_step()
 {
-	require_once QA_INCLUDE_DIR . 'db/users.php';
-	require_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
 
 	$lastuserid = qa_opt('mailing_last_userid');
 
@@ -128,8 +128,8 @@ function qa_mailing_perform_step()
  */
 function qa_mailing_send_one($userid, $handle, $email, $emailcode)
 {
-	require_once QA_INCLUDE_DIR . 'app/emails.php';
-	require_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'app/emails.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
 
 	if (!strlen(trim($emailcode))) {
 		$emailcode = qa_db_user_rand_emailcode();
@@ -155,7 +155,7 @@ function qa_mailing_send_one($userid, $handle, $email, $emailcode)
  */
 function qa_mailing_progress_message()
 {
-	require_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
 
 	if (strlen(qa_opt('mailing_last_userid'))) {
 		return strtr(qa_lang('admin/mailing_progress'), array(

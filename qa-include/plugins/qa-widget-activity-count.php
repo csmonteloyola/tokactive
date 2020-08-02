@@ -48,7 +48,7 @@ class qa_activity_count
 
 	public function output_count($themeobject, $value, $langsingular, $langplural)
 	{
-		require_once QA_INCLUDE_DIR . 'app/format.php';
+		include_once QA_INCLUDE_DIR . 'app/format.php';
 
 		$themeobject->output('<p class="qa-activity-count-item">');
 

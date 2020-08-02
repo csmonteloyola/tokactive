@@ -136,7 +136,7 @@
 
     function donut_get_user_avatar_image($flags, $email, $handle, $blobId, $width, $height, $size, $padding = false){
 
-        require_once QA_INCLUDE_DIR . 'app/format.php';
+        include_once QA_INCLUDE_DIR . 'app/format.php';
 
         if (strlen($handle) == 0) {
             return null;

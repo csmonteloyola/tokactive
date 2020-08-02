@@ -54,7 +54,7 @@ function qa_db_points_calculations()
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
 
 	$options = qa_get_options(qa_db_points_option_names());
 
@@ -167,8 +167,8 @@ function qa_db_points_update_ifuser($userid, $columns)
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
 	if (qa_should_update_counts() && isset($userid)) {
-		require_once QA_INCLUDE_DIR . 'app/options.php';
-		require_once QA_INCLUDE_DIR . 'app/cookies.php';
+		include_once QA_INCLUDE_DIR . 'app/options.php';
+		include_once QA_INCLUDE_DIR . 'app/cookies.php';
 
 		$calculations = qa_db_points_calculations();
 

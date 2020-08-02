@@ -24,7 +24,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/post-create.php';
+include_once QA_INCLUDE_DIR . 'db/post-create.php';
 
 
 // For reindexing pages...
@@ -229,7 +229,7 @@ function qa_db_posts_votes_recount($firstpostid, $lastpostid)
  */
 function qa_db_posts_answers_recount($firstpostid, $lastpostid)
 {
-	require_once QA_INCLUDE_DIR . 'db/hotness.php';
+	include_once QA_INCLUDE_DIR . 'db/hotness.php';
 
 	qa_db_query_sub(
 		'UPDATE ^posts AS x, (SELECT parents.postid, COUNT(children.postid) AS acount, COALESCE(GREATEST(MAX(children.netvotes), 0), 0) AS amaxvote FROM ^posts AS parents LEFT JOIN ^posts AS children ON parents.postid=children.parentid AND children.type=\'A\' WHERE parents.postid>=# AND parents.postid<=# GROUP BY postid) AS a SET x.acount=a.acount, x.amaxvote=a.amaxvote WHERE x.postid=a.postid',
@@ -272,7 +272,7 @@ function qa_db_users_get_for_recalc_points($startuserid, $count)
  */
 function qa_db_users_recalc_points($firstuserid, $lastuserid)
 {
-	require_once QA_INCLUDE_DIR . 'db/points.php';
+	include_once QA_INCLUDE_DIR . 'db/points.php';
 
 	$qa_userpoints_calculations = qa_db_points_calculations();
 

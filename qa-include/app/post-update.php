@@ -24,12 +24,12 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/post-create.php';
-require_once QA_INCLUDE_DIR . 'app/updates.php';
-require_once QA_INCLUDE_DIR . 'db/post-create.php';
-require_once QA_INCLUDE_DIR . 'db/post-update.php';
-require_once QA_INCLUDE_DIR . 'db/points.php';
-require_once QA_INCLUDE_DIR . 'db/hotness.php';
+include_once QA_INCLUDE_DIR . 'app/post-create.php';
+include_once QA_INCLUDE_DIR . 'app/updates.php';
+include_once QA_INCLUDE_DIR . 'db/post-create.php';
+include_once QA_INCLUDE_DIR . 'db/post-update.php';
+include_once QA_INCLUDE_DIR . 'db/points.php';
+include_once QA_INCLUDE_DIR . 'db/hotness.php';
 
 
 define('QA_POST_STATUS_NORMAL', 0);
@@ -74,12 +74,12 @@ function qa_question_set_content($oldquestion, $title, $content, $format, $text,
 		($titlechanged || $contentchanged) ? QA_UPDATE_CONTENT : QA_UPDATE_TAGS, $name);
 
 	if (isset($extravalue)) {
-		require_once QA_INCLUDE_DIR . 'db/metas.php';
+		include_once QA_INCLUDE_DIR . 'db/metas.php';
 		qa_db_postmeta_set($oldquestion['postid'], 'qa_q_extra', $extravalue);
 	}
 
 	if ($setupdated && $remoderate) {
-		require_once QA_INCLUDE_DIR . 'app/posts.php';
+		include_once QA_INCLUDE_DIR . 'app/posts.php';
 
 		$answers = qa_post_get_question_answers($oldquestion['postid']);
 		$commentsfollows = qa_post_get_question_commentsfollows($oldquestion['postid']);
@@ -329,8 +329,8 @@ function qa_question_set_hidden($oldquestion, $hidden, $userid, $handle, $cookie
  */
 function qa_question_set_status($oldquestion, $status, $userid, $handle, $cookieid, $answers, $commentsfollows, $closepost = null)
 {
-	require_once QA_INCLUDE_DIR . 'app/format.php';
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	$washidden = ($oldquestion['type'] == 'Q_HIDDEN');
 	$wasqueued = ($oldquestion['type'] == 'Q_QUEUED');
@@ -449,8 +449,8 @@ function qa_question_set_status($oldquestion, $status, $userid, $handle, $cookie
 	}
 
 	if ($wasqueued && ($status == QA_POST_STATUS_NORMAL) && !$wasrequeued) {
-		require_once QA_INCLUDE_DIR . 'db/selects.php';
-		require_once QA_INCLUDE_DIR . 'util/string.php';
+		include_once QA_INCLUDE_DIR . 'db/selects.php';
+		include_once QA_INCLUDE_DIR . 'util/string.php';
 
 		qa_report_event('q_post', $oldquestion['userid'], $oldquestion['handle'], $oldquestion['cookieid'], $eventparams + array(
 			'notify' => isset($oldquestion['notify']),
@@ -535,7 +535,7 @@ function qa_question_set_category($oldquestion, $categoryid, $userid, $handle, $
  */
 function qa_question_delete($oldquestion, $userid, $handle, $cookieid, $oldclosepost = null)
 {
-	require_once QA_INCLUDE_DIR . 'db/votes.php';
+	include_once QA_INCLUDE_DIR . 'db/votes.php';
 
 	if ($oldquestion['type'] != 'Q_HIDDEN')
 		qa_fatal_error('Tried to delete a non-hidden question');
@@ -581,7 +581,7 @@ function qa_question_delete($oldquestion, $userid, $handle, $cookieid, $oldclose
  */
 function qa_question_set_userid($oldquestion, $userid, $handle, $cookieid)
 {
-	require_once QA_INCLUDE_DIR . 'db/votes.php';
+	include_once QA_INCLUDE_DIR . 'db/votes.php';
 
 	$postid = $oldquestion['postid'];
 
@@ -663,7 +663,7 @@ function qa_answer_set_content($oldanswer, $content, $format, $text, $notify, $u
 		$setupdated ? $userid : null, $setupdated ? qa_remote_ip_address() : null, QA_UPDATE_CONTENT, $name);
 
 	if ($setupdated && $remoderate) {
-		require_once QA_INCLUDE_DIR . 'app/posts.php';
+		include_once QA_INCLUDE_DIR . 'app/posts.php';
 
 		$commentsfollows = qa_post_get_answer_commentsfollows($oldanswer['postid']);
 
@@ -740,7 +740,7 @@ function qa_answer_set_hidden($oldanswer, $hidden, $userid, $handle, $cookieid, 
  */
 function qa_answer_set_status($oldanswer, $status, $userid, $handle, $cookieid, $question, $commentsfollows)
 {
-	require_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
 
 	$washidden = ($oldanswer['type'] == 'A_HIDDEN');
 	$wasqueued = ($oldanswer['type'] == 'A_QUEUED');
@@ -835,7 +835,7 @@ function qa_answer_set_status($oldanswer, $status, $userid, $handle, $cookieid, 
 	}
 
 	if ($wasqueued && ($status == QA_POST_STATUS_NORMAL) && !$wasrequeued) {
-		require_once QA_INCLUDE_DIR . 'util/string.php';
+		include_once QA_INCLUDE_DIR . 'util/string.php';
 
 		qa_report_event('a_post', $oldanswer['userid'], $oldanswer['handle'], $oldanswer['cookieid'], $eventparams + array(
 			'notify' => isset($oldanswer['notify']),
@@ -859,7 +859,7 @@ function qa_answer_set_status($oldanswer, $status, $userid, $handle, $cookieid, 
  */
 function qa_answer_delete($oldanswer, $question, $userid, $handle, $cookieid)
 {
-	require_once QA_INCLUDE_DIR . 'db/votes.php';
+	include_once QA_INCLUDE_DIR . 'db/votes.php';
 
 	if ($oldanswer['type'] != 'A_HIDDEN')
 		qa_fatal_error('Tried to delete a non-hidden answer');
@@ -905,7 +905,7 @@ function qa_answer_delete($oldanswer, $question, $userid, $handle, $cookieid)
  */
 function qa_answer_set_userid($oldanswer, $userid, $handle, $cookieid)
 {
-	require_once QA_INCLUDE_DIR . 'db/votes.php';
+	include_once QA_INCLUDE_DIR . 'db/votes.php';
 
 	$postid = $oldanswer['postid'];
 
@@ -1026,7 +1026,7 @@ function qa_comment_set_content($oldcomment, $content, $format, $text, $notify, 
  */
 function qa_answer_to_comment($oldanswer, $parentid, $content, $format, $text, $notify, $userid, $handle, $cookieid, $question, $answers, $commentsfollows, $name = null, $remoderate = false, $silent = false)
 {
-	require_once QA_INCLUDE_DIR . 'db/votes.php';
+	include_once QA_INCLUDE_DIR . 'db/votes.php';
 
 	$parent = isset($answers[$parentid]) ? $answers[$parentid] : $question;
 
@@ -1135,7 +1135,7 @@ function qa_comment_set_hidden($oldcomment, $hidden, $userid, $handle, $cookieid
  */
 function qa_comment_set_status($oldcomment, $status, $userid, $handle, $cookieid, $question, $parent)
 {
-	require_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
 
 	if (!isset($parent))
 		$parent = $question; // for backwards compatibility with old answer parameter
@@ -1221,8 +1221,8 @@ function qa_comment_set_status($oldcomment, $status, $userid, $handle, $cookieid
 	}
 
 	if ($wasqueued && $status == QA_POST_STATUS_NORMAL && !$wasrequeued) {
-		require_once QA_INCLUDE_DIR . 'db/selects.php';
-		require_once QA_INCLUDE_DIR . 'util/string.php';
+		include_once QA_INCLUDE_DIR . 'db/selects.php';
+		include_once QA_INCLUDE_DIR . 'util/string.php';
 
 		$commentsfollows = qa_db_single_select(qa_db_full_child_posts_selectspec(null, $oldcomment['parentid']));
 		$thread = array();
@@ -1291,7 +1291,7 @@ function qa_comment_delete($oldcomment, $question, $parent, $userid, $handle, $c
  */
 function qa_comment_set_userid($oldcomment, $userid, $handle, $cookieid)
 {
-	require_once QA_INCLUDE_DIR . 'db/votes.php';
+	include_once QA_INCLUDE_DIR . 'db/votes.php';
 
 	$postid = $oldcomment['postid'];
 

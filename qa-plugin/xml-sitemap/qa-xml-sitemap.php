@@ -37,7 +37,7 @@ class qa_xml_sitemap
 
 	public function admin_form()
 	{
-		require_once QA_INCLUDE_DIR . 'util/sort.php';
+		include_once QA_INCLUDE_DIR . 'util/sort.php';
 
 		$saved = false;
 

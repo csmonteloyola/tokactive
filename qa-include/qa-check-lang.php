@@ -22,7 +22,7 @@
 define('QA_BASE_DIR', dirname(dirname(empty($_SERVER['SCRIPT_FILENAME']) ? __FILE__ : $_SERVER['SCRIPT_FILENAME'])) . '/');
 
 require 'qa-base.php';
-require_once QA_INCLUDE_DIR . 'app/users.php';
+include_once QA_INCLUDE_DIR . 'app/users.php';
 
 if (qa_get_logged_in_level() < QA_USER_LEVEL_ADMIN)
 	qa_redirect('admin/general', null, qa_opt('site_url'));
@@ -147,7 +147,7 @@ foreach ($backmap as $phrase => $where) {
 	}
 }
 
-require_once QA_INCLUDE_DIR . 'app/admin.php';
+include_once QA_INCLUDE_DIR . 'app/admin.php';
 
 $languages = qa_admin_language_options();
 unset($languages['']);

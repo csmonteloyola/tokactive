@@ -41,7 +41,7 @@ qa_report_process_stage('init_blob');
 
 // Output the blob in question
 
-require_once QA_INCLUDE_DIR . 'app/blobs.php';
+include_once QA_INCLUDE_DIR . 'app/blobs.php';
 
 qa_db_connect('qa_blob_db_fail_handler');
 qa_initialize_postdb_plugins();

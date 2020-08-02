@@ -22,9 +22,9 @@
 
     @define( 'DONUT_CURR_DB_VERSION', 1 ); //Helps in updating new mandatory options
 
-    require_once DONUT_ADMIN_PLUGIN_DIR . '/functions.php';
-    require_once DONUT_ADMIN_PLUGIN_DIR . '/admin/options.php';
-    require_once DONUT_ADMIN_PLUGIN_DIR . '/admin/admin-routing.php';
+    include_once DONUT_ADMIN_PLUGIN_DIR . '/functions.php';
+    include_once DONUT_ADMIN_PLUGIN_DIR . '/admin/options.php';
+    include_once DONUT_ADMIN_PLUGIN_DIR . '/admin/admin-routing.php';
 
     //register override module
     qa_register_plugin_overrides( 'overrides/overrides.php' );

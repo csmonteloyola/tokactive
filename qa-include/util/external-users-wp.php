@@ -144,7 +144,7 @@ function qa_get_users_html($userids, $should_include_link, $relative_url_prefix)
 
 function qa_avatar_html_from_userid($userid, $size, $padding)
 {
-	require_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
 
 	global $qa_cache_wp_user_emails;
 

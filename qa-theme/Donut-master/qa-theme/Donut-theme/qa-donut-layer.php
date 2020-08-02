@@ -671,9 +671,9 @@
         function donut_user_drop_down()
         {
             if ( qa_is_logged_in() ) {
-                require_once DONUT_THEME_BASE_DIR . '/templates/user-loggedin-drop-down.php';
+                include_once DONUT_THEME_BASE_DIR . '/templates/user-loggedin-drop-down.php';
             } else {
-                require_once DONUT_THEME_BASE_DIR . '/templates/user-login-drop-down.php';
+                include_once DONUT_THEME_BASE_DIR . '/templates/user-login-drop-down.php';
             }
         }
 

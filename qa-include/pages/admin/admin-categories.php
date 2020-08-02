@@ -24,10 +24,10 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/admin.php';
-require_once QA_INCLUDE_DIR . 'db/selects.php';
-require_once QA_INCLUDE_DIR . 'db/admin.php';
-require_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'app/admin.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'db/admin.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
 
 
 // Get relevant list of categories
@@ -127,7 +127,7 @@ if (qa_clicked('docancel')) {
 		}
 
 	} else {
-		require_once QA_INCLUDE_DIR . 'util/string.php';
+		include_once QA_INCLUDE_DIR . 'util/string.php';
 
 		$inname = qa_post_text('name');
 		$incontent = qa_post_text('content');

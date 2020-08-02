@@ -88,7 +88,7 @@ class Q2A_Plugin_PluginManager
 			$qa_plugin_directory = $pluginInfo['directory'];
 			$qa_plugin_urltoroot = $pluginInfo['urltoroot'];
 
-			require_once $pluginInfo['pluginfile'];
+			include_once $pluginInfo['pluginfile'];
 		}
 
 		$qa_plugin_directory = null;

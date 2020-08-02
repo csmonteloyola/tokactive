@@ -24,7 +24,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/users.php';
+include_once QA_INCLUDE_DIR . 'db/users.php';
 
 
 // Check we're not using single-sign on integration

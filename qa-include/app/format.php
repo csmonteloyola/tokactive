@@ -99,7 +99,7 @@ function qa_post_is_by_user($post, $userid, $cookieid)
  */
 function qa_userids_handles_html($useridhandles, $microdata = false)
 {
-	require_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
 
 	if (QA_FINAL_EXTERNAL_USERS) {
 		$keyuserids = array();
@@ -153,8 +153,8 @@ function qa_get_favorite_non_qs_map()
 		$loginuserid = qa_get_logged_in_userid();
 
 		if (isset($loginuserid)) {
-			require_once QA_INCLUDE_DIR . 'db/selects.php';
-			require_once QA_INCLUDE_DIR . 'util/string.php';
+			include_once QA_INCLUDE_DIR . 'db/selects.php';
+			include_once QA_INCLUDE_DIR . 'util/string.php';
 
 			$favoritenonqs = qa_db_get_pending_result('favoritenonqs', qa_db_user_favorite_non_qs_selectspec($loginuserid));
 
@@ -292,11 +292,11 @@ function qa_post_html_fields($post, $userid, $cookieid, $usershtml, $dummy, $opt
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
-	require_once QA_INCLUDE_DIR . 'app/posts.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/posts.php';
 
 	if (isset($options['blockwordspreg']))
-		require_once QA_INCLUDE_DIR . 'util/string.php';
+		include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	$fields = array('raw' => $post);
 
@@ -690,7 +690,7 @@ function qa_post_html_fields($post, $userid, $cookieid, $usershtml, $dummy, $opt
  */
 function qa_message_html_fields($message, $options = array())
 {
-	require_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
 
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
@@ -827,7 +827,7 @@ function qa_other_to_q_html_fields($question, $userid, $cookieid, $usershtml, $d
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	$fields = qa_post_html_fields($question, $userid, $cookieid, $usershtml, null, $options);
 
@@ -1008,7 +1008,7 @@ function qa_any_sort_by_date($questions)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'util/sort.php';
+	include_once QA_INCLUDE_DIR . 'util/sort.php';
 
 	foreach ($questions as $key => $question) // collect information about action referenced by each $question
 		$questions[$key]['sort'] = -(isset($question['opostid']) ? $question['otime'] : $question['created']);
@@ -1029,7 +1029,7 @@ function qa_any_sort_and_dedupe($questions)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'util/sort.php';
+	include_once QA_INCLUDE_DIR . 'util/sort.php';
 
 	foreach ($questions as $key => $question) { // collect information about action referenced by each $question
 		if (isset($question['opostid'])) {
@@ -1189,7 +1189,7 @@ function qa_url_to_html_link($url, $newwindow = false)
  */
 function qa_insert_login_links($htmlmessage, $topage = null, $params = null)
 {
-	require_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
 
 	$userlinks = qa_get_login_links(qa_path_to_root(), isset($topage) ? qa_path($topage, $params, '') : null);
 
@@ -1721,7 +1721,7 @@ function qa_set_up_tag_field(&$qa_content, &$field, $fieldname, $tags, $examplet
  */
 function qa_get_tags_field_value($fieldname)
 {
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	$text = qa_remove_utf8mb4(qa_post_text($fieldname));
 
@@ -1972,7 +1972,7 @@ function qa_load_theme_class($theme, $template, $content, $request)
 
 	// First load the default class
 
-	require_once QA_INCLUDE_DIR . 'qa-theme-base.php';
+	include_once QA_INCLUDE_DIR . 'qa-theme-base.php';
 
 	$classname = 'qa_html_theme_base';
 
@@ -1984,7 +1984,7 @@ function qa_load_theme_class($theme, $template, $content, $request)
 	$themeroothtml = qa_html(qa_path_to_root() . 'qa-theme/' . $theme . '/');
 
 	if (file_exists(QA_THEME_DIR . $theme . '/qa-theme.php')) {
-		require_once QA_THEME_DIR . $theme . '/qa-theme.php';
+		include_once QA_THEME_DIR . $theme . '/qa-theme.php';
 
 		if (class_exists('qa_html_theme'))
 			$classname = 'qa_html_theme';
@@ -2183,7 +2183,7 @@ function qa_viewer_html($content, $format, $options = array())
  */
 function qa_get_post_title($fieldname)
 {
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	return qa_remove_utf8mb4(qa_post_text($fieldname));
 }
@@ -2200,7 +2200,7 @@ function qa_get_post_title($fieldname)
  */
 function qa_get_post_content($editorfield, $contentfield, &$ineditor, &$incontent, &$informat, &$intext)
 {
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	$ineditor = qa_post_text($editorfield);
 	$editor = qa_load_module('editor', $ineditor);
@@ -2244,8 +2244,8 @@ function qa_get_avatar_blob_html($blobId, $width, $height, $size, $padding = fal
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'util/image.php';
-	require_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'util/image.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
 
 	if (strlen($blobId) == 0 || (int)$size <= 0) {
 		return null;
@@ -2284,7 +2284,7 @@ function qa_get_gravatar_html($email, $size)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
 
 	$avatarLink = qa_html(qa_get_gravatar_url($email, $size));
 

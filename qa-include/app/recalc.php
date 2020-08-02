@@ -60,15 +60,15 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/recalc.php';
-require_once QA_INCLUDE_DIR . 'db/post-create.php';
-require_once QA_INCLUDE_DIR . 'db/points.php';
-require_once QA_INCLUDE_DIR . 'db/selects.php';
-require_once QA_INCLUDE_DIR . 'db/admin.php';
-require_once QA_INCLUDE_DIR . 'db/users.php';
-require_once QA_INCLUDE_DIR . 'app/options.php';
-require_once QA_INCLUDE_DIR . 'app/post-create.php';
-require_once QA_INCLUDE_DIR . 'app/post-update.php';
+include_once QA_INCLUDE_DIR . 'db/recalc.php';
+include_once QA_INCLUDE_DIR . 'db/post-create.php';
+include_once QA_INCLUDE_DIR . 'db/points.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'db/admin.php';
+include_once QA_INCLUDE_DIR . 'db/users.php';
+include_once QA_INCLUDE_DIR . 'app/options.php';
+include_once QA_INCLUDE_DIR . 'app/post-create.php';
+include_once QA_INCLUDE_DIR . 'app/post-update.php';
 
 
 /**
@@ -92,7 +92,7 @@ function qa_recalc_perform_step(&$state)
 			$pages = qa_db_pages_get_for_reindexing($next, 10);
 
 			if (count($pages)) {
-				require_once QA_INCLUDE_DIR . 'app/format.php';
+				include_once QA_INCLUDE_DIR . 'app/format.php';
 
 				$lastpageid = max(array_keys($pages));
 
@@ -134,7 +134,7 @@ function qa_recalc_perform_step(&$state)
 			$posts = qa_db_posts_get_for_reindexing($next, 10);
 
 			if (count($posts)) {
-				require_once QA_INCLUDE_DIR . 'app/format.php';
+				include_once QA_INCLUDE_DIR . 'app/format.php';
 
 				$lastpostid = max(array_keys($posts));
 
@@ -272,9 +272,9 @@ function qa_recalc_perform_step(&$state)
 			$questionids = qa_db_qs_get_for_event_refilling($next, 1);
 
 			if (count($questionids)) {
-				require_once QA_INCLUDE_DIR . 'app/events.php';
-				require_once QA_INCLUDE_DIR . 'app/updates.php';
-				require_once QA_INCLUDE_DIR . 'util/sort.php';
+				include_once QA_INCLUDE_DIR . 'app/events.php';
+				include_once QA_INCLUDE_DIR . 'app/updates.php';
+				include_once QA_INCLUDE_DIR . 'util/sort.php';
 
 				$lastquestionid = max($questionids);
 
@@ -437,7 +437,7 @@ function qa_recalc_perform_step(&$state)
 			$posts = qa_db_posts_get_for_deleting('C', $next, 1);
 
 			if (count($posts)) {
-				require_once QA_INCLUDE_DIR . 'app/posts.php';
+				include_once QA_INCLUDE_DIR . 'app/posts.php';
 
 				$postid = $posts[0];
 				qa_post_delete($postid);
@@ -454,7 +454,7 @@ function qa_recalc_perform_step(&$state)
 			$posts = qa_db_posts_get_for_deleting('A', $next, 1);
 
 			if (count($posts)) {
-				require_once QA_INCLUDE_DIR . 'app/posts.php';
+				include_once QA_INCLUDE_DIR . 'app/posts.php';
 
 				$postid = $posts[0];
 				qa_post_delete($postid);
@@ -472,7 +472,7 @@ function qa_recalc_perform_step(&$state)
 			$posts = qa_db_posts_get_for_deleting('Q', $next, 1);
 
 			if (count($posts)) {
-				require_once QA_INCLUDE_DIR . 'app/posts.php';
+				include_once QA_INCLUDE_DIR . 'app/posts.php';
 
 				$postid = $posts[0];
 				qa_post_delete($postid);
@@ -494,8 +494,8 @@ function qa_recalc_perform_step(&$state)
 			$blob = qa_db_get_next_blob_in_db($next);
 
 			if (isset($blob)) {
-				require_once QA_INCLUDE_DIR . 'app/blobs.php';
-				require_once QA_INCLUDE_DIR . 'db/blobs.php';
+				include_once QA_INCLUDE_DIR . 'app/blobs.php';
+				include_once QA_INCLUDE_DIR . 'db/blobs.php';
 
 				if (qa_write_blob_file($blob['blobid'], $blob['content'], $blob['format'])) {
 					qa_db_blob_set_content($blob['blobid'], null);
@@ -517,8 +517,8 @@ function qa_recalc_perform_step(&$state)
 			$blob = qa_db_get_next_blob_on_disk($next);
 
 			if (isset($blob)) {
-				require_once QA_INCLUDE_DIR . 'app/blobs.php';
-				require_once QA_INCLUDE_DIR . 'db/blobs.php';
+				include_once QA_INCLUDE_DIR . 'app/blobs.php';
+				include_once QA_INCLUDE_DIR . 'db/blobs.php';
 
 				$content = qa_read_blob_file($blob['blobid'], $blob['format']);
 				qa_db_blob_set_content($blob['blobid'], $content);
@@ -684,7 +684,7 @@ function qa_recalc_progress_lang($langId, $progress, $total)
  */
 function qa_recalc_get_message($state)
 {
-	require_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
 
 	@list($operation, $length, $next, $done) = explode("\t", $state);
 

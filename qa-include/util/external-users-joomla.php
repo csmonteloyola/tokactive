@@ -195,8 +195,8 @@ class qa_joomla_helper
 			define('_JEXEC', 1);
 		}
 
-		require_once(JPATH_BASE . '/includes/defines.php');
-		require_once(JPATH_BASE . '/includes/framework.php');
+		include_once(JPATH_BASE . '/includes/defines.php');
+		include_once(JPATH_BASE . '/includes/framework.php');
 		// Instantiate the application.
 		$this->app = JFactory::getApplication('site');
 		// Initialise the application.

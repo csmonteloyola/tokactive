@@ -44,7 +44,7 @@ function qa_cookie_get_create()
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/cookies.php';
+	include_once QA_INCLUDE_DIR . 'db/cookies.php';
 
 	$cookieid = qa_cookie_get();
 
@@ -68,7 +68,7 @@ function qa_cookie_get_create()
  */
 function qa_cookie_report_action($cookieid, $action)
 {
-	require_once QA_INCLUDE_DIR . 'db/cookies.php';
+	include_once QA_INCLUDE_DIR . 'db/cookies.php';
 
 	qa_db_cookie_written($cookieid, qa_remote_ip_address());
 }

@@ -79,8 +79,8 @@ $hidden = array(
 );
 
 if (strlen($emailHandle) > 0) {
-	require_once QA_INCLUDE_DIR . 'app/users-edit.php';
-	require_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'app/users-edit.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
 
 	$hidden['emailhandle'] = $emailHandle;
 
@@ -90,7 +90,7 @@ if (strlen($emailHandle) > 0) {
 
 	// Make sure there is only one match
 	if (count($matchingUsers) == 1) {
-		require_once QA_INCLUDE_DIR . 'db/selects.php';
+		include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 		// strlen() check is vital otherwise we can reset code for most users by entering the empty string
 		if (strlen($code) > 0) {

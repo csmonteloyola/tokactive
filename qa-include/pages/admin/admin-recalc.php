@@ -24,8 +24,8 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/admin.php';
-require_once QA_INCLUDE_DIR . 'app/recalc.php';
+include_once QA_INCLUDE_DIR . 'app/admin.php';
+include_once QA_INCLUDE_DIR . 'app/recalc.php';
 
 
 // Check we have administrative privileges
@@ -121,7 +121,7 @@ if ($recalcnow) {
 	return $qa_content;
 
 } else {
-	require_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
 
 	$qa_content = qa_content_prepare();
 

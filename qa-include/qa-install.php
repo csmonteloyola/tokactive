@@ -24,7 +24,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR.'db/install.php';
+include_once QA_INCLUDE_DIR.'db/install.php';
 
 qa_report_process_stage('init_install');
 
@@ -75,9 +75,9 @@ $hidden = array();
 // Process user handling higher up to avoid 'headers already sent' warning
 
 if (!isset($pass_failure_type) && qa_clicked('super')) {
-	require_once QA_INCLUDE_DIR.'db/admin.php';
-	require_once QA_INCLUDE_DIR.'db/users.php';
-	require_once QA_INCLUDE_DIR.'app/users-edit.php';
+	include_once QA_INCLUDE_DIR.'db/admin.php';
+	include_once QA_INCLUDE_DIR.'db/users.php';
+	include_once QA_INCLUDE_DIR.'app/users-edit.php';
 
 	if (qa_db_count_users() == 0) { // prevent creating multiple accounts
 		$inemail = qa_post_text('email');
@@ -90,7 +90,7 @@ if (!isset($pass_failure_type) && qa_clicked('super')) {
 		);
 
 		if (empty($fielderrors)) {
-			require_once QA_INCLUDE_DIR.'app/users.php';
+			include_once QA_INCLUDE_DIR.'app/users.php';
 
 			$userid = qa_create_new_user($inemail, $inpassword, $inhandle, QA_USER_LEVEL_SUPER);
 			qa_set_logged_in_user($userid, $inhandle);
@@ -153,8 +153,8 @@ else {
 
 		if (QA_FINAL_EXTERNAL_USERS) {
 			if (defined('QA_FINAL_WORDPRESS_INTEGRATE_PATH')) {
-				require_once QA_INCLUDE_DIR.'db/admin.php';
-				require_once QA_INCLUDE_DIR.'app/format.php';
+				include_once QA_INCLUDE_DIR.'db/admin.php';
+				include_once QA_INCLUDE_DIR.'app/format.php';
 
 				// create link back to WordPress home page
 				qa_db_page_move(qa_db_page_create(get_option('blogname'), QA_PAGE_FLAGS_EXTERNAL, get_option('home'), null, null, null), 'O', 1);
@@ -163,8 +163,8 @@ else {
 
 			}
 			elseif (defined('QA_FINAL_JOOMLA_INTEGRATE_PATH')) {
-				require_once QA_INCLUDE_DIR.'db/admin.php';
-				require_once QA_INCLUDE_DIR.'app/format.php';
+				include_once QA_INCLUDE_DIR.'db/admin.php';
+				include_once QA_INCLUDE_DIR.'app/format.php';
 				$jconfig = new JConfig();
 
 				// create link back to Joomla! home page (Joomla doesn't have a 'home' config setting we can use like WP does, so we'll just assume that the Joomla home is the parent of the Q2A site. If it isn't, the user can fix the link for themselves later)
@@ -273,7 +273,7 @@ if (qa_db_connection(false) !== null && !@$pass_failure_from_install) {
 			break;
 
 		default:
-			require_once QA_INCLUDE_DIR.'db/admin.php';
+			include_once QA_INCLUDE_DIR.'db/admin.php';
 
 			if (!QA_FINAL_EXTERNAL_USERS && qa_db_count_users() == 0) {
 				$errorhtml .= "There are currently no users in the Question2Answer database.\n\nPlease enter your details below to create the super administrator:";

@@ -24,10 +24,10 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/selects.php';
-require_once QA_INCLUDE_DIR . 'app/users.php';
-require_once QA_INCLUDE_DIR . 'app/format.php';
-require_once QA_INCLUDE_DIR . 'app/limits.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'app/users.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'app/limits.php';
 
 $handle = qa_request_part(1);
 $loginuserid = qa_get_logged_in_userid();
@@ -121,8 +121,8 @@ if (qa_post_text('domessage')) {
 			$errors['message'] = qa_lang('misc/message_empty');
 
 		if (empty($errors)) {
-			require_once QA_INCLUDE_DIR . 'db/messages.php';
-			require_once QA_INCLUDE_DIR . 'app/emails.php';
+			include_once QA_INCLUDE_DIR . 'db/messages.php';
+			include_once QA_INCLUDE_DIR . 'app/emails.php';
 
 			if (qa_opt('show_message_history'))
 				$messageid = qa_db_message_create($loginuserid, $toaccount['userid'], $inmessage, '', false);

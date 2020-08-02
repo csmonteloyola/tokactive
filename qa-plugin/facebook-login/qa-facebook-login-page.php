@@ -44,7 +44,7 @@ class qa_facebook_login_page
 				$tourl = qa_path_absolute('');
 
 			if (strlen($app_id) && strlen($app_secret)) {
-				require_once $this->directory . 'facebook.php';
+				include_once $this->directory . 'facebook.php';
 
 				$facebook = new Facebook(array(
 					'appId' => $app_id,

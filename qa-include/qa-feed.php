@@ -28,7 +28,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 
 qa_report_process_stage('init_feed');
 
-require_once QA_INCLUDE_DIR . 'app/options.php';
+include_once QA_INCLUDE_DIR . 'app/options.php';
 
 
 // Functions used within this file
@@ -179,7 +179,7 @@ if (!(qa_opt($feedoption) && ($countslugs ? (qa_using_categories() && qa_opt('fe
 
 // Retrieve the appropriate questions and other information for this feed
 
-require_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 $sitetitle = qa_opt('site_title');
 $siteurl = qa_opt('site_url');
@@ -249,7 +249,7 @@ switch ($feedtype) {
 		break;
 
 	case 'search':
-		require_once QA_INCLUDE_DIR . 'app/search.php';
+		include_once QA_INCLUDE_DIR . 'app/search.php';
 
 		$query = $feedparams[0];
 
@@ -278,10 +278,10 @@ switch ($feedtype) {
 
 // Remove duplicate questions (perhaps referenced in an answer and a comment) and cut down to size
 
-require_once QA_INCLUDE_DIR . 'app/format.php';
-require_once QA_INCLUDE_DIR . 'app/updates.php';
-require_once QA_INCLUDE_DIR . 'app/posts.php';
-require_once QA_INCLUDE_DIR . 'util/string.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'app/updates.php';
+include_once QA_INCLUDE_DIR . 'app/posts.php';
+include_once QA_INCLUDE_DIR . 'util/string.php';
 
 if ($feedtype != 'search' && $feedtype != 'hot') // leave search results and hot questions sorted by relevance
 	$questions = qa_any_sort_and_dedupe($questions);

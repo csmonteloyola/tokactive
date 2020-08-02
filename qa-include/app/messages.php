@@ -35,7 +35,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
  */
 function qa_wall_error_html($fromuserid, $touserid, $touserflags)
 {
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
 
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
@@ -91,8 +91,8 @@ function qa_wall_add_post($userid, $handle, $cookieid, $touserid, $tohandle, $co
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'app/format.php';
-	require_once QA_INCLUDE_DIR . 'db/messages.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'db/messages.php';
 
 	$messageid = qa_db_message_create($userid, $touserid, $content, $format, true);
 	qa_db_user_recount_posts($touserid);
@@ -120,7 +120,7 @@ function qa_wall_add_post($userid, $handle, $cookieid, $touserid, $tohandle, $co
  */
 function qa_wall_delete_post($userid, $handle, $cookieid, $message)
 {
-	require_once QA_INCLUDE_DIR . 'db/messages.php';
+	include_once QA_INCLUDE_DIR . 'db/messages.php';
 
 	qa_db_message_delete($message['messageid']);
 	qa_db_user_recount_posts($message['touserid']);
@@ -171,7 +171,7 @@ function qa_wall_posts_add_rules($usermessages, $start)
  */
 function qa_wall_post_view($message)
 {
-	require_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
 
 	$options = qa_message_html_defaults();
 
@@ -222,7 +222,7 @@ function qa_wall_view_more_link($handle, $start)
  */
 function qa_pm_delete($userid, $handle, $cookieid, $message, $box)
 {
-	require_once QA_INCLUDE_DIR . 'db/messages.php';
+	include_once QA_INCLUDE_DIR . 'db/messages.php';
 
 	qa_db_message_user_hide($message['messageid'], $box);
 	qa_db_message_delete($message['messageid'], false);

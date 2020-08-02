@@ -261,7 +261,7 @@ function qa_page_q_post_rules($post, $parentpost = null, $siblingposts = null, $
  */
 function qa_page_q_question_view($question, $parentquestion, $closepost, $usershtml, $formrequested)
 {
-	require_once QA_INCLUDE_DIR . 'app/posts.php';
+	include_once QA_INCLUDE_DIR . 'app/posts.php';
 
 	$questionid = $question['postid'];
 	$userid = qa_get_logged_in_userid();

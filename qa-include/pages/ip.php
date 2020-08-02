@@ -24,8 +24,8 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/selects.php';
-require_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
 
 
 $ip = qa_request_part(1); // picked up from qa-page.php
@@ -82,7 +82,7 @@ if (qa_clicked('doblock') || qa_clicked('dounblock') || qa_clicked('dohideall'))
 		}
 
 		if (qa_clicked('dounblock')) {
-			require_once QA_INCLUDE_DIR . 'app/limits.php';
+			include_once QA_INCLUDE_DIR . 'app/limits.php';
 
 			$blockipclauses = qa_block_ips_explode(qa_opt('block_ips_write'));
 
@@ -103,8 +103,8 @@ if (qa_clicked('doblock') || qa_clicked('dounblock') || qa_clicked('dohideall'))
 		if (qa_clicked('dohideall') && !qa_user_maximum_permit_error('permit_hide_show')) {
 			// allow moderator in one category to hide posts across all categories if they are identified via IP page
 
-			require_once QA_INCLUDE_DIR . 'db/admin.php';
-			require_once QA_INCLUDE_DIR . 'app/posts.php';
+			include_once QA_INCLUDE_DIR . 'db/admin.php';
+			include_once QA_INCLUDE_DIR . 'app/posts.php';
 
 			$postids = qa_db_get_ip_visible_postids($ip);
 
@@ -153,7 +153,7 @@ $qa_content['form'] = array(
 
 
 if ($blockable) {
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
 
 	$blockipclauses = qa_block_ips_explode(qa_opt('block_ips_write'));
 	$matchclauses = array();

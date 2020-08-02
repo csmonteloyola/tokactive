@@ -57,17 +57,17 @@ if (isset($loggedInUserId) && qa_clicked('dosendconfirm')) { // A logged in user
 		$pageError = qa_lang_html('misc/form_security_again');
 	} else {
 		// For qa_send_new_confirm
-		require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+		include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 
 		qa_send_new_confirm($loggedInUserId);
 		$emailConfirmationSent = true;
 	}
 } elseif (strlen($code) > 0) { // If there is a code present in the URL
 	// For qa_db_select_with_pending, qa_db_user_account_selectspec
-	require_once QA_INCLUDE_DIR . 'db/selects.php';
+	include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 	// For qa_complete_confirm
-	require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+	include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 
 	if (strlen($handle) > 0) { // If there is a handle present in the URL
 		$userInfo = qa_db_select_with_pending(qa_db_user_account_selectspec($handle, false));
@@ -153,7 +153,7 @@ if ($emailConfirmationSent) {
 		);
 	}
 } elseif (isset($loggedInUserId)) { // if logged in, allow sending a fresh link
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	if (strlen($code) > 0) {
 		$qa_content['error'] = qa_lang_html('users/confirm_wrong_resend');
