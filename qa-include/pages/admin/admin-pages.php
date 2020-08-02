@@ -24,9 +24,9 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/admin.php';
-require_once QA_INCLUDE_DIR . 'app/format.php';
-require_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'app/admin.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 
 // Get current list of pages and determine the state of this admin page
@@ -109,8 +109,8 @@ elseif (qa_clicked('dosaveoptions') || qa_clicked('doaddpage') || qa_clicked('do
 		qa_set_option($optionname, (int)qa_post_text('option_' . $optionname));
 
 } elseif (qa_clicked('dosavepage')) {
-	require_once QA_INCLUDE_DIR . 'db/admin.php';
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'db/admin.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	if (!qa_check_form_security_code('admin/pages', qa_post_text('code')))
 		$securityexpired = true;

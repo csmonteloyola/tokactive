@@ -29,8 +29,8 @@ class qa_event_logger
 
 			if (!in_array($tablename, $table_list)) {
 				// table does not exist, so create it
-				require_once QA_INCLUDE_DIR . 'app/users.php';
-				require_once QA_INCLUDE_DIR . 'db/maxima.php';
+				include_once QA_INCLUDE_DIR . 'app/users.php';
+				include_once QA_INCLUDE_DIR . 'db/maxima.php';
 
 				return 'CREATE TABLE ^eventlog (' .
 					'datetime DATETIME NOT NULL,' .
@@ -145,7 +145,7 @@ class qa_event_logger
 
 	public function value_to_text($value)
 	{
-		require_once QA_INCLUDE_DIR . 'util/string.php';
+		include_once QA_INCLUDE_DIR . 'util/string.php';
 
 		if (is_array($value))
 			$text = 'array(' . count($value) . ')';

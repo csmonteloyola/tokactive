@@ -37,9 +37,9 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
  */
 function qa_user_favorite_set($userid, $handle, $cookieid, $entitytype, $entityid, $favorite)
 {
-	require_once QA_INCLUDE_DIR . 'db/favorites.php';
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'db/favorites.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	// Make sure the user is not favoriting themselves
 	if ($entitytype == QA_ENTITY_USER && $userid == $entityid) {
@@ -127,8 +127,8 @@ function qa_favorite_users_view($users, $usershtml)
 	if (QA_FINAL_EXTERNAL_USERS)
 		return null;
 
-	require_once QA_INCLUDE_DIR . 'app/users.php';
-	require_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
 
 	$ranking = array(
 		'items' => array(),
@@ -159,7 +159,7 @@ function qa_favorite_users_view($users, $usershtml)
  */
 function qa_favorite_tags_view($tags)
 {
-	require_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
 
 	$ranking = array(
 		'items' => array(),
@@ -185,7 +185,7 @@ function qa_favorite_tags_view($tags)
  */
 function qa_favorite_categories_view($categories)
 {
-	require_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
 
 	$nav_list_categories = array(
 		'nav' => array(),

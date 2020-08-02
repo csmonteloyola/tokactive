@@ -165,7 +165,7 @@ function qa_db_favorite_create($userid, $entitytype, $entityid)
 	} else {
 		// Otherwise if we're going to record this in user-specific streams ...
 
-		require_once QA_INCLUDE_DIR . 'db/events.php';
+		include_once QA_INCLUDE_DIR . 'db/events.php';
 
 		// ... copy across recent events from the shared stream
 

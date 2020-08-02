@@ -24,8 +24,8 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/limits.php';
-require_once QA_INCLUDE_DIR . 'pages/question-submit.php';
+include_once QA_INCLUDE_DIR . 'app/limits.php';
+include_once QA_INCLUDE_DIR . 'pages/question-submit.php';
 
 
 $code = qa_post_text('code');
@@ -625,7 +625,7 @@ function qa_page_q_close_q_submit($question, $closepost, &$in, &$errors)
 */
 function qa_page_q_edit_a_form(&$qa_content, $id, $answer, $question, $answers, $commentsfollows, $in, $errors)
 {
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	$answerid = $answer['postid'];
 	$prefix = 'a' . $answerid . '_';

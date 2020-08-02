@@ -24,8 +24,8 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/selects.php';
-require_once QA_INCLUDE_DIR . 'app/q-list.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'app/q-list.php';
 
 
 // Get list of hottest questions, allow per-category if QA_ALLOW_UNINDEXED_QUERIES set in qa-config.php

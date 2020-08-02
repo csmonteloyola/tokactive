@@ -24,9 +24,9 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/format.php';
-require_once QA_INCLUDE_DIR . 'app/options.php';
-require_once QA_INCLUDE_DIR . 'app/search.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'app/options.php';
+include_once QA_INCLUDE_DIR . 'app/search.php';
 
 
 // Perform the search if appropriate

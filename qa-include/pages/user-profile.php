@@ -24,10 +24,10 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/selects.php';
-require_once QA_INCLUDE_DIR . 'app/format.php';
-require_once QA_INCLUDE_DIR . 'app/limits.php';
-require_once QA_INCLUDE_DIR . 'app/updates.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'app/limits.php';
+include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 
 // $handle, $userhtml are already set by /qa-include/page/user.php - also $userid if using external user integration
@@ -72,7 +72,7 @@ $errors = array();
 $loginlevel = qa_get_logged_in_level();
 
 if (!QA_FINAL_EXTERNAL_USERS) { // if we're using integrated user management, we can know and show more
-	require_once QA_INCLUDE_DIR . 'app/messages.php';
+	include_once QA_INCLUDE_DIR . 'app/messages.php';
 
 	if (!is_array($userpoints) && !is_array($useraccount))
 		return include QA_INCLUDE_DIR . 'qa-page-not-found.php';
@@ -142,8 +142,8 @@ if (!QA_FINAL_EXTERNAL_USERS) {
 		} elseif (qa_clicked('doedit')) {
 			qa_redirect(qa_request(), array('state' => 'edit'));
 		} elseif (qa_clicked('dosave')) {
-			require_once QA_INCLUDE_DIR . 'app/users-edit.php';
-			require_once QA_INCLUDE_DIR . 'db/users.php';
+			include_once QA_INCLUDE_DIR . 'app/users-edit.php';
+			include_once QA_INCLUDE_DIR . 'db/users.php';
 
 			$inemail = qa_post_text('email');
 
@@ -160,7 +160,7 @@ if (!QA_FINAL_EXTERNAL_USERS) {
 					qa_db_user_set_flag($userid, QA_USER_FLAGS_SHOW_GRAVATAR, false);
 
 					if (isset($useraccount['avatarblobid'])) {
-						require_once QA_INCLUDE_DIR . 'app/blobs.php';
+						include_once QA_INCLUDE_DIR . 'app/blobs.php';
 
 						qa_db_user_set($userid, array(
 							'avatarblobid' => null,
@@ -250,29 +250,29 @@ if (!QA_FINAL_EXTERNAL_USERS) {
 
 		else {
 			if ($approvebutton && qa_clicked('doapprove')) {
-				require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+				include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 				qa_set_user_level($userid, $useraccount['handle'], QA_USER_LEVEL_APPROVED, $useraccount['level']);
 				qa_redirect(qa_request());
 			}
 
 			if (isset($maxlevelassign) && ($maxuserlevel < QA_USER_LEVEL_MODERATOR)) {
 				if (qa_clicked('doblock')) {
-					require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+					include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 
 					qa_set_user_blocked($userid, $useraccount['handle'], true);
 					qa_redirect(qa_request());
 				}
 
 				if (qa_clicked('dounblock')) {
-					require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+					include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 
 					qa_set_user_blocked($userid, $useraccount['handle'], false);
 					qa_redirect(qa_request());
 				}
 
 				if (qa_clicked('dohideall') && !qa_user_permit_error('permit_hide_show')) {
-					require_once QA_INCLUDE_DIR . 'db/admin.php';
-					require_once QA_INCLUDE_DIR . 'app/posts.php';
+					include_once QA_INCLUDE_DIR . 'db/admin.php';
+					include_once QA_INCLUDE_DIR . 'app/posts.php';
 
 					$postids = qa_db_get_user_visible_postids($userid);
 
@@ -283,7 +283,7 @@ if (!QA_FINAL_EXTERNAL_USERS) {
 				}
 
 				if (qa_clicked('dodelete') && ($loginlevel >= QA_USER_LEVEL_ADMIN)) {
-					require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+					include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 
 					qa_report_event('u_delete_before', $loginuserid, qa_get_logged_in_handle(), qa_cookie_get(), array(
 						'userid' => $userid,
@@ -322,7 +322,7 @@ if (!QA_FINAL_EXTERNAL_USERS) {
 // Process bonus setting button
 
 if ($loginlevel >= QA_USER_LEVEL_ADMIN && qa_clicked('dosetbonus')) {
-	require_once QA_INCLUDE_DIR . 'db/points.php';
+	include_once QA_INCLUDE_DIR . 'db/points.php';
 
 	$inbonus = (int)qa_post_text('bonus');
 

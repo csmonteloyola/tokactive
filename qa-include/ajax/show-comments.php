@@ -19,12 +19,12 @@
 	More about this license: http://www.question2answer.org/license.php
 */
 
-require_once QA_INCLUDE_DIR . 'db/selects.php';
-require_once QA_INCLUDE_DIR . 'app/users.php';
-require_once QA_INCLUDE_DIR . 'app/cookies.php';
-require_once QA_INCLUDE_DIR . 'app/format.php';
-require_once QA_INCLUDE_DIR . 'pages/question-view.php';
-require_once QA_INCLUDE_DIR . 'util/sort.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'app/users.php';
+include_once QA_INCLUDE_DIR . 'app/cookies.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'pages/question-view.php';
+include_once QA_INCLUDE_DIR . 'util/sort.php';
 
 
 // Load relevant information about this question and check it exists

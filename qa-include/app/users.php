@@ -60,11 +60,11 @@ if (QA_FINAL_EXTERNAL_USERS) {
 	// If we're using single sign-on integration (WordPress or otherwise), load PHP file for that
 
 	if (defined('QA_FINAL_WORDPRESS_INTEGRATE_PATH')) {
-		require_once QA_INCLUDE_DIR . 'util/external-users-wp.php';
+		include_once QA_INCLUDE_DIR . 'util/external-users-wp.php';
 	} elseif (defined('QA_FINAL_JOOMLA_INTEGRATE_PATH')) {
-		require_once QA_INCLUDE_DIR . 'util/external-users-joomla.php';
+		include_once QA_INCLUDE_DIR . 'util/external-users-joomla.php';
 	} else {
-		require_once QA_EXTERNAL_DIR . 'qa-external-users.php';
+		include_once QA_EXTERNAL_DIR . 'qa-external-users.php';
 	}
 
 	// Access functions for user information
@@ -120,7 +120,7 @@ if (QA_FINAL_EXTERNAL_USERS) {
 		global $qa_cached_logged_in_points;
 
 		if (!isset($qa_cached_logged_in_points)) {
-			require_once QA_INCLUDE_DIR . 'db/selects.php';
+			include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 			$qa_cached_logged_in_points = qa_db_select_with_pending(qa_db_user_points_selectspec(qa_get_logged_in_userid(), true));
 		}
@@ -269,7 +269,7 @@ if (QA_FINAL_EXTERNAL_USERS) {
 	{
 		if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-		require_once QA_INCLUDE_DIR . 'app/cookies.php';
+		include_once QA_INCLUDE_DIR . 'app/cookies.php';
 
 		qa_start_session();
 
@@ -280,7 +280,7 @@ if (QA_FINAL_EXTERNAL_USERS) {
 			// Logging in from a second browser will make the previous browser's 'Remember me' no longer
 			// work - I'm not sure if this is the right behavior - could see it either way.
 
-			require_once QA_INCLUDE_DIR . 'db/selects.php';
+			include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 			$userinfo = qa_db_single_select(qa_db_user_account_selectspec($userid, true));
 
@@ -325,7 +325,7 @@ if (QA_FINAL_EXTERNAL_USERS) {
 	{
 		if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-		require_once QA_INCLUDE_DIR . 'db/users.php';
+		include_once QA_INCLUDE_DIR . 'db/users.php';
 
 		$users = qa_db_user_login_find($source, $identifier);
 		$countusers = count($users);
@@ -337,7 +337,7 @@ if (QA_FINAL_EXTERNAL_USERS) {
 			qa_set_logged_in_user($users[0]['userid'], $users[0]['handle'], false, $source);
 
 		else { // create and log in user
-			require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+			include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 
 			qa_db_user_login_sync(true);
 
@@ -411,7 +411,7 @@ if (QA_FINAL_EXTERNAL_USERS) {
 
 				// Try to recover session from the database if PHP session has timed out
 				if (!isset($_SESSION['qa_session_userid_' . $suffix]) && !empty($handle) && !empty($sessioncode)) {
-					require_once QA_INCLUDE_DIR . 'db/selects.php';
+					include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 					$userinfo = qa_db_single_select(qa_db_user_account_selectspec($handle, false)); // don't get any pending
 
@@ -455,14 +455,14 @@ if (QA_FINAL_EXTERNAL_USERS) {
 			$userid = qa_get_logged_in_userid();
 
 			if (isset($userid)) {
-				require_once QA_INCLUDE_DIR . 'db/selects.php';
+				include_once QA_INCLUDE_DIR . 'db/selects.php';
 				$qa_cached_logged_in_user = qa_db_get_pending_result('loggedinuser', qa_db_user_account_selectspec($userid, true));
 
 				// If the site is configured to share the ^users table then there might not be a record in the
 				// ^userpoints table so this creates it
 				if ($qa_cached_logged_in_user['points'] === null) {
-					require_once QA_INCLUDE_DIR . 'db/points.php';
-					require_once QA_INCLUDE_DIR . 'db/users.php';
+					include_once QA_INCLUDE_DIR . 'db/points.php';
+					include_once QA_INCLUDE_DIR . 'db/users.php';
 
 					qa_db_points_update_ifuser($userid, null);
 					qa_db_uapprovecount_update();
@@ -531,7 +531,7 @@ if (QA_FINAL_EXTERNAL_USERS) {
 	{
 		if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-		require_once QA_INCLUDE_DIR . 'util/image.php';
+		include_once QA_INCLUDE_DIR . 'util/image.php';
 
 		if (strlen($blobId) == 0 || (isset($size) && (int)$size <= 0)) {
 			return null;
@@ -653,7 +653,7 @@ if (QA_FINAL_EXTERNAL_USERS) {
 	{
 		if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-		require_once QA_INCLUDE_DIR . 'app/format.php';
+		include_once QA_INCLUDE_DIR . 'app/format.php';
 
 		$avatarSource = qa_get_user_avatar_source($flags, $email, $blobId);
 
@@ -701,7 +701,7 @@ if (QA_FINAL_EXTERNAL_USERS) {
 	{
 		if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-		require_once QA_INCLUDE_DIR . 'db/users.php';
+		include_once QA_INCLUDE_DIR . 'db/users.php';
 
 		qa_db_user_written($userid, qa_remote_ip_address());
 	}
@@ -808,7 +808,7 @@ function qa_get_logged_in_flags()
  */
 function qa_get_logged_in_levels()
 {
-	require_once QA_INCLUDE_DIR . 'db/selects.php';
+	include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 	return qa_db_get_pending_result('userlevels', qa_db_user_levels_selectspec(qa_get_logged_in_userid(), true));
 }
@@ -825,7 +825,7 @@ function qa_userids_to_handles($userids)
 		$rawuseridhandles = qa_get_public_from_userids($userids);
 
 	else {
-		require_once QA_INCLUDE_DIR . 'db/users.php';
+		include_once QA_INCLUDE_DIR . 'db/users.php';
 		$rawuseridhandles = qa_db_user_get_userid_handles($userids);
 	}
 
@@ -859,13 +859,13 @@ function qa_userid_to_handle($userid)
  */
 function qa_handles_to_userids($handles, $exactonly = false)
 {
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	if (QA_FINAL_EXTERNAL_USERS)
 		$rawhandleuserids = qa_get_userids_from_public($handles);
 
 	else {
-		require_once QA_INCLUDE_DIR . 'db/users.php';
+		include_once QA_INCLUDE_DIR . 'db/users.php';
 		$rawhandleuserids = qa_db_user_get_handle_userids($handles);
 	}
 
@@ -899,7 +899,7 @@ function qa_handle_to_userid($handle)
 		$handleuserids = qa_get_userids_from_public(array($handle));
 
 	else {
-		require_once QA_INCLUDE_DIR . 'db/users.php';
+		include_once QA_INCLUDE_DIR . 'db/users.php';
 		$handleuserids = qa_db_user_get_handle_userids(array($handle));
 	}
 
@@ -919,7 +919,7 @@ function qa_user_level_for_categories($categoryids)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	$level = qa_get_logged_in_level();
 
@@ -1028,7 +1028,7 @@ function qa_user_permit_error($permitoption = null, $limitaction = null, $userle
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
 
 	if (!isset($userfields))
 		$userfields = qa_get_logged_in_user_cache();
@@ -1275,7 +1275,7 @@ function qa_set_form_security_key()
 		$qa_form_key_cookie_set = true;
 
 		if (strlen(@$_COOKIE['qa_key']) != QA_FORM_KEY_LENGTH) {
-			require_once QA_INCLUDE_DIR . 'util/string.php';
+			include_once QA_INCLUDE_DIR . 'util/string.php';
 			$_COOKIE['qa_key'] = qa_random_alphanum(QA_FORM_KEY_LENGTH);
 		}
 

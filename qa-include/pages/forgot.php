@@ -24,8 +24,8 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/users.php';
-require_once QA_INCLUDE_DIR . 'app/captcha.php';
+include_once QA_INCLUDE_DIR . 'db/users.php';
+include_once QA_INCLUDE_DIR . 'app/captcha.php';
 
 
 // Check we're not using single-sign on integration and that we're not logged in
@@ -40,7 +40,7 @@ if (qa_is_logged_in())
 // Start the 'I forgot my password' process, sending email if appropriate
 
 if (qa_clicked('doforgot')) {
-	require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+	include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 
 	$inemailhandle = qa_post_text('emailhandle');
 

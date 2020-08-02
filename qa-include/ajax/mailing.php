@@ -19,8 +19,8 @@
 	More about this license: http://www.question2answer.org/license.php
 */
 
-require_once QA_INCLUDE_DIR . 'app/users.php';
-require_once QA_INCLUDE_DIR . 'app/mailing.php';
+include_once QA_INCLUDE_DIR . 'app/users.php';
+include_once QA_INCLUDE_DIR . 'app/mailing.php';
 
 
 $continue = false;

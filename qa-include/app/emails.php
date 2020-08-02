@@ -24,7 +24,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/options.php';
+include_once QA_INCLUDE_DIR . 'app/options.php';
 
 
 /**
@@ -62,8 +62,8 @@ function qa_send_notification($userid, $email, $handle, $subject, $body, $subs, 
 	if ($qa_notifications_suspended > 0)
 		return false;
 
-	require_once QA_INCLUDE_DIR . 'db/selects.php';
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'db/selects.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	if (isset($userid)) {
 		$needemail = !qa_email_validate(@$email); // take from user if invalid, e.g. @ used in practice

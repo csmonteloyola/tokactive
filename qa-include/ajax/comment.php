@@ -19,9 +19,9 @@
 	More about this license: http://www.question2answer.org/license.php
 */
 
-require_once QA_INCLUDE_DIR . 'app/users.php';
-require_once QA_INCLUDE_DIR . 'app/limits.php';
-require_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'app/users.php';
+include_once QA_INCLUDE_DIR . 'app/limits.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 
 // Load relevant information about this question and the comment parent
@@ -42,13 +42,13 @@ list($question, $parent, $children) = qa_db_select_with_pending(
 if (@$question['basetype'] == 'Q' && (@$parent['basetype'] == 'Q' || @$parent['basetype'] == 'A') &&
 	!qa_user_post_permit_error('permit_post_c', $parent, QA_LIMIT_COMMENTS)
 ) {
-	require_once QA_INCLUDE_DIR . 'app/captcha.php';
-	require_once QA_INCLUDE_DIR . 'app/format.php';
-	require_once QA_INCLUDE_DIR . 'app/post-create.php';
-	require_once QA_INCLUDE_DIR . 'app/cookies.php';
-	require_once QA_INCLUDE_DIR . 'pages/question-view.php';
-	require_once QA_INCLUDE_DIR . 'pages/question-submit.php';
-	require_once QA_INCLUDE_DIR . 'util/sort.php';
+	include_once QA_INCLUDE_DIR . 'app/captcha.php';
+	include_once QA_INCLUDE_DIR . 'app/format.php';
+	include_once QA_INCLUDE_DIR . 'app/post-create.php';
+	include_once QA_INCLUDE_DIR . 'app/cookies.php';
+	include_once QA_INCLUDE_DIR . 'pages/question-view.php';
+	include_once QA_INCLUDE_DIR . 'pages/question-submit.php';
+	include_once QA_INCLUDE_DIR . 'util/sort.php';
 
 
 	// Try to create the new comment

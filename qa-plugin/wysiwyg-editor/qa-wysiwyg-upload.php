@@ -35,7 +35,7 @@ class qa_wysiwyg_upload
 
 		if (is_array($_FILES) && count($_FILES)) {
 			if (qa_opt('wysiwyg_editor_upload_images')) {
-				require_once QA_INCLUDE_DIR . 'app/upload.php';
+				include_once QA_INCLUDE_DIR . 'app/upload.php';
 
 				$onlyImage = qa_get('qa_only_image');
 				$upload = qa_upload_file_one(

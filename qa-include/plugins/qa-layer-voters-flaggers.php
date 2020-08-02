@@ -166,7 +166,7 @@ class qa_html_theme_layer extends qa_html_theme_base
 	private function retrieve_queued_voters_flaggers()
 	{
 		if (count($this->qa_voters_flaggers_queue)) {
-			require_once QA_INCLUDE_DIR . 'db/votes.php';
+			include_once QA_INCLUDE_DIR . 'db/votes.php';
 
 			$postids = array_keys($this->qa_voters_flaggers_queue);
 
@@ -198,7 +198,7 @@ class qa_html_theme_layer extends qa_html_theme_base
 
 	private function get_post_voters_flaggers($post, $postid)
 	{
-		require_once QA_INCLUDE_DIR . 'util/sort.php';
+		include_once QA_INCLUDE_DIR . 'util/sort.php';
 
 		if (!isset($this->qa_voters_flaggers_cache[$postid])) {
 			$this->queue_post_voters_flaggers($post);

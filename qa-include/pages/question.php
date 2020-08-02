@@ -24,14 +24,14 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/cookies.php';
-require_once QA_INCLUDE_DIR . 'app/format.php';
-require_once QA_INCLUDE_DIR . 'db/selects.php';
-require_once QA_INCLUDE_DIR . 'util/sort.php';
-require_once QA_INCLUDE_DIR . 'util/string.php';
-require_once QA_INCLUDE_DIR . 'app/captcha.php';
-require_once QA_INCLUDE_DIR . 'pages/question-view.php';
-require_once QA_INCLUDE_DIR . 'app/updates.php';
+include_once QA_INCLUDE_DIR . 'app/cookies.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'util/sort.php';
+include_once QA_INCLUDE_DIR . 'util/string.php';
+include_once QA_INCLUDE_DIR . 'app/captcha.php';
+include_once QA_INCLUDE_DIR . 'pages/question-view.php';
+include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 $questionid = qa_request_part(0);
 $userid = qa_get_logged_in_userid();

@@ -23,9 +23,9 @@ class qa_event_notify
 {
 	public function process_event($event, $userid, $handle, $cookieid, $params)
 	{
-		require_once QA_INCLUDE_DIR . 'app/emails.php';
-		require_once QA_INCLUDE_DIR . 'app/format.php';
-		require_once QA_INCLUDE_DIR . 'util/string.php';
+		include_once QA_INCLUDE_DIR . 'app/emails.php';
+		include_once QA_INCLUDE_DIR . 'app/format.php';
+		include_once QA_INCLUDE_DIR . 'util/string.php';
 
 
 		switch ($event) {

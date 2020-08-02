@@ -33,7 +33,7 @@ class qa_html_theme extends qa_html_theme_base
 
 	public function logged_in()
 	{
-		require_once QA_INCLUDE_DIR . 'app/format.php';
+		include_once QA_INCLUDE_DIR . 'app/format.php';
 
 		if (qa_is_logged_in()) // output user avatar to login bar
 			$this->output(

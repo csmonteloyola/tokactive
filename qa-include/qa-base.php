@@ -25,7 +25,7 @@ define('QA_BUILD_DATE', '2020-07-15');
 
 
 /**
- * Autoloads some Q2A classes so it's possible to use them without adding a require_once first. From version 1.7 onwards.
+ * Autoloads some Q2A classes so it's possible to use them without adding a include_once first. From version 1.7 onwards.
  * These loosely follow PHP-FIG's PSR-0 standard where faux namespaces are separated by underscores. This is being done
  * slowly and carefully to maintain backwards compatibility, and does not apply to plugins, themes, nor most of the core
  * for that matter.
@@ -52,10 +52,10 @@ qa_initialize_constants_1();
 
 if (defined('QA_WORDPRESS_LOAD_FILE')) {
 	// if relevant, load WordPress integration in global scope
-	require_once QA_WORDPRESS_LOAD_FILE;
+	include_once QA_WORDPRESS_LOAD_FILE;
 } elseif (defined('QA_JOOMLA_LOAD_FILE')) {
 	// if relevant, load Joomla JConfig class into global scope
-	require_once QA_JOOMLA_LOAD_FILE;
+	include_once QA_JOOMLA_LOAD_FILE;
 }
 
 
@@ -64,7 +64,7 @@ qa_initialize_modularity();
 qa_register_core_modules();
 
 qa_initialize_predb_plugins();
-require_once QA_INCLUDE_DIR . 'qa-db.php';
+include_once QA_INCLUDE_DIR . 'qa-db.php';
 qa_db_allow_connect();
 
 // $qa_autoconnect defaults to true so that optional plugins will load for external code. Q2A core
@@ -183,7 +183,7 @@ function qa_initialize_constants_1()
 	if (!file_exists(QA_BASE_DIR . 'qa-config.php'))
 		qa_fatal_error('The config file could not be found. Please read the instructions in qa-config-example.php.');
 
-	require_once QA_BASE_DIR . 'qa-config.php';
+	include_once QA_BASE_DIR . 'qa-config.php';
 
 	$qa_request_map = isset($QA_CONST_PATH_MAP) && is_array($QA_CONST_PATH_MAP) ? $QA_CONST_PATH_MAP : array();
 
@@ -399,7 +399,7 @@ function qa_initialize_postdb_plugins()
 {
 	global $qa_pluginManager;
 
-	require_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
 	qa_preload_options();
 
 	$qa_pluginManager->loadPluginsAfterDbInit();
@@ -426,7 +426,7 @@ function qa_page_db_fail_handler($type, $errno = null, $error = null, $query = n
 	$pass_failure_error = $error;
 	$pass_failure_query = $query;
 
-	require_once QA_INCLUDE_DIR . 'qa-install.php';
+	include_once QA_INCLUDE_DIR . 'qa-install.php';
 
 	qa_exit('error');
 }
@@ -916,7 +916,7 @@ function qa_load_module($type, $name)
 			return $module['object'];
 
 		if (strlen(@$module['include']))
-			require_once $module['directory'] . $module['include'];
+			include_once $module['directory'] . $module['include'];
 
 		if (strlen(@$module['class'])) {
 			$object = new $module['class'];
@@ -1016,7 +1016,7 @@ function qa_sanitize_html($html, $linksnewwindow = false, $storage = false)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once 'vendor/htmLawed.php';
+	include_once 'vendor/htmLawed.php';
 
 	global $qa_sanitize_html_newwindow;
 
@@ -1352,7 +1352,7 @@ function qa_is_human_probably()
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	$useragent = @$_SERVER['HTTP_USER_AGENT'];
 
@@ -1370,7 +1370,7 @@ function qa_is_mobile_probably()
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	// inspired by: http://dangerousprototypes.com/docs/PhpBB3_MOD:_Replacement_mobile_browser_detection_for_mobile_themes
 
@@ -1558,7 +1558,7 @@ function qa_path($request, $params = null, $rooturl = null, $neaturls = null, $a
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
 	if (!isset($neaturls)) {
-		require_once QA_INCLUDE_DIR . 'app/options.php';
+		include_once QA_INCLUDE_DIR . 'app/options.php';
 		$neaturls = qa_opt('neat_urls');
 	}
 
@@ -1661,8 +1661,8 @@ function qa_q_request($questionid, $title)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'app/options.php';
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	$title = qa_block_words_replace($title, qa_get_block_words_preg());
 	$slug = qa_slugify($title, qa_opt('q_urls_remove_accents'), qa_opt('q_urls_title_length'));
@@ -1857,7 +1857,7 @@ function qa_opt($name, $value = null)
 	if (!isset($value) && isset($qa_options_cache[$name]))
 		return $qa_options_cache[$name]; // quick shortcut to reduce calls to qa_get_options()
 
-	require_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
 
 	if (isset($value))
 		qa_set_option($name, $value);

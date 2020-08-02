@@ -24,11 +24,11 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/recalc.php';
-require_once QA_INCLUDE_DIR . 'db/points.php';
-require_once QA_INCLUDE_DIR . 'app/options.php';
-require_once QA_INCLUDE_DIR . 'app/admin.php';
-require_once QA_INCLUDE_DIR . 'util/sort.php';
+include_once QA_INCLUDE_DIR . 'db/recalc.php';
+include_once QA_INCLUDE_DIR . 'db/points.php';
+include_once QA_INCLUDE_DIR . 'app/options.php';
+include_once QA_INCLUDE_DIR . 'app/admin.php';
+include_once QA_INCLUDE_DIR . 'util/sort.php';
 
 
 // Check admin privileges

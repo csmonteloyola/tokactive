@@ -64,8 +64,8 @@ function qa_db_table_definitions()
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/maxima.php';
-	require_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'db/maxima.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
 
 	/*
 		Important note on character encoding in database and PHP connection to MySQL
@@ -611,7 +611,7 @@ function qa_db_get_db_version()
  */
 function qa_db_set_db_version($version)
 {
-	require_once QA_INCLUDE_DIR . 'db/options.php';
+	include_once QA_INCLUDE_DIR . 'db/options.php';
 
 	qa_db_set_option('db_version', $version);
 }
@@ -723,7 +723,7 @@ function qa_db_create_table_sql($rawname, $definition)
  */
 function qa_db_default_userfields_sql()
 {
-	require_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
 
 	$profileFields = array(
 		array(
@@ -769,7 +769,7 @@ function qa_db_default_userfields_sql()
  */
 function qa_db_upgrade_tables()
 {
-	require_once QA_INCLUDE_DIR . 'app/recalc.php';
+	include_once QA_INCLUDE_DIR . 'app/recalc.php';
 
 	$definitions = qa_db_table_definitions();
 	$keyrecalc = array();

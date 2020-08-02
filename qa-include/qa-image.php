@@ -41,7 +41,7 @@ qa_report_process_stage('init_image');
 
 // Retrieve the scaled image from the cache if available
 
-require_once QA_INCLUDE_DIR . 'db/cache.php';
+include_once QA_INCLUDE_DIR . 'db/cache.php';
 
 qa_db_connect('qa_image_db_fail_handler');
 qa_initialize_postdb_plugins();
@@ -59,9 +59,9 @@ if (isset($content)) {
 	echo $content;
 
 } else {
-	require_once QA_INCLUDE_DIR . 'app/options.php';
-	require_once QA_INCLUDE_DIR . 'app/blobs.php';
-	require_once QA_INCLUDE_DIR . 'util/image.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/blobs.php';
+	include_once QA_INCLUDE_DIR . 'util/image.php';
 
 
 	// Otherwise retrieve the raw image and scale as appropriate

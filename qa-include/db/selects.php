@@ -24,7 +24,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR.'db/maxima.php';
+include_once QA_INCLUDE_DIR.'db/maxima.php';
 
 
 /**
@@ -34,7 +34,7 @@ require_once QA_INCLUDE_DIR.'db/maxima.php';
  */
 function qa_db_select_with_pending() // any number of parameters read via func_get_args()
 {
-	require_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
 
 	global $qa_db_pending_selectspecs, $qa_db_pending_results;
 
@@ -168,7 +168,7 @@ function qa_db_posts_basic_selectspec($voteuserid = null, $full = false, $user =
 	);
 
 	if (isset($voteuserid)) {
-		require_once QA_INCLUDE_DIR . 'app/updates.php';
+		include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 		$selectspec['columns']['uservote'] = '^uservotes.vote';
 		$selectspec['columns']['userflag'] = '^uservotes.flag';
@@ -932,7 +932,7 @@ function qa_db_search_posts_selectspec($voteuserid, $titlewords, $contentwords, 
 
 	if (!empty($handlewords)) {
 		if (QA_FINAL_EXTERNAL_USERS) {
-			require_once QA_INCLUDE_DIR . 'app/users.php';
+			include_once QA_INCLUDE_DIR . 'app/users.php';
 
 			$userids = qa_get_userids_from_public($handlewords);
 
@@ -1212,7 +1212,7 @@ function qa_db_tag_recent_qs_selectspec($voteuserid, $tag, $start, $full = false
 {
 	$count = isset($count) ? min($count, QA_DB_RETRIEVE_QS_AS) : QA_DB_RETRIEVE_QS_AS;
 
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	$selectspec = qa_db_posts_basic_selectspec($voteuserid, $full);
 
@@ -1747,7 +1747,7 @@ function qa_db_messages_outbox_selectspec($type, $fromidentifier, $fromisuserid,
  */
 function qa_db_is_favorite_selectspec($userid, $entitytype, $identifier)
 {
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	$selectspec = array(
 		'columns' => array('flags' => 'COUNT(*)'),
@@ -1791,7 +1791,7 @@ function qa_db_is_favorite_selectspec($userid, $entitytype, $identifier)
  */
 function qa_db_user_favorite_qs_selectspec($userid, $limit = null, $start = 0)
 {
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	$selectspec = qa_db_posts_basic_selectspec($userid);
 
@@ -1822,7 +1822,7 @@ function qa_db_user_favorite_qs_selectspec($userid, $limit = null, $start = 0)
  */
 function qa_db_user_favorite_users_selectspec($userid, $limit = null, $start = 0)
 {
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	$source = '^users JOIN ^userpoints ON ^users.userid=^userpoints.userid JOIN ^userfavorites ON ^users.userid=^userfavorites.entityid WHERE ^userfavorites.userid=$ AND ^userfavorites.entitytype=$ ORDER BY ^users.handle';
 	$arguments = array($userid, QA_ENTITY_USER);
@@ -1853,7 +1853,7 @@ function qa_db_user_favorite_users_selectspec($userid, $limit = null, $start = 0
  */
 function qa_db_user_favorite_tags_selectspec($userid, $limit = null, $start = 0)
 {
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	$source = '^words JOIN ^userfavorites ON ^words.wordid=^userfavorites.entityid WHERE ^userfavorites.userid=$ AND ^userfavorites.entitytype=$ ORDER BY ^words.tagcount DESC';
 	$arguments = array($userid, QA_ENTITY_TAG);
@@ -1881,7 +1881,7 @@ function qa_db_user_favorite_tags_selectspec($userid, $limit = null, $start = 0)
  */
 function qa_db_user_favorite_categories_selectspec($userid)
 {
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	return array(
 		'columns' => array('categoryid', 'title', 'tags', 'qcount', 'backpath', 'content'),
@@ -1900,7 +1900,7 @@ function qa_db_user_favorite_categories_selectspec($userid)
  */
 function qa_db_user_favorite_non_qs_selectspec($userid)
 {
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	return array(
 		'columns' => array('type' => 'entitytype', 'userid' => 'IF (entitytype=$, entityid, NULL)', 'categorybackpath' => '^categories.backpath', 'tags' => '^words.word'),
@@ -1922,7 +1922,7 @@ function qa_db_user_favorite_non_qs_selectspec($userid)
  */
 function qa_db_user_updates_selectspec($userid, $forfavorites = true, $forcontent = true)
 {
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	$selectspec = qa_db_posts_basic_selectspec($userid);
 
@@ -2011,7 +2011,7 @@ function qa_db_ip_limits_selectspec($ip)
  */
 function qa_db_user_levels_selectspec($identifier, $isuserid = QA_FINAL_EXTERNAL_USERS, $full = false)
 {
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	$selectspec = array(
 		'columns' => array('entityid', 'entitytype', 'level'),

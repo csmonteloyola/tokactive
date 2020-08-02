@@ -71,8 +71,8 @@ function qa_upload_file($localfilename, $sourcefilename, $maxfilesize = null, $o
 
 	// Check per-user upload limits
 
-	require_once QA_INCLUDE_DIR . 'app/users.php';
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
 
 	switch (qa_user_permit_error(null, QA_LIMIT_UPLOADS)) {
 		case 'limit':
@@ -145,7 +145,7 @@ function qa_upload_file($localfilename, $sourcefilename, $maxfilesize = null, $o
 
 	// If appropriate, get more accurate image size and apply constraints to it
 
-	require_once QA_INCLUDE_DIR . 'util/image.php';
+	include_once QA_INCLUDE_DIR . 'util/image.php';
 
 	if ($isimage && qa_has_gd_image()) {
 		$image = @imagecreatefromstring($content);
@@ -178,7 +178,7 @@ function qa_upload_file($localfilename, $sourcefilename, $maxfilesize = null, $o
 
 	// Create the blob and return
 
-	require_once QA_INCLUDE_DIR . 'app/blobs.php';
+	include_once QA_INCLUDE_DIR . 'app/blobs.php';
 
 	$userid = qa_get_logged_in_userid();
 	$cookieid = isset($userid) ? qa_cookie_get() : qa_cookie_get_create();

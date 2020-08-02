@@ -33,7 +33,7 @@ class qa_related_qs
 
 	public function output_widget($region, $place, $themeobject, $template, $request, $qa_content)
 	{
-		require_once QA_INCLUDE_DIR . 'db/selects.php';
+		include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 		if (!isset($qa_content['q_view']['raw']['type']) || $qa_content['q_view']['raw']['type'] != 'Q') // question might not be visible, etc...
 			return;

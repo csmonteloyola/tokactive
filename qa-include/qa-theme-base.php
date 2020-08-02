@@ -195,7 +195,7 @@ class qa_html_theme_base
 	 */
 	public function reorder_parts($parts, $beforekey = null, $reorderrelative = true)
 	{
-		require_once QA_INCLUDE_DIR . 'util/sort.php';
+		include_once QA_INCLUDE_DIR . 'util/sort.php';
 
 		qa_array_reorder($this->content, $parts, $beforekey, $reorderrelative);
 	}
@@ -1024,7 +1024,7 @@ class qa_html_theme_base
 	 */
 	public function form_reorder_fields(&$form, $keys, $beforekey = null, $reorderrelative = true)
 	{
-		require_once QA_INCLUDE_DIR . 'util/sort.php';
+		include_once QA_INCLUDE_DIR . 'util/sort.php';
 
 		if (is_array($form['fields']))
 			qa_array_reorder($form['fields'], $keys, $beforekey, $reorderrelative);
@@ -1208,7 +1208,7 @@ class qa_html_theme_base
 	 */
 	public function form_reorder_buttons(&$form, $keys, $beforekey = null, $reorderrelative = true)
 	{
-		require_once QA_INCLUDE_DIR . 'util/sort.php';
+		include_once QA_INCLUDE_DIR . 'util/sort.php';
 
 		if (is_array($form['buttons']))
 			qa_array_reorder($form['buttons'], $keys, $beforekey, $reorderrelative);

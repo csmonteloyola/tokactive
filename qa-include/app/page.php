@@ -24,11 +24,11 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/cookies.php';
-require_once QA_INCLUDE_DIR . 'app/format.php';
-require_once QA_INCLUDE_DIR . 'app/users.php';
-require_once QA_INCLUDE_DIR . 'app/options.php';
-require_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'app/cookies.php';
+include_once QA_INCLUDE_DIR . 'app/format.php';
+include_once QA_INCLUDE_DIR . 'app/users.php';
+include_once QA_INCLUDE_DIR . 'app/options.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 
 /**
@@ -106,8 +106,8 @@ function qa_check_page_clicks()
 						$qa_page_error_html = qa_lang_html('misc/form_security_again');
 
 					else {
-						require_once QA_INCLUDE_DIR . 'app/votes.php';
-						require_once QA_INCLUDE_DIR . 'db/selects.php';
+						include_once QA_INCLUDE_DIR . 'app/votes.php';
+						include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 						$userid = qa_get_logged_in_userid();
 
@@ -130,7 +130,7 @@ function qa_check_page_clicks()
 						$qa_page_error_html = qa_lang_html('misc/form_security_again');
 
 					else {
-						require_once QA_INCLUDE_DIR . 'app/favorites.php';
+						include_once QA_INCLUDE_DIR . 'app/favorites.php';
 
 						qa_user_favorite_set(qa_get_logged_in_userid(), qa_get_logged_in_handle(), qa_cookie_get(), $entitytype, $entityid, $favorite);
 						qa_redirect(qa_request(), $_GET);
@@ -149,11 +149,11 @@ function qa_check_page_clicks()
 							setcookie('qa_noticed', 1, time() + 86400 * 3650, '/', QA_COOKIE_DOMAIN, (bool)ini_get('session.cookie_secure'), true);
 
 						elseif ($noticeid == 'welcome') {
-							require_once QA_INCLUDE_DIR . 'db/users.php';
+							include_once QA_INCLUDE_DIR . 'db/users.php';
 							qa_db_user_set_flag(qa_get_logged_in_userid(), QA_USER_FLAGS_WELCOME_NOTICE, false);
 
 						} else {
-							require_once QA_INCLUDE_DIR . 'db/notices.php';
+							include_once QA_INCLUDE_DIR . 'db/notices.php';
 							qa_db_usernotice_delete(qa_get_logged_in_userid(), $noticeid);
 						}
 
@@ -372,7 +372,7 @@ function qa_do_content_stats($qa_content)
 		return false;
 	}
 
-	require_once QA_INCLUDE_DIR . 'db/hotness.php';
+	include_once QA_INCLUDE_DIR . 'db/hotness.php';
 
 	$viewsIncremented = qa_db_increment_views($qa_content['inc_views_postid']);
 
@@ -755,7 +755,7 @@ function qa_content_prepare($voting = false, $categoryids = array())
 			$qa_content['notices'][] = qa_notice_form($notice['noticeid'], qa_viewer_html($notice['content'], $notice['format']), $notice);
 
 	} else {
-		require_once QA_INCLUDE_DIR . 'util/string.php';
+		include_once QA_INCLUDE_DIR . 'util/string.php';
 
 		if (!QA_FINAL_EXTERNAL_USERS) {
 			$loginmodules = qa_load_modules_with('login', 'login_html');

@@ -50,7 +50,7 @@ function qa_db_calc_passcheck($password, $salt)
  */
 function qa_db_user_create($email, $password, $handle, $level, $ip)
 {
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	$ipHex = bin2hex(@inet_pton($ip));
 
@@ -201,7 +201,7 @@ function qa_db_user_set_password($userid, $password)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	if (QA_PASSWORD_HASH) {
 		qa_db_query_sub(
@@ -241,7 +241,7 @@ function qa_db_user_rand_emailcode()
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	return qa_random_alphanum(8);
 }
@@ -254,7 +254,7 @@ function qa_db_user_rand_sessioncode()
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	return qa_random_alphanum(8);
 }

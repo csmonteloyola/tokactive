@@ -46,8 +46,8 @@ if (!defined('QA_NEW_PASSWORD_LEN')){
  */
 function qa_handle_email_filter(&$handle, &$email, $olduser = null)
 {
-	require_once QA_INCLUDE_DIR . 'db/users.php';
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	$errors = array();
 
@@ -99,9 +99,9 @@ function qa_handle_email_filter(&$handle, &$email, $olduser = null)
  */
 function qa_handle_make_valid($handle)
 {
-	require_once QA_INCLUDE_DIR . 'util/string.php';
-	require_once QA_INCLUDE_DIR . 'db/maxima.php';
-	require_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'db/maxima.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
 
 	if (!strlen($handle))
 		$handle = qa_lang('users/registered_user');
@@ -183,11 +183,11 @@ function qa_create_new_user($email, $password, $handle, $level = QA_USER_LEVEL_B
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/users.php';
-	require_once QA_INCLUDE_DIR . 'db/points.php';
-	require_once QA_INCLUDE_DIR . 'app/options.php';
-	require_once QA_INCLUDE_DIR . 'app/emails.php';
-	require_once QA_INCLUDE_DIR . 'app/cookies.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'db/points.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/emails.php';
+	include_once QA_INCLUDE_DIR . 'app/cookies.php';
 
 	$userid = qa_db_user_create($email, $password, $handle, $level, qa_remote_ip_address());
 	qa_db_points_update_ifuser($userid, null);
@@ -240,10 +240,10 @@ function qa_delete_user($userid)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/votes.php';
-	require_once QA_INCLUDE_DIR . 'db/users.php';
-	require_once QA_INCLUDE_DIR . 'db/post-update.php';
-	require_once QA_INCLUDE_DIR . 'db/points.php';
+	include_once QA_INCLUDE_DIR . 'db/votes.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'db/post-update.php';
+	include_once QA_INCLUDE_DIR . 'db/points.php';
 
 	$postids = qa_db_uservoteflag_user_get($userid); // posts this user has flagged or voted on, whose counts need updating
 
@@ -273,9 +273,9 @@ function qa_send_new_confirm($userid)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/users.php';
-	require_once QA_INCLUDE_DIR . 'db/selects.php';
-	require_once QA_INCLUDE_DIR . 'app/emails.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'db/selects.php';
+	include_once QA_INCLUDE_DIR . 'app/emails.php';
 
 	$userinfo = qa_db_select_with_pending(qa_db_user_account_selectspec($userid, true));
 
@@ -302,7 +302,7 @@ function qa_get_new_confirm_url($userid, $handle, $emailcode = null)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
 
 	if (!isset($emailcode)) {
 		$emailcode = qa_db_user_rand_emailcode();
@@ -324,8 +324,8 @@ function qa_complete_confirm($userid, $email, $handle)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/users.php';
-	require_once QA_INCLUDE_DIR . 'app/cookies.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'app/cookies.php';
 
 	qa_db_user_set_flag($userid, QA_USER_FLAGS_EMAIL_CONFIRMED, true);
 	qa_db_user_set_flag($userid, QA_USER_FLAGS_MUST_CONFIRM, false);
@@ -347,7 +347,7 @@ function qa_complete_confirm($userid, $email, $handle)
  */
 function qa_set_user_level($userid, $handle, $level, $oldlevel)
 {
-	require_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
 
 	qa_db_user_set($userid, 'level', $level);
 	qa_db_uapprovecount_update();
@@ -375,7 +375,7 @@ function qa_set_user_level($userid, $handle, $level, $oldlevel)
  */
 function qa_set_user_blocked($userid, $handle, $blocked)
 {
-	require_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
 
 	qa_db_user_set_flag($userid, QA_USER_FLAGS_USER_BLOCKED, $blocked);
 	qa_db_uapprovecount_update();
@@ -396,10 +396,10 @@ function qa_start_reset_user($userid)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/users.php';
-	require_once QA_INCLUDE_DIR . 'app/options.php';
-	require_once QA_INCLUDE_DIR . 'app/emails.php';
-	require_once QA_INCLUDE_DIR . 'db/selects.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/emails.php';
+	include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 	qa_db_user_set($userid, 'emailcode', qa_db_user_rand_emailcode());
 
@@ -425,11 +425,11 @@ function qa_complete_reset_user($userid)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'util/string.php';
-	require_once QA_INCLUDE_DIR . 'app/options.php';
-	require_once QA_INCLUDE_DIR . 'app/emails.php';
-	require_once QA_INCLUDE_DIR . 'app/cookies.php';
-	require_once QA_INCLUDE_DIR . 'db/selects.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/emails.php';
+	include_once QA_INCLUDE_DIR . 'app/cookies.php';
+	include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 	$password = qa_random_alphanum(max(QA_MIN_PASSWORD_LEN, QA_NEW_PASSWORD_LEN));
 
@@ -462,19 +462,19 @@ function qa_finish_reset_user($userId, $newPassword)
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
 	// For qa_db_user_set_password(), qa_db_user_set()
-	require_once QA_INCLUDE_DIR . 'db/users.php';
+	include_once QA_INCLUDE_DIR . 'db/users.php';
 
 	// For qa_set_logged_in_user()
-	require_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
 
 	// For qa_cookie_get()
-	require_once QA_INCLUDE_DIR . 'app/cookies.php';
+	include_once QA_INCLUDE_DIR . 'app/cookies.php';
 
 	// For qa_db_select_with_pending(), qa_db_user_account_selectspec()
-	require_once QA_INCLUDE_DIR . 'db/selects.php';
+	include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 	// For qa_set_logged_in_user()
-	require_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
 
 	qa_db_user_set_password($userId, $newPassword);
 
@@ -511,12 +511,12 @@ function qa_set_user_avatar($userid, $imagedata, $oldblobid = null)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'util/image.php';
+	include_once QA_INCLUDE_DIR . 'util/image.php';
 
 	$imagedata = qa_image_constrain_data($imagedata, $width, $height, qa_opt('avatar_store_size'));
 
 	if (isset($imagedata)) {
-		require_once QA_INCLUDE_DIR . 'app/blobs.php';
+		include_once QA_INCLUDE_DIR . 'app/blobs.php';
 
 		$newblobid = qa_create_blob($imagedata, 'jpeg', null, $userid, null, qa_remote_ip_address());
 

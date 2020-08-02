@@ -41,8 +41,8 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
  */
 function qa_db_event_create_for_entity($entitytype, $entityid, $questionid, $lastpostid, $updatetype, $lastuserid, $timestamp = null)
 {
-	require_once QA_INCLUDE_DIR . 'db/maxima.php';
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'db/maxima.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	$updatedsql = isset($timestamp) ? ('FROM_UNIXTIME(' . qa_db_argument_to_mysql($timestamp, false) . ')') : 'NOW()';
 
@@ -125,7 +125,7 @@ function qa_db_event_create_for_entity($entitytype, $entityid, $questionid, $las
  */
 function qa_db_event_create_not_entity($userid, $questionid, $lastpostid, $updatetype, $lastuserid, $timestamp = null)
 {
-	require_once QA_INCLUDE_DIR . 'app/updates.php';
+	include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 	$updatedsql = isset($timestamp) ? ('FROM_UNIXTIME(' . qa_db_argument_to_mysql($timestamp, false) . ')') : 'NOW()';
 

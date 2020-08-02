@@ -24,8 +24,8 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/captcha.php';
-require_once QA_INCLUDE_DIR . 'db/users.php';
+include_once QA_INCLUDE_DIR . 'app/captcha.php';
+include_once QA_INCLUDE_DIR . 'db/users.php';
 
 
 if (qa_is_logged_in()) {
@@ -77,10 +77,10 @@ if (qa_user_permit_error()) {
 // Process submitted form
 
 if (qa_clicked('doregister')) {
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
 
 	if (qa_user_limits_remaining(QA_LIMIT_REGISTRATIONS)) {
-		require_once QA_INCLUDE_DIR . 'app/users-edit.php';
+		include_once QA_INCLUDE_DIR . 'app/users-edit.php';
 
 		$inemail = qa_post_text('email');
 		$inpassword = qa_post_text('password');

@@ -24,7 +24,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/options.php';
+include_once QA_INCLUDE_DIR . 'db/options.php';
 
 define('QA_PERMIT_ALL', 150);
 define('QA_PERMIT_USERS', 120);
@@ -56,7 +56,7 @@ function qa_get_options($names)
 		qa_preload_options();
 
 	if (!$qa_options_loaded) {
-		require_once QA_INCLUDE_DIR . 'db/selects.php';
+		include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 		qa_load_options_results(array(
 			qa_db_get_pending_result('options'),
@@ -449,7 +449,7 @@ function qa_default_option($name)
 
 		case 'editor_for_qs':
 		case 'editor_for_as':
-			require_once QA_INCLUDE_DIR . 'app/format.php';
+			include_once QA_INCLUDE_DIR . 'app/format.php';
 
 			$value = '-'; // to match none by default, i.e. choose based on who is best at editing HTML
 			qa_load_editor('', 'html', $value);
@@ -520,7 +520,7 @@ function qa_default_option($name)
 			break;
 
 		case 'form_security_salt':
-			require_once QA_INCLUDE_DIR . 'util/string.php';
+			include_once QA_INCLUDE_DIR . 'util/string.php';
 			$value = qa_random_alphanum(32);
 			break;
 
@@ -569,7 +569,7 @@ function qa_post_html_defaults($basetype, $full = false)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
 
 	return array(
 		'tagsview' => $basetype == 'Q' && qa_using_tags(),
@@ -753,7 +753,7 @@ function qa_get_block_words_preg()
 		$blockwordstring = qa_opt('block_bad_words');
 
 		if (strlen($blockwordstring)) {
-			require_once QA_INCLUDE_DIR . 'util/string.php';
+			include_once QA_INCLUDE_DIR . 'util/string.php';
 			$qa_blockwordspreg = qa_block_words_to_preg($blockwordstring);
 
 		} else

@@ -24,8 +24,8 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'db/events.php';
-require_once QA_INCLUDE_DIR . 'app/updates.php';
+include_once QA_INCLUDE_DIR . 'db/events.php';
+include_once QA_INCLUDE_DIR . 'app/updates.php';
 
 
 /**
@@ -65,8 +65,8 @@ function qa_create_event_for_q_user($questionid, $lastpostid, $updatetype, $last
  */
 function qa_create_event_for_tags($tagstring, $questionid, $updatetype, $lastuserid, $timestamp = null)
 {
-	require_once QA_INCLUDE_DIR . 'util/string.php';
-	require_once QA_INCLUDE_DIR . 'db/post-create.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'db/post-create.php';
 
 	$tagwordids = qa_db_word_mapto_ids(array_unique(qa_tagstring_to_tags($tagstring)));
 	foreach ($tagwordids as $wordid) {
@@ -89,8 +89,8 @@ function qa_create_event_for_tags($tagstring, $questionid, $updatetype, $lastuse
 function qa_create_event_for_category($categoryid, $questionid, $updatetype, $lastuserid, $timestamp = null)
 {
 	if (isset($categoryid)) {
-		require_once QA_INCLUDE_DIR . 'db/selects.php';
-		require_once QA_INCLUDE_DIR . 'app/format.php';
+		include_once QA_INCLUDE_DIR . 'db/selects.php';
+		include_once QA_INCLUDE_DIR . 'app/format.php';
 
 		$categories = qa_category_path(qa_db_single_select(qa_db_category_nav_selectspec($categoryid, true)), $categoryid);
 		foreach ($categories as $category) {

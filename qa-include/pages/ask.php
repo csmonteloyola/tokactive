@@ -25,10 +25,10 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 }
 
 
-require_once QA_INCLUDE_DIR.'app/format.php';
-require_once QA_INCLUDE_DIR.'app/limits.php';
-require_once QA_INCLUDE_DIR.'db/selects.php';
-require_once QA_INCLUDE_DIR.'util/sort.php';
+include_once QA_INCLUDE_DIR.'app/format.php';
+include_once QA_INCLUDE_DIR.'app/limits.php';
+include_once QA_INCLUDE_DIR.'db/selects.php';
+include_once QA_INCLUDE_DIR.'util/sort.php';
 
 
 // Check whether this is a follow-on question and get some info we need from the database
@@ -105,8 +105,8 @@ if (qa_using_tags()) {
 }
 
 if (qa_clicked('doask')) {
-	require_once QA_INCLUDE_DIR.'app/post-create.php';
-	require_once QA_INCLUDE_DIR.'util/string.php';
+	include_once QA_INCLUDE_DIR.'app/post-create.php';
+	include_once QA_INCLUDE_DIR.'util/string.php';
 
 	$categoryids = array_keys(qa_category_path($categories, @$in['categoryid']));
 	$userlevel = qa_user_level_for_categories($categoryids);
@@ -140,7 +140,7 @@ if (qa_clicked('doask')) {
 		}
 
 		if ($captchareason) {
-			require_once QA_INCLUDE_DIR.'app/captcha.php';
+			include_once QA_INCLUDE_DIR.'app/captcha.php';
 			qa_captcha_validate_post($errors);
 		}
 
@@ -301,7 +301,7 @@ qa_set_up_notify_fields($qa_content, $qa_content['form']['fields'], 'Q', qa_get_
 	isset($in['notify']) ? $in['notify'] : qa_opt('notify_users_default'), @$in['email'], @$errors['email']);
 
 if ($captchareason) {
-	require_once QA_INCLUDE_DIR.'app/captcha.php';
+	include_once QA_INCLUDE_DIR.'app/captcha.php';
 	qa_set_up_captcha_field($qa_content, $qa_content['form']['fields'], @$errors, qa_captcha_reason_note($captchareason));
 }
 

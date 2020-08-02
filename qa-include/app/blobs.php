@@ -81,7 +81,7 @@ function qa_create_blob($content, $format, $sourcefilename = null, $userid = nul
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/blobs.php';
+	include_once QA_INCLUDE_DIR . 'db/blobs.php';
 
 	$blobid = qa_db_blob_create(defined('QA_BLOBS_DIRECTORY') ? null : $content, $format, $sourcefilename, $userid, $cookieid, $ip);
 
@@ -137,7 +137,7 @@ function qa_read_blob($blobid)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/blobs.php';
+	include_once QA_INCLUDE_DIR . 'db/blobs.php';
 
 	$blob = qa_db_blob_read($blobid);
 
@@ -175,7 +175,7 @@ function qa_delete_blob($blobid)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/blobs.php';
+	include_once QA_INCLUDE_DIR . 'db/blobs.php';
 
 	if (defined('QA_BLOBS_DIRECTORY')) {
 		$blob = qa_db_blob_read($blobid);
@@ -211,7 +211,7 @@ function qa_blob_exists($blobid)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/blobs.php';
+	include_once QA_INCLUDE_DIR . 'db/blobs.php';
 
 	return qa_db_blob_exists($blobid);
 }

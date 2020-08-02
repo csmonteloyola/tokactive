@@ -24,8 +24,8 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-require_once QA_INCLUDE_DIR . 'app/captcha.php';
-require_once QA_INCLUDE_DIR . 'db/selects.php';
+include_once QA_INCLUDE_DIR . 'app/captcha.php';
+include_once QA_INCLUDE_DIR . 'db/selects.php';
 
 
 // Get useful information on the logged in user
@@ -60,8 +60,8 @@ if (qa_user_permit_error()) {
 $feedbacksent = false;
 
 if (qa_clicked('dofeedback')) {
-	require_once QA_INCLUDE_DIR . 'app/emails.php';
-	require_once QA_INCLUDE_DIR . 'util/string.php';
+	include_once QA_INCLUDE_DIR . 'app/emails.php';
+	include_once QA_INCLUDE_DIR . 'util/string.php';
 
 	$inmessage = qa_post_text('message');
 	$inname = qa_post_text('name');

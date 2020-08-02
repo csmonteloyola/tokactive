@@ -41,8 +41,8 @@ function qa_vote_error_html($post, $vote, $userid, $topage)
 	// The 'login', 'confirm', 'limit', 'userblock' and 'ipblock' permission errors are reported to the user here.
 	// Others ('approve', 'level') prevent the buttons being clickable in the first place, in qa_get_vote_view(...)
 
-	require_once QA_INCLUDE_DIR . 'app/users.php';
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
 
 	if ($post['hidden']) {
 		return qa_lang_html('main/vote_disabled_hidden');
@@ -117,11 +117,11 @@ function qa_vote_set($post, $userid, $handle, $cookieid, $vote)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/points.php';
-	require_once QA_INCLUDE_DIR . 'db/hotness.php';
-	require_once QA_INCLUDE_DIR . 'db/votes.php';
-	require_once QA_INCLUDE_DIR . 'db/post-create.php';
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'db/points.php';
+	include_once QA_INCLUDE_DIR . 'db/hotness.php';
+	include_once QA_INCLUDE_DIR . 'db/votes.php';
+	include_once QA_INCLUDE_DIR . 'db/post-create.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
 
 	$vote = (int)min(1, max(-1, $vote));
 	$oldvote = (int)qa_db_uservote_get($post['postid'], $userid);
@@ -194,10 +194,10 @@ function qa_flag_error_html($post, $userid, $topage)
 	// The 'login', 'confirm', 'limit', 'userblock' and 'ipblock' permission errors are reported to the user here.
 	// Others ('approve', 'level') prevent the flag button being shown, in qa_page_q_post_rules(...)
 
-	require_once QA_INCLUDE_DIR . 'db/selects.php';
-	require_once QA_INCLUDE_DIR . 'app/options.php';
-	require_once QA_INCLUDE_DIR . 'app/users.php';
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'db/selects.php';
+	include_once QA_INCLUDE_DIR . 'app/options.php';
+	include_once QA_INCLUDE_DIR . 'app/users.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
 
 	if (is_array($post) && qa_opt('flagging_of_posts') &&
 		(!isset($post['userid']) || !isset($userid) || $post['userid'] != $userid)
@@ -243,9 +243,9 @@ function qa_flag_set_tohide($oldpost, $userid, $handle, $cookieid, $question)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/votes.php';
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
-	require_once QA_INCLUDE_DIR . 'db/post-update.php';
+	include_once QA_INCLUDE_DIR . 'db/votes.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'db/post-update.php';
 
 	qa_db_userflag_set($oldpost['postid'], $userid, true);
 	qa_db_post_recount_flags($oldpost['postid']);
@@ -292,9 +292,9 @@ function qa_flag_clear($oldpost, $userid, $handle, $cookieid)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/votes.php';
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
-	require_once QA_INCLUDE_DIR . 'db/post-update.php';
+	include_once QA_INCLUDE_DIR . 'db/votes.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'db/post-update.php';
 
 	qa_db_userflag_set($oldpost['postid'], $userid, false);
 	qa_db_post_recount_flags($oldpost['postid']);
@@ -334,9 +334,9 @@ function qa_flags_clear_all($oldpost, $userid, $handle, $cookieid)
 {
 	if (qa_to_override(__FUNCTION__)) { $args=func_get_args(); return qa_call_override(__FUNCTION__, $args); }
 
-	require_once QA_INCLUDE_DIR . 'db/votes.php';
-	require_once QA_INCLUDE_DIR . 'app/limits.php';
-	require_once QA_INCLUDE_DIR . 'db/post-update.php';
+	include_once QA_INCLUDE_DIR . 'db/votes.php';
+	include_once QA_INCLUDE_DIR . 'app/limits.php';
+	include_once QA_INCLUDE_DIR . 'db/post-update.php';
 
 	qa_db_userflags_clear_all($oldpost['postid']);
 	qa_db_post_recount_flags($oldpost['postid']);
