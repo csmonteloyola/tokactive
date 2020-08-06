@@ -52,7 +52,7 @@ body{
 
 /* BANNER */
 .tok-banner{
-    background: url(/assets/david-leveque-54vXtfOpR1Q-unsplash.jpg) #000 no-repeat 300px -400px;
+    background: url(../img/david-leveque-54vXtfOpR1Q-unsplash.jpg) #000 no-repeat 300px -400px;
     background-size: cover;
     padding: 7rem 2rem;
 }
@@ -118,19 +118,19 @@ body{
     z-index: 2;
 }
 .tok-category-math{
-    background: url(/assets/wu-yi-Bfrk9RCOhRE-unsplash.jpg) no-repeat -120px 0;
+    background: url(../img/wu-yi-Bfrk9RCOhRE-unsplash.jpg) no-repeat -120px 0;
     background-size: cover;
 }
 .tok-category-general{
-    background: url(/assets/tim-mossholder-WE_Kv_ZB1l0-unsplash.jpg) no-repeat -120px 0;
+    background: url(../img/tim-mossholder-WE_Kv_ZB1l0-unsplash.jpg) no-repeat -120px 0;
     background-size: cover;
 }
 .tok-category-science{
-    background: url(/assets/nasa-rTZW4f02zY8-unsplash.jpg) no-repeat 0 0;
+    background: url(../img/nasa-rTZW4f02zY8-unsplash.jpg) no-repeat 0 0;
     background-size: cover;
 }
 .tok-category-reading{
-    background: url(/assets/annie-spratt-Mmi_sUHNazo-unsplash.jpg) no-repeat 0 0;
+    background: url(../img/annie-spratt-Mmi_sUHNazo-unsplash.jpg) no-repeat 0 0;
     background-size: cover;
 }
 .tok-card-cover{
