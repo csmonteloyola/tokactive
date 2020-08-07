@@ -34,32 +34,32 @@
 	define('QA_MYSQL_PORT', '3306');
 */
 
-	/* define('QA_MYSQL_HOSTNAME', 'localhost'); 
-	define('QA_MYSQL_USERNAME', 'kerol');
-	define('QA_MYSQL_PASSWORD', 'kerol');
-	define('QA_MYSQL_DATABASE', 'tokactive');  */
+	define('QA_MYSQL_HOSTNAME', 'localhost');
+	define('QA_MYSQL_USERNAME', 'root');
+	define('QA_MYSQL_PASSWORD', '');
+	define('QA_MYSQL_DATABASE', 'tokactive');
 
 	/* define('QA_MYSQL_HOSTNAME', 'sql309.epizy.com'); 
 	define('QA_MYSQL_USERNAME', 'epiz_26405887');
 	define('QA_MYSQL_PASSWORD', '4G0xa5U0sh3P');
 	define('QA_MYSQL_DATABASE', 'epiz_26405887_tokactive');  */
 
-	define('QA_MYSQL_HOSTNAME', 'lg7j30weuqckmw07.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'); 
+	/*define('QA_MYSQL_HOSTNAME', 'lg7j30weuqckmw07.cbetxkdyhwsb.us-east-1.rds.amazonaws.com');
 	define('QA_MYSQL_USERNAME', 'il5dkoopuz22tzy5');
 	define('QA_MYSQL_PASSWORD', 'lk5ohsobrn1mygui');
-	define('QA_MYSQL_DATABASE', 'y39e7llnfuselsl2'); 
+	define('QA_MYSQL_DATABASE', 'y39e7llnfuselsl2'); */
 
 /*
-	Ultra-concise installation instructions:
+Ultra-concise installation instructions:
 
-	1. Create a MySQL database.
-	2. Create a MySQL user with full permissions for that database.
-	3. Rename this file to qa-config.php.
-	4. Set the above four definitions and save.
-	5. Place all the Question2Answer files on your server.
-	6. Open the appropriate URL, and follow the instructions.
+1. Create a MySQL database.
+2. Create a MySQL user with full permissions for that database.
+3. Rename this file to qa-config.php.
+4. Set the above four definitions and save.
+5. Place all the Question2Answer files on your server.
+6. Open the appropriate URL, and follow the instructions.
 
-	More detailed installation instructions here: http://www.question2answer.org/
+More detailed installation instructions here: http://www.question2answer.org/
 */
 
 /*
