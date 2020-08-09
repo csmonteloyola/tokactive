@@ -1,4 +1,5 @@
 <?php require('template/header.php')?>
+<?php require('template/banner-hp.php')?>
 
 <!-- Page Content -->
 <div class="main-content container py-5">
