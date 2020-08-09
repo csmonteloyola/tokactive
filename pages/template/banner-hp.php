@@ -19,17 +19,6 @@
 				</div>
 
 			</div>
-			<div class="col-lg-7 text-light">
-				<div class="type-label">Ask a Question:</div>
-				<div class="type-container">
-					
-					<span
-						class="txt-rotate"
-						data-period="2000"
-						data-rotate='[ "Kailan ipinanganak si Jose Rizal?" , "What are polynomials?", "How does photosynthesis work?", "When do we use could and should?" ]'></span>
-				</div>
-
-			</div>
 		</div>
 
 	</div>
