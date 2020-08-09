@@ -14,8 +14,70 @@
 	<!-- Bootstrap core CSS -->
 	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900' rel='stylesheet'>
 	<link href="<?php echo style();?>bootstrap/bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo style();?>custom.css" rel="stylesheet">
+	<link href="<?php echo style();?>custom.css?<?=rand()?>" rel="stylesheet">
+	<link href="<?php echo style();?>fa/css/all.css?<?=rand()?>" rel="stylesheet">
+	<link href="<?php echo script();?>custom.js">
 
+	<script>
+		var TxtRotate = function (el, toRotate, period) {
+			this.toRotate = toRotate;
+			this.el = el;
+			this.loopNum = 0;
+			this.period = parseInt(period, 5) || 1000;
+			this.txt = '';
+			this.tick();
+			this.isDeleting = false;
+		};
+
+		TxtRotate.prototype.tick = function () {
+			var i = this.loopNum % this.toRotate.length;
+			var fullTxt = this.toRotate[i];
+
+			if (this.isDeleting) {
+				this.txt = fullTxt.substring(0, this.txt.length - 1);
+			} else {
+				this.txt = fullTxt.substring(0, this.txt.length + 1);
+			}
+
+			this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+			var that = this;
+			var delta = 150 - Math.random() * 100;
+
+			if (this.isDeleting) { delta /= 2; }
+
+			if (!this.isDeleting && this.txt === fullTxt) {
+				delta = this.period;
+				this.isDeleting = true;
+			} else if (this.isDeleting && this.txt === '') {
+				this.isDeleting = false;
+				this.loopNum++;
+				delta = 500;
+			}
+
+			setTimeout(function () {
+				that.tick();
+			}, delta);
+		};
+
+
+		window.onload = function () {
+			var elements = document.getElementsByClassName('txt-rotate');
+			console.log("window.onload -> elements", elements)
+			for (var i = 0; i < elements.length; i++) {
+				var toRotate = elements[i].getAttribute('data-rotate');
+				var period = elements[i].getAttribute('data-period');
+				if (toRotate) {
+					new TxtRotate(elements[i], JSON.parse(toRotate), period);
+				}
+			}
+			// INJECT CSS
+			var css = document.createElement("style");
+			css.type = "text/css";
+			css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+			document.body.appendChild(css);
+		};
+	</script>
 </head>
 
 <body>
@@ -41,33 +103,6 @@
 			<button class="btn tok-btn-nav my-2 mx-2 my-sm-0" type="submit">SIGN IN</button>
 			<button class="btn tok-btn-nav my-2 mx-2 my-sm-0" type="submit">REGISTER</button>
 		</div>
+
 	</div>
 </nav>
-
-<div class="tok-banner jumbotron jumbotron-fluid">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-5">
-				<p class="tok-banner-subtitle">Welcome to</p>
-				<h1 class="tok-banner-title">TokActiv</h1>
-				<p class="tok-banner-text">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-
-				<input type="text" class="form-control my-4" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-
-				<div class="row">
-					<div class="col-lg-6 my-3">
-						<button class="tok-btn-outline-rounded btn-block" type="submit">SIGN IN</button>
-					</div>
-					<div class="col-lg-6 my-3">
-						<button class="tok-btn-outline-rounded tok-btn-outline-rounded-highlight btn-block" type="submit">REGISTER</button>
-					</div>
-				</div>
-
-			</div>
-			<div class="col-lg-7" align="right">
-
-			</div>
-		</div>
-
-	</div>
-</div>
