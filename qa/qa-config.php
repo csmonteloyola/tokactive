@@ -34,10 +34,16 @@
 	define('QA_MYSQL_PORT', '3306');
 */
 
-	define('QA_MYSQL_HOSTNAME', 'localhost');
+	/* define('QA_MYSQL_HOSTNAME', 'localhost');
 	define('QA_MYSQL_USERNAME', 'root');
 	define('QA_MYSQL_PASSWORD', '');
-	define('QA_MYSQL_DATABASE', 'tokactiv');
+	define('QA_MYSQL_DATABASE', 'tokactiv'); */
+
+	define('QA_MYSQL_HOSTNAME', 'lg7j30weuqckmw07.cbetxkdyhwsb.us-east-1.rds.amazonaws.com');
+ 	define('QA_MYSQL_USERNAME', 'il5dkoopuz22tzy5');
+ 	define('QA_MYSQL_PASSWORD', 'lk5ohsobrn1mygui');
+	define('QA_MYSQL_DATABASE', 'y39e7llnfuselsl2');
+
 
 /*
 	Ultra-concise installation instructions:

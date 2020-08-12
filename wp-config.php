@@ -20,22 +20,27 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'tokactiv' );
+/* define( 'DB_NAME', 'tokactiv' ); */
+define( 'DB_NAME', 'y39e7llnfuselsl2' );
 
 /** MySQL database username */
-define( 'DB_USER', 'root' );
+/* define( 'DB_USER', 'root' ); */
+define( 'DB_USER', 'il5dkoopuz22tzy5' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', '' );
+/* define( 'DB_PASSWORD', '' ); */
+define( 'DB_PASSWORD', 'lk5ohsobrn1mygui' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'localhost' );
+/* define( 'DB_HOST', 'localhost' ); */
+define( 'DB_HOST', 'lg7j30weuqckmw07.cbetxkdyhwsb.us-east-1.rds.amazonaws.com' );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
 
 /** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
+
 
 /**#@+
  * Authentication Unique Keys and Salts.
