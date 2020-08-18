@@ -18,16 +18,20 @@
 class Theme_Installer_Skin extends WP_Upgrader_Skin {
 	public $api;
 	public $type;
+<<<<<<< HEAD
 	public $url;
 	public $overwrite;
 
 	private $is_downgrading = false;
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * @param array $args
 	 */
 	public function __construct( $args = array() ) {
 		$defaults = array(
+<<<<<<< HEAD
 			'type'      => 'web',
 			'url'       => '',
 			'theme'     => '',
@@ -41,14 +45,29 @@ class Theme_Installer_Skin extends WP_Upgrader_Skin {
 		$this->url       = $args['url'];
 		$this->api       = isset( $args['api'] ) ? $args['api'] : array();
 		$this->overwrite = $args['overwrite'];
+=======
+			'type'  => 'web',
+			'url'   => '',
+			'theme' => '',
+			'nonce' => '',
+			'title' => '',
+		);
+		$args     = wp_parse_args( $args, $defaults );
+
+		$this->type = $args['type'];
+		$this->api  = isset( $args['api'] ) ? $args['api'] : array();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		parent::__construct( $args );
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Action to perform before installing a theme.
 	 *
 	 * @since 2.8.0
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function before() {
 		if ( ! empty( $this->api ) ) {
@@ -61,6 +80,7 @@ class Theme_Installer_Skin extends WP_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Hides the `process_failed` error when updating a theme by uploading a zip file.
 	 *
 	 * @since 5.5.0
@@ -90,6 +110,10 @@ class Theme_Installer_Skin extends WP_Upgrader_Skin {
 			return;
 		}
 
+=======
+	 */
+	public function after() {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( empty( $this->upgrader->result['destination_name'] ) ) {
 			return;
 		}
@@ -140,7 +164,11 @@ class Theme_Installer_Skin extends WP_Upgrader_Skin {
 			esc_url( $activate_link ),
 			__( 'Activate' ),
 			/* translators: %s: Theme name. */
+<<<<<<< HEAD
 			sprintf( _x( 'Activate &#8220;%s&#8221;', 'theme' ), $name )
+=======
+			sprintf( __( 'Activate &#8220;%s&#8221;' ), $name )
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		);
 
 		if ( is_network_admin() && current_user_can( 'manage_network_themes' ) ) {
@@ -167,8 +195,11 @@ class Theme_Installer_Skin extends WP_Upgrader_Skin {
 
 		if ( ! $this->result || is_wp_error( $this->result ) || is_network_admin() || ! current_user_can( 'switch_themes' ) ) {
 			unset( $install_actions['activate'], $install_actions['preview'] );
+<<<<<<< HEAD
 		} elseif ( get_option( 'template' ) === $stylesheet ) {
 			unset( $install_actions['activate'] );
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		/**
@@ -186,6 +217,7 @@ class Theme_Installer_Skin extends WP_Upgrader_Skin {
 			$this->feedback( implode( ' | ', (array) $install_actions ) );
 		}
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Check if the theme can be overwritten and output the HTML for overwriting a theme on upload.
@@ -379,4 +411,6 @@ class Theme_Installer_Skin extends WP_Upgrader_Skin {
 
 		return true;
 	}
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }

@@ -36,7 +36,11 @@ function ms_upload_constants() {
 		define( 'UPLOADS', UPLOADBLOGSDIR . '/' . $site_id . '/files/' );
 
 		// Uploads dir relative to ABSPATH.
+<<<<<<< HEAD
 		if ( 'wp-content/blogs.dir' === UPLOADBLOGSDIR && ! defined( 'BLOGUPLOADDIR' ) ) {
+=======
+		if ( 'wp-content/blogs.dir' == UPLOADBLOGSDIR && ! defined( 'BLOGUPLOADDIR' ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			define( 'BLOGUPLOADDIR', WP_CONTENT_DIR . '/blogs.dir/' . $site_id . '/files/' );
 		}
 	}
@@ -124,6 +128,12 @@ function ms_file_constants() {
  * we will have translations loaded and can trigger warnings easily.
  *
  * @since 3.0.0
+<<<<<<< HEAD
+=======
+ *
+ * @staticvar bool $subdomain_error
+ * @staticvar bool $subdomain_error_warn
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function ms_subdomain_constants() {
 	static $subdomain_error      = null;
@@ -152,7 +162,11 @@ function ms_subdomain_constants() {
 
 	if ( defined( 'SUBDOMAIN_INSTALL' ) && defined( 'VHOST' ) ) {
 		$subdomain_error = true;
+<<<<<<< HEAD
 		if ( SUBDOMAIN_INSTALL !== ( 'yes' === VHOST ) ) {
+=======
+		if ( SUBDOMAIN_INSTALL !== ( 'yes' == VHOST ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$subdomain_error_warn = true;
 		}
 	} elseif ( defined( 'SUBDOMAIN_INSTALL' ) ) {
@@ -160,7 +174,11 @@ function ms_subdomain_constants() {
 		define( 'VHOST', SUBDOMAIN_INSTALL ? 'yes' : 'no' );
 	} elseif ( defined( 'VHOST' ) ) {
 		$subdomain_error = true;
+<<<<<<< HEAD
 		define( 'SUBDOMAIN_INSTALL', 'yes' === VHOST );
+=======
+		define( 'SUBDOMAIN_INSTALL', 'yes' == VHOST );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	} else {
 		$subdomain_error = false;
 		define( 'SUBDOMAIN_INSTALL', false );

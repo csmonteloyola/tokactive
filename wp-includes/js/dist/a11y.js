@@ -82,11 +82,16 @@ this["wp"] = this["wp"] || {}; this["wp"]["a11y"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 459);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 446);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /******/ })
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 1:
 /***/ (function(module, exports) {
 
@@ -95,12 +100,16 @@ this["wp"] = this["wp"] || {}; this["wp"]["a11y"] =
 /***/ }),
 
 /***/ 261:
+=======
+/***/ 260:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["domReady"]; }());
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 459:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -162,19 +171,48 @@ function addContainer() {
   var ariaLive = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'polite';
   var container = document.createElement('div');
   container.id = "a11y-speak-".concat(ariaLive);
+=======
+/***/ 446:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: external {"this":["wp","domReady"]}
+var external_this_wp_domReady_ = __webpack_require__(260);
+var external_this_wp_domReady_default = /*#__PURE__*/__webpack_require__.n(external_this_wp_domReady_);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/a11y/build-module/addContainer.js
+/**
+ * Build the live regions markup.
+ *
+ * @param {string} ariaLive Optional. Value for the 'aria-live' attribute, default 'polite'.
+ *
+ * @return {HTMLDivElement} The ARIA live region HTML element.
+ */
+var addContainer = function addContainer(ariaLive) {
+  ariaLive = ariaLive || 'polite';
+  var container = document.createElement('div');
+  container.id = 'a11y-speak-' + ariaLive;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
   container.className = 'a11y-speak-region';
   container.setAttribute('style', 'position: absolute;' + 'margin: -1px;' + 'padding: 0;' + 'height: 1px;' + 'width: 1px;' + 'overflow: hidden;' + 'clip: rect(1px, 1px, 1px, 1px);' + '-webkit-clip-path: inset(50%);' + 'clip-path: inset(50%);' + 'border: 0;' + 'word-wrap: normal !important;');
   container.setAttribute('aria-live', ariaLive);
   container.setAttribute('aria-relevant', 'additions text');
   container.setAttribute('aria-atomic', 'true');
+<<<<<<< HEAD
   var _document = document,
       body = _document.body;
+=======
+  var body = document.querySelector('body');
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
   if (body) {
     body.appendChild(container);
   }
 
   return container;
+<<<<<<< HEAD
 }
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/a11y/build-module/clear.js
@@ -196,6 +234,27 @@ function clear() {
 }
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/a11y/build-module/filter-message.js
+=======
+};
+
+/* harmony default export */ var build_module_addContainer = (addContainer);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/a11y/build-module/clear.js
+/**
+ * Clear the a11y-speak-region elements.
+ */
+var clear = function clear() {
+  var regions = document.querySelectorAll('.a11y-speak-region');
+
+  for (var i = 0; i < regions.length; i++) {
+    regions[i].textContent = '';
+  }
+};
+
+/* harmony default export */ var build_module_clear = (clear);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/a11y/build-module/filterMessage.js
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 var previousMessage = '';
 /**
  * Filter the message to be announced to the screenreader.
@@ -205,7 +264,11 @@ var previousMessage = '';
  * @return {string} The filtered message.
  */
 
+<<<<<<< HEAD
 function filterMessage(message) {
+=======
+var filterMessage = function filterMessage(message) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
   /*
    * Strip HTML tags (if any) from the message string. Ideally, messages should
    * be simple strings, carefully crafted for specific use with A11ySpeak.
@@ -214,10 +277,13 @@ function filterMessage(message) {
    * spaces natively.
    */
   message = message.replace(/<[^<>]+>/g, ' ');
+<<<<<<< HEAD
   /*
    * Safari + VoiceOver don't announce repeated, identical strings. We use
    * a `no-break space` to force them to think identical strings are different.
    */
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
   if (previousMessage === message) {
     message += "\xA0";
@@ -225,9 +291,19 @@ function filterMessage(message) {
 
   previousMessage = message;
   return message;
+<<<<<<< HEAD
 }
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/a11y/build-module/index.js
+=======
+};
+
+/* harmony default export */ var build_module_filterMessage = (filterMessage);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/a11y/build-module/index.js
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setup", function() { return build_module_setup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "speak", function() { return build_module_speak; });
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * WordPress dependencies
  */
@@ -239,11 +315,15 @@ function filterMessage(message) {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * Create the live regions.
  */
 
+<<<<<<< HEAD
 function setup() {
   var introText = document.getElementById('a11y-speak-intro-text');
   var containerAssertive = document.getElementById('a11y-speak-assertive');
@@ -261,10 +341,25 @@ function setup() {
     addContainer('polite');
   }
 }
+=======
+var build_module_setup = function setup() {
+  var containerPolite = document.getElementById('a11y-speak-polite');
+  var containerAssertive = document.getElementById('a11y-speak-assertive');
+
+  if (containerPolite === null) {
+    build_module_addContainer('polite');
+  }
+
+  if (containerAssertive === null) {
+    build_module_addContainer('assertive');
+  }
+};
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * Run setup on domReady.
  */
 
+<<<<<<< HEAD
 external_this_wp_domReady_default()(setup);
 /**
  * Allows you to easily announce dynamic interface updates to screen readers using ARIA live regions.
@@ -272,6 +367,16 @@ external_this_wp_domReady_default()(setup);
  *
  * @param {string} message  The message to be announced by assistive technologies.
  * @param {string} [ariaLive] The politeness level for aria-live; default: 'polite'.
+=======
+external_this_wp_domReady_default()(build_module_setup);
+/**
+ * Allows you to easily announce dynamic interface updates to screen readers using ARIA live regions.
+ * This module is inspired by the `speak` function in wp-a11y.js
+ *
+ * @param {string} message  The message to be announced by Assistive Technologies.
+ * @param {string} ariaLive Optional. The politeness level for aria-live. Possible values:
+ *                          polite or assertive. Default polite.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @example
  * ```js
@@ -285,6 +390,7 @@ external_this_wp_domReady_default()(setup);
  * ```
  */
 
+<<<<<<< HEAD
 function speak(message, ariaLive) {
   /*
    * Clear previous messages to allow repeated strings being read out and hide
@@ -297,10 +403,21 @@ function speak(message, ariaLive) {
   var containerPolite = document.getElementById('a11y-speak-polite');
 
   if (containerAssertive && ariaLive === 'assertive') {
+=======
+var build_module_speak = function speak(message, ariaLive) {
+  // Clear previous messages to allow repeated strings being read out.
+  build_module_clear();
+  message = build_module_filterMessage(message);
+  var containerPolite = document.getElementById('a11y-speak-polite');
+  var containerAssertive = document.getElementById('a11y-speak-assertive');
+
+  if (containerAssertive && 'assertive' === ariaLive) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
     containerAssertive.textContent = message;
   } else if (containerPolite) {
     containerPolite.textContent = message;
   }
+<<<<<<< HEAD
   /*
    * Make the explanatory text available to assistive technologies by removing
    * the 'hidden' HTML attribute.
@@ -311,6 +428,9 @@ function speak(message, ariaLive) {
     introText.removeAttribute('hidden');
   }
 }
+=======
+};
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 
 /***/ })

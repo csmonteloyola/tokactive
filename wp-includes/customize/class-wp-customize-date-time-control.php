@@ -187,7 +187,10 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	 * Based on touch_time().
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @see touch_time()
 	 *
 	 * @global WP_Locale $wp_locale WordPress date and time locale object.
@@ -262,7 +265,10 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	 * Format GMT Offset.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @see wp_timezone_choice()
 	 *
 	 * @param float $offset Offset in hours.

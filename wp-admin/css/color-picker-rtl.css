@@ -72,9 +72,13 @@
 }
 
 .wp-picker-input-wrap .button.wp-picker-default,
+<<<<<<< HEAD
 .wp-picker-input-wrap .button.wp-picker-clear,
 .wp-customizer .wp-picker-input-wrap .button.wp-picker-default,
 .wp-customizer .wp-picker-input-wrap .button.wp-picker-clear {
+=======
+.wp-customizer .wp-picker-input-wrap .button.wp-picker-default {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	margin-right: 6px;
 	padding: 0 8px;
 	line-height: 2.54545455; /* 28px */
@@ -145,15 +149,23 @@
 		padding: 0 5px;
 	}
 
+<<<<<<< HEAD
 	.wp-picker-input-wrap .button.wp-picker-default,
 	.wp-picker-input-wrap .button.wp-picker-clear {
+=======
+	.wp-picker-input-wrap .button.wp-picker-default {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		padding: 0 8px;
 		line-height: 2.14285714; /* 30px */
 		min-height: 32px;
 	}
 
+<<<<<<< HEAD
 	.wp-customizer .wp-picker-input-wrap .button.wp-picker-default,
 	.wp-customizer .wp-picker-input-wrap .button.wp-picker-clear {
+=======
+	.wp-customizer .wp-picker-input-wrap .button.wp-picker-default {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		padding: 0 8px;
 		font-size: 14px;
 		line-height: 2.14285714; /* 30px */

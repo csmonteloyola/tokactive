@@ -185,7 +185,11 @@ class Walker_Comment extends Walker {
 			add_filter( 'comment_text', array( $this, 'filter_comment_text' ), 40, 2 );
 		}
 
+<<<<<<< HEAD
 		if ( ( 'pingback' === $comment->comment_type || 'trackback' === $comment->comment_type ) && $args['short_ping'] ) {
+=======
+		if ( ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) && $args['short_ping'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			ob_start();
 			$this->ping( $comment, $depth, $args );
 			$output .= ob_get_clean();
@@ -224,7 +228,11 @@ class Walker_Comment extends Walker {
 			$output .= ob_get_clean();
 			return;
 		}
+<<<<<<< HEAD
 		if ( 'div' === $args['style'] ) {
+=======
+		if ( 'div' == $args['style'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$output .= "</div><!-- #comment-## -->\n";
 		} else {
 			$output .= "</li><!-- #comment-## -->\n";
@@ -243,7 +251,11 @@ class Walker_Comment extends Walker {
 	 * @param array      $args    An array of arguments.
 	 */
 	protected function ping( $comment, $depth, $args ) {
+<<<<<<< HEAD
 		$tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
+=======
+		$tag = ( 'div' == $args['style'] ) ? 'div' : 'li';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		?>
 		<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( '', $comment ); ?>>
 			<div class="comment-body">
@@ -287,7 +299,11 @@ class Walker_Comment extends Walker {
 	 * @param array      $args    An array of arguments.
 	 */
 	protected function comment( $comment, $depth, $args ) {
+<<<<<<< HEAD
 		if ( 'div' === $args['style'] ) {
+=======
+		if ( 'div' == $args['style'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$tag       = 'div';
 			$add_below = 'comment';
 		} else {
@@ -305,7 +321,11 @@ class Walker_Comment extends Walker {
 		}
 		?>
 		<<?php echo $tag; ?> <?php comment_class( $this->has_children ? 'parent' : '', $comment ); ?> id="comment-<?php comment_ID(); ?>">
+<<<<<<< HEAD
 		<?php if ( 'div' !== $args['style'] ) : ?>
+=======
+		<?php if ( 'div' != $args['style'] ) : ?>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<div id="div-comment-<?php comment_ID(); ?>" class="comment-body">
 		<?php endif; ?>
 		<div class="comment-author vcard">
@@ -373,7 +393,11 @@ class Walker_Comment extends Walker {
 		);
 		?>
 
+<<<<<<< HEAD
 		<?php if ( 'div' !== $args['style'] ) : ?>
+=======
+		<?php if ( 'div' != $args['style'] ) : ?>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		</div>
 		<?php endif; ?>
 		<?php

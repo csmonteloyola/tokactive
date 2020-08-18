@@ -13,7 +13,11 @@
 	 * wp.customize.HeaderTool.ImageModel
 	 *
 	 * A header image. This is where saves via the Customizer API are
+<<<<<<< HEAD
 	 * abstracted away, plus our own Ajax calls to add images to and remove
+=======
+	 * abstracted away, plus our own AJAX calls to add images to and remove
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * images from the user's recently uploaded images setting on the server.
 	 * These calls are made regardless of whether the user actually saves new
 	 * Customizer settings.

@@ -143,7 +143,11 @@ input[type="radio"]:checked + label:before {
 
 .wp-core-ui input[type="reset"]:hover,
 .wp-core-ui input[type="reset"]:active {
+<<<<<<< HEAD
 	color: #006799;
+=======
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 td > input[type="checkbox"],
@@ -325,7 +329,11 @@ input[type="radio"].disabled:checked:before {
 	background-size: 16px 16px;
 	cursor: pointer;
 	vertical-align: middle;
+<<<<<<< HEAD
 }
+=======
+}e
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 .wp-core-ui select:hover {
 	color: #007cba;
@@ -467,10 +475,13 @@ input.small-text {
 	padding: 0 6px;
 }
 
+<<<<<<< HEAD
 label input.small-text {
 	margin-top: -4px;
 }
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 input[type="number"].small-text {
 	width: 65px;
 	padding-left: 0;
@@ -753,6 +764,7 @@ ul#add-to-blog-users {
 }
 
 .form-table td fieldset label {
+<<<<<<< HEAD
 	margin: 0.35em 0 0.5em !important;
 	display: inline-block;
 }
@@ -761,6 +773,12 @@ ul#add-to-blog-users {
 	margin-top: 0 !important;
 }
 
+=======
+	margin: 0.25em 0 0.5em !important;
+	display: inline-block;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .form-table td fieldset label,
 .form-table td fieldset p,
 .form-table td fieldset li {
@@ -1509,13 +1527,24 @@ table.form-table td .updated p {
 	}
 
 	.form-table th {
+<<<<<<< HEAD
 		padding: 10px 0 0 0;
+=======
+		padding-top: 10px;
+		padding-bottom: 0;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		border-bottom: 0;
 	}
 
 	.form-table td {
 		margin-bottom: 0;
+<<<<<<< HEAD
 		padding: 4px 0 6px 0;
+=======
+		padding-bottom: 6px;
+		padding-top: 4px;
+		padding-right: 0;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	.form-table.permalink-structure td code {

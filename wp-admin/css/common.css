@@ -26,7 +26,11 @@
 	padding-bottom: 65px;
 	float: left;
 	width: 100%;
+<<<<<<< HEAD
 	overflow: visible;
+=======
+	overflow: visible !important;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /* inner 2 column liquid layout */
@@ -265,7 +269,11 @@ div {
 
 a:hover,
 a:active {
+<<<<<<< HEAD
 	color: #006799;
+=======
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 a:focus,
@@ -279,6 +287,13 @@ a:focus .media-icon img,
 		outline: 1px solid transparent;
 }
 
+<<<<<<< HEAD
+=======
+.ie8 a:focus {
+	outline: #5b9dd9 solid 1px;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 #adminmenu a:focus {
 	box-shadow: none;
 	/* Only visible in Windows High Contrast mode */
@@ -304,8 +319,12 @@ q:after {
 	content: none;
 }
 
+<<<<<<< HEAD
 p,
 .wp-die-message {
+=======
+p {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	font-size: 13px;
 	line-height: 1.5;
 	margin: 1em 0;
@@ -457,6 +476,15 @@ code {
 	white-space: nowrap;
 }
 
+<<<<<<< HEAD
+=======
+.wp-die-message {
+	font-size: 13px;
+	line-height: 1.5;
+	margin: 1em 0;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /* .widefat - main style for tables */
 .widefat {
 	border-spacing: 0;
@@ -767,6 +795,10 @@ img.emoji {
 	color: #23282d;
 }
 
+<<<<<<< HEAD
+=======
+.postbox .hndle,
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .stuffbox .hndle {
 	border-bottom: 1px solid #ccd0d4;
 }
@@ -850,6 +882,10 @@ strong, b {
 
 .howto {
 	color: #666;
+<<<<<<< HEAD
+=======
+	font-style: italic;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	display: block;
 }
 
@@ -1067,7 +1103,11 @@ th.action-links {
 .filter-links li > a:focus,
 .show-filters .filter-links a.current:hover,
 .show-filters .filter-links a.current:focus {
+<<<<<<< HEAD
 	color: #006799;
+=======
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .wp-filter .search-form {
@@ -1085,6 +1125,7 @@ th.action-links {
 	margin: 0;
 }
 
+<<<<<<< HEAD
 /* Use flexbox only on the plugins install page. The `filter-links` and search form children will become flex items. */
 .plugin-install-php .wp-filter {
 	display: flex;
@@ -1103,6 +1144,10 @@ th.action-links {
 	display: inline-block;
 	margin-top: 10px;
 	vertical-align: top;
+=======
+.wp-filter .search-form.search-plugins {
+	display: inline-block;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .wp-filter .button.drawer-toggle {
@@ -1130,7 +1175,11 @@ th.action-links {
 .wp-filter .button.drawer-toggle:focus,
 .wp-filter .drawer-toggle:focus:before {
 	background-color: transparent;
+<<<<<<< HEAD
 	color: #006799;
+=======
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .wp-filter .button.drawer-toggle:hover,
@@ -1285,7 +1334,11 @@ th.action-links {
 .filters-applied .filter-group,
 .filters-applied .filter-drawer .buttons,
 .filters-applied .filter-drawer br {
+<<<<<<< HEAD
 	display: none;
+=======
+	display: none !important;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .filters-applied .filtered-by {
@@ -1446,6 +1499,13 @@ div.error p,
 		0 0 2px 1px rgba(30, 140, 190, 0.8);
 }
 
+<<<<<<< HEAD
+=======
+.ie8 .notice-dismiss:focus {
+	outline: 1px solid #5b9dd9;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .notice-success,
 div.updated {
 	border-left-color: #46b450;
@@ -1533,6 +1593,7 @@ div.error {
 .updating-message p:before,
 .import-php .updating-message:before,
 .button.updating-message:before,
+<<<<<<< HEAD
 .button.installing:before,
 .plugins .column-auto-updates .dashicons-update.spin,
 .theme-overlay .theme-autoupdate .dashicons-update.spin {
@@ -1543,6 +1604,12 @@ div.error {
 	margin-right: 3px;
 }
 
+=======
+.button.installing:before {
+	animation: rotation 2s infinite linear;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /* Updated icon (check mark). */
 .updated-message p:before,
 .installed p:before,
@@ -1569,7 +1636,15 @@ div.error {
 	line-height: 1.4;
 	padding: 11px 15px;
 	font-size: 14px;
+<<<<<<< HEAD
 	margin: 25px 20px 0 2px;
+=======
+	text-align: left;
+	margin: 25px 20px 0 2px;
+	background-color: #fff;
+	border-left: 4px solid #ffba00;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 ul#dismissed-updates {
@@ -1666,7 +1741,11 @@ form.upgrade .hint {
 
 #contextual-help-wrap {
 	overflow: auto;
+<<<<<<< HEAD
 	margin-left: 0;
+=======
+	margin-left: 0 !important;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 #screen-meta-links {
@@ -1737,7 +1816,11 @@ form.upgrade .hint {
 	vertical-align: bottom;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
 	text-decoration: none;
+=======
+	text-decoration: none !important;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	color: #72777c;
 }
 
@@ -1769,6 +1852,13 @@ form.upgrade .hint {
 	font-weight: 600;
 }
 
+<<<<<<< HEAD
+=======
+.ie8 #screen-options-wrap legend {
+	color: inherit;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .metabox-prefs label {
 	display: inline-block;
 	padding-right: 15px;
@@ -1985,12 +2075,46 @@ html.wp-toolbar {
 	padding-top: 10px;
 }
 
+<<<<<<< HEAD
 .metabox-holder .postbox-container .meta-box-sortables {
 	/* The jQuery UI Sortables need some initial height to work properly. */
 	min-height: 1px;
 	position: relative;
 }
 
+=======
+.metabox-holder .postbox-container .empty-container {
+	border: 3px dashed #b4b9be;
+	height: 250px;
+	position: relative;
+}
+
+.metabox-holder .postbox-container .empty-container:after {
+	content: attr(data-emptystring);
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 1em;
+	width: 200px;
+	text-align: center;
+	color: #ccc;
+	font-size: 18px;
+	display: none;
+}
+
+.metabox-holder.columns-1 .postbox-container .empty-container,
+.columns-2 #postbox-container-3 .empty-container,
+.columns-2 #postbox-container-4 .empty-container,
+.columns-3 #postbox-container-4 .empty-container {
+	border: 0 none;
+	height: 0;
+	min-height: 0;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 #post-body-content {
 	width: 100%;
 	min-width: 463px;
@@ -2010,7 +2134,11 @@ html.wp-toolbar {
 /* one column on the dash */
 @media only screen and (max-width: 799px) {
 	#wpbody-content .metabox-holder .postbox-container .empty-container {
+<<<<<<< HEAD
 		outline: none;
+=======
+		border: 0 none;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		height: 0;
 		min-height: 0;
 	}
@@ -2026,6 +2154,7 @@ html.wp-toolbar {
 	cursor: auto;
 }
 
+<<<<<<< HEAD
 /* Configurable dashboard widgets "Configure" edit-box link. */
 .hndle a {
 	font-size: 12px;
@@ -2055,6 +2184,16 @@ html.wp-toolbar {
 .postbox .handle-order-higher,
 .postbox .handle-order-lower,
 .postbox .handlediv {
+=======
+.hndle a {
+	font-size: 11px;
+	font-weight: 400;
+}
+
+.postbox .handlediv {
+	display: none;
+	float: right;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	width: 36px;
 	height: 36px;
 	margin: 0;
@@ -2064,6 +2203,7 @@ html.wp-toolbar {
 	cursor: pointer;
 }
 
+<<<<<<< HEAD
 .postbox .handle-order-higher,
 .postbox .handle-order-lower {
 	color: #72777c;
@@ -2082,6 +2222,10 @@ html.wp-toolbar {
 .postbox .handle-order-lower[aria-disabled="true"] {
 	cursor: default;
 	color: #a0a5aa;
+=======
+.js .postbox .handlediv {
+	display: block;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .sortable-placeholder {
@@ -2096,10 +2240,13 @@ html.wp-toolbar {
 	line-height: 1;
 }
 
+<<<<<<< HEAD
 .postbox.closed {
 	border-bottom: 0;
 }
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /* user-select is not a part of the CSS standard - may change behavior in the future */
 .postbox .hndle,
 .stuffbox .hndle {
@@ -2262,6 +2409,16 @@ h1.nav-tab-wrapper, /* Back-compat for pre-4.4 */
 	clear: both;
 }
 
+<<<<<<< HEAD
+=======
+.ie8 .nav-tab-wrapper {
+	/* contain floats establishing a new block formatting context */
+	display: inline-block;
+	width: 100%;
+	vertical-align: top;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /*------------------------------------------------------------------------------
   26.0 - Misc
 ------------------------------------------------------------------------------*/
@@ -2437,6 +2594,13 @@ body.iframe {
 	margin: 10px 0;
 }
 
+<<<<<<< HEAD
+=======
+#submitdiv h3 {
+	margin-bottom: 0 !important;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /* - Used - but could/should be deprecated with a CSS reset
 ------------------------------------------------------------------------------*/
 .zerosize {
@@ -2677,7 +2841,11 @@ div.action-links {
 	margin-top: 10px;
 	margin-right: 250px; /* FYI box */
 	padding: 10px 26px;
+<<<<<<< HEAD
 	margin-bottom: -99932px; /* 67px less than the padding below to accommodate footer height */
+=======
+	margin-bottom: -99939px; /* 60px less than the padding below to accommodate footer */
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	padding-bottom: 99999px; /* equal height column trick */
 }
 
@@ -2695,7 +2863,11 @@ div.action-links {
 	top: 0;
 	right: 0;
 	padding: 16px;
+<<<<<<< HEAD
 	margin-bottom: -99932px; /* 67px less than the padding below to accommodate footer height */
+=======
+	margin-bottom: -99939px; /* 60px less than the padding below to accommodate footer */
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	padding-bottom: 99999px; /* equal height column trick */
 	width: 217px;
 	border-left: 1px solid #ddd;
@@ -2789,7 +2961,11 @@ div.action-links {
 	right: 0;
 	bottom: 0;
 	left: 0;
+<<<<<<< HEAD
 	height: 40px; /* actual height: 40+13+13+1=67 */
+=======
+	height: 33px; /* 33+13+13+1=60 */
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	border-top: 1px solid #ddd;
 	background: #f3f3f3;
 }
@@ -3002,7 +3178,11 @@ div.action-links {
 
 .plugin-details-modal #TB_closeWindowButton:hover,
 .plugin-details-modal #TB_closeWindowButton:focus {
+<<<<<<< HEAD
 	color: #006799;
+=======
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	outline: none;
 	box-shadow: none;
 }
@@ -3033,18 +3213,26 @@ img {
 }
 
 /* Metabox collapse arrow indicators */
+<<<<<<< HEAD
 .sidebar-name .toggle-indicator::before,
 .meta-box-sortables .postbox .toggle-indicator::before,
 .meta-box-sortables .postbox .order-higher-indicator::before,
 .meta-box-sortables .postbox .order-lower-indicator::before,
 .bulk-action-notice .toggle-indicator::before,
 .privacy-text-box .toggle-indicator::before {
+=======
+.sidebar-name .toggle-indicator:before,
+.js .meta-box-sortables .postbox .toggle-indicator:before,
+.bulk-action-notice .toggle-indicator:before,
+.privacy-text-box .toggle-indicator:before {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	content: "\f142";
 	display: inline-block;
 	font: normal 20px/1 dashicons;
 	speak: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
 	text-decoration: none;
 }
 
@@ -3089,11 +3277,36 @@ img {
 }
 
 .bulk-action-notice .toggle-indicator::before {
+=======
+	text-decoration: none !important;
+}
+
+.js .widgets-holder-wrap.closed .toggle-indicator:before,
+.js .meta-box-sortables .postbox.closed .handlediv .toggle-indicator:before,
+.bulk-action-notice .bulk-action-errors-collapsed .toggle-indicator:before,
+.privacy-text-box.closed .toggle-indicator:before {
+	content: "\f140";
+}
+
+.js .postbox .handlediv .toggle-indicator:before {
+	margin-top: 4px;
+	width: 20px;
+	border-radius: 50%;
+	text-indent: -1px; /* account for the dashicon alignment */
+}
+
+.rtl.js .postbox .handlediv .toggle-indicator:before {
+	text-indent: 1px; /* account for the dashicon alignment */
+}
+
+.bulk-action-notice .toggle-indicator:before {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	line-height: 16px;
 	vertical-align: top;
 	color: #72777c;
 }
 
+<<<<<<< HEAD
 .postbox .handle-order-higher:focus,
 .postbox .handle-order-lower:focus,
 .postbox .handlediv:focus {
@@ -3110,6 +3323,17 @@ img {
 	box-shadow: none;
 	/* Only visible in Windows High Contrast mode */
 	outline: 1px solid transparent;
+=======
+.js .postbox .handlediv:focus {
+	box-shadow: none;
+	outline: none;
+}
+
+.js .postbox .handlediv:focus .toggle-indicator:before {
+	box-shadow:
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba(30, 140, 190, 0.8);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /* @todo: appears to be Press This only and overridden */
@@ -3399,7 +3623,11 @@ img {
 	display: block;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
 	text-decoration: none;
+=======
+	text-decoration: none !important;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .widget-top .widget-action .toggle-indicator:before {
@@ -3430,8 +3658,11 @@ img {
 .sidebar-name:hover .toggle-indicator,
 .accordion-section-title:hover:after {
 	color: #23282d;
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 1px solid transparent;
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .widget-top .widget-action:focus .toggle-indicator:before {
@@ -3514,15 +3745,22 @@ img {
 }
 
 .accordion-section-title:focus {
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 1px solid transparent;
+=======
+	outline: none;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .accordion-section-title:hover:after,
 .accordion-section-title:focus:after {
 	border-color: #a0a5aa transparent;
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 1px solid transparent;
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .cannot-expand .accordion-section-title {
@@ -3728,6 +3966,22 @@ img {
 		background-image: url(../images/spinner-2x.gif);
 	}
 
+<<<<<<< HEAD
+=======
+	/* @todo: evaluate - most of these were likely replaced by dashicons */
+	.curtime #timestamp,
+	#screen-meta-links a.show-settings,
+	.widget-top .widget-action,
+	.widget-top .widget-action:hover,
+	.sidebar-name .toggle-indicator,
+	.sidebar-name:hover .toggle-indicator,
+	.meta-box-sortables .postbox:hover .handlediv,
+	#bulk-titles div a,
+	#bulk-titles div a:hover {
+		background: none !important;
+	}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 @-ms-viewport {
@@ -4023,11 +4277,14 @@ img {
 		float: none;
 	}
 
+<<<<<<< HEAD
 	#screen-meta,
 	#screen-meta-links {
 		margin-right: 10px;
 	}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	#screen-meta-links {
 		margin-bottom: 20px; /* Add margins beneath links for better spacing between boxes and elements */
 	}
@@ -4035,11 +4292,14 @@ img {
 	.wp-filter .search-form input[type="search"] {
 		font-size: 1rem;
 	}
+<<<<<<< HEAD
 
 	.wp-filter .search-form.search-plugins {
 		/* This element is a flex item. */
 		min-width: 100%;
 	}
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /* Smartphone */

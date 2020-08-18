@@ -16,6 +16,7 @@
  * "special".
  *
  * @since 1.5.0
+<<<<<<< HEAD
  * @since 5.5.0 A return value was added.
  * @since 5.5.0 The `$args` parameter was added.
  *
@@ -25,10 +26,17 @@
  * @return void|false Void on success, false if the template does not exist.
  */
 function get_header( $name = null, $args = array() ) {
+=======
+ *
+ * @param string $name The name of the specialised header.
+ */
+function get_header( $name = null ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/**
 	 * Fires before the header template file is loaded.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 2.8.0 The `$name` parameter was added.
 	 * @since 5.5.0 The `$args` parameter was added.
 	 *
@@ -36,6 +44,13 @@ function get_header( $name = null, $args = array() ) {
 	 * @param array       $args Additional arguments passed to the header template.
 	 */
 	do_action( 'get_header', $name, $args );
+=======
+	 * @since 2.8.0 $name parameter added.
+	 *
+	 * @param string|null $name Name of the specific header file to use. null for the default header.
+	 */
+	do_action( 'get_header', $name );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	$templates = array();
 	$name      = (string) $name;
@@ -45,9 +60,13 @@ function get_header( $name = null, $args = array() ) {
 
 	$templates[] = 'header.php';
 
+<<<<<<< HEAD
 	if ( ! locate_template( $templates, true, true, $args ) ) {
 		return false;
 	}
+=======
+	locate_template( $templates, true );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -60,6 +79,7 @@ function get_header( $name = null, $args = array() ) {
  * "special".
  *
  * @since 1.5.0
+<<<<<<< HEAD
  * @since 5.5.0 A return value was added.
  * @since 5.5.0 The `$args` parameter was added.
  *
@@ -69,10 +89,17 @@ function get_header( $name = null, $args = array() ) {
  * @return void|false Void on success, false if the template does not exist.
  */
 function get_footer( $name = null, $args = array() ) {
+=======
+ *
+ * @param string $name The name of the specialised footer.
+ */
+function get_footer( $name = null ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/**
 	 * Fires before the footer template file is loaded.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 2.8.0 The `$name` parameter was added.
 	 * @since 5.5.0 The `$args` parameter was added.
 	 *
@@ -80,6 +107,13 @@ function get_footer( $name = null, $args = array() ) {
 	 * @param array       $args Additional arguments passed to the footer template.
 	 */
 	do_action( 'get_footer', $name, $args );
+=======
+	 * @since 2.8.0 $name parameter added.
+	 *
+	 * @param string|null $name Name of the specific footer file to use. null for the default footer.
+	 */
+	do_action( 'get_footer', $name );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	$templates = array();
 	$name      = (string) $name;
@@ -89,9 +123,13 @@ function get_footer( $name = null, $args = array() ) {
 
 	$templates[] = 'footer.php';
 
+<<<<<<< HEAD
 	if ( ! locate_template( $templates, true, true, $args ) ) {
 		return false;
 	}
+=======
+	locate_template( $templates, true );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -104,6 +142,7 @@ function get_footer( $name = null, $args = array() ) {
  * "special".
  *
  * @since 1.5.0
+<<<<<<< HEAD
  * @since 5.5.0 A return value was added.
  * @since 5.5.0 The `$args` parameter was added.
  *
@@ -113,10 +152,17 @@ function get_footer( $name = null, $args = array() ) {
  * @return void|false Void on success, false if the template does not exist.
  */
 function get_sidebar( $name = null, $args = array() ) {
+=======
+ *
+ * @param string $name The name of the specialised sidebar.
+ */
+function get_sidebar( $name = null ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/**
 	 * Fires before the sidebar template file is loaded.
 	 *
 	 * @since 2.2.0
+<<<<<<< HEAD
 	 * @since 2.8.0 The `$name` parameter was added.
 	 * @since 5.5.0 The `$args` parameter was added.
 	 *
@@ -124,6 +170,13 @@ function get_sidebar( $name = null, $args = array() ) {
 	 * @param array       $args Additional arguments passed to the sidebar template.
 	 */
 	do_action( 'get_sidebar', $name, $args );
+=======
+	 * @since 2.8.0 $name parameter added.
+	 *
+	 * @param string|null $name Name of the specific sidebar file to use. null for the default sidebar.
+	 */
+	do_action( 'get_sidebar', $name );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	$templates = array();
 	$name      = (string) $name;
@@ -133,9 +186,13 @@ function get_sidebar( $name = null, $args = array() ) {
 
 	$templates[] = 'sidebar.php';
 
+<<<<<<< HEAD
 	if ( ! locate_template( $templates, true, true, $args ) ) {
 		return false;
 	}
+=======
+	locate_template( $templates, true );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -155,6 +212,7 @@ function get_sidebar( $name = null, $args = array() ) {
  * "special".
  *
  * @since 3.0.0
+<<<<<<< HEAD
  * @since 5.5.0 A return value was added.
  * @since 5.5.0 The `$args` parameter was added.
  *
@@ -165,6 +223,13 @@ function get_sidebar( $name = null, $args = array() ) {
  * @return void|false Void on success, false if the template does not exist.
  */
 function get_template_part( $slug, $name = null, $args = array() ) {
+=======
+ *
+ * @param string $slug The slug name for the generic template.
+ * @param string $name The name of the specialised template.
+ */
+function get_template_part( $slug, $name = null ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/**
 	 * Fires before the specified template part file is loaded.
 	 *
@@ -172,6 +237,7 @@ function get_template_part( $slug, $name = null, $args = array() ) {
 	 * for the generic template part.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 * @since 5.5.0 The `$args` parameter was added.
 	 *
 	 * @param string      $slug The slug name for the generic template.
@@ -179,6 +245,13 @@ function get_template_part( $slug, $name = null, $args = array() ) {
 	 * @param array       $args Additional arguments passed to the template.
 	 */
 	do_action( "get_template_part_{$slug}", $slug, $name, $args );
+=======
+	 *
+	 * @param string      $slug The slug name for the generic template.
+	 * @param string|null $name The name of the specialized template.
+	 */
+	do_action( "get_template_part_{$slug}", $slug, $name );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	$templates = array();
 	$name      = (string) $name;
@@ -192,11 +265,15 @@ function get_template_part( $slug, $name = null, $args = array() ) {
 	 * Fires before a template part is loaded.
 	 *
 	 * @since 5.2.0
+<<<<<<< HEAD
 	 * @since 5.5.0 The `$args` parameter was added.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @param string   $slug      The slug name for the generic template.
 	 * @param string   $name      The name of the specialized template.
 	 * @param string[] $templates Array of template files to search for, in order.
+<<<<<<< HEAD
 	 * @param array    $args      Additional arguments passed to the template.
 	 */
 	do_action( 'get_template_part', $slug, $name, $templates, $args );
@@ -204,6 +281,12 @@ function get_template_part( $slug, $name = null, $args = array() ) {
 	if ( ! locate_template( $templates, true, false, $args ) ) {
 		return false;
 	}
+=======
+	 */
+	do_action( 'get_template_part', $slug, $name, $templates );
+
+	locate_template( $templates, true, false );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -224,7 +307,11 @@ function get_template_part( $slug, $name = null, $args = array() ) {
  * search. To give a few examples of what it can be used for.
  *
  * @since 2.7.0
+<<<<<<< HEAD
  * @since 5.2.0 The `$args` array parameter was added in place of an `$echo` boolean flag.
+=======
+ * @since 5.2.0 The $args array parameter was added in place of an $echo boolean flag.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param array $args {
  *     Optional. Array of display arguments.
@@ -242,6 +329,7 @@ function get_search_form( $args = array() ) {
 	 *
 	 * @since 2.7.0 as 'get_search_form' action.
 	 * @since 3.6.0
+<<<<<<< HEAD
 	 * @since 5.5.0 The `$args` parameter was added.
 	 *
 	 * @link https://core.trac.wordpress.org/ticket/19321
@@ -249,6 +337,12 @@ function get_search_form( $args = array() ) {
 	 * @param array $args The array of arguments for building the search form.
 	 */
 	do_action( 'pre_get_search_form', $args );
+=======
+	 *
+	 * @link https://core.trac.wordpress.org/ticket/19321
+	 */
+	do_action( 'pre_get_search_form' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	$echo = true;
 
@@ -287,6 +381,7 @@ function get_search_form( $args = array() ) {
 	 * Filters the HTML format of the search form.
 	 *
 	 * @since 3.6.0
+<<<<<<< HEAD
 	 * @since 5.5.0 The `$args` parameter was added.
 	 *
 	 * @param string $format The type of markup to use in the search form.
@@ -298,6 +393,16 @@ function get_search_form( $args = array() ) {
 	$search_form_template = locate_template( 'searchform.php' );
 
 	if ( '' !== $search_form_template ) {
+=======
+	 *
+	 * @param string $format The type of markup to use in the search form.
+	 *                       Accepts 'html5', 'xhtml'.
+	 */
+	$format = apply_filters( 'search_form_format', $format );
+
+	$search_form_template = locate_template( 'searchform.php' );
+	if ( '' != $search_form_template ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		ob_start();
 		require $search_form_template;
 		$form = ob_get_clean();
@@ -312,8 +417,12 @@ function get_search_form( $args = array() ) {
 			 */
 			$aria_label = '';
 		}
+<<<<<<< HEAD
 
 		if ( 'html5' === $format ) {
+=======
+		if ( 'html5' == $format ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$form = '<form role="search" ' . $aria_label . 'method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">
 				<label>
 					<span class="screen-reader-text">' . _x( 'Search for:', 'label' ) . '</span>
@@ -336,12 +445,19 @@ function get_search_form( $args = array() ) {
 	 * Filters the HTML output of the search form.
 	 *
 	 * @since 2.7.0
+<<<<<<< HEAD
 	 * @since 5.5.0 The `$args` parameter was added.
 	 *
 	 * @param string $form The search form HTML output.
 	 * @param array  $args The array of arguments for building the search form.
 	 */
 	$result = apply_filters( 'get_search_form', $form, $args );
+=======
+	 *
+	 * @param string $form The search form HTML output.
+	 */
+	$result = apply_filters( 'get_search_form', $form );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	if ( null === $result ) {
 		$result = $form;
@@ -605,14 +721,19 @@ function wp_login_form( $args = array() ) {
  * @return string Lost password URL.
  */
 function wp_lostpassword_url( $redirect = '' ) {
+<<<<<<< HEAD
 	$args = array(
 		'action' => 'lostpassword',
 	);
 
+=======
+	$args = array();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( ! empty( $redirect ) ) {
 		$args['redirect_to'] = urlencode( $redirect );
 	}
 
+<<<<<<< HEAD
 	if ( is_multisite() ) {
 		$blog_details  = get_blog_details();
 		$wp_login_path = $blog_details->path . 'wp-login.php';
@@ -621,6 +742,9 @@ function wp_lostpassword_url( $redirect = '' ) {
 	}
 
 	$lostpassword_url = add_query_arg( $args, network_site_url( $wp_login_path, 'login' ) );
+=======
+	$lostpassword_url = add_query_arg( $args, network_site_url( 'wp-login.php?action=lostpassword', 'login' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * Filters the Lost Password URL.
@@ -819,7 +943,11 @@ function get_bloginfo( $show = '', $filter = 'raw' ) {
 			break;
 		case 'charset':
 			$output = get_option( 'blog_charset' );
+<<<<<<< HEAD
 			if ( '' === $output ) {
+=======
+			if ( '' == $output ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$output = 'UTF-8';
 			}
 			break;
@@ -873,7 +1001,11 @@ function get_bloginfo( $show = '', $filter = 'raw' ) {
 		$url = false;
 	}
 
+<<<<<<< HEAD
 	if ( 'display' === $filter ) {
+=======
+	if ( 'display' == $filter ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( $url ) {
 			/**
 			 * Filters the URL returned by get_bloginfo().
@@ -996,10 +1128,16 @@ function has_custom_logo( $blog_id = 0 ) {
 }
 
 /**
+<<<<<<< HEAD
  * Returns a custom logo, linked to home when on another page.
  *
  * @since 4.5.0
  * @since 5.5.0 Removed the link on the home page.
+=======
+ * Returns a custom logo, linked to home.
+ *
+ * @since 4.5.0
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param int $blog_id Optional. ID of the blog in question. Default is the ID of the current blog.
  * @return string Custom logo markup.
@@ -1021,6 +1159,7 @@ function get_custom_logo( $blog_id = 0 ) {
 			'class' => 'custom-logo',
 		);
 
+<<<<<<< HEAD
 		$unlink_homepage_logo = (bool) get_theme_support( 'custom-logo', 'unlink-homepage-logo' );
 
 		if ( $unlink_homepage_logo && is_front_page() && ! is_paged() ) {
@@ -1073,6 +1212,26 @@ function get_custom_logo( $blog_id = 0 ) {
 				$image
 			);
 		}
+=======
+		/*
+		 * If the logo alt attribute is empty, get the site title and explicitly
+		 * pass it to the attributes used by wp_get_attachment_image().
+		 */
+		$image_alt = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
+		if ( empty( $image_alt ) ) {
+			$custom_logo_attr['alt'] = get_bloginfo( 'name', 'display' );
+		}
+
+		/*
+		 * If the alt attribute is not empty, there's no need to explicitly pass
+		 * it because wp_get_attachment_image() already adds the alt attribute.
+		 */
+		$html = sprintf(
+			'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
+			esc_url( home_url( '/' ) ),
+			wp_get_attachment_image( $custom_logo_id, 'full', false, $custom_logo_attr )
+		);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	} elseif ( is_customize_preview() ) {
 		// If no logo is set but we're in the Customizer, leave a placeholder (needed for the live preview).
 		$html = sprintf(
@@ -1098,7 +1257,11 @@ function get_custom_logo( $blog_id = 0 ) {
 }
 
 /**
+<<<<<<< HEAD
  * Displays a custom logo, linked to home when on another page.
+=======
+ * Displays a custom logo, linked to home.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @since 4.5.0
  *
@@ -1271,9 +1434,15 @@ function _wp_render_title_tag() {
  *
  * @global WP_Locale $wp_locale WordPress date and time locale object.
  *
+<<<<<<< HEAD
  * @param string $sep         Optional. How to separate the various items within the page title.
  *                            Default '&raquo;'.
  * @param bool   $display     Optional. Whether to display or retrieve title. Default true.
+=======
+ * @param string $sep         Optional, default is '&raquo;'. How to separate the various items
+ *                            within the page title.
+ * @param bool   $display     Optional, default is true. Whether to display or retrieve title.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param string $seplocation Optional. Location of the separator ('left' or 'right').
  * @return string|null String on retrieve, null when displaying.
  */
@@ -1378,7 +1547,11 @@ function wp_title( $sep = '&raquo;', $display = true, $seplocation = '' ) {
 	$title_array = apply_filters( 'wp_title_parts', explode( $t_sep, $title ) );
 
 	// Determines position of the separator and direction of the breadcrumb.
+<<<<<<< HEAD
 	if ( 'right' === $seplocation ) { // Separator on right, so reverse the order.
+=======
+	if ( 'right' == $seplocation ) { // Separator on right, so reverse the order.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$title_array = array_reverse( $title_array );
 		$title       = implode( " $sep ", $title_array ) . $prefix;
 	} else {
@@ -1417,7 +1590,11 @@ function wp_title( $sep = '&raquo;', $display = true, $seplocation = '' ) {
  * @since 0.71
  *
  * @param string $prefix  Optional. What to display before the title.
+<<<<<<< HEAD
  * @param bool   $display Optional. Whether to display or retrieve title. Default true.
+=======
+ * @param bool   $display Optional, default is true. Whether to display or retrieve title.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|void Title when retrieving.
  */
 function single_post_title( $prefix = '', $display = true ) {
@@ -1452,7 +1629,11 @@ function single_post_title( $prefix = '', $display = true ) {
  * @since 3.1.0
  *
  * @param string $prefix  Optional. What to display before the title.
+<<<<<<< HEAD
  * @param bool   $display Optional. Whether to display or retrieve title. Default true.
+=======
+ * @param bool   $display Optional, default is true. Whether to display or retrieve title.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|void Title when retrieving, null when displaying or failure.
  */
 function post_type_archive_title( $prefix = '', $display = true ) {
@@ -1494,7 +1675,11 @@ function post_type_archive_title( $prefix = '', $display = true ) {
  * @since 0.71
  *
  * @param string $prefix  Optional. What to display before the title.
+<<<<<<< HEAD
  * @param bool   $display Optional. Whether to display or retrieve title. Default true.
+=======
+ * @param bool   $display Optional, default is true. Whether to display or retrieve title.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|void Title when retrieving.
  */
 function single_cat_title( $prefix = '', $display = true ) {
@@ -1511,7 +1696,11 @@ function single_cat_title( $prefix = '', $display = true ) {
  * @since 2.3.0
  *
  * @param string $prefix  Optional. What to display before the title.
+<<<<<<< HEAD
  * @param bool   $display Optional. Whether to display or retrieve title. Default true.
+=======
+ * @param bool   $display Optional, default is true. Whether to display or retrieve title.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|void Title when retrieving.
  */
 function single_tag_title( $prefix = '', $display = true ) {
@@ -1528,7 +1717,11 @@ function single_tag_title( $prefix = '', $display = true ) {
  * @since 3.1.0
  *
  * @param string $prefix  Optional. What to display before the title.
+<<<<<<< HEAD
  * @param bool   $display Optional. Whether to display or retrieve title. Default true.
+=======
+ * @param bool   $display Optional, default is true. Whether to display or retrieve title.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|void Title when retrieving.
  */
 function single_term_title( $prefix = '', $display = true ) {
@@ -1593,7 +1786,11 @@ function single_term_title( $prefix = '', $display = true ) {
  * @global WP_Locale $wp_locale WordPress date and time locale object.
  *
  * @param string $prefix  Optional. What to display before the title.
+<<<<<<< HEAD
  * @param bool   $display Optional. Whether to display or retrieve title. Default true.
+=======
+ * @param bool   $display Optional, default is true. Whether to display or retrieve title.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|void Title when retrieving.
  */
 function single_month_title( $prefix = '', $display = true ) {
@@ -1649,6 +1846,7 @@ function the_archive_title( $before = '', $after = '' ) {
  * @return string Archive title.
  */
 function get_the_archive_title() {
+<<<<<<< HEAD
 	$title  = __( 'Archives' );
 	$prefix = '';
 
@@ -1670,6 +1868,28 @@ function get_the_archive_title() {
 	} elseif ( is_day() ) {
 		$title  = get_the_date( _x( 'F j, Y', 'daily archives date format' ) );
 		$prefix = _x( 'Day:', 'date archive title prefix' );
+=======
+	$title = __( 'Archives' );
+
+	if ( is_category() ) {
+		/* translators: Category archive title. %s: Category name. */
+		$title = sprintf( __( 'Category: %s' ), single_cat_title( '', false ) );
+	} elseif ( is_tag() ) {
+		/* translators: Tag archive title. %s: Tag name. */
+		$title = sprintf( __( 'Tag: %s' ), single_tag_title( '', false ) );
+	} elseif ( is_author() ) {
+		/* translators: Author archive title. %s: Author name. */
+		$title = sprintf( __( 'Author: %s' ), '<span class="vcard">' . get_the_author() . '</span>' );
+	} elseif ( is_year() ) {
+		/* translators: Yearly archive title. %s: Year. */
+		$title = sprintf( __( 'Year: %s' ), get_the_date( _x( 'Y', 'yearly archives date format' ) ) );
+	} elseif ( is_month() ) {
+		/* translators: Monthly archive title. %s: Month name and year. */
+		$title = sprintf( __( 'Month: %s' ), get_the_date( _x( 'F Y', 'monthly archives date format' ) ) );
+	} elseif ( is_day() ) {
+		/* translators: Daily archive title. %s: Date. */
+		$title = sprintf( __( 'Day: %s' ), get_the_date( _x( 'F j, Y', 'daily archives date format' ) ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	} elseif ( is_tax( 'post_format' ) ) {
 		if ( is_tax( 'post_format', 'post-format-aside' ) ) {
 			$title = _x( 'Asides', 'post format archive title' );
@@ -1691,6 +1911,7 @@ function get_the_archive_title() {
 			$title = _x( 'Chats', 'post format archive title' );
 		}
 	} elseif ( is_post_type_archive() ) {
+<<<<<<< HEAD
 		$title  = post_type_archive_title( '', false );
 		$prefix = _x( 'Archives:', 'post type archive title prefix' );
 	} elseif ( is_tax() ) {
@@ -1725,10 +1946,24 @@ function get_the_archive_title() {
 		);
 	}
 
+=======
+		/* translators: Post type archive title. %s: Post type name. */
+		$title = sprintf( __( 'Archives: %s' ), post_type_archive_title( '', false ) );
+	} elseif ( is_tax() ) {
+		$queried_object = get_queried_object();
+		if ( $queried_object ) {
+			$tax = get_taxonomy( $queried_object->taxonomy );
+			/* translators: Taxonomy term archive title. 1: Taxonomy singular name, 2: Current taxonomy term. */
+			$title = sprintf( __( '%1$s: %2$s' ), $tax->labels->singular_name, single_term_title( '', false ) );
+		}
+	}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/**
 	 * Filters the archive title.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @since 5.5.0 Added the `$prefix` and `$original_title` parameters.
 	 *
 	 * @param string $title          Archive title to be displayed.
@@ -1736,6 +1971,12 @@ function get_the_archive_title() {
 	 * @param string $prefix         Archive title prefix.
 	 */
 	return apply_filters( 'get_the_archive_title', $title, $original_title, $prefix );
+=======
+	 *
+	 * @param string $title Archive title to be displayed.
+	 */
+	return apply_filters( 'get_the_archive_title', $title );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -1848,7 +2089,11 @@ function get_the_post_type_description() {
  *
  * @param string $url      URL to archive.
  * @param string $text     Archive text description.
+<<<<<<< HEAD
  * @param string $format   Optional. Can be 'link', 'option', 'html', or custom. Default 'html'.
+=======
+ * @param string $format   Optional, default is 'html'. Can be 'link', 'option', 'html', or custom.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param string $before   Optional. Content to prepend to the description. Default empty.
  * @param string $after    Optional. Content to append to the description. Default empty.
  * @param bool   $selected Optional. Set to true if the current page is the selected archive page.
@@ -1953,10 +2198,16 @@ function wp_get_archives( $args = '' ) {
 	if ( ! is_post_type_viewable( $post_type_object ) ) {
 		return;
 	}
+<<<<<<< HEAD
 
 	$parsed_args['post_type'] = $post_type_object->name;
 
 	if ( '' === $parsed_args['type'] ) {
+=======
+	$parsed_args['post_type'] = $post_type_object->name;
+
+	if ( '' == $parsed_args['type'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$parsed_args['type'] = 'monthly';
 	}
 
@@ -2001,7 +2252,11 @@ function wp_get_archives( $args = '' ) {
 
 	$limit = $parsed_args['limit'];
 
+<<<<<<< HEAD
 	if ( 'monthly' === $parsed_args['type'] ) {
+=======
+	if ( 'monthly' == $parsed_args['type'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$query   = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) as posts FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date $order $limit";
 		$key     = md5( $query );
 		$key     = "wp_get_archives:$key:$last_changed";
@@ -2026,7 +2281,11 @@ function wp_get_archives( $args = '' ) {
 				$output  .= get_archives_link( $url, $text, $parsed_args['format'], $parsed_args['before'], $parsed_args['after'], $selected );
 			}
 		}
+<<<<<<< HEAD
 	} elseif ( 'yearly' === $parsed_args['type'] ) {
+=======
+	} elseif ( 'yearly' == $parsed_args['type'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$query   = "SELECT YEAR(post_date) AS `year`, count(ID) as posts FROM $wpdb->posts $join $where GROUP BY YEAR(post_date) ORDER BY post_date $order $limit";
 		$key     = md5( $query );
 		$key     = "wp_get_archives:$key:$last_changed";
@@ -2050,7 +2309,11 @@ function wp_get_archives( $args = '' ) {
 				$output  .= get_archives_link( $url, $text, $parsed_args['format'], $parsed_args['before'], $parsed_args['after'], $selected );
 			}
 		}
+<<<<<<< HEAD
 	} elseif ( 'daily' === $parsed_args['type'] ) {
+=======
+	} elseif ( 'daily' == $parsed_args['type'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$query   = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, DAYOFMONTH(post_date) AS `dayofmonth`, count(ID) as posts FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date), DAYOFMONTH(post_date) ORDER BY post_date $order $limit";
 		$key     = md5( $query );
 		$key     = "wp_get_archives:$key:$last_changed";
@@ -2075,7 +2338,11 @@ function wp_get_archives( $args = '' ) {
 				$output  .= get_archives_link( $url, $text, $parsed_args['format'], $parsed_args['before'], $parsed_args['after'], $selected );
 			}
 		}
+<<<<<<< HEAD
 	} elseif ( 'weekly' === $parsed_args['type'] ) {
+=======
+	} elseif ( 'weekly' == $parsed_args['type'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$week    = _wp_mysql_week( '`post_date`' );
 		$query   = "SELECT DISTINCT $week AS `week`, YEAR( `post_date` ) AS `yr`, DATE_FORMAT( `post_date`, '%Y-%m-%d' ) AS `yyyymmdd`, count( `ID` ) AS `posts` FROM `$wpdb->posts` $join $where GROUP BY $week, YEAR( `post_date` ) ORDER BY `post_date` $order $limit";
 		$key     = md5( $query );
@@ -2114,8 +2381,13 @@ function wp_get_archives( $args = '' ) {
 				}
 			}
 		}
+<<<<<<< HEAD
 	} elseif ( ( 'postbypost' === $parsed_args['type'] ) || ( 'alpha' === $parsed_args['type'] ) ) {
 		$orderby = ( 'alpha' === $parsed_args['type'] ) ? 'post_title ASC ' : 'post_date DESC, ID DESC ';
+=======
+	} elseif ( ( 'postbypost' == $parsed_args['type'] ) || ( 'alpha' == $parsed_args['type'] ) ) {
+		$orderby = ( 'alpha' == $parsed_args['type'] ) ? 'post_title ASC ' : 'post_date DESC, ID DESC ';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$query   = "SELECT * FROM $wpdb->posts $join $where ORDER BY $orderby $limit";
 		$key     = md5( $query );
 		$key     = "wp_get_archives:$key:$last_changed";
@@ -2176,8 +2448,13 @@ function calendar_week_mod( $num ) {
  * @global WP_Locale $wp_locale WordPress date and time locale object.
  * @global array     $posts
  *
+<<<<<<< HEAD
  * @param bool $initial Optional. Whether to use initial calendar names. Default true.
  * @param bool $echo    Optional. Whether to display the calendar output. Default true.
+=======
+ * @param bool $initial Optional, default is true. Use initial calendar names.
+ * @param bool $echo    Optional, default is true. Set to false for return.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return void|string Void if `$echo` argument is true, calendar HTML if `$echo` is false.
  */
 function get_calendar( $initial = true, $echo = true ) {
@@ -2300,10 +2577,16 @@ function get_calendar( $initial = true, $echo = true ) {
 		AND post_date <= '{$thisyear}-{$thismonth}-{$last_day} 23:59:59'",
 		ARRAY_N
 	);
+<<<<<<< HEAD
 
 	if ( $dayswithposts ) {
 		foreach ( (array) $dayswithposts as $daywith ) {
 			$daywithpost[] = (int) $daywith[0];
+=======
+	if ( $dayswithposts ) {
+		foreach ( (array) $dayswithposts as $daywith ) {
+			$daywithpost[] = $daywith[0];
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	}
 
@@ -2330,7 +2613,11 @@ function get_calendar( $initial = true, $echo = true ) {
 			$calendar_output .= '<td>';
 		}
 
+<<<<<<< HEAD
 		if ( in_array( $day, $daywithpost, true ) ) {
+=======
+		if ( in_array( $day, $daywithpost ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			// Any posts today?
 			$date_format = gmdate( _x( 'F j, Y', 'daily archives date format' ), strtotime( "{$thisyear}-{$thismonth}-{$day}" ) );
 			/* translators: Post calendar label. %s: Date. */
@@ -2344,7 +2631,10 @@ function get_calendar( $initial = true, $echo = true ) {
 		} else {
 			$calendar_output .= $day;
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$calendar_output .= '</td>';
 
 		if ( 6 == calendar_week_mod( gmdate( 'w', mktime( 0, 0, 0, $thismonth, $day, $thisyear ) ) - $week_begins ) ) {
@@ -2356,7 +2646,10 @@ function get_calendar( $initial = true, $echo = true ) {
 	if ( 0 != $pad && 7 != $pad ) {
 		$calendar_output .= "\n\t\t" . '<td class="pad" colspan="' . esc_attr( $pad ) . '">&nbsp;</td>';
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	$calendar_output .= "\n\t</tr>\n\t</tbody>";
 
 	$calendar_output .= "\n\t</table>";
@@ -2470,7 +2763,11 @@ function the_date_xml() {
  * @param string $format Optional. PHP date format defaults to the date_format option if not specified.
  * @param string $before Optional. Output before the date.
  * @param string $after  Optional. Output after the date.
+<<<<<<< HEAD
  * @param bool   $echo   Optional. Whether to echo the date or return it. Default true.
+=======
+ * @param bool   $echo   Optional, default is display. Whether to echo the date or return it.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|void String if retrieving.
  */
 function the_date( $format = '', $before = '', $after = '', $echo = true ) {
@@ -2511,8 +2808,13 @@ function the_date( $format = '', $before = '', $after = '', $echo = true ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @param string      $format Optional. PHP date format defaults to the date_format option if not specified.
  * @param int|WP_Post $post   Optional. Post ID or WP_Post object. Default current post.
+=======
+ * @param  string      $format Optional. PHP date format defaults to the date_format option if not specified.
+ * @param  int|WP_Post $post   Optional. Post ID or WP_Post object. Default current post.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|false Date the current post was written. False on failure.
  */
 function get_the_date( $format = '', $post = null ) {
@@ -2522,7 +2824,11 @@ function get_the_date( $format = '', $post = null ) {
 		return false;
 	}
 
+<<<<<<< HEAD
 	if ( '' === $format ) {
+=======
+	if ( '' == $format ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$the_date = get_post_time( get_option( 'date_format' ), false, $post, true );
 	} else {
 		$the_date = get_post_time( $format, false, $post, true );
@@ -2549,7 +2855,11 @@ function get_the_date( $format = '', $post = null ) {
  * @param string $format Optional. PHP date format defaults to the date_format option if not specified.
  * @param string $before Optional. Output before the date.
  * @param string $after  Optional. Output after the date.
+<<<<<<< HEAD
  * @param bool   $echo   Optional. Whether to echo the date or return it. Default true.
+=======
+ * @param bool   $echo   Optional, default is display. Whether to echo the date or return it.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|void String if retrieving.
  */
 function the_modified_date( $format = '', $before = '', $after = '', $echo = true ) {
@@ -2651,7 +2961,11 @@ function get_the_time( $format = '', $post = null ) {
 		return false;
 	}
 
+<<<<<<< HEAD
 	if ( '' === $format ) {
+=======
+	if ( '' == $format ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$the_time = get_post_time( get_option( 'time_format' ), false, $post, true );
 	} else {
 		$the_time = get_post_time( $format, false, $post, true );
@@ -3319,7 +3633,11 @@ function wp_resource_hints() {
 	 * The path is removed in the foreach loop below.
 	 */
 	/** This filter is documented in wp-includes/formatting.php */
+<<<<<<< HEAD
 	$hints['dns-prefetch'][] = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/13.0.0/svg/' );
+=======
+	$hints['dns-prefetch'][] = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/12.0.0-1/svg/' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	foreach ( $hints as $relation_type => $urls ) {
 		$unique_urls = array();
@@ -3356,7 +3674,11 @@ function wp_resource_hints() {
 				continue;
 			}
 
+<<<<<<< HEAD
 			if ( in_array( $relation_type, array( 'preconnect', 'dns-prefetch' ), true ) ) {
+=======
+			if ( in_array( $relation_type, array( 'preconnect', 'dns-prefetch' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$parsed = wp_parse_url( $url );
 
 				if ( empty( $parsed['host'] ) ) {
@@ -3381,9 +3703,14 @@ function wp_resource_hints() {
 			$html = '';
 
 			foreach ( $atts as $attr => $value ) {
+<<<<<<< HEAD
 				if ( ! is_scalar( $value )
 					|| ( ! in_array( $attr, array( 'as', 'crossorigin', 'href', 'pr', 'rel', 'type' ), true ) && ! is_numeric( $attr ) )
 				) {
+=======
+				if ( ! is_scalar( $value ) ||
+					( ! in_array( $attr, array( 'as', 'crossorigin', 'href', 'pr', 'rel', 'type' ), true ) && ! is_numeric( $attr ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 					continue;
 				}
@@ -3427,9 +3754,13 @@ function wp_dependencies_unique_hosts() {
 				$dependency = $dependencies->registered[ $handle ];
 				$parsed     = wp_parse_url( $dependency->src );
 
+<<<<<<< HEAD
 				if ( ! empty( $parsed['host'] )
 					&& ! in_array( $parsed['host'], $unique_hosts, true ) && $parsed['host'] !== $_SERVER['SERVER_NAME']
 				) {
+=======
+				if ( ! empty( $parsed['host'] ) && ! in_array( $parsed['host'], $unique_hosts ) && $parsed['host'] !== $_SERVER['SERVER_NAME'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$unique_hosts[] = $parsed['host'];
 				}
 			}
@@ -3462,7 +3793,11 @@ function user_can_richedit() {
 	if ( ! isset( $wp_rich_edit ) ) {
 		$wp_rich_edit = false;
 
+<<<<<<< HEAD
 		if ( 'true' === get_user_option( 'rich_editing' ) || ! is_user_logged_in() ) { // Default to 'true' for logged out users.
+=======
+		if ( get_user_option( 'rich_editing' ) == 'true' || ! is_user_logged_in() ) { // Default to 'true' for logged out users.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( $is_safari ) {
 				$wp_rich_edit = ! wp_is_mobile() || ( preg_match( '!AppleWebKit/(\d+)!', $_SERVER['HTTP_USER_AGENT'], $match ) && intval( $match[1] ) >= 534 );
 			} elseif ( $is_IE ) {
@@ -3497,7 +3832,11 @@ function wp_default_editor() {
 	$r = user_can_richedit() ? 'tinymce' : 'html'; // Defaults.
 	if ( wp_get_current_user() ) { // Look for cookie.
 		$ed = get_user_setting( 'editor', 'tinymce' );
+<<<<<<< HEAD
 		$r  = ( in_array( $ed, array( 'tinymce', 'html', 'test' ), true ) ) ? $ed : $r;
+=======
+		$r  = ( in_array( $ed, array( 'tinymce', 'html', 'test' ) ) ) ? $ed : $r;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -3990,8 +4329,12 @@ function wp_get_code_editor_settings( $args ) {
 	 *
 	 * @since 4.9.0
 	 *
+<<<<<<< HEAD
 	 * @param array $settings The array of settings passed to the code editor.
 	 *                        A falsey value disables the editor.
+=======
+	 * @param array $settings The array of settings passed to the code editor. A falsey value disables the editor.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param array $args {
 	 *     Args passed when calling `get_code_editor_settings()`.
 	 *
@@ -4012,7 +4355,11 @@ function wp_get_code_editor_settings( $args ) {
  * Retrieves the contents of the search WordPress query variable.
  *
  * The search query string is passed through esc_attr() to ensure that it is safe
+<<<<<<< HEAD
  * for placing in an HTML attribute.
+=======
+ * for placing in an html attribute.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @since 2.3.0
  *
@@ -4040,7 +4387,11 @@ function get_search_query( $escaped = true ) {
  * Displays the contents of the search query variable.
  *
  * The search query string is passed through esc_attr() to ensure that it is safe
+<<<<<<< HEAD
  * for placing in an HTML attribute.
+=======
+ * for placing in an html attribute.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @since 2.1.0
  */
@@ -4056,14 +4407,24 @@ function the_search_query() {
 }
 
 /**
+<<<<<<< HEAD
  * Gets the language attributes for the 'html' tag.
  *
  * Builds up a set of HTML attributes containing the text direction and language
+=======
+ * Gets the language attributes for the html tag.
+ *
+ * Builds up a set of html attributes containing the text direction and language
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * information for the page.
  *
  * @since 4.3.0
  *
+<<<<<<< HEAD
  * @param string $doctype Optional. The type of HTML document. Accepts 'xhtml' or 'html'. Default 'html'.
+=======
+ * @param string $doctype Optional. The type of html document. Accepts 'xhtml' or 'html'. Default 'html'.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function get_language_attributes( $doctype = 'html' ) {
 	$attributes = array();
@@ -4086,27 +4447,45 @@ function get_language_attributes( $doctype = 'html' ) {
 	$output = implode( ' ', $attributes );
 
 	/**
+<<<<<<< HEAD
 	 * Filters the language attributes for display in the 'html' tag.
+=======
+	 * Filters the language attributes for display in the html tag.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @since 2.5.0
 	 * @since 4.3.0 Added the `$doctype` parameter.
 	 *
 	 * @param string $output A space-separated list of language attributes.
+<<<<<<< HEAD
 	 * @param string $doctype The type of HTML document (xhtml|html).
+=======
+	 * @param string $doctype The type of html document (xhtml|html).
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	return apply_filters( 'language_attributes', $output, $doctype );
 }
 
 /**
+<<<<<<< HEAD
  * Displays the language attributes for the 'html' tag.
  *
  * Builds up a set of HTML attributes containing the text direction and language
+=======
+ * Displays the language attributes for the html tag.
+ *
+ * Builds up a set of html attributes containing the text direction and language
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * information for the page.
  *
  * @since 2.1.0
  * @since 4.3.0 Converted into a wrapper for get_language_attributes().
  *
+<<<<<<< HEAD
  * @param string $doctype Optional. The type of HTML document. Accepts 'xhtml' or 'html'. Default 'html'.
+=======
+ * @param string $doctype Optional. The type of html document. Accepts 'xhtml' or 'html'. Default 'html'.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function language_attributes( $doctype = 'html' ) {
 	echo get_language_attributes( $doctype );
@@ -4429,6 +4808,14 @@ function register_admin_color_schemes() {
 		)
 	);
 
+<<<<<<< HEAD
+=======
+	// Other color schemes are not available when running out of src.
+	if ( false !== strpos( get_bloginfo( 'version' ), '-src' ) ) {
+		return;
+	}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	wp_admin_css_color(
 		'light',
 		_x( 'Light', 'admin color scheme' ),
@@ -4442,6 +4829,7 @@ function register_admin_color_schemes() {
 	);
 
 	wp_admin_css_color(
+<<<<<<< HEAD
 		'modern',
 		_x( 'Modern', 'admin color scheme' ),
 		admin_url( "css/colors/modern/colors$suffix.css" ),
@@ -4454,6 +4842,8 @@ function register_admin_color_schemes() {
 	);
 
 	wp_admin_css_color(
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		'blue',
 		_x( 'Blue', 'admin color scheme' ),
 		admin_url( "css/colors/blue/colors$suffix.css" ),
@@ -4758,7 +5148,11 @@ function get_the_generator( $type = '' ) {
 }
 
 /**
+<<<<<<< HEAD
  * Outputs the HTML checked attribute.
+=======
+ * Outputs the html checked attribute.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * Compares the first two arguments and if identical marks as checked
  *
@@ -4767,14 +5161,22 @@ function get_the_generator( $type = '' ) {
  * @param mixed $checked One of the values to compare
  * @param mixed $current (true) The other value to compare if not just true
  * @param bool  $echo    Whether to echo or just return the string
+<<<<<<< HEAD
  * @return string HTML attribute or empty string
+=======
+ * @return string html attribute or empty string
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function checked( $checked, $current = true, $echo = true ) {
 	return __checked_selected_helper( $checked, $current, $echo, 'checked' );
 }
 
 /**
+<<<<<<< HEAD
  * Outputs the HTML selected attribute.
+=======
+ * Outputs the html selected attribute.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * Compares the first two arguments and if identical marks as selected
  *
@@ -4783,14 +5185,22 @@ function checked( $checked, $current = true, $echo = true ) {
  * @param mixed $selected One of the values to compare
  * @param mixed $current  (true) The other value to compare if not just true
  * @param bool  $echo     Whether to echo or just return the string
+<<<<<<< HEAD
  * @return string HTML attribute or empty string
+=======
+ * @return string html attribute or empty string
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function selected( $selected, $current = true, $echo = true ) {
 	return __checked_selected_helper( $selected, $current, $echo, 'selected' );
 }
 
 /**
+<<<<<<< HEAD
  * Outputs the HTML disabled attribute.
+=======
+ * Outputs the html disabled attribute.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * Compares the first two arguments and if identical marks as disabled
  *
@@ -4799,14 +5209,22 @@ function selected( $selected, $current = true, $echo = true ) {
  * @param mixed $disabled One of the values to compare
  * @param mixed $current  (true) The other value to compare if not just true
  * @param bool  $echo     Whether to echo or just return the string
+<<<<<<< HEAD
  * @return string HTML attribute or empty string
+=======
+ * @return string html attribute or empty string
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function disabled( $disabled, $current = true, $echo = true ) {
 	return __checked_selected_helper( $disabled, $current, $echo, 'disabled' );
 }
 
 /**
+<<<<<<< HEAD
  * Outputs the HTML readonly attribute.
+=======
+ * Outputs the html readonly attribute.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * Compares the first two arguments and if identical marks as readonly
  *
@@ -4815,7 +5233,11 @@ function disabled( $disabled, $current = true, $echo = true ) {
  * @param mixed $readonly One of the values to compare
  * @param mixed $current  (true) The other value to compare if not just true
  * @param bool  $echo     Whether to echo or just return the string
+<<<<<<< HEAD
  * @return string HTML attribute or empty string
+=======
+ * @return string html attribute or empty string
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function readonly( $readonly, $current = true, $echo = true ) {
 	return __checked_selected_helper( $readonly, $current, $echo, 'readonly' );
@@ -4833,7 +5255,11 @@ function readonly( $readonly, $current = true, $echo = true ) {
  * @param mixed  $current (true) The other value to compare if not just true
  * @param bool   $echo    Whether to echo or just return the string
  * @param string $type    The type of checked|selected|disabled|readonly we are doing
+<<<<<<< HEAD
  * @return string HTML attribute or empty string
+=======
+ * @return string html attribute or empty string
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function __checked_selected_helper( $helper, $current, $echo, $type ) { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionDoubleUnderscore,PHPCompatibility.FunctionNameRestrictions.ReservedFunctionNames.FunctionDoubleUnderscore
 	if ( (string) $helper === (string) $current ) {
@@ -4857,7 +5283,11 @@ function __checked_selected_helper( $helper, $current, $echo, $type ) { // phpcs
  * @since 3.6.0
  *
  * @param array $settings
+<<<<<<< HEAD
  * @return array Heartbeat settings.
+=======
+ * @return array $settings
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function wp_heartbeat_settings( $settings ) {
 	if ( ! is_admin() ) {

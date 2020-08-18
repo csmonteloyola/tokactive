@@ -100,7 +100,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	/**
 	 * @ignore
 	 *
+<<<<<<< HEAD
 	 * @param array  $lines
+=======
+	 * @param array $lines
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param string $prefix
 	 */
 	public function _lines( $lines, $prefix = ' ' ) {
@@ -150,7 +154,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * @ignore
 	 *
 	 * @param array $lines
+<<<<<<< HEAD
 	 * @param bool  $encode
+=======
+	 * @param bool $encode
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string
 	 */
 	public function _added( $lines, $encode = true ) {
@@ -188,7 +196,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * @ignore
 	 *
 	 * @param array $lines
+<<<<<<< HEAD
 	 * @param bool  $encode
+=======
+	 * @param bool $encode
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string
 	 */
 	public function _deleted( $lines, $encode = true ) {
@@ -213,7 +225,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * @ignore
 	 *
 	 * @param array $lines
+<<<<<<< HEAD
 	 * @param bool  $encode
+=======
+	 * @param bool $encode
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string
 	 */
 	public function _context( $lines, $encode = true ) {
@@ -337,6 +353,7 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * @param array $orig  Lines of the original version of the text.
 	 * @param array $final Lines of the final version of the text.
 	 * @return array {
+<<<<<<< HEAD
 	 *     Array containing results of comparing the original text to the final text.
 	 *
 	 *     @type array $orig_matches  Associative array of original matches. Index == row
@@ -355,6 +372,26 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 *                                blanks to keep matches aligned with side-by-side diff
 	 *                                of `$orig`. A value >= 0 corresponds to index of `$final`.
 	 *                                Value < 0 indicates a blank row.
+=======
+	 *    Array containing results of comparing the original text to the final text.
+	 *
+	 *    @type array $orig_matches  Associative array of original matches. Index == row
+	 *                               number of `$orig`, value == corresponding row number
+	 *                               of that same line in `$final` or 'x' if there is no
+	 *                               corresponding row (indicating it is a deleted line).
+	 *    @type array $final_matches Associative array of final matches. Index == row
+	 *                               number of `$final`, value == corresponding row number
+	 *                               of that same line in `$orig` or 'x' if there is no
+	 *                               corresponding row (indicating it is a new line).
+	 *    @type array $orig_rows     Associative array of interleaved rows of `$orig` with
+	 *                               blanks to keep matches aligned with side-by-side diff
+	 *                               of `$final`. A value >= 0 corresponds to index of `$orig`.
+	 *                               Value < 0 indicates a blank row.
+	 *    @type array $final_rows    Associative array of interleaved rows of `$final` with
+	 *                               blanks to keep matches aligned with side-by-side diff
+	 *                               of `$orig`. A value >= 0 corresponds to index of `$final`.
+	 *                               Value < 0 indicates a blank row.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * }
 	 */
 	public function interleave_changed_lines( $orig, $final ) {
@@ -502,7 +539,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * @return mixed Property.
 	 */
 	public function __get( $name ) {
+<<<<<<< HEAD
 		if ( in_array( $name, $this->compat_fields, true ) ) {
+=======
+		if ( in_array( $name, $this->compat_fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return $this->$name;
 		}
 	}
@@ -517,7 +558,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * @return mixed Newly-set property.
 	 */
 	public function __set( $name, $value ) {
+<<<<<<< HEAD
 		if ( in_array( $name, $this->compat_fields, true ) ) {
+=======
+		if ( in_array( $name, $this->compat_fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return $this->$name = $value;
 		}
 	}
@@ -531,7 +576,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * @return bool Whether the property is set.
 	 */
 	public function __isset( $name ) {
+<<<<<<< HEAD
 		if ( in_array( $name, $this->compat_fields, true ) ) {
+=======
+		if ( in_array( $name, $this->compat_fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return isset( $this->$name );
 		}
 	}
@@ -544,7 +593,11 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * @param string $name Property to unset.
 	 */
 	public function __unset( $name ) {
+<<<<<<< HEAD
 		if ( in_array( $name, $this->compat_fields, true ) ) {
+=======
+		if ( in_array( $name, $this->compat_fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			unset( $this->$name );
 		}
 	}

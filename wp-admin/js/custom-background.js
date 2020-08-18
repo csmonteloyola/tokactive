@@ -127,7 +127,11 @@
 				// Grab the selected attachment.
 				var attachment = frame.state().get('selection').first();
 
+<<<<<<< HEAD
 				// Run an Ajax request to set the background image.
+=======
+				// Run an AJAX request to set the background image.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$.post( ajaxurl, {
 					action: 'set-background-image',
 					attachment_id: attachment.id,

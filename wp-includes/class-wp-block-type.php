@@ -15,7 +15,10 @@
  * @see register_block_type()
  */
 class WP_Block_Type {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/**
 	 * Block type key.
 	 *
@@ -25,6 +28,7 @@ class WP_Block_Type {
 	public $name;
 
 	/**
+<<<<<<< HEAD
 	 * @since 5.5.0
 	 * @var string
 	 */
@@ -85,17 +89,24 @@ class WP_Block_Type {
 	public $example = null;
 
 	/**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * Block type render callback.
 	 *
 	 * @since 5.0.0
 	 * @var callable
 	 */
+<<<<<<< HEAD
 	public $render_callback = null;
+=======
+	public $render_callback;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * Block type attributes property schemas.
 	 *
 	 * @since 5.0.0
+<<<<<<< HEAD
 	 * @var array|null
 	 */
 	public $attributes = null;
@@ -115,38 +126,67 @@ class WP_Block_Type {
 	 * @var array|null
 	 */
 	public $provides_context = null;
+=======
+	 * @var array
+	 */
+	public $attributes;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * Block type editor script handle.
 	 *
 	 * @since 5.0.0
+<<<<<<< HEAD
 	 * @var string|null
 	 */
 	public $editor_script = null;
+=======
+	 * @var string
+	 */
+	public $editor_script;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * Block type front end script handle.
 	 *
 	 * @since 5.0.0
+<<<<<<< HEAD
 	 * @var string|null
 	 */
 	public $script = null;
+=======
+	 * @var string
+	 */
+	public $script;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * Block type editor style handle.
 	 *
 	 * @since 5.0.0
+<<<<<<< HEAD
 	 * @var string|null
 	 */
 	public $editor_style = null;
+=======
+	 * @var string
+	 */
+	public $editor_style;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * Block type front end style handle.
 	 *
 	 * @since 5.0.0
+<<<<<<< HEAD
 	 * @var string|null
 	 */
 	public $style = null;
+=======
+	 * @var string
+	 */
+	public $style;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * Constructor.
@@ -204,8 +244,13 @@ class WP_Block_Type {
 	 *
 	 * @since 5.0.0
 	 *
+<<<<<<< HEAD
 	 * @param array $attributes Original block attributes.
 	 * @return array Prepared block attributes.
+=======
+	 * @param  array $attributes Original block attributes.
+	 * @return array             Prepared block attributes.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function prepare_attributes_for_render( $attributes ) {
 		// If there are no attribute definitions for the block type, skip
@@ -262,6 +307,7 @@ class WP_Block_Type {
 
 		$args['name'] = $this->name;
 
+<<<<<<< HEAD
 		/**
 		 * Filters the arguments for registering a block type.
 		 *
@@ -272,6 +318,8 @@ class WP_Block_Type {
 		 */
 		$args = apply_filters( 'register_block_type_args', $args, $this->name );
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		foreach ( $args as $property_name => $property_value ) {
 			$this->$property_name = $property_value;
 		}
@@ -286,7 +334,23 @@ class WP_Block_Type {
 	 */
 	public function get_attributes() {
 		return is_array( $this->attributes ) ?
+<<<<<<< HEAD
 			$this->attributes :
 			array();
+=======
+			array_merge(
+				$this->attributes,
+				array(
+					'layout' => array(
+						'type' => 'string',
+					),
+				)
+			) :
+			array(
+				'layout' => array(
+					'type' => 'string',
+				),
+			);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 }

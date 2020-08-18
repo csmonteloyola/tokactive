@@ -210,6 +210,7 @@ final class WP_Taxonomy {
 	public $rest_controller_class;
 
 	/**
+<<<<<<< HEAD
 	 * The default term name for this taxonomy. If you pass an array you have
 	 * to set 'name' and optionally 'slug' and 'description'.
 	 *
@@ -229,6 +230,8 @@ final class WP_Taxonomy {
 	public $rest_controller;
 
 	/**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * Whether it is a built-in taxonomy.
 	 *
 	 * @since 4.7.0
@@ -297,7 +300,10 @@ final class WP_Taxonomy {
 			'show_in_rest'          => false,
 			'rest_base'             => false,
 			'rest_controller_class' => false,
+<<<<<<< HEAD
 			'default_term'          => null,
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			'_builtin'              => false,
 		);
 
@@ -319,7 +325,11 @@ final class WP_Taxonomy {
 			$args['query_var'] = false;
 		}
 
+<<<<<<< HEAD
 		if ( false !== $args['rewrite'] && ( is_admin() || get_option( 'permalink_structure' ) ) ) {
+=======
+		if ( false !== $args['rewrite'] && ( is_admin() || '' != get_option( 'permalink_structure' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$args['rewrite'] = wp_parse_args(
 				$args['rewrite'],
 				array(
@@ -396,6 +406,7 @@ final class WP_Taxonomy {
 			}
 		}
 
+<<<<<<< HEAD
 		// Default taxonomy term.
 		if ( ! empty( $args['default_term'] ) ) {
 			if ( ! is_array( $args['default_term'] ) ) {
@@ -411,6 +422,8 @@ final class WP_Taxonomy {
 			);
 		}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		foreach ( $args as $property_name => $property_value ) {
 			$this->$property_name = $property_value;
 		}
@@ -435,7 +448,11 @@ final class WP_Taxonomy {
 			$wp->add_query_var( $this->query_var );
 		}
 
+<<<<<<< HEAD
 		if ( false !== $this->rewrite && ( is_admin() || get_option( 'permalink_structure' ) ) ) {
+=======
+		if ( false !== $this->rewrite && ( is_admin() || '' != get_option( 'permalink_structure' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( $this->hierarchical && $this->rewrite['hierarchical'] ) {
 				$tag = '(.+?)';
 			} else {
@@ -487,6 +504,7 @@ final class WP_Taxonomy {
 	public function remove_hooks() {
 		remove_filter( 'wp_ajax_add-' . $this->name, '_wp_ajax_add_hierarchical_term' );
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Gets the REST API controller for this taxonomy.
@@ -523,4 +541,6 @@ final class WP_Taxonomy {
 
 		return $this->rest_controller;
 	}
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }

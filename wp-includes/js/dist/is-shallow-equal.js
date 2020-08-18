@@ -82,12 +82,20 @@ this["wp"] = this["wp"] || {}; this["wp"]["isShallowEqual"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 423);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 407);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /******/ })
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 423:
+=======
+/***/ 407:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -96,13 +104,22 @@ this["wp"] = this["wp"] || {}; this["wp"]["isShallowEqual"] =
 /**
  * Internal dependencies;
  */
+<<<<<<< HEAD
 var isShallowEqualObjects = __webpack_require__( 424 );
 var isShallowEqualArrays = __webpack_require__( 425 );
+=======
+var isShallowEqualObjects = __webpack_require__( 408 );
+var isShallowEqualArrays = __webpack_require__( 409 );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 var isArray = Array.isArray;
 
 /**
+<<<<<<< HEAD
  * @typedef {Record<string, any>} ComparableObject
+=======
+ * @typedef {{[key: string]: any}} ComparableObject
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 
 /**
@@ -133,7 +150,11 @@ module.exports.isShallowEqualArrays = isShallowEqualArrays;
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 424:
+=======
+/***/ 408:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -192,7 +213,11 @@ module.exports = isShallowEqualObjects;
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 425:
+=======
+/***/ 409:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

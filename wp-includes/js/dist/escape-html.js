@@ -82,11 +82,16 @@ this["wp"] = this["wp"] || {}; this["wp"]["escapeHtml"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 465);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 450);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /******/ })
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 465:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -103,6 +108,14 @@ __webpack_require__.d(__webpack_exports__, "escapeHTML", function() { return /* 
 __webpack_require__.d(__webpack_exports__, "escapeEditableHTML", function() { return /* binding */ escapeEditableHTML; });
 __webpack_require__.d(__webpack_exports__, "isValidAttributeName", function() { return /* binding */ isValidAttributeName; });
 
+=======
+/***/ 450:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 // CONCATENATED MODULE: ./node_modules/@wordpress/escape-html/build-module/escape-greater.js
 /**
  * Returns a string with greater-than sign replaced.
@@ -121,6 +134,16 @@ function __unstableEscapeGreaterThan(value) {
 }
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/escape-html/build-module/index.js
+<<<<<<< HEAD
+=======
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "escapeAmpersand", function() { return escapeAmpersand; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "escapeQuotationMark", function() { return escapeQuotationMark; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "escapeLessThan", function() { return escapeLessThan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "escapeAttribute", function() { return escapeAttribute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "escapeHTML", function() { return escapeHTML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "escapeEditableHTML", function() { return escapeEditableHTML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isValidAttributeName", function() { return isValidAttributeName; });
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * Internal dependencies
  */

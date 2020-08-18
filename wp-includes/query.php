@@ -148,7 +148,11 @@ function wp_reset_postdata() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for an existing archive page.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_archive() {
 	global $wp_query;
@@ -174,7 +178,11 @@ function is_archive() {
  *
  * @param string|string[] $post_types Optional. Post type or array of posts types
  *                                    to check against. Default empty.
+<<<<<<< HEAD
  * @return bool Whether the query is for an existing post type archive page.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_post_type_archive( $post_types = '' ) {
 	global $wp_query;
@@ -200,7 +208,11 @@ function is_post_type_archive( $post_types = '' ) {
  *
  * @param int|string|int[]|string[] $attachment Optional. Attachment ID, title, slug, or array of such
  *                                              to check against. Default empty.
+<<<<<<< HEAD
  * @return bool Whether the query is for an existing attachment page.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_attachment( $attachment = '' ) {
 	global $wp_query;
@@ -229,7 +241,11 @@ function is_attachment( $attachment = '' ) {
  *
  * @param int|string|int[]|string[] $author Optional. User ID, nickname, nicename, or array of such
  *                                          to check against. Default empty.
+<<<<<<< HEAD
  * @return bool Whether the query is for an existing author archive page.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_author( $author = '' ) {
 	global $wp_query;
@@ -258,7 +274,11 @@ function is_author( $author = '' ) {
  *
  * @param int|string|int[]|string[] $category Optional. Category ID, name, slug, or array of such
  *                                            to check against. Default empty.
+<<<<<<< HEAD
  * @return bool Whether the query is for an existing category archive page.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_category( $category = '' ) {
 	global $wp_query;
@@ -287,7 +307,11 @@ function is_category( $category = '' ) {
  *
  * @param int|string|int[]|string[] $tag Optional. Tag ID, name, slug, or array of such
  *                                       to check against. Default empty.
+<<<<<<< HEAD
  * @return bool Whether the query is for an existing tag archive page.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_tag( $tag = '' ) {
 	global $wp_query;
@@ -322,8 +346,12 @@ function is_tag( $tag = '' ) {
  *                                            Default empty.
  * @param int|string|int[]|string[] $term     Optional. Term ID, name, slug, or array of such
  *                                            to check against. Default empty.
+<<<<<<< HEAD
  * @return bool Whether the query is for an existing custom taxonomy archive page.
  *              True for custom taxonomy archive pages, false for built-in taxonomies
+=======
+ * @return bool True for custom taxonomy archive pages, false for built-in taxonomies
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *              (category and tag archives).
  */
 function is_tax( $taxonomy = '', $term = '' ) {
@@ -348,7 +376,11 @@ function is_tax( $taxonomy = '', $term = '' ) {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for an existing date archive.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_date() {
 	global $wp_query;
@@ -374,7 +406,11 @@ function is_date() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for an existing day archive.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_day() {
 	global $wp_query;
@@ -400,7 +436,11 @@ function is_day() {
  *
  * @param string|string[] $feeds Optional. Feed type or array of feed types
  *                                         to check against. Default empty.
+<<<<<<< HEAD
  * @return bool Whether the query is for a feed.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_feed( $feeds = '' ) {
 	global $wp_query;
@@ -420,7 +460,11 @@ function is_feed( $feeds = '' ) {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for a comments feed.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_comment_feed() {
 	global $wp_query;
@@ -453,7 +497,11 @@ function is_comment_feed() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for the front page of the site.
+=======
+ * @return bool True, if front of site.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_front_page() {
 	global $wp_query;
@@ -486,7 +534,11 @@ function is_front_page() {
  * @see is_front_page()
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for the blog homepage.
+=======
+ * @return bool True if blog view homepage, otherwise false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_home() {
 	global $wp_query;
@@ -516,7 +568,11 @@ function is_home() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for the Privacy Policy page.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_privacy_policy() {
 	global $wp_query;
@@ -540,7 +596,11 @@ function is_privacy_policy() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for an existing month archive.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_month() {
 	global $wp_query;
@@ -586,7 +646,11 @@ function is_page( $page = '' ) {
 }
 
 /**
+<<<<<<< HEAD
  * Determines whether the query is for a paged result and not for the first page.
+=======
+ * Determines whether the query is for paged results and not for the first page.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * For more information on this and similar theme functions, check out
  * the {@link https://developer.wordpress.org/themes/basics/conditional-tags/
@@ -596,7 +660,11 @@ function is_page( $page = '' ) {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for a paged result.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_paged() {
 	global $wp_query;
@@ -620,7 +688,11 @@ function is_paged() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for a post or page preview.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_preview() {
 	global $wp_query;
@@ -640,7 +712,11 @@ function is_preview() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for the robots.txt file.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_robots() {
 	global $wp_query;
@@ -660,7 +736,11 @@ function is_robots() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for the favicon.ico file.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_favicon() {
 	global $wp_query;
@@ -684,7 +764,11 @@ function is_favicon() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for a search.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_search() {
 	global $wp_query;
@@ -776,7 +860,11 @@ function is_singular( $post_types = '' ) {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for a specific time.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_time() {
 	global $wp_query;
@@ -800,7 +888,11 @@ function is_time() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for a trackback endpoint call.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_trackback() {
 	global $wp_query;
@@ -824,7 +916,11 @@ function is_trackback() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for an existing year archive.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_year() {
 	global $wp_query;
@@ -848,7 +944,11 @@ function is_year() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is a 404 error.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_404() {
 	global $wp_query;
@@ -868,7 +968,11 @@ function is_404() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is for an embedded post.
+=======
+ * @return bool Whether we're in an embedded post or not.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_embed() {
 	global $wp_query;
@@ -892,7 +996,11 @@ function is_embed() {
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool Whether the query is the main query.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_main_query() {
 	if ( 'pre_get_posts' === current_filter() ) {
@@ -916,13 +1024,21 @@ function is_main_query() {
  */
 
 /**
+<<<<<<< HEAD
  * Determines whether current WordPress query has posts to loop over.
+=======
+ * Whether current WordPress query has results to loop over.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @since 1.5.0
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool True if posts are available, false if end of the loop.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function have_posts() {
 	global $wp_query;
@@ -976,13 +1092,21 @@ function the_post() {
  */
 
 /**
+<<<<<<< HEAD
  * Determines whether current WordPress query has comments to loop over.
+=======
+ * Whether there are comments to loop over.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @since 2.2.0
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @return bool True if comments are available, false if no more comments.
+=======
+ * @return bool
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function have_comments() {
 	global $wp_query;
@@ -1091,7 +1215,11 @@ function wp_old_slug_redirect() {
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param string $post_type The current post type based on the query vars.
+<<<<<<< HEAD
  * @return int The Post ID.
+=======
+ * @return int $id The Post ID.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function _find_post_by_old_slug( $post_type ) {
 	global $wpdb;
@@ -1126,7 +1254,11 @@ function _find_post_by_old_slug( $post_type ) {
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param string $post_type The current post type based on the query vars.
+<<<<<<< HEAD
  * @return int The Post ID.
+=======
+ * @return int $id The Post ID.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function _find_post_by_old_date( $post_type ) {
 	global $wpdb;

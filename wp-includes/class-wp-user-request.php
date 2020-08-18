@@ -10,7 +10,10 @@ final class WP_User_Request {
 	/**
 	 * Request ID.
 	 *
+<<<<<<< HEAD
 	 * @since 4.9.6
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @var int
 	 */
 	public $ID = 0;
@@ -18,7 +21,10 @@ final class WP_User_Request {
 	/**
 	 * User ID.
 	 *
+<<<<<<< HEAD
 	 * @since 4.9.6
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @var int
 	 */
 	public $user_id = 0;
@@ -26,15 +32,22 @@ final class WP_User_Request {
 	/**
 	 * User email.
 	 *
+<<<<<<< HEAD
 	 * @since 4.9.6
 	 * @var string
+=======
+	 * @var int
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public $email = '';
 
 	/**
 	 * Action name.
 	 *
+<<<<<<< HEAD
 	 * @since 4.9.6
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @var string
 	 */
 	public $action_name = '';
@@ -42,7 +55,10 @@ final class WP_User_Request {
 	/**
 	 * Current status.
 	 *
+<<<<<<< HEAD
 	 * @since 4.9.6
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @var string
 	 */
 	public $status = '';
@@ -50,7 +66,10 @@ final class WP_User_Request {
 	/**
 	 * Timestamp this request was created.
 	 *
+<<<<<<< HEAD
 	 * @since 4.9.6
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @var int|null
 	 */
 	public $created_timestamp = null;
@@ -58,7 +77,10 @@ final class WP_User_Request {
 	/**
 	 * Timestamp this request was last modified.
 	 *
+<<<<<<< HEAD
 	 * @since 4.9.6
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @var int|null
 	 */
 	public $modified_timestamp = null;
@@ -66,23 +88,34 @@ final class WP_User_Request {
 	/**
 	 * Timestamp this request was confirmed.
 	 *
+<<<<<<< HEAD
 	 * @since 4.9.6
 	 * @var int|null
+=======
+	 * @var int
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public $confirmed_timestamp = null;
 
 	/**
 	 * Timestamp this request was completed.
 	 *
+<<<<<<< HEAD
 	 * @since 4.9.6
 	 * @var int|null
+=======
+	 * @var int
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public $completed_timestamp = null;
 
 	/**
 	 * Misc data assigned to this request.
 	 *
+<<<<<<< HEAD
 	 * @since 4.9.6
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @var array
 	 */
 	public $request_data = array();
@@ -90,7 +123,10 @@ final class WP_User_Request {
 	/**
 	 * Key used to confirm this request.
 	 *
+<<<<<<< HEAD
 	 * @since 4.9.6
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @var string
 	 */
 	public $confirm_key = '';

@@ -1,15 +1,27 @@
 
 # BEGIN WordPress
+<<<<<<< HEAD
 # The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+=======
+# The directives (lines) between `BEGIN WordPress` and `END WordPress` are
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 # dynamically generated, and should only be modified via WordPress filters.
 # Any changes to the directives between these markers will be overwritten.
 <IfModule mod_rewrite.c>
 RewriteEngine On
+<<<<<<< HEAD
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
+=======
+RewriteBase /tokactiv/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /tokactiv/index.php [L]
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 </IfModule>
 
 # END WordPress

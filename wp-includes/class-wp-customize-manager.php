@@ -606,7 +606,10 @@ final class WP_Customize_Manager {
 	 * enabled, then a new UUID will be generated.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @global string $pagenow
 	 */
 	public function establish_loaded_changeset() {
@@ -738,7 +741,10 @@ final class WP_Customize_Manager {
 	 * Gets whether settings are or will be previewed.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @see WP_Customize_Setting::preview()
 	 *
 	 * @return bool
@@ -751,7 +757,10 @@ final class WP_Customize_Manager {
 	 * Gets whether data from a changeset's autosaved revision should be loaded if it exists.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @see WP_Customize_Manager::changeset_data()
 	 *
 	 * @return bool Is using autosaved changeset revision.
@@ -764,7 +773,10 @@ final class WP_Customize_Manager {
 	 * Whether the changeset branching is allowed.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @see WP_Customize_Manager::establish_loaded_changeset()
 	 *
 	 * @return bool Is changeset branching.
@@ -805,7 +817,10 @@ final class WP_Customize_Manager {
 	 * Get the changeset UUID.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @see WP_Customize_Manager::establish_loaded_changeset()
 	 *
 	 * @return string UUID.
@@ -894,7 +909,11 @@ final class WP_Customize_Manager {
 	 * @return bool
 	 */
 	public function is_theme_active() {
+<<<<<<< HEAD
 		return $this->get_stylesheet() === $this->original_stylesheet;
+=======
+		return $this->get_stylesheet() == $this->original_stylesheet;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -1077,7 +1096,11 @@ final class WP_Customize_Manager {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Get the changeset post ID for the loaded changeset.
+=======
+	 * Get the changeset post id for the loaded changeset.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @since 4.7.0
 	 *
@@ -1814,7 +1837,11 @@ final class WP_Customize_Manager {
 	 * @param WP_Customize_Setting $setting A WP_Customize_Setting derived object.
 	 * @param mixed                $default Value returned $setting has no post value (added in 4.2.0)
 	 *                                      or the post value is invalid (added in 4.6.0).
+<<<<<<< HEAD
 	 * @return string|mixed Sanitized value or the $default provided.
+=======
+	 * @return string|mixed $post_value Sanitized value or the $default provided.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function post_value( $setting, $default = null ) {
 		$post_values = $this->unsanitized_post_values();
@@ -1907,6 +1934,7 @@ final class WP_Customize_Manager {
 		 * that the user's session has expired and they need to re-authenticate.
 		 */
 		if ( $this->messenger_channel && ! current_user_can( 'customize' ) ) {
+<<<<<<< HEAD
 			$this->wp_die(
 				-1,
 				sprintf(
@@ -1915,6 +1943,9 @@ final class WP_Customize_Manager {
 					'<code>customize_messenger_channel<code>'
 				)
 			);
+=======
+			$this->wp_die( -1, __( 'Unauthorized. You may remove the customize_messenger_channel param to preview as frontend.' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return;
 		}
 
@@ -1958,7 +1989,10 @@ final class WP_Customize_Manager {
 	 * Add customize state query params to a given URL if preview is allowed.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @see wp_redirect()
 	 * @see WP_Customize_Manager::get_allowed_url()
 	 *
@@ -2299,7 +2333,11 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param mixed $current_theme {@internal Parameter is not used}
+=======
+	 * @param $current_theme {@internal Parameter is not used}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string Theme name.
 	 */
 	public function current_theme( $current_theme ) {
@@ -3043,9 +3081,14 @@ final class WP_Customize_Manager {
 	 * untouched.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 *
 	 * @see wp_trash_post()
 	 * @global wpdb $wpdb WordPress database abstraction object.
+=======
+	 * @global wpdb $wpdb WordPress database abstraction object.
+	 * @see wp_trash_post()
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @param int|WP_Post $post The changeset post.
 	 * @return mixed A WP_Post object for the trashed post or an empty value on failure.
@@ -3146,6 +3189,7 @@ final class WP_Customize_Manager {
 			return;
 		}
 
+<<<<<<< HEAD
 		if ( $changeset_post_id ) {
 			if ( ! current_user_can( get_post_type_object( 'customize_changeset' )->cap->delete_post, $changeset_post_id ) ) {
 				wp_send_json_error(
@@ -3167,6 +3211,15 @@ final class WP_Customize_Manager {
 					)
 				);
 			}
+=======
+		if ( $changeset_post_id && ! current_user_can( get_post_type_object( 'customize_changeset' )->cap->delete_post, $changeset_post_id ) ) {
+			wp_send_json_error(
+				array(
+					'code'    => 'changeset_trash_unauthorized',
+					'message' => __( 'Unable to trash changes.' ),
+				)
+			);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		if ( 'trash' === get_post_status( $changeset_post_id ) ) {
@@ -3207,7 +3260,10 @@ final class WP_Customize_Manager {
 	 * This should be able to be removed once #40922 is addressed in core.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @link https://core.trac.wordpress.org/ticket/40922
 	 * @see WP_Customize_Manager::save_changeset_post()
 	 * @see _wp_translate_postdata()
@@ -3231,8 +3287,13 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 4.9.0
 	 *
+<<<<<<< HEAD
 	 * @param int  $changeset_post_id Changeset post ID.
 	 * @param bool $take_over Whether to take over the changeset. Default false.
+=======
+	 * @param int  $changeset_post_id Changeset post id.
+	 * @param bool $take_over Take over the changeset, default is false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function set_changeset_lock( $changeset_post_id, $take_over = false ) {
 		if ( $changeset_post_id ) {
@@ -3256,7 +3317,11 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 4.9.0
 	 *
+<<<<<<< HEAD
 	 * @param int $changeset_post_id Changeset post ID.
+=======
+	 * @param int $changeset_post_id Changeset post id.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function refresh_changeset_lock( $changeset_post_id ) {
 		if ( ! $changeset_post_id ) {
@@ -3436,7 +3501,10 @@ final class WP_Customize_Manager {
 	 * invoking this method.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @see _wp_customize_publish_changeset()
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
@@ -3907,11 +3975,15 @@ final class WP_Customize_Manager {
 				/* translators: 1: Panel ID, 2: Link to 'customize_loaded_components' filter reference. */
 				__( 'Removing %1$s manually will cause PHP warnings. Use the %2$s filter instead.' ),
 				$id,
+<<<<<<< HEAD
 				sprintf(
 					'<a href="%1$s">%2$s</a>',
 					esc_url( 'https://developer.wordpress.org/reference/hooks/customize_loaded_components/' ),
 					'<code>customize_loaded_components</code>'
 				)
+=======
+				'<a href="' . esc_url( 'https://developer.wordpress.org/reference/hooks/customize_loaded_components/' ) . '"><code>customize_loaded_components</code></a>'
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			);
 
 			_doing_it_wrong( __METHOD__, $message, '4.5.0' );
@@ -4700,9 +4772,15 @@ final class WP_Customize_Manager {
 	 * @param array $autofocus {
 	 *     Mapping of 'panel', 'section', 'control' to the ID which should be autofocused.
 	 *
+<<<<<<< HEAD
 	 *     @type string $control ID for control to be autofocused.
 	 *     @type string $section ID for section to be autofocused.
 	 *     @type string $panel   ID for panel to be autofocused.
+=======
+	 *     @type string [$control]  ID for control to be autofocused.
+	 *     @type string [$section]  ID for section to be autofocused.
+	 *     @type string [$panel]    ID for panel to be autofocused.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * }
 	 */
 	public function set_autofocus( $autofocus ) {
@@ -4717,9 +4795,15 @@ final class WP_Customize_Manager {
 	 * @return array {
 	 *     Mapping of 'panel', 'section', 'control' to the ID which should be autofocused.
 	 *
+<<<<<<< HEAD
 	 *     @type string $control ID for control to be autofocused.
 	 *     @type string $section ID for section to be autofocused.
 	 *     @type string $panel   ID for panel to be autofocused.
+=======
+	 *     @type string [$control]  ID for control to be autofocused.
+	 *     @type string [$section]  ID for section to be autofocused.
+	 *     @type string [$panel]    ID for panel to be autofocused.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * }
 	 */
 	public function get_autofocus() {
@@ -5887,11 +5971,17 @@ final class WP_Customize_Manager {
 				$theme->active = ( isset( $_POST['customized_theme'] ) && $_POST['customized_theme'] === $theme->slug );
 
 				// Map available theme properties to installed theme properties.
+<<<<<<< HEAD
 				$theme->id            = $theme->slug;
 				$theme->screenshot    = array( $theme->screenshot_url );
 				$theme->authorAndUri  = wp_kses( $theme->author['display_name'], $themes_allowedtags );
 				$theme->compatibleWP  = is_wp_version_compatible( $theme->requires ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 				$theme->compatiblePHP = is_php_version_compatible( $theme->requires_php ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
+=======
+				$theme->id           = $theme->slug;
+				$theme->screenshot   = array( $theme->screenshot_url );
+				$theme->authorAndUri = wp_kses( $theme->author['display_name'], $themes_allowedtags );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 				if ( isset( $theme->parent ) ) {
 					$theme->parent = $theme->parent['slug'];
@@ -5956,17 +6046,29 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 4.7.0
 	 *
+<<<<<<< HEAD
 	 * @param string               $value   Repeat value.
+=======
+	 * @param string $value Repeat value.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param WP_Customize_Setting $setting Setting.
 	 * @return string|WP_Error Background value or validation error.
 	 */
 	public function _sanitize_background_setting( $value, $setting ) {
 		if ( 'background_repeat' === $setting->id ) {
+<<<<<<< HEAD
 			if ( ! in_array( $value, array( 'repeat-x', 'repeat-y', 'repeat', 'no-repeat' ), true ) ) {
 				return new WP_Error( 'invalid_value', __( 'Invalid value for background repeat.' ) );
 			}
 		} elseif ( 'background_attachment' === $setting->id ) {
 			if ( ! in_array( $value, array( 'fixed', 'scroll' ), true ) ) {
+=======
+			if ( ! in_array( $value, array( 'repeat-x', 'repeat-y', 'repeat', 'no-repeat' ) ) ) {
+				return new WP_Error( 'invalid_value', __( 'Invalid value for background repeat.' ) );
+			}
+		} elseif ( 'background_attachment' === $setting->id ) {
+			if ( ! in_array( $value, array( 'fixed', 'scroll' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				return new WP_Error( 'invalid_value', __( 'Invalid value for background attachment.' ) );
 			}
 		} elseif ( 'background_position_x' === $setting->id ) {
@@ -5998,9 +6100,15 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 4.7.0
 	 *
+<<<<<<< HEAD
 	 * @param array                          $response          Response.
 	 * @param WP_Customize_Selective_Refresh $selective_refresh Selective refresh component.
 	 * @param array                          $partials          Array of partials.
+=======
+	 * @param array $response Response.
+	 * @param WP_Customize_Selective_Refresh $selective_refresh Selective refresh component.
+	 * @param array $partials Array of partials.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return array
 	 */
 	public function export_header_video_settings( $response, $selective_refresh, $partials ) {
@@ -6019,7 +6127,11 @@ final class WP_Customize_Manager {
 	 * @since 4.7.0
 	 *
 	 * @param WP_Error $validity
+<<<<<<< HEAD
 	 * @param mixed    $value
+=======
+	 * @param mixed $value
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return mixed
 	 */
 	public function _validate_header_video( $validity, $value ) {
@@ -6055,7 +6167,11 @@ final class WP_Customize_Manager {
 	 * @since 4.7.0
 	 *
 	 * @param WP_Error $validity
+<<<<<<< HEAD
 	 * @param mixed    $value
+=======
+	 * @param mixed $value
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return mixed
 	 */
 	public function _validate_external_header_video( $validity, $value ) {

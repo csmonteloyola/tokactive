@@ -10,6 +10,7 @@ jQuery( document ).ready( function( $ ) {
 
 	var __ = wp.i18n.__,
 		_n = wp.i18n._n,
+<<<<<<< HEAD
 		sprintf = wp.i18n.sprintf,
 		data,
 		clipboard = new ClipboardJS( '.site-health-copy-buttons .copy-button' ),
@@ -42,6 +43,21 @@ jQuery( document ).ready( function( $ ) {
 
 		// Handle success audible feedback.
 		wp.a11y.speak( __( 'Site information has been copied to your clipboard.' ) );
+=======
+		sprintf = wp.i18n.sprintf;
+
+	var data;
+	var clipboard = new ClipboardJS( '.site-health-copy-buttons .copy-button' );
+	var isDebugTab = $( '.health-check-body.health-check-debug-tab' ).length;
+	var pathsSizesSection = $( '#health-check-accordion-block-wp-paths-sizes' );
+
+	// Debug information copy section.
+	clipboard.on( 'success', function( e ) {
+		var $wrapper = $( e.trigger ).closest( 'div' );
+		$( '.success', $wrapper ).addClass( 'visible' );
+
+		wp.a11y.speak( __( 'Site information has been added to your clipboard.' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	} );
 
 	// Accordion handling in various areas.
@@ -67,23 +83,36 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	/**
+<<<<<<< HEAD
 	 * Appends a new issue to the issue list.
+=======
+	 * Append a new issue to the issue list.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @since 5.2.0
 	 *
 	 * @param {Object} issue The issue data.
 	 */
+<<<<<<< HEAD
 	function appendIssue( issue ) {
+=======
+	function AppendIssue( issue ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		var template = wp.template( 'health-check-issue' ),
 			issueWrapper = $( '#health-check-issues-' + issue.status ),
 			heading,
 			count;
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		SiteHealth.site_status.issues[ issue.status ]++;
 
 		count = SiteHealth.site_status.issues[ issue.status ];
 
 		if ( 'critical' === issue.status ) {
+<<<<<<< HEAD
 			heading = sprintf(
 				_n( '%s critical issue', '%s critical issues', count ),
 				'<span class="issue-count">' + count + '</span>'
@@ -98,6 +127,13 @@ jQuery( document ).ready( function( $ ) {
 				_n( '%s item with no issues detected', '%s items with no issues detected', count ),
 				'<span class="issue-count">' + count + '</span>'
 			);
+=======
+			heading = sprintf( _n( '%s critical issue', '%s critical issues', count ), '<span class="issue-count">' + count + '</span>' );
+		} else if ( 'recommended' === issue.status ) {
+			heading = sprintf( _n( '%s recommended improvement', '%s recommended improvements', count ), '<span class="issue-count">' + count + '</span>' );
+		} else if ( 'good' === issue.status ) {
+			heading = sprintf( _n( '%s item with no issues detected', '%s items with no issues detected', count ), '<span class="issue-count">' + count + '</span>' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		if ( heading ) {
@@ -108,21 +144,34 @@ jQuery( document ).ready( function( $ ) {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Updates site health status indicator as asynchronous tests are run and returned.
 	 *
 	 * @since 5.2.0
 	 */
 	function recalculateProgression() {
+=======
+	 * Update site health status indicator as asynchronous tests are run and returned.
+	 *
+	 * @since 5.2.0
+	 */
+	function RecalculateProgression() {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		var r, c, pct;
 		var $progress = $( '.site-health-progress' );
 		var $wrapper = $progress.closest( '.site-health-progress-wrapper' );
 		var $progressLabel = $( '.site-health-progress-label', $wrapper );
 		var $circle = $( '.site-health-progress svg #bar' );
+<<<<<<< HEAD
 		var totalTests = parseInt( SiteHealth.site_status.issues.good, 0 ) +
 				parseInt( SiteHealth.site_status.issues.recommended, 0 ) +
 				( parseInt( SiteHealth.site_status.issues.critical, 0 ) * 1.5 );
 		var failedTests = ( parseInt( SiteHealth.site_status.issues.recommended, 0 ) * 0.5 ) +
 				( parseInt( SiteHealth.site_status.issues.critical, 0 ) * 1.5 );
+=======
+		var totalTests = parseInt( SiteHealth.site_status.issues.good, 0 ) + parseInt( SiteHealth.site_status.issues.recommended, 0 ) + ( parseInt( SiteHealth.site_status.issues.critical, 0 ) * 1.5 );
+		var failedTests = ( parseInt( SiteHealth.site_status.issues.recommended, 0 ) * 0.5 ) + ( parseInt( SiteHealth.site_status.issues.critical, 0 ) * 1.5 );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		var val = 100 - Math.ceil( ( failedTests / totalTests ) * 100 );
 
 		if ( 0 === totalTests ) {
@@ -184,7 +233,11 @@ jQuery( document ).ready( function( $ ) {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Queues the next asynchronous test when we're ready to run it.
+=======
+	 * Queue the next asynchronous test when we're ready to run it.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @since 5.2.0
 	 */
@@ -211,7 +264,11 @@ jQuery( document ).ready( function( $ ) {
 					data,
 					function( response ) {
 						/** This filter is documented in wp-admin/includes/class-wp-site-health.php */
+<<<<<<< HEAD
 						appendIssue( wp.hooks.applyFilters( 'site_status_test_result', response.data ) );
+=======
+						AppendIssue( wp.hooks.applyFilters( 'site_status_test_result', response.data ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						maybeRunNextAsyncTest();
 					}
 				);
@@ -221,13 +278,21 @@ jQuery( document ).ready( function( $ ) {
 		}
 
 		if ( doCalculation ) {
+<<<<<<< HEAD
 			recalculateProgression();
+=======
+			RecalculateProgression();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	}
 
 	if ( 'undefined' !== typeof SiteHealth && ! isDebugTab ) {
 		if ( 0 === SiteHealth.site_status.direct.length && 0 === SiteHealth.site_status.async.length ) {
+<<<<<<< HEAD
 			recalculateProgression();
+=======
+			RecalculateProgression();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		} else {
 			SiteHealth.site_status.issues = {
 				'good': 0,
@@ -238,7 +303,11 @@ jQuery( document ).ready( function( $ ) {
 
 		if ( 0 < SiteHealth.site_status.direct.length ) {
 			$.each( SiteHealth.site_status.direct, function() {
+<<<<<<< HEAD
 				appendIssue( this );
+=======
+				AppendIssue( this );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			} );
 		}
 
@@ -254,12 +323,20 @@ jQuery( document ).ready( function( $ ) {
 				ajaxurl,
 				data,
 				function( response ) {
+<<<<<<< HEAD
 					appendIssue( response.data );
+=======
+					AppendIssue( response.data );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					maybeRunNextAsyncTest();
 				}
 			);
 		} else {
+<<<<<<< HEAD
 			recalculateProgression();
+=======
+			RecalculateProgression();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	}
 
@@ -287,7 +364,11 @@ jQuery( document ).ready( function( $ ) {
 			var delay = ( new Date().getTime() ) - timestamp;
 
 			$( '.health-check-wp-paths-sizes.spinner' ).css( 'visibility', 'hidden' );
+<<<<<<< HEAD
 			recalculateProgression();
+=======
+			RecalculateProgression();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			if ( delay > 3000  ) {
 				/*
@@ -341,7 +422,11 @@ jQuery( document ).ready( function( $ ) {
 		if ( pathsSizesSection.length ) {
 			getDirectorySizes();
 		} else {
+<<<<<<< HEAD
 			recalculateProgression();
+=======
+			RecalculateProgression();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	}
 } );

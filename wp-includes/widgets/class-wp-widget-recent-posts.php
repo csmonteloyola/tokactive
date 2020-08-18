@@ -45,8 +45,12 @@ class WP_Widget_Recent_Posts extends WP_Widget {
 			$args['widget_id'] = $this->id;
 		}
 
+<<<<<<< HEAD
 		$default_title = __( 'Recent Posts' );
 		$title         = ( ! empty( $instance['title'] ) ) ? $instance['title'] : $default_title;
+=======
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Posts' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
@@ -85,13 +89,18 @@ class WP_Widget_Recent_Posts extends WP_Widget {
 			return;
 		}
 		?>
+<<<<<<< HEAD
 
 		<?php echo $args['before_widget']; ?>
 
+=======
+		<?php echo $args['before_widget']; ?>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<?php
 		if ( $title ) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
+<<<<<<< HEAD
 
 		$format = current_theme_supports( 'html5', 'navigation-widgets' ) ? 'html5' : 'xhtml';
 
@@ -106,6 +115,9 @@ class WP_Widget_Recent_Posts extends WP_Widget {
 		}
 		?>
 
+=======
+		?>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<ul>
 			<?php foreach ( $r->posts as $recent_post ) : ?>
 				<?php
@@ -125,12 +137,16 @@ class WP_Widget_Recent_Posts extends WP_Widget {
 				</li>
 			<?php endforeach; ?>
 		</ul>
+<<<<<<< HEAD
 
 		<?php
 		if ( 'html5' === $format ) {
 			echo '</nav>';
 		}
 
+=======
+		<?php
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		echo $args['after_widget'];
 	}
 
@@ -164,6 +180,7 @@ class WP_Widget_Recent_Posts extends WP_Widget {
 		$number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
 		$show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
 		?>
+<<<<<<< HEAD
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
@@ -178,6 +195,16 @@ class WP_Widget_Recent_Posts extends WP_Widget {
 			<input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
 			<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?' ); ?></label>
 		</p>
+=======
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
+		<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" /></p>
+
+		<p><input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
+		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?' ); ?></label></p>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<?php
 	}
 }

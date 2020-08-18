@@ -64,9 +64,17 @@ wp_initial_constants();
 wp_register_fatal_error_handler();
 
 // WordPress calculates offsets from UTC.
+<<<<<<< HEAD
 // phpcs:ignore WordPress.DateTime.RestrictedFunctions.timezone_change_date_default_timezone_set
 date_default_timezone_set( 'UTC' );
 
+=======
+date_default_timezone_set( 'UTC' );
+
+// Turn register_globals off.
+wp_unregister_GLOBALS();
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 // Standardize $_SERVER variables across setups.
 wp_fix_server_vars();
 
@@ -253,12 +261,18 @@ require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-users-controller.ph
 require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-comments-controller.php';
 require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-search-controller.php';
 require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-blocks-controller.php';
+<<<<<<< HEAD
 require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-block-types-controller.php';
 require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-block-renderer-controller.php';
 require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-settings-controller.php';
 require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-themes-controller.php';
 require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-plugins-controller.php';
 require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-block-directory-controller.php';
+=======
+require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-block-renderer-controller.php';
+require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-settings-controller.php';
+require ABSPATH . WPINC . '/rest-api/endpoints/class-wp-rest-themes-controller.php';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 require ABSPATH . WPINC . '/rest-api/fields/class-wp-rest-meta-fields.php';
 require ABSPATH . WPINC . '/rest-api/fields/class-wp-rest-comment-meta-fields.php';
 require ABSPATH . WPINC . '/rest-api/fields/class-wp-rest-post-meta-fields.php';
@@ -266,6 +280,7 @@ require ABSPATH . WPINC . '/rest-api/fields/class-wp-rest-term-meta-fields.php';
 require ABSPATH . WPINC . '/rest-api/fields/class-wp-rest-user-meta-fields.php';
 require ABSPATH . WPINC . '/rest-api/search/class-wp-rest-search-handler.php';
 require ABSPATH . WPINC . '/rest-api/search/class-wp-rest-post-search-handler.php';
+<<<<<<< HEAD
 require ABSPATH . WPINC . '/sitemaps.php';
 require ABSPATH . WPINC . '/sitemaps/class-wp-sitemaps.php';
 require ABSPATH . WPINC . '/sitemaps/class-wp-sitemaps-index.php';
@@ -287,6 +302,24 @@ require ABSPATH . WPINC . '/class-wp-block-parser.php';
 require ABSPATH . WPINC . '/blocks.php';
 require ABSPATH . WPINC . '/blocks/index.php';
 require ABSPATH . WPINC . '/block-patterns.php';
+=======
+require ABSPATH . WPINC . '/class-wp-block-type.php';
+require ABSPATH . WPINC . '/class-wp-block-styles-registry.php';
+require ABSPATH . WPINC . '/class-wp-block-type-registry.php';
+require ABSPATH . WPINC . '/class-wp-block-parser.php';
+require ABSPATH . WPINC . '/blocks.php';
+require ABSPATH . WPINC . '/blocks/archives.php';
+require ABSPATH . WPINC . '/blocks/block.php';
+require ABSPATH . WPINC . '/blocks/calendar.php';
+require ABSPATH . WPINC . '/blocks/categories.php';
+require ABSPATH . WPINC . '/blocks/latest-comments.php';
+require ABSPATH . WPINC . '/blocks/latest-posts.php';
+require ABSPATH . WPINC . '/blocks/rss.php';
+require ABSPATH . WPINC . '/blocks/search.php';
+require ABSPATH . WPINC . '/blocks/shortcode.php';
+require ABSPATH . WPINC . '/blocks/social-link.php';
+require ABSPATH . WPINC . '/blocks/tag-cloud.php';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 $GLOBALS['wp_embed'] = new WP_Embed();
 

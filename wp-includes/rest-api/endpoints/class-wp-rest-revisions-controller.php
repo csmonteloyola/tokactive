@@ -169,7 +169,13 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 			return $parent;
 		}
 
+<<<<<<< HEAD
 		if ( ! current_user_can( 'edit_post', $parent->ID ) ) {
+=======
+		$parent_post_type_obj = get_post_type_object( $parent->post_type );
+
+		if ( ! current_user_can( $parent_post_type_obj->cap->edit_post, $parent->ID ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return new WP_Error(
 				'rest_cannot_read',
 				__( 'Sorry, you are not allowed to view revisions of this post.' ),
@@ -407,7 +413,11 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 
 		$parent_post_type = get_post_type_object( $parent->post_type );
 
+<<<<<<< HEAD
 		if ( ! current_user_can( 'delete_post', $parent->ID ) ) {
+=======
+		if ( ! current_user_can( $parent_post_type->cap->delete_post, $parent->ID ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return new WP_Error(
 				'rest_cannot_delete',
 				__( 'Sorry, you are not allowed to delete revisions of this post.' ),
@@ -425,7 +435,13 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 			return $response;
 		}
 
+<<<<<<< HEAD
 		if ( ! current_user_can( 'delete_post', $revision->ID ) ) {
+=======
+		$post_type = get_post_type_object( 'revision' );
+
+		if ( ! current_user_can( $post_type->cap->delete_post, $revision->ID ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return new WP_Error(
 				'rest_cannot_delete',
 				__( 'Sorry, you are not allowed to delete this revision.' ),

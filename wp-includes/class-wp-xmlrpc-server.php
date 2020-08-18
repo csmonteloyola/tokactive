@@ -171,8 +171,13 @@ class wp_xmlrpc_server extends IXR_Server {
 	 *
 	 * @since 4.0.0
 	 *
+<<<<<<< HEAD
 	 * @param string $name      Method to call.
 	 * @param array  $arguments Arguments to pass when calling.
+=======
+	 * @param string   $name      Method to call.
+	 * @param array    $arguments Arguments to pass when calling.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return array|IXR_Error|false Return value of the callback, false otherwise.
 	 */
 	public function __call( $name, $arguments ) {
@@ -369,8 +374,13 @@ class wp_xmlrpc_server extends IXR_Server {
 	 *
 	 * @since 2.5.0
 	 *
+<<<<<<< HEAD
 	 * @param int   $post_id Post ID.
 	 * @param array $fields  Custom fields.
+=======
+	 * @param int $post_id Post ID.
+	 * @param array $fields Custom fields.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function set_custom_fields( $post_id, $fields ) {
 		$post_id = (int) $post_id;
@@ -436,8 +446,13 @@ class wp_xmlrpc_server extends IXR_Server {
 	 *
 	 * @since 4.9.0
 	 *
+<<<<<<< HEAD
 	 * @param int   $term_id Term ID.
 	 * @param array $fields  Custom fields.
+=======
+	 * @param int $term_id Term ID.
+	 * @param array $fields Custom fields.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function set_term_custom_fields( $term_id, $fields ) {
 		$term_id = (int) $term_id;
@@ -744,7 +759,11 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * Prepares taxonomy data for return in an XML-RPC object.
 	 *
 	 * @param object $taxonomy The unprepared taxonomy data.
+<<<<<<< HEAD
 	 * @param array  $fields   The subset of taxonomy fields to return.
+=======
+	 * @param array $fields    The subset of taxonomy fields to return.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return array The prepared taxonomy data.
 	 */
 	protected function _prepare_taxonomy( $taxonomy, $fields ) {
@@ -757,6 +776,7 @@ class wp_xmlrpc_server extends IXR_Server {
 			'_builtin'     => (bool) $taxonomy->_builtin,
 		);
 
+<<<<<<< HEAD
 		if ( in_array( 'labels', $fields, true ) ) {
 			$_taxonomy['labels'] = (array) $taxonomy->labels;
 		}
@@ -770,6 +790,21 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		if ( in_array( 'object_type', $fields, true ) ) {
+=======
+		if ( in_array( 'labels', $fields ) ) {
+			$_taxonomy['labels'] = (array) $taxonomy->labels;
+		}
+
+		if ( in_array( 'cap', $fields ) ) {
+			$_taxonomy['cap'] = (array) $taxonomy->cap;
+		}
+
+		if ( in_array( 'menu', $fields ) ) {
+			$_taxonomy['show_in_menu'] = (bool) $_taxonomy->show_in_menu;
+		}
+
+		if ( in_array( 'object_type', $fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$_taxonomy['object_type'] = array_unique( (array) $taxonomy->object_type );
 		}
 
@@ -902,16 +937,26 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		// Merge requested $post_fields fields into $_post.
+<<<<<<< HEAD
 		if ( in_array( 'post', $fields, true ) ) {
+=======
+		if ( in_array( 'post', $fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$_post = array_merge( $_post, $post_fields );
 		} else {
 			$requested_fields = array_intersect_key( $post_fields, array_flip( $fields ) );
 			$_post            = array_merge( $_post, $requested_fields );
 		}
 
+<<<<<<< HEAD
 		$all_taxonomy_fields = in_array( 'taxonomies', $fields, true );
 
 		if ( $all_taxonomy_fields || in_array( 'terms', $fields, true ) ) {
+=======
+		$all_taxonomy_fields = in_array( 'taxonomies', $fields );
+
+		if ( $all_taxonomy_fields || in_array( 'terms', $fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$post_type_taxonomies = get_object_taxonomies( $post['post_type'], 'names' );
 			$terms                = wp_get_object_terms( $post['ID'], $post_type_taxonomies );
 			$_post['terms']       = array();
@@ -920,11 +965,19 @@ class wp_xmlrpc_server extends IXR_Server {
 			}
 		}
 
+<<<<<<< HEAD
 		if ( in_array( 'custom_fields', $fields, true ) ) {
 			$_post['custom_fields'] = $this->get_custom_fields( $post['ID'] );
 		}
 
 		if ( in_array( 'enclosure', $fields, true ) ) {
+=======
+		if ( in_array( 'custom_fields', $fields ) ) {
+			$_post['custom_fields'] = $this->get_custom_fields( $post['ID'] );
+		}
+
+		if ( in_array( 'enclosure', $fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$_post['enclosure'] = array();
 			$enclosures         = (array) get_post_meta( $post['ID'], 'enclosure' );
 			if ( ! empty( $enclosures ) ) {
@@ -969,22 +1022,38 @@ class wp_xmlrpc_server extends IXR_Server {
 			'supports'     => get_all_post_type_supports( $post_type->name ),
 		);
 
+<<<<<<< HEAD
 		if ( in_array( 'labels', $fields, true ) ) {
 			$_post_type['labels'] = (array) $post_type->labels;
 		}
 
 		if ( in_array( 'cap', $fields, true ) ) {
+=======
+		if ( in_array( 'labels', $fields ) ) {
+			$_post_type['labels'] = (array) $post_type->labels;
+		}
+
+		if ( in_array( 'cap', $fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$_post_type['cap']          = (array) $post_type->cap;
 			$_post_type['map_meta_cap'] = (bool) $post_type->map_meta_cap;
 		}
 
+<<<<<<< HEAD
 		if ( in_array( 'menu', $fields, true ) ) {
+=======
+		if ( in_array( 'menu', $fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$_post_type['menu_position'] = (int) $post_type->menu_position;
 			$_post_type['menu_icon']     = $post_type->menu_icon;
 			$_post_type['show_in_menu']  = (bool) $post_type->show_in_menu;
 		}
 
+<<<<<<< HEAD
 		if ( in_array( 'taxonomies', $fields, true ) ) {
+=======
+		if ( in_array( 'taxonomies', $fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$_post_type['taxonomies'] = get_object_taxonomies( $post_type->name, 'names' );
 		}
 
@@ -1131,7 +1200,11 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		if ( '0' == $comment->comment_approved ) {
 			$comment_status = 'hold';
+<<<<<<< HEAD
 		} elseif ( 'spam' === $comment->comment_approved ) {
+=======
+		} elseif ( 'spam' == $comment->comment_approved ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$comment_status = 'spam';
 		} elseif ( '1' == $comment->comment_approved ) {
 			$comment_status = 'approve';
@@ -1190,10 +1263,17 @@ class wp_xmlrpc_server extends IXR_Server {
 			'roles'        => $user->roles,
 		);
 
+<<<<<<< HEAD
 		if ( in_array( 'all', $fields, true ) ) {
 			$_user = array_merge( $_user, $user_fields );
 		} else {
 			if ( in_array( 'basic', $fields, true ) ) {
+=======
+		if ( in_array( 'all', $fields ) ) {
+			$_user = array_merge( $_user, $user_fields );
+		} else {
+			if ( in_array( 'basic', $fields ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$basic_fields = array( 'username', 'email', 'registered', 'display_name', 'nicename' );
 				$fields       = array_merge( $fields, $basic_fields );
 			}
@@ -1515,7 +1595,11 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( isset( $post_data['terms'] ) && is_array( $post_data['terms'] ) ) {
 				$taxonomies = array_keys( $post_data['terms'] );
 
+<<<<<<< HEAD
 				// Validating term IDs.
+=======
+				// Validating term ids.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				foreach ( $taxonomies as $taxonomy ) {
 					if ( ! array_key_exists( $taxonomy, $post_type_taxonomies ) ) {
 						return new IXR_Error( 401, __( 'Sorry, one of the given taxonomies is not supported by the post type.' ) );
@@ -1577,7 +1661,11 @@ class wp_xmlrpc_server extends IXR_Server {
 
 					$term_names = $post_data['terms_names'][ $taxonomy ];
 					foreach ( $term_names as $term_name ) {
+<<<<<<< HEAD
 						if ( in_array( $term_name, $ambiguous_terms, true ) ) {
+=======
+						if ( in_array( $term_name, $ambiguous_terms ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							return new IXR_Error( 401, __( 'Ambiguous term name used in a hierarchical taxonomy. Please use term ID instead.' ) );
 						}
 
@@ -3379,7 +3467,11 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$cat_id = wp_insert_category( $new_category, true );
 		if ( is_wp_error( $cat_id ) ) {
+<<<<<<< HEAD
 			if ( 'term_exists' === $cat_id->get_error_code() ) {
+=======
+			if ( 'term_exists' == $cat_id->get_error_code() ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				return (int) $cat_id->get_error_data();
 			} else {
 				return new IXR_Error( 500, __( 'Sorry, the category could not be created.' ) );
@@ -3757,7 +3849,11 @@ class wp_xmlrpc_server extends IXR_Server {
 			$statuses = get_comment_statuses();
 			$statuses = array_keys( $statuses );
 
+<<<<<<< HEAD
 			if ( ! in_array( $content_struct['status'], $statuses, true ) ) {
+=======
+			if ( ! in_array( $content_struct['status'], $statuses ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				return new IXR_Error( 401, __( 'Invalid comment status.' ) );
 			}
 
@@ -3788,7 +3884,11 @@ class wp_xmlrpc_server extends IXR_Server {
 			$comment['comment_author_email'] = $content_struct['author_email'];
 		}
 
+<<<<<<< HEAD
 		$result = wp_update_comment( $comment, true );
+=======
+		$result = wp_update_comment( $comment );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( is_wp_error( $result ) ) {
 			return new IXR_Error( 500, $result->get_error_message() );
 		}
@@ -3912,7 +4012,11 @@ class wp_xmlrpc_server extends IXR_Server {
 			$comment['user_ID'] = 0;
 
 			if ( get_option( 'require_name_email' ) ) {
+<<<<<<< HEAD
 				if ( strlen( $comment['comment_author_email'] < 6 ) || '' === $comment['comment_author'] ) {
+=======
+				if ( 6 > strlen( $comment['comment_author_email'] ) || '' == $comment['comment_author'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					return new IXR_Error( 403, __( 'Comment author name and email are required.' ) );
 				} elseif ( ! is_email( $comment['comment_author_email'] ) ) {
 					return new IXR_Error( 403, __( 'A valid email address is required.' ) );
@@ -5603,7 +5707,11 @@ class wp_xmlrpc_server extends IXR_Server {
 	 *
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
+<<<<<<< HEAD
 	 * @param int    $post_ID      Post ID.
+=======
+	 * @param int $post_ID Post ID.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param string $post_content Post Content for attachment.
 	 */
 	public function attach_uploads( $post_ID, $post_content ) {
@@ -5656,7 +5764,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		$postdata = get_post( $post_ID, ARRAY_A );
 
 		/*
+<<<<<<< HEAD
 		 * If there is no post data for the give post ID, stop now and return an error.
+=======
+		 * If there is no post data for the give post id, stop now and return an error.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * Otherwise a new post will be created (which was the old behavior).
 		 */
 		if ( ! $postdata || empty( $postdata['ID'] ) ) {
@@ -5668,7 +5780,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		// Use wp.editPost to edit post types other than post and page.
+<<<<<<< HEAD
 		if ( ! in_array( $postdata['post_type'], array( 'post', 'page' ), true ) ) {
+=======
+		if ( ! in_array( $postdata['post_type'], array( 'post', 'page' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return new IXR_Error( 401, __( 'Invalid post type.' ) );
 		}
 
@@ -5720,7 +5836,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		$page_template = null;
+<<<<<<< HEAD
 		if ( ! empty( $content_struct['wp_page_template'] ) && 'page' === $post_type ) {
+=======
+		if ( ! empty( $content_struct['wp_page_template'] ) && 'page' == $post_type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$page_template = $content_struct['wp_page_template'];
 		}
 
@@ -5847,7 +5967,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		$tags_input = isset( $content_struct['mt_keywords'] ) ? $content_struct['mt_keywords'] : null;
 
 		if ( 'publish' === $post_status || 'private' === $post_status ) {
+<<<<<<< HEAD
 			if ( 'page' === $post_type && ! current_user_can( 'publish_pages' ) ) {
+=======
+			if ( 'page' == $post_type && ! current_user_can( 'publish_pages' ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				return new IXR_Error( 401, __( 'Sorry, you are not allowed to publish this page.' ) );
 			} elseif ( ! current_user_can( 'publish_posts' ) ) {
 				return new IXR_Error( 401, __( 'Sorry, you are not allowed to publish this post.' ) );
@@ -5991,7 +6115,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'metaWeblog.getPost' );
 
+<<<<<<< HEAD
 		if ( '' !== $postdata['post_date'] ) {
+=======
+		if ( '' != $postdata['post_date'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$post_date         = $this->_convert_date( $postdata['post_date'] );
 			$post_date_gmt     = $this->_convert_date_gmt( $postdata['post_date_gmt'], $postdata['post_date'] );
 			$post_modified     = $this->_convert_date( $postdata['post_modified'] );
@@ -6020,8 +6148,13 @@ class wp_xmlrpc_server extends IXR_Server {
 			// Get the author info.
 			$author = get_userdata( $postdata['post_author'] );
 
+<<<<<<< HEAD
 			$allow_comments = ( 'open' === $postdata['comment_status'] ) ? 1 : 0;
 			$allow_pings    = ( 'open' === $postdata['ping_status'] ) ? 1 : 0;
+=======
+			$allow_comments = ( 'open' == $postdata['comment_status'] ) ? 1 : 0;
+			$allow_pings    = ( 'open' == $postdata['ping_status'] ) ? 1 : 0;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			// Consider future posts as published.
 			if ( 'future' === $postdata['post_status'] ) {
@@ -6172,8 +6305,13 @@ class wp_xmlrpc_server extends IXR_Server {
 			// Get the post author info.
 			$author = get_userdata( $entry['post_author'] );
 
+<<<<<<< HEAD
 			$allow_comments = ( 'open' === $entry['comment_status'] ) ? 1 : 0;
 			$allow_pings    = ( 'open' === $entry['ping_status'] ) ? 1 : 0;
+=======
+			$allow_comments = ( 'open' == $entry['comment_status'] ) ? 1 : 0;
+			$allow_pings    = ( 'open' == $entry['ping_status'] ) ? 1 : 0;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			// Consider future posts as published.
 			if ( 'future' === $entry['post_status'] ) {
@@ -6681,7 +6819,11 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$trackback_pings = array();
 		foreach ( $comments as $comment ) {
+<<<<<<< HEAD
 			if ( 'trackback' === $comment->comment_type ) {
+=======
+			if ( 'trackback' == $comment->comment_type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$content           = $comment->comment_content;
 				$title             = substr( $content, 8, ( strpos( $content, '</strong>' ) - 8 ) );
 				$trackback_pings[] = array(
@@ -7028,7 +7170,11 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$pingbacks = array();
 		foreach ( $comments as $comment ) {
+<<<<<<< HEAD
 			if ( 'pingback' === $comment->comment_type ) {
+=======
+			if ( 'pingback' == $comment->comment_type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$pingbacks[] = $comment->comment_author_url;
 			}
 		}

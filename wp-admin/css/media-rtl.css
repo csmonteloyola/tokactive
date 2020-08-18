@@ -307,7 +307,11 @@
 
 #find-posts-close:hover,
 #find-posts-close:focus {
+<<<<<<< HEAD
 	color: #006799;
+=======
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 #find-posts-close:focus {
@@ -798,6 +802,7 @@ border color while dragging a file over the uploader drop area */
 	text-decoration: none;
 }
 
+<<<<<<< HEAD
 .copy-to-clipboard-container {
 	display: flex;
 	align-items: center;
@@ -808,6 +813,8 @@ border color while dragging a file over the uploader drop area */
 .copy-to-clipboard-container .success {
 	margin-right: 8px;
 }
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 /*------------------------------------------------------------------------------
   14.2 - Image Editor
@@ -1225,11 +1232,14 @@ audio, video {
 		float: none;
 		width: auto;
 		max-width: none;
+<<<<<<< HEAD
 		padding-bottom: 16px;
 	}
 
 	.copy-to-clipboard-container .success {
 		font-size: 14px;
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 }
 

@@ -17,10 +17,17 @@ window.wp = window.wp || {};
 	 * Similar to `goog.inherits`, but uses a hash of prototype properties and
 	 * class properties to be extended.
 	 *
+<<<<<<< HEAD
 	 * @param object parent      Parent class constructor to inherit from.
 	 * @param object protoProps  Properties to apply to the prototype for use as class instance properties.
 	 * @param object staticProps Properties to apply directly to the class constructor.
 	 * @return child The subclassed constructor.
+=======
+	 * @param  object parent      Parent class constructor to inherit from.
+	 * @param  object protoProps  Properties to apply to the prototype for use as class instance properties.
+	 * @param  object staticProps Properties to apply directly to the class constructor.
+	 * @return child              The subclassed constructor.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	inherits = function( parent, protoProps, staticProps ) {
 		var child;
@@ -108,9 +115,15 @@ window.wp = window.wp || {};
 	/**
 	 * Creates a subclass of the class.
 	 *
+<<<<<<< HEAD
 	 * @param object protoProps  Properties to apply to the prototype.
 	 * @param object staticProps Properties to apply directly to the class.
 	 * @return child The subclass.
+=======
+	 * @param  object protoProps  Properties to apply to the prototype.
+	 * @param  object staticProps Properties to apply directly to the class.
+	 * @return child              The subclass.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.Class.extend = function( protoProps, classProps ) {
 		var child = inherits( this, protoProps, classProps );
@@ -188,7 +201,11 @@ window.wp = window.wp || {};
 	api.Value = api.Class.extend(/** @lends wp.customize.Value.prototype */{
 		/**
 		 * @param {mixed}  initial The initial value.
+<<<<<<< HEAD
 		 * @param {Object} options
+=======
+		 * @param {object} options
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		initialize: function( initial, options ) {
 			this._value = initial; // @todo Potentially change this to a this.set() call.
@@ -220,7 +237,11 @@ window.wp = window.wp || {};
 		/**
 		 * Set the value and trigger all bound callbacks.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} to New value.
+=======
+		 * @param {object} to New value.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		set: function( to ) {
 			var from = this._value;
@@ -354,11 +375,19 @@ window.wp = window.wp || {};
 		 *
 		 * @see {api.Values.when}
 		 *
+<<<<<<< HEAD
 		 * @param {string} id ID of the item.
 		 * @param {...}       Zero or more IDs of items to wait for and a callback
 		 *                    function to invoke when they're available. Optional.
 		 * @return {mixed} The item instance if only one ID was supplied.
 		 *                 A Deferred Promise object if a callback function is supplied.
+=======
+		 * @param  {string}   id ID of the item.
+		 * @param  {...}         Zero or more IDs of items to wait for and a callback
+		 *                       function to invoke when they're available. Optional.
+		 * @return {mixed}    The item instance if only one ID was supplied.
+		 *                    A Deferred Promise object if a callback function is supplied.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		instance: function( id ) {
 			if ( arguments.length === 1 ) {
@@ -371,8 +400,13 @@ window.wp = window.wp || {};
 		/**
 		 * Get the instance of an item.
 		 *
+<<<<<<< HEAD
 		 * @param {string} id The ID of the item.
 		 * @return {[type]} [description]
+=======
+		 * @param  {string} id The ID of the item.
+		 * @return {[type]}    [description]
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		value: function( id ) {
 			return this._value[ id ];
@@ -381,8 +415,13 @@ window.wp = window.wp || {};
 		/**
 		 * Whether the collection has an item with the given ID.
 		 *
+<<<<<<< HEAD
 		 * @param {string} id The ID of the item to look for.
 		 * @return {boolean}
+=======
+		 * @param  {string}  id The ID of the item to look for.
+		 * @return {Boolean}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		has: function( id ) {
 			return typeof this._value[ id ] !== 'undefined';
@@ -435,9 +474,15 @@ window.wp = window.wp || {};
 		 * Create a new item of the collection using the collection's default constructor
 		 * and store it in the collection.
 		 *
+<<<<<<< HEAD
 		 * @param {string} id    The ID of the item.
 		 * @param {mixed}  value Any extra arguments are passed into the item's initialize method.
 		 * @return {mixed} The new item's instance.
+=======
+		 * @param  {string} id    The ID of the item.
+		 * @param  {mixed}  value Any extra arguments are passed into the item's initialize method.
+		 * @return {mixed}  The new item's instance.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		create: function( id ) {
 			return this.add( id, new this.defaultConstructor( api.Class.applicator, slice.call( arguments, 1 ) ) );
@@ -446,8 +491,13 @@ window.wp = window.wp || {};
 		/**
 		 * Iterate over all items in the collection invoking the provided callback.
 		 *
+<<<<<<< HEAD
 		 * @param {Function} callback Function to invoke.
 		 * @param {Object}   context  Object context to invoke the function with. Optional.
+=======
+		 * @param  {Function} callback Function to invoke.
+		 * @param  {object}   context  Object context to invoke the function with. Optional.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		each: function( callback, context ) {
 			context = typeof context === 'undefined' ? this : context;
@@ -460,7 +510,11 @@ window.wp = window.wp || {};
 		/**
 		 * Remove an item from the collection.
 		 *
+<<<<<<< HEAD
 		 * @param {string} id The ID of the item to remove.
+=======
+		 * @param  {string} id The ID of the item to remove.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		remove: function( id ) {
 			var value = this.value( id );
@@ -670,10 +724,17 @@ window.wp = window.wp || {};
 		/**
 		 * Create a new Value.
 		 *
+<<<<<<< HEAD
 		 * @param {string} key     Unique identifier.
 		 * @param {mixed}  initial Initial value.
 		 * @param {mixed}  options Options hash. Optional.
 		 * @return {Value} Class instance of the Value.
+=======
+		 * @param  {string} key     Unique identifier.
+		 * @param  {mixed}  initial Initial value.
+		 * @param  {mixed}  options Options hash. Optional.
+		 * @return {Value}          Class instance of the Value.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		add: function( key, initial, options ) {
 			return this[ key ] = new api.Value( initial, options );
@@ -682,11 +743,19 @@ window.wp = window.wp || {};
 		/**
 		 * Initialize Messenger.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} params  - Parameters to configure the messenger.
 		 *        {string} params.url          - The URL to communicate with.
 		 *        {window} params.targetWindow - The window instance to communicate with. Default window.parent.
 		 *        {string} params.channel      - If provided, will send the channel with each message and only accept messages a matching channel.
 		 * @param {Object} options - Extend any instance parameter or method with this object.
+=======
+		 * @param  {object} params - Parameters to configure the messenger.
+		 *         {string} params.url - The URL to communicate with.
+		 *         {window} params.targetWindow - The window instance to communicate with. Default window.parent.
+		 *         {string} params.channel - If provided, will send the channel with each message and only accept messages a matching channel.
+		 * @param  {object} options - Extend any instance parameter or method with this object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		initialize: function( params, options ) {
 			// Target the parent frame by default, but only if a parent frame exists.
@@ -747,7 +816,11 @@ window.wp = window.wp || {};
 		/**
 		 * Receive data from the other window.
 		 *
+<<<<<<< HEAD
 		 * @param {jQuery.Event} event Event with embedded data.
+=======
+		 * @param  {jQuery.Event} event Event with embedded data.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		receive: function( event ) {
 			var message;
@@ -786,8 +859,13 @@ window.wp = window.wp || {};
 		/**
 		 * Send data to the other window.
 		 *
+<<<<<<< HEAD
 		 * @param {string} id   The event name.
 		 * @param {Object} data Data.
+=======
+		 * @param  {string} id   The event name.
+		 * @param  {object} data Data.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		send: function( id, data ) {
 			var message;
@@ -862,7 +940,11 @@ window.wp = window.wp || {};
 		 * @since 4.9.0
 		 *
 		 * @param {string}   code - Notification code.
+<<<<<<< HEAD
 		 * @param {Object}   params - Notification parameters.
+=======
+		 * @param {object}   params - Notification parameters.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {string}   params.message - Message.
 		 * @param {string}   [params.type=error] - Type.
 		 * @param {string}   [params.setting] - Related setting ID.
@@ -934,7 +1016,11 @@ window.wp = window.wp || {};
 	 *
 	 * @alias wp.customize.get
 	 *
+<<<<<<< HEAD
 	 * @return {Object}
+=======
+	 * @return {object}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.get = function() {
 		var result = {};
@@ -962,7 +1048,11 @@ window.wp = window.wp || {};
 	 * @alias wp.customize.utils.parseQueryString
 	 *
 	 * @param {string} queryString Query string.
+<<<<<<< HEAD
 	 * @return {Object} Parsed query string.
+=======
+	 * @return {object} Parsed query string.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.utils.parseQueryString = function parseQueryString( queryString ) {
 		var queryParams = {};

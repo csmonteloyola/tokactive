@@ -245,7 +245,11 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 				$args['post__in'] = $args['post__in'] ? array_intersect( $sticky_posts, $args['post__in'] ) : $sticky_posts;
 
 				/*
+<<<<<<< HEAD
 				 * If we intersected, but there are no post IDs in common,
+=======
+				 * If we intersected, but there are no post ids in common,
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				 * WP_Query won't return "no posts" for post__in = array()
 				 * so we have to fake it a bit.
 				 */
@@ -1479,7 +1483,11 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 		}
 
 		// Is the post readable?
+<<<<<<< HEAD
 		if ( 'publish' === $post->post_status || current_user_can( 'read_post', $post->ID ) ) {
+=======
+		if ( 'publish' === $post->post_status || current_user_can( $post_type->cap->read_post, $post->ID ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return true;
 		}
 
@@ -1522,7 +1530,11 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 			return false;
 		}
 
+<<<<<<< HEAD
 		return current_user_can( 'edit_post', $post->ID );
+=======
+		return current_user_can( $post_type->cap->edit_post, $post->ID );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -1558,7 +1570,11 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 			return false;
 		}
 
+<<<<<<< HEAD
 		return current_user_can( 'delete_post', $post->ID );
+=======
+		return current_user_can( $post_type->cap->delete_post, $post->ID );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -2192,7 +2208,10 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 				'custom-fields',
 			),
 		);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		foreach ( $post_type_attributes as $attribute ) {
 			if ( isset( $fixed_schemas[ $this->post_type ] ) && ! in_array( $attribute, $fixed_schemas[ $this->post_type ], true ) ) {
 				continue;
@@ -2425,6 +2444,7 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 		// Emit a _doing_it_wrong warning if user tries to add new properties using this filter.
 		$new_fields = array_diff( array_keys( $schema['properties'] ), $schema_fields );
 		if ( count( $new_fields ) > 0 ) {
+<<<<<<< HEAD
 			_doing_it_wrong(
 				__METHOD__,
 				sprintf(
@@ -2434,6 +2454,9 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 				),
 				'5.4.0'
 			);
+=======
+			_doing_it_wrong( __METHOD__, __( 'Please use register_rest_field to add new schema properties.' ), '5.4.0' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		$this->schema = $schema;

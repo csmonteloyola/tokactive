@@ -90,6 +90,7 @@ class WP_Customize_Theme_Control extends WP_Customize_Control {
 			</div>
 
 			<# if ( 'installed' === data.theme.type && data.theme.hasUpdate ) { #>
+<<<<<<< HEAD
 				<# if ( data.theme.updateResponse.compatibleWP && data.theme.updateResponse.compatiblePHP ) { #>
 					<div class="update-message notice inline notice-warning notice-alt" data-slug="{{ data.theme.id }}">
 						<p>
@@ -229,6 +230,23 @@ class WP_Customize_Theme_Control extends WP_Customize_Control {
 						?>
 					<# } #>
 				</p></div>
+=======
+				<div class="update-message notice inline notice-warning notice-alt" data-slug="{{ data.theme.id }}">
+					<p>
+						<?php
+						if ( is_multisite() ) {
+							_e( 'New version available.' );
+						} else {
+							printf(
+								/* translators: %s: "Update now" button. */
+								__( 'New version available. %s' ),
+								'<button class="button-link update-theme" type="button">' . __( 'Update now' ) . '</button>'
+							);
+						}
+						?>
+					</p>
+				</div>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			<# } #>
 
 			<# if ( data.theme.active ) { #>
@@ -245,11 +263,15 @@ class WP_Customize_Theme_Control extends WP_Customize_Control {
 				<div class="theme-id-container">
 					<h3 class="theme-name" id="{{ data.section }}-{{ data.theme.id }}-name">{{ data.theme.name }}</h3>
 					<div class="theme-actions">
+<<<<<<< HEAD
 						<# if ( data.theme.compatibleWP && data.theme.compatiblePHP ) { #>
 							<button type="button" class="button button-primary preview-theme" aria-label="<?php echo esc_attr( $preview_label ); ?>" data-slug="{{ data.theme.id }}"><?php _e( 'Live Preview' ); ?></button>
 						<# } else { #>
 							<button type="button" class="button button-primary disabled" aria-label="<?php echo esc_attr( $preview_label ); ?>"><?php _e( 'Live Preview' ); ?></button>
 						<# } #>
+=======
+						<button type="button" class="button button-primary preview-theme" aria-label="<?php echo esc_attr( $preview_label ); ?>" data-slug="{{ data.theme.id }}"><?php _e( 'Live Preview' ); ?></button>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					</div>
 				</div>
 				<div class="notice notice-success notice-alt"><p><?php _ex( 'Installed', 'theme' ); ?></p></div>
@@ -257,11 +279,15 @@ class WP_Customize_Theme_Control extends WP_Customize_Control {
 				<div class="theme-id-container">
 					<h3 class="theme-name" id="{{ data.section }}-{{ data.theme.id }}-name">{{ data.theme.name }}</h3>
 					<div class="theme-actions">
+<<<<<<< HEAD
 						<# if ( data.theme.compatibleWP && data.theme.compatiblePHP ) { #>
 							<button type="button" class="button button-primary theme-install preview" aria-label="<?php echo esc_attr( $install_label ); ?>" data-slug="{{ data.theme.id }}" data-name="{{ data.theme.name }}"><?php _e( 'Install &amp; Preview' ); ?></button>
 						<# } else { #>
 							<button type="button" class="button button-primary disabled" aria-label="<?php echo esc_attr( $install_label ); ?>" disabled><?php _e( 'Install &amp; Preview' ); ?></button>
 						<# } #>
+=======
+						<button type="button" class="button button-primary theme-install preview" aria-label="<?php echo esc_attr( $install_label ); ?>" data-slug="{{ data.theme.id }}" data-name="{{ data.theme.name }}"><?php _e( 'Install &amp; Preview' ); ?></button>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					</div>
 				</div>
 			<# } #>

@@ -63,7 +63,11 @@ class WP_Http_Curl {
 	 *
 	 * @since 2.7.0
 	 *
+<<<<<<< HEAD
 	 * @param string       $url  The request URL.
+=======
+	 * @param string $url The request URL.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param string|array $args Optional. Override the defaults.
 	 * @return array|WP_Error Array containing 'headers', 'body', 'response', 'cookies', 'filename'. A WP_Error instance upon error
 	 */
@@ -238,7 +242,11 @@ class WP_Http_Curl {
 				curl_close( $handle );
 				return new WP_Error( 'http_request_failed', $curl_error );
 			}
+<<<<<<< HEAD
 			if ( in_array( curl_getinfo( $handle, CURLINFO_HTTP_CODE ), array( 301, 302 ), true ) ) {
+=======
+			if ( in_array( curl_getinfo( $handle, CURLINFO_HTTP_CODE ), array( 301, 302 ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				curl_close( $handle );
 				return new WP_Error( 'http_request_failed', __( 'Too many redirects.' ) );
 			}
@@ -286,7 +294,11 @@ class WP_Http_Curl {
 					return new WP_Error( 'http_request_failed', $curl_error );
 				}
 			}
+<<<<<<< HEAD
 			if ( in_array( curl_getinfo( $handle, CURLINFO_HTTP_CODE ), array( 301, 302 ), true ) ) {
+=======
+			if ( in_array( curl_getinfo( $handle, CURLINFO_HTTP_CODE ), array( 301, 302 ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				curl_close( $handle );
 				return new WP_Error( 'http_request_failed', __( 'Too many redirects.' ) );
 			}

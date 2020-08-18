@@ -82,11 +82,16 @@ this["wp"] = this["wp"] || {}; this["wp"]["url"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 444);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 427);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /******/ })
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 115:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -106,6 +111,8 @@ module.exports = {
 
 /***/ }),
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ 2:
 /***/ (function(module, exports) {
 
@@ -113,7 +120,11 @@ module.exports = {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 258:
+=======
+/***/ 256:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -351,7 +362,11 @@ module.exports = {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 259:
+=======
+/***/ 257:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -377,14 +392,23 @@ module.exports = {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 433:
+=======
+/***/ 417:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+<<<<<<< HEAD
 var utils = __webpack_require__(258);
 var formats = __webpack_require__(259);
+=======
+var utils = __webpack_require__(256);
+var formats = __webpack_require__(257);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 var has = Object.prototype.hasOwnProperty;
 
 var arrayPrefixGenerators = {
@@ -654,13 +678,21 @@ module.exports = function (object, opts) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 434:
+=======
+/***/ 418:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+<<<<<<< HEAD
 var utils = __webpack_require__(258);
+=======
+var utils = __webpack_require__(256);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 var has = Object.prototype.hasOwnProperty;
 
@@ -904,6 +936,7 @@ module.exports = function (str, opts) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 444:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -935,6 +968,14 @@ __webpack_require__.d(__webpack_exports__, "safeDecodeURIComponent", function() 
 __webpack_require__.d(__webpack_exports__, "filterURLForDisplay", function() { return /* reexport */ filterURLForDisplay; });
 __webpack_require__.d(__webpack_exports__, "cleanForSlug", function() { return /* reexport */ cleanForSlug; });
 
+=======
+/***/ 427:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 // CONCATENATED MODULE: ./node_modules/@wordpress/url/build-module/is-url.js
 /**
  * Determines whether the given string looks like a URL.
@@ -957,7 +998,11 @@ function isURL(url) {
   try {
     new URL(url);
     return true;
+<<<<<<< HEAD
   } catch (_unused) {
+=======
+  } catch (error) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
     return false;
   }
 }
@@ -1121,12 +1166,18 @@ function isValidPath(path) {
  *
  * @example
  * ```js
+<<<<<<< HEAD
  * const queryString = getQueryString( 'http://localhost:8080/this/is/a/test?query=true#fragment' ); // 'query=true'
+=======
+ * const queryString1 = getQueryString( 'http://localhost:8080/this/is/a/test?query=true#fragment' ); // 'query=true'
+ * const queryString2 = getQueryString( 'https://wordpress.org#fragment?query=false&search=hello' ); // 'query=false&search=hello'
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * ```
  *
  * @return {string|void} The query string part of the URL.
  */
 function getQueryString(url) {
+<<<<<<< HEAD
   var query;
 
   try {
@@ -1135,6 +1186,12 @@ function getQueryString(url) {
 
   if (query) {
     return query;
+=======
+  var matches = /^\S+?\?([^\s#]+)/.exec(url);
+
+  if (matches) {
+    return matches[1];
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
   }
 }
 
@@ -1160,6 +1217,7 @@ function isValidQueryString(queryString) {
   return /^[^\s#?\/]+$/.test(queryString);
 }
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/url/build-module/get-path-and-query-string.js
 /**
  * Internal dependencies
@@ -1188,6 +1246,8 @@ function getPathAndQueryString(url) {
   return value;
 }
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 // CONCATENATED MODULE: ./node_modules/@wordpress/url/build-module/get-fragment.js
 /**
  * Returns the fragment part of the URL.
@@ -1233,7 +1293,11 @@ function isValidFragment(fragment) {
 }
 
 // EXTERNAL MODULE: ./node_modules/qs/lib/index.js
+<<<<<<< HEAD
 var lib = __webpack_require__(115);
+=======
+var lib = __webpack_require__(92);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/url/build-module/add-query-args.js
 /**
@@ -1247,7 +1311,11 @@ var lib = __webpack_require__(115);
  *
  * @param {string} [url='']  URL to which arguments should be appended. If omitted,
  *                           only the resulting querystring is returned.
+<<<<<<< HEAD
  * @param {Object} [args]    Query arguments to apply to URL.
+=======
+ * @param {Object} args      Query arguments to apply to URL.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @example
  * ```js
@@ -1285,14 +1353,20 @@ function addQueryArgs() {
  * External dependencies
  */
 
+<<<<<<< HEAD
 /* eslint-disable jsdoc/valid-types */
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * @typedef {{[key: string]: QueryArgParsed}} QueryArgObject
  */
 
+<<<<<<< HEAD
 /* eslint-enable */
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * @typedef {string|string[]|QueryArgObject} QueryArgParsed
  */
@@ -1484,11 +1558,19 @@ var external_this_lodash_ = __webpack_require__(2);
  * This replicates some of what `sanitize_title()` does in WordPress core, but
  * is only designed to approximate what the slug will be.
  *
+<<<<<<< HEAD
  * Converts Latin-1 Supplement and Latin Extended-A letters to basic Latin
  * letters. Removes combining diacritical marks. Converts whitespace, periods,
  * and forward slashes to hyphens. Removes any remaining non-word characters
  * except hyphens. Converts remaining string to lowercase. It does not account
  * for octets, HTML entities, or other encoded characters.
+=======
+ * Converts whitespace, periods, forward slashes and underscores to hyphens.
+ * Converts Latin-1 Supplement and Latin Extended-A letters to basic Latin
+ * letters. Removes combining diacritical marks. Converts remaining string
+ * to lowercase. It does not touch octets, HTML entities, or other encoded
+ * characters.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param {string} string Title or slug to be processed.
  *
@@ -1500,10 +1582,39 @@ function cleanForSlug(string) {
     return '';
   }
 
+<<<<<<< HEAD
   return Object(external_this_lodash_["trim"])(Object(external_this_lodash_["deburr"])(string).replace(/[\s\./]+/g, '-').replace(/[^\w-]+/g, '').toLowerCase(), '-');
 }
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/url/build-module/index.js
+=======
+  return Object(external_this_lodash_["toLower"])(Object(external_this_lodash_["deburr"])(Object(external_this_lodash_["trim"])(string.replace(/[\s\./_]+/g, '-'), '-')));
+}
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/url/build-module/index.js
+/* concated harmony reexport isURL */__webpack_require__.d(__webpack_exports__, "isURL", function() { return isURL; });
+/* concated harmony reexport isEmail */__webpack_require__.d(__webpack_exports__, "isEmail", function() { return isEmail; });
+/* concated harmony reexport getProtocol */__webpack_require__.d(__webpack_exports__, "getProtocol", function() { return getProtocol; });
+/* concated harmony reexport isValidProtocol */__webpack_require__.d(__webpack_exports__, "isValidProtocol", function() { return isValidProtocol; });
+/* concated harmony reexport getAuthority */__webpack_require__.d(__webpack_exports__, "getAuthority", function() { return getAuthority; });
+/* concated harmony reexport isValidAuthority */__webpack_require__.d(__webpack_exports__, "isValidAuthority", function() { return isValidAuthority; });
+/* concated harmony reexport getPath */__webpack_require__.d(__webpack_exports__, "getPath", function() { return getPath; });
+/* concated harmony reexport isValidPath */__webpack_require__.d(__webpack_exports__, "isValidPath", function() { return isValidPath; });
+/* concated harmony reexport getQueryString */__webpack_require__.d(__webpack_exports__, "getQueryString", function() { return getQueryString; });
+/* concated harmony reexport isValidQueryString */__webpack_require__.d(__webpack_exports__, "isValidQueryString", function() { return isValidQueryString; });
+/* concated harmony reexport getFragment */__webpack_require__.d(__webpack_exports__, "getFragment", function() { return getFragment; });
+/* concated harmony reexport isValidFragment */__webpack_require__.d(__webpack_exports__, "isValidFragment", function() { return isValidFragment; });
+/* concated harmony reexport addQueryArgs */__webpack_require__.d(__webpack_exports__, "addQueryArgs", function() { return addQueryArgs; });
+/* concated harmony reexport getQueryArg */__webpack_require__.d(__webpack_exports__, "getQueryArg", function() { return getQueryArg; });
+/* concated harmony reexport hasQueryArg */__webpack_require__.d(__webpack_exports__, "hasQueryArg", function() { return hasQueryArg; });
+/* concated harmony reexport removeQueryArgs */__webpack_require__.d(__webpack_exports__, "removeQueryArgs", function() { return removeQueryArgs; });
+/* concated harmony reexport prependHTTP */__webpack_require__.d(__webpack_exports__, "prependHTTP", function() { return prependHTTP; });
+/* concated harmony reexport safeDecodeURI */__webpack_require__.d(__webpack_exports__, "safeDecodeURI", function() { return safeDecodeURI; });
+/* concated harmony reexport safeDecodeURIComponent */__webpack_require__.d(__webpack_exports__, "safeDecodeURIComponent", function() { return safeDecodeURIComponent; });
+/* concated harmony reexport filterURLForDisplay */__webpack_require__.d(__webpack_exports__, "filterURLForDisplay", function() { return filterURLForDisplay; });
+/* concated harmony reexport cleanForSlug */__webpack_require__.d(__webpack_exports__, "cleanForSlug", function() { return cleanForSlug; });
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 
 
@@ -1526,6 +1637,26 @@ function cleanForSlug(string) {
 
 
 
+<<<<<<< HEAD
+=======
+/***/ }),
+
+/***/ 92:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var stringify = __webpack_require__(417);
+var parse = __webpack_require__(418);
+var formats = __webpack_require__(257);
+
+module.exports = {
+    formats: formats,
+    parse: parse,
+    stringify: stringify
+};
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 
 /***/ })

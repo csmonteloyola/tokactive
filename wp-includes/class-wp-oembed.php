@@ -59,6 +59,10 @@ class WP_oEmbed {
 			'#https?://(www\.)?flickr\.com/.*#i'           => array( 'https://www.flickr.com/services/oembed/', true ),
 			'#https?://flic\.kr/.*#i'                      => array( 'https://www.flickr.com/services/oembed/', true ),
 			'#https?://(.+\.)?smugmug\.com/.*#i'           => array( 'https://api.smugmug.com/services/oembed/', true ),
+<<<<<<< HEAD
+=======
+			'#https?://(www\.)?hulu\.com/watch/.*#i'       => array( 'https://www.hulu.com/api/oembed.{format}', true ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			'#https?://(www\.)?scribd\.com/(doc|document)/.*#i' => array( 'https://www.scribd.com/services/oembed', true ),
 			'#https?://wordpress\.tv/.*#i'                 => array( 'https://wordpress.tv/oembed/', true ),
 			'#https?://(.+\.)?polldaddy\.com/.*#i'         => array( 'https://api.crowdsignal.com/oembed', true ),
@@ -130,10 +134,17 @@ class WP_oEmbed {
 		self::$early_providers = array();
 
 		/**
+<<<<<<< HEAD
 		 * Filters the list of sanctioned oEmbed providers.
 		 *
 		 * Since WordPress 4.4, oEmbed discovery is enabled for all users and allows embedding of sanitized
 		 * iframes. The providers in this list are sanctioned, meaning they are trusted and allowed to
+=======
+		 * Filters the list of whitelisted oEmbed providers.
+		 *
+		 * Since WordPress 4.4, oEmbed discovery is enabled for all users and allows embedding of sanitized
+		 * iframes. The providers in this list are whitelisted, meaning they are trusted and allowed to
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * embed any content, such as iframes, videos, JavaScript, and arbitrary HTML.
 		 *
 		 * Supported providers:
@@ -142,6 +153,10 @@ class WP_oEmbed {
 		 * | ------------ | ----------------------------------------- | ------- |
 		 * | Dailymotion  | dailymotion.com                           | 2.9.0   |
 		 * | Flickr       | flickr.com                                | 2.9.0   |
+<<<<<<< HEAD
+=======
+		 * | Hulu         | hulu.com                                  | 2.9.0   |
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * | Scribd       | scribd.com                                | 2.9.0   |
 		 * | Vimeo        | vimeo.com                                 | 2.9.0   |
 		 * | WordPress.tv | wordpress.tv                              | 2.9.0   |
@@ -210,7 +225,10 @@ class WP_oEmbed {
 		 * | Photobucket  | photobucket.com      | 2.9.0     | 5.1.0     |
 		 * | Funny or Die | funnyordie.com       | 3.0.0     | 5.1.0     |
 		 * | CollegeHumor | collegehumor.com     | 4.0.0     | 5.3.1     |
+<<<<<<< HEAD
 		 * | Hulu         | hulu.com             | 2.9.0     | 5.5.0     |
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 *
 		 * @see wp_oembed_add_provider()
 		 *
@@ -229,12 +247,21 @@ class WP_oEmbed {
 	 *
 	 * @since 4.0.0
 	 *
+<<<<<<< HEAD
 	 * @param string $name      Method to call.
 	 * @param array  $arguments Arguments to pass when calling.
 	 * @return mixed|bool Return value of the callback, false otherwise.
 	 */
 	public function __call( $name, $arguments ) {
 		if ( in_array( $name, $this->compat_methods, true ) ) {
+=======
+	 * @param string   $name      Method to call.
+	 * @param array    $arguments Arguments to pass when calling.
+	 * @return mixed|bool Return value of the callback, false otherwise.
+	 */
+	public function __call( $name, $arguments ) {
+		if ( in_array( $name, $this->compat_methods ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return $this->$name( ...$arguments );
 		}
 		return false;
@@ -247,8 +274,13 @@ class WP_oEmbed {
 	 *
 	 * @see WP_oEmbed::discover()
 	 *
+<<<<<<< HEAD
 	 * @param string       $url  The URL to the content.
 	 * @param string|array $args Optional provider arguments.
+=======
+	 * @param string        $url  The URL to the content.
+	 * @param string|array  $args Optional provider arguments.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string|false The oEmbed provider URL on success, false on failure.
 	 */
 	public function get_provider( $url, $args = '' ) {
@@ -380,8 +412,13 @@ class WP_oEmbed {
 		 * This allows one to short-circuit the default logic, perhaps by
 		 * replacing it with a routine that is more optimal for your setup.
 		 *
+<<<<<<< HEAD
 		 * Returning a non-null value from the filter will effectively short-circuit retrieval
 		 * and return the passed value instead.
+=======
+		 * Passing a non-null value to the filter will effectively short-circuit retrieval,
+		 * returning the passed value instead.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 *
 		 * @since 4.5.3
 		 *
@@ -486,7 +523,11 @@ class WP_oEmbed {
 						$providers[ $linktypes[ $atts['type'] ] ] = htmlspecialchars_decode( $atts['href'] );
 
 						// Stop here if it's JSON (that's all we need).
+<<<<<<< HEAD
 						if ( 'json' === $linktypes[ $atts['type'] ] ) {
+=======
+						if ( 'json' == $linktypes[ $atts['type'] ] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							break;
 						}
 					}
@@ -536,7 +577,11 @@ class WP_oEmbed {
 
 		foreach ( array( 'json', 'xml' ) as $format ) {
 			$result = $this->_fetch_with_format( $provider, $format );
+<<<<<<< HEAD
 			if ( is_wp_error( $result ) && 'not-implemented' === $result->get_error_code() ) {
+=======
+			if ( is_wp_error( $result ) && 'not-implemented' == $result->get_error_code() ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				continue;
 			}
 			return ( $result && ! is_wp_error( $result ) ) ? $result : false;

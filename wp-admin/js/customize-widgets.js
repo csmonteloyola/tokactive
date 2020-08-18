@@ -193,9 +193,16 @@
 				}
 			} );
 
+<<<<<<< HEAD
 			// Clear the search results and trigger an `input` event to fire a new search.
 			this.$clearResults.on( 'click', function() {
 				self.$search.val( '' ).focus().trigger( 'input' );
+=======
+			// Clear the search results and trigger a new search.
+			this.$clearResults.on( 'click', function() {
+				self.$search.val( '' ).focus();
+				self.collection.doSearch( '' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			} );
 
 			// Close the panel if the URL in the preview changes.
@@ -384,7 +391,11 @@
 
 			$( 'body' ).removeClass( 'adding-widget' );
 
+<<<<<<< HEAD
 			this.$search.val( '' ).trigger( 'input' );
+=======
+			this.$search.val( '' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		},
 
 		/**
@@ -459,7 +470,11 @@
 		/**
 		 * @param {jQuery.Event} e
 		 * @param {jQuery} widget
+<<<<<<< HEAD
 		 * @param {string} newForm
+=======
+		 * @param {String} newForm
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		rss: function( e, widget, newForm ) {
 			var oldWidgetError = widget.find( '.widget-error:first' ),
@@ -968,7 +983,11 @@
 		 *
 		 * @since 4.1.0
 		 *
+<<<<<<< HEAD
 		 * @param {boolean}   active
+=======
+		 * @param {Boolean}   active
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {Object}    args
 		 * @param {function}  args.completeCallback
 		 */
@@ -1075,7 +1094,11 @@
 		 * Get the state for an input depending on its type.
 		 *
 		 * @param {jQuery|Element} input
+<<<<<<< HEAD
 		 * @return {string|boolean|Array|*}
+=======
+		 * @return {string|boolean|array|*}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @private
 		 */
 		_getInputState: function( input ) {
@@ -1095,7 +1118,11 @@
 		 * Update an input's state based on its type.
 		 *
 		 * @param {jQuery|Element} input
+<<<<<<< HEAD
 		 * @param {string|boolean|Array|*} state
+=======
+		 * @param {string|boolean|array|*} state
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @private
 		 */
 		_setInputState: function ( input, state ) {
@@ -1143,10 +1170,17 @@
 		 * Submit the widget form via Ajax and get back the updated instance,
 		 * along with the new widget control form to render.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} [args]
 		 * @param {Object|null} [args.instance=null]  When the model changes, the instance is sent here; otherwise, the inputs from the form are used
 		 * @param {Function|null} [args.complete=null]  Function which is called when the request finishes. Context is bound to the control. First argument is any error. Following arguments are for success.
 		 * @param {boolean} [args.ignoreActiveElement=false] Whether or not updating a field will be deferred if focus is still on the element.
+=======
+		 * @param {object} [args]
+		 * @param {Object|null} [args.instance=null]  When the model changes, the instance is sent here; otherwise, the inputs from the form are used
+		 * @param {Function|null} [args.complete=null]  Function which is called when the request finishes. Context is bound to the control. First argument is any error. Following arguments are for success.
+		 * @param {Boolean} [args.ignoreActiveElement=false] Whether or not updating a field will be deferred if focus is still on the element.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		updateWidget: function( args ) {
 			var self = this, instanceOverride, completeCallback, $widgetRoot, $widgetContent,
@@ -1398,7 +1432,11 @@
 		/**
 		 * Respond to change in the expanded state.
 		 *
+<<<<<<< HEAD
 		 * @param {boolean} expanded
+=======
+		 * @param {Boolean} expanded
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {Object} args  merged on top of this.defaultActiveArguments
 		 */
 		onChangeExpanded: function ( expanded, args ) {
@@ -1498,7 +1536,11 @@
 		/**
 		 * Get the position (index) of the widget in the containing sidebar
 		 *
+<<<<<<< HEAD
 		 * @return {number}
+=======
+		 * @return {Number}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		getWidgetSidebarPosition: function() {
 			var sidebarWidgetIds, position;
@@ -1530,7 +1572,11 @@
 		/**
 		 * @private
 		 *
+<<<<<<< HEAD
 		 * @param {number} offset 1|-1
+=======
+		 * @param {Number} offset 1|-1
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		_moveWidgetByOne: function( offset ) {
 			var i, sidebarWidgetsSetting, sidebarWidgetIds,	adjacentWidgetId;
@@ -1549,7 +1595,11 @@
 		/**
 		 * Toggle visibility of the widget move area
 		 *
+<<<<<<< HEAD
 		 * @param {boolean} [showOrHide]
+=======
+		 * @param {Boolean} [showOrHide]
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		toggleWidgetMoveArea: function( showOrHide ) {
 			var self = this, $moveWidgetArea;
@@ -2007,7 +2057,11 @@
 		/**
 		 * Enable/disable the reordering UI
 		 *
+<<<<<<< HEAD
 		 * @param {boolean} showOrHide to enable/disable reordering
+=======
+		 * @param {Boolean} showOrHide to enable/disable reordering
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 *
 		 * @todo We should have a reordering state instead and rename this to onChangeReordering
 		 */
@@ -2065,7 +2119,11 @@
 
 		/**
 		 * @param {string} widgetId or an id_base for adding a previously non-existing widget.
+<<<<<<< HEAD
 		 * @return {Object|false} widget_form control instance, or false on error.
+=======
+		 * @return {object|false} widget_form control instance, or false on error.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		addWidget: function( widgetId ) {
 			var self = this, controlHtml, $widget, controlType = 'widget_form', controlContainer, controlConstructor,
@@ -2246,7 +2304,11 @@
 	/**
 	 * Given a widget control, find the sidebar widgets control that contains it.
 	 * @param {string} widgetId
+<<<<<<< HEAD
 	 * @return {Object|null}
+=======
+	 * @return {object|null}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.Widgets.getSidebarWidgetControlContainingWidget = function( widgetId ) {
 		var foundControl = null;
@@ -2265,7 +2327,11 @@
 	 * Given a widget ID for a widget appearing in the preview, get the widget form control associated with it.
 	 *
 	 * @param {string} widgetId
+<<<<<<< HEAD
 	 * @return {Object|null}
+=======
+	 * @return {object|null}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.Widgets.getWidgetFormControlForWidget = function( widgetId ) {
 		var foundControl = null;
@@ -2333,7 +2399,11 @@
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @param {string} widgetId
+=======
+	 * @param {String} widgetId
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return {Object}
 	 */
 	function parseWidgetId( widgetId ) {
@@ -2355,8 +2425,13 @@
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @param {string} widgetId
 	 * @return {string} settingId
+=======
+	 * @param {String} widgetId
+	 * @return {String} settingId
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	function widgetIdToSettingId( widgetId ) {
 		var parsed = parseWidgetId( widgetId ), settingId;

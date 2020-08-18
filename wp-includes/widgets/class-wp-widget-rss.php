@@ -48,7 +48,11 @@ class WP_Widget_RSS extends WP_Widget {
 		}
 
 		$url = ! empty( $instance['url'] ) ? $instance['url'] : '';
+<<<<<<< HEAD
 		while ( stristr( $url, 'http' ) !== $url ) {
+=======
+		while ( stristr( $url, 'http' ) != $url ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$url = substr( $url, 1 );
 		}
 
@@ -57,7 +61,11 @@ class WP_Widget_RSS extends WP_Widget {
 		}
 
 		// Self-URL destruction sequence.
+<<<<<<< HEAD
 		if ( in_array( untrailingslashit( $url ), array( site_url(), home_url() ), true ) ) {
+=======
+		if ( in_array( untrailingslashit( $url ), array( site_url(), home_url() ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return;
 		}
 
@@ -72,7 +80,11 @@ class WP_Widget_RSS extends WP_Widget {
 				$title = strip_tags( $rss->get_title() );
 			}
 			$link = strip_tags( $rss->get_permalink() );
+<<<<<<< HEAD
 			while ( stristr( $link, 'http' ) !== $link ) {
+=======
+			while ( stristr( $link, 'http' ) != $link ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$link = substr( $link, 1 );
 			}
 		}
@@ -94,6 +106,7 @@ class WP_Widget_RSS extends WP_Widget {
 		if ( $title ) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
+<<<<<<< HEAD
 
 		$format = current_theme_supports( 'html5', 'navigation-widgets' ) ? 'html5' : 'xhtml';
 
@@ -113,6 +126,9 @@ class WP_Widget_RSS extends WP_Widget {
 			echo '</nav>';
 		}
 
+=======
+		wp_widget_rss_output( $rss, $instance );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		echo $args['after_widget'];
 
 		if ( ! is_wp_error( $rss ) ) {
@@ -132,7 +148,11 @@ class WP_Widget_RSS extends WP_Widget {
 	 * @return array Updated settings to save.
 	 */
 	public function update( $new_instance, $old_instance ) {
+<<<<<<< HEAD
 		$testurl = ( isset( $new_instance['url'] ) && ( ! isset( $old_instance['url'] ) || ( $new_instance['url'] !== $old_instance['url'] ) ) );
+=======
+		$testurl = ( isset( $new_instance['url'] ) && ( ! isset( $old_instance['url'] ) || ( $new_instance['url'] != $old_instance['url'] ) ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return wp_widget_rss_process( $new_instance, $testurl );
 	}
 

@@ -214,7 +214,11 @@ class WP_Locale {
 			$this->text_direction = $GLOBALS['text_direction'];
 
 			/* translators: 'rtl' or 'ltr'. This sets the text direction for WordPress. */
+<<<<<<< HEAD
 		} elseif ( 'rtl' === _x( 'ltr', 'text direction' ) ) {
+=======
+		} elseif ( 'rtl' == _x( 'ltr', 'text direction' ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$this->text_direction = 'rtl';
 		}
 	}
@@ -346,7 +350,11 @@ class WP_Locale {
 	 * @return bool Whether locale is RTL.
 	 */
 	public function is_rtl() {
+<<<<<<< HEAD
 		return 'rtl' === $this->text_direction;
+=======
+		return 'rtl' == $this->text_direction;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**

@@ -20,7 +20,11 @@ function translations_api( $type, $args = null ) {
 	// Include an unmodified $wp_version.
 	require ABSPATH . WPINC . '/version.php';
 
+<<<<<<< HEAD
 	if ( ! in_array( $type, array( 'plugins', 'themes', 'core' ), true ) ) {
+=======
+	if ( ! in_array( $type, array( 'plugins', 'themes', 'core' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return new WP_Error( 'invalid_type', __( 'Invalid translation type.' ) );
 	}
 
@@ -175,8 +179,13 @@ function wp_install_language_form( $languages ) {
 				'<option value="%s" lang="%s" data-continue="%s"%s>%s</option>' . "\n",
 				esc_attr( $language['language'] ),
 				esc_attr( current( $language['iso'] ) ),
+<<<<<<< HEAD
 				esc_attr( $language['strings']['continue'] ? $language['strings']['continue'] : 'Continue' ),
 				in_array( $language['language'], $installed_languages, true ) ? ' data-installed="1"' : '',
+=======
+				esc_attr( $language['strings']['continue'] ?: 'Continue' ),
+				in_array( $language['language'], $installed_languages ) ? ' data-installed="1"' : '',
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				esc_html( $language['native_name'] )
 			);
 
@@ -189,8 +198,13 @@ function wp_install_language_form( $languages ) {
 			'<option value="%s" lang="%s" data-continue="%s"%s>%s</option>' . "\n",
 			esc_attr( $language['language'] ),
 			esc_attr( current( $language['iso'] ) ),
+<<<<<<< HEAD
 			esc_attr( $language['strings']['continue'] ? $language['strings']['continue'] : 'Continue' ),
 			in_array( $language['language'], $installed_languages, true ) ? ' data-installed="1"' : '',
+=======
+			esc_attr( $language['strings']['continue'] ?: 'Continue' ),
+			in_array( $language['language'], $installed_languages ) ? ' data-installed="1"' : '',
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			esc_html( $language['native_name'] )
 		);
 	}
@@ -211,7 +225,11 @@ function wp_install_language_form( $languages ) {
  */
 function wp_download_language_pack( $download ) {
 	// Check if the translation is already installed.
+<<<<<<< HEAD
 	if ( in_array( $download, get_available_languages(), true ) ) {
+=======
+	if ( in_array( $download, get_available_languages() ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return $download;
 	}
 

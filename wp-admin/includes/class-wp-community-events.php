@@ -300,7 +300,11 @@ class WP_Community_Events {
 	 *
 	 * @since 4.8.0
 	 *
+<<<<<<< HEAD
 	 * @param array $location Should contain 'latitude' and 'longitude' indexes.
+=======
+	 * @param  array $location Should contain 'latitude' and 'longitude' indexes.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return bool|string false on failure, or a string on success.
 	 */
 	protected function get_events_transient_key( $location ) {
@@ -361,7 +365,11 @@ class WP_Community_Events {
 	 *
 	 * @since 4.8.0
 	 *
+<<<<<<< HEAD
 	 * @param array $response_body The response which contains the events.
+=======
+	 * @param  array $response_body The response which contains the events.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return array The response with dates and times formatted.
 	 */
 	protected function format_event_data_time( $response_body ) {
@@ -436,7 +444,11 @@ class WP_Community_Events {
 	 * @since 4.8.0
 	 * @since 4.9.7 Stick a WordCamp to the final list.
 	 *
+<<<<<<< HEAD
 	 * @param array $response_body The response body which contains the events.
+=======
+	 * @param  array $response_body The response body which contains the events.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return array The response body with events trimmed.
 	 */
 	protected function trim_events( $response_body ) {
@@ -466,7 +478,11 @@ class WP_Community_Events {
 			$trimmed_event_types     = wp_list_pluck( $response_body['events'], 'type' );
 
 			// Make sure the soonest upcoming WordCamp is pinned in the list.
+<<<<<<< HEAD
 			if ( ! in_array( 'wordcamp', $trimmed_event_types, true ) && $wordcamps ) {
+=======
+			if ( ! in_array( 'wordcamp', $trimmed_event_types ) && $wordcamps ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				array_pop( $response_body['events'] );
 				array_push( $response_body['events'], $wordcamps[0] );
 			}

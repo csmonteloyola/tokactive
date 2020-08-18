@@ -4,12 +4,20 @@
  * @output wp-admin/js/tags-suggest.js
  */
 ( function( $ ) {
+<<<<<<< HEAD
 	if ( typeof window.uiAutocompleteL10n === 'undefined' ) {
+=======
+	if ( typeof window.tagsSuggestL10n === 'undefined' || typeof window.uiAutocompleteL10n === 'undefined' ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return;
 	}
 
 	var tempID = 0;
+<<<<<<< HEAD
 	var separator = wp.i18n._x( ',', 'tag delimiter' ) || ',';
+=======
+	var separator = window.tagsSuggestL10n.tagDelimiter || ',';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	function split( val ) {
 		return val.split( new RegExp( separator + '\\s*' ) );
@@ -30,8 +38,13 @@
 	 *
 	 * @since 4.7.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} options Options that are passed to UI Autocomplete. Can be used to override the default settings.
 	 * @return {Object} jQuery instance.
+=======
+	 * @param {object} options Options that are passed to UI Autocomplete. Can be used to override the default settings.
+	 * @return {object} jQuery instance.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	$.fn.wpTagsSuggest = function( options ) {
 		var cache;
@@ -104,7 +117,11 @@
 
 				if ( $.ui.keyCode.TAB === event.keyCode ) {
 					// Audible confirmation message when a tag has been selected.
+<<<<<<< HEAD
 					window.wp.a11y.speak( wp.i18n.__( 'Term selected.' ), 'assertive' );
+=======
+					window.wp.a11y.speak( window.tagsSuggestL10n.termSelected, 'assertive' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					event.preventDefault();
 				} else if ( $.ui.keyCode.ENTER === event.keyCode ) {
 					// If we're in the edit post Tags meta box, add the tag.

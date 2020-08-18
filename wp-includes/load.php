@@ -14,13 +14,46 @@
  */
 function wp_get_server_protocol() {
 	$protocol = isset( $_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : '';
+<<<<<<< HEAD
 	if ( ! in_array( $protocol, array( 'HTTP/1.1', 'HTTP/2', 'HTTP/2.0' ), true ) ) {
+=======
+	if ( ! in_array( $protocol, array( 'HTTP/1.1', 'HTTP/2', 'HTTP/2.0' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$protocol = 'HTTP/1.0';
 	}
 	return $protocol;
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Turn register globals off.
+ *
+ * @since 2.1.0
+ * @access private
+ */
+function wp_unregister_GLOBALS() {  // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
+	if ( ! ini_get( 'register_globals' ) ) {
+		return;
+	}
+
+	if ( isset( $_REQUEST['GLOBALS'] ) ) {
+		die( 'GLOBALS overwrite attempt detected' );
+	}
+
+	// Variables that shouldn't be unset.
+	$no_unset = array( 'GLOBALS', '_GET', '_POST', '_COOKIE', '_REQUEST', '_SERVER', '_ENV', '_FILES', 'table_prefix' );
+
+	$input = array_merge( $_GET, $_POST, $_COOKIE, $_SERVER, $_ENV, $_FILES, isset( $_SESSION ) && is_array( $_SESSION ) ? $_SESSION : array() );
+	foreach ( $input as $k => $v ) {
+		if ( ! in_array( $k, $no_unset ) && isset( $GLOBALS[ $k ] ) ) {
+			unset( $GLOBALS[ $k ] );
+		}
+	}
+}
+
+/**
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * Fix `$_SERVER` variables for various setups.
  *
  * @since 3.0.0
@@ -40,7 +73,11 @@ function wp_fix_server_vars() {
 	$_SERVER = array_merge( $default_server_values, $_SERVER );
 
 	// Fix for IIS when running with PHP ISAPI.
+<<<<<<< HEAD
 	if ( empty( $_SERVER['REQUEST_URI'] ) || ( 'cgi-fcgi' !== PHP_SAPI && preg_match( '/^Microsoft-IIS\//', $_SERVER['SERVER_SOFTWARE'] ) ) ) {
+=======
+	if ( empty( $_SERVER['REQUEST_URI'] ) || ( PHP_SAPI != 'cgi-fcgi' && preg_match( '/^Microsoft-IIS\//', $_SERVER['SERVER_SOFTWARE'] ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		if ( isset( $_SERVER['HTTP_X_ORIGINAL_URL'] ) ) {
 			// IIS Mod-Rewrite.
@@ -129,6 +166,7 @@ function wp_check_php_mysql_versions() {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves the current environment type.
  *
  * The type can be set via the `WP_ENVIRONMENT_TYPE` global system variable,
@@ -189,6 +227,8 @@ function wp_get_environment_type() {
 }
 
 /**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * Don't load all of WordPress when handling a favicon.ico request.
  *
  * Instead, send the headers for a zero-length favicon and bail.
@@ -197,7 +237,11 @@ function wp_get_environment_type() {
  * @deprecated 5.4.0 Deprecated in favor of do_favicon().
  */
 function wp_favicon_request() {
+<<<<<<< HEAD
 	if ( '/favicon.ico' === $_SERVER['REQUEST_URI'] ) {
+=======
+	if ( '/favicon.ico' == $_SERVER['REQUEST_URI'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		header( 'Content-Type: image/vnd.microsoft.icon' );
 		exit;
 	}
@@ -206,11 +250,20 @@ function wp_favicon_request() {
 /**
  * Die with a maintenance message when conditions are met.
  *
+<<<<<<< HEAD
+=======
+ * Checks for a file in the WordPress root directory named ".maintenance".
+ * This file will contain the variable $upgrading, set to the time the file
+ * was created. If the file was created less than 10 minutes ago, WordPress
+ * enters maintenance mode and displays a message.
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * The default message can be replaced by using a drop-in (maintenance.php in
  * the wp-content directory).
  *
  * @since 3.0.0
  * @access private
+<<<<<<< HEAD
  */
 function wp_maintenance() {
 	// Return if maintenance mode is disabled.
@@ -260,6 +313,22 @@ function wp_is_maintenance_mode() {
 	// If the $upgrading timestamp is older than 10 minutes, consider maintenance over.
 	if ( ( time() - $upgrading ) >= 10 * MINUTE_IN_SECONDS ) {
 		return false;
+=======
+ *
+ * @global int $upgrading the unix timestamp marking when upgrading WordPress began.
+ */
+function wp_maintenance() {
+	if ( ! file_exists( ABSPATH . '.maintenance' ) || wp_installing() ) {
+		return;
+	}
+
+	global $upgrading;
+
+	require ABSPATH . '.maintenance';
+	// If the $upgrading timestamp is older than 10 minutes, don't die.
+	if ( ( time() - $upgrading ) >= 600 ) {
+		return;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -276,10 +345,31 @@ function wp_is_maintenance_mode() {
 	 * @param int  $upgrading     The timestamp set in the .maintenance file.
 	 */
 	if ( ! apply_filters( 'enable_maintenance_mode', true, $upgrading ) ) {
+<<<<<<< HEAD
 		return false;
 	}
 
 	return true;
+=======
+		return;
+	}
+
+	if ( file_exists( WP_CONTENT_DIR . '/maintenance.php' ) ) {
+		require_once WP_CONTENT_DIR . '/maintenance.php';
+		die();
+	}
+
+	require_once ABSPATH . WPINC . '/functions.php';
+	wp_load_translations_early();
+
+	header( 'Retry-After: 600' );
+
+	wp_die(
+		__( 'Briefly unavailable for scheduled maintenance. Check back in a minute.' ),
+		__( 'Maintenance' ),
+		503
+	);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -619,8 +709,11 @@ function wp_start_object_cache() {
 		require_once ABSPATH . WPINC . '/cache.php';
 	}
 
+<<<<<<< HEAD
 	require_once ABSPATH . WPINC . '/cache-compat.php';
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/*
 	 * If cache supports reset, reset instead of init if already
 	 * initialized. Reset signals to the cache that global IDs
@@ -690,7 +783,11 @@ function wp_get_mu_plugins() {
 		return $mu_plugins;
 	}
 	while ( ( $plugin = readdir( $dh ) ) !== false ) {
+<<<<<<< HEAD
 		if ( '.php' === substr( $plugin, -4 ) ) {
+=======
+		if ( substr( $plugin, -4 ) == '.php' ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$mu_plugins[] = WPMU_PLUGIN_DIR . '/' . $plugin;
 		}
 	}
@@ -712,7 +809,11 @@ function wp_get_mu_plugins() {
  * @since 3.0.0
  * @access private
  *
+<<<<<<< HEAD
  * @return string[] Array of paths to plugin files relative to the plugins directory.
+=======
+ * @return string[] $plugin_file Array of paths to plugin files relative to the plugins directory.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function wp_get_active_and_valid_plugins() {
 	$plugins        = array();
@@ -732,10 +833,17 @@ function wp_get_active_and_valid_plugins() {
 
 	foreach ( $active_plugins as $plugin ) {
 		if ( ! validate_file( $plugin )                     // $plugin must validate as file.
+<<<<<<< HEAD
 			&& '.php' === substr( $plugin, -4 )             // $plugin must end with '.php'.
 			&& file_exists( WP_PLUGIN_DIR . '/' . $plugin ) // $plugin must exist.
 			// Not already included as a network plugin.
 			&& ( ! $network_plugins || ! in_array( WP_PLUGIN_DIR . '/' . $plugin, $network_plugins, true ) )
+=======
+			&& '.php' == substr( $plugin, -4 )              // $plugin must end with '.php'.
+			&& file_exists( WP_PLUGIN_DIR . '/' . $plugin ) // $plugin must exist.
+			// Not already included as a network plugin.
+			&& ( ! $network_plugins || ! in_array( WP_PLUGIN_DIR . '/' . $plugin, $network_plugins ) )
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			) {
 			$plugins[] = WP_PLUGIN_DIR . '/' . $plugin;
 		}
@@ -882,7 +990,11 @@ function is_protected_endpoint() {
 		return true;
 	}
 
+<<<<<<< HEAD
 	// Protect Ajax actions that could help resolve a fatal error should be available.
+=======
+	// Protect AJAX actions that could help resolve a fatal error should be available.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( is_protected_ajax_action() ) {
 		return true;
 	}
@@ -892,22 +1004,38 @@ function is_protected_endpoint() {
 	 *
 	 * This filter is only fired when an endpoint is requested which is not already protected by
 	 * WordPress core. As such, it exclusively allows providing further protected endpoints in
+<<<<<<< HEAD
 	 * addition to the admin backend, login pages and protected Ajax actions.
 	 *
 	 * @since 5.2.0
 	 *
 	 * @param bool $is_protected_endpoint Whether the currently requested endpoint is protected.
 	 *                                    Default false.
+=======
+	 * addition to the admin backend, login pages and protected AJAX actions.
+	 *
+	 * @since 5.2.0
+	 *
+	 * @param bool $is_protected_endpoint Whether the currently requested endpoint is protected. Default false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	return (bool) apply_filters( 'is_protected_endpoint', false );
 }
 
 /**
+<<<<<<< HEAD
  * Determines whether we are currently handling an Ajax action that should be protected against WSODs.
  *
  * @since 5.2.0
  *
  * @return bool True if the current Ajax action should be protected.
+=======
+ * Determines whether we are currently handling an AJAX action that should be protected against WSODs.
+ *
+ * @since 5.2.0
+ *
+ * @return bool True if the current AJAX action should be protected.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function is_protected_ajax_action() {
 	if ( ! wp_doing_ajax() ) {
@@ -930,6 +1058,7 @@ function is_protected_ajax_action() {
 	);
 
 	/**
+<<<<<<< HEAD
 	 * Filters the array of protected Ajax actions.
 	 *
 	 * This filter is only fired when doing Ajax and the Ajax request has an 'action' property.
@@ -937,6 +1066,15 @@ function is_protected_ajax_action() {
 	 * @since 5.2.0
 	 *
 	 * @param string[] $actions_to_protect Array of strings with Ajax actions to protect.
+=======
+	 * Filters the array of protected AJAX actions.
+	 *
+	 * This filter is only fired when doing AJAX and the AJAX request has an 'action' property.
+	 *
+	 * @since 5.2.0
+	 *
+	 * @param string[] $actions_to_protect Array of strings with AJAX actions to protect.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	$actions_to_protect = (array) apply_filters( 'wp_protected_ajax_actions', $actions_to_protect );
 
@@ -982,6 +1120,21 @@ function wp_magic_quotes() {
 	$_COOKIE = add_magic_quotes( $_COOKIE );
 	$_SERVER = add_magic_quotes( $_SERVER );
 
+<<<<<<< HEAD
+=======
+	/*
+	 * Revert the type change to string for two indexes which should retain their proper type.
+	 * Among other things, this preserves compatibility of WP with PHPUnit Code Coverage generation.
+	 */
+	if ( isset( $_SERVER['REQUEST_TIME'] ) ) {
+		$_SERVER['REQUEST_TIME'] = (int) $_SERVER['REQUEST_TIME'];
+	}
+
+	if ( isset( $_SERVER['REQUEST_TIME_FLOAT'] ) ) {
+		$_SERVER['REQUEST_TIME_FLOAT'] = (float) $_SERVER['REQUEST_TIME_FLOAT'];
+	}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	// Force REQUEST to be GET + POST.
 	$_REQUEST = array_merge( $_GET, $_POST );
 }
@@ -1186,6 +1339,11 @@ function get_current_network_id() {
  * @access private
  *
  * @global WP_Locale $wp_locale WordPress date and time locale object.
+<<<<<<< HEAD
+=======
+ *
+ * @staticvar bool $loaded
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function wp_load_translations_early() {
 	global $wp_locale;
@@ -1217,7 +1375,11 @@ function wp_load_translations_early() {
 
 	while ( true ) {
 		if ( defined( 'WPLANG' ) ) {
+<<<<<<< HEAD
 			if ( '' === WPLANG ) {
+=======
+			if ( '' == WPLANG ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				break;
 			}
 			$locales[] = WPLANG;
@@ -1278,6 +1440,11 @@ function wp_load_translations_early() {
  *
  * @since 4.4.0
  *
+<<<<<<< HEAD
+=======
+ * @staticvar bool $installing
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param bool $is_installing Optional. True to set WP into Installing mode, false to turn Installing mode off.
  *                            Omit this parameter if you only want to fetch the current status.
  * @return bool True if WP is installing, otherwise false. When a `$is_installing` is passed, the function will
@@ -1310,7 +1477,11 @@ function wp_installing( $is_installing = null ) {
  */
 function is_ssl() {
 	if ( isset( $_SERVER['HTTPS'] ) ) {
+<<<<<<< HEAD
 		if ( 'on' === strtolower( $_SERVER['HTTPS'] ) ) {
+=======
+		if ( 'on' == strtolower( $_SERVER['HTTPS'] ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return true;
 		}
 
@@ -1356,6 +1527,11 @@ function wp_convert_hr_to_bytes( $value ) {
  *
  * @since 4.6.0
  *
+<<<<<<< HEAD
+=======
+ * @staticvar array $ini_all
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @link https://www.php.net/manual/en/function.ini-get-all.php
  *
  * @param string $setting The name of the ini setting to check.

@@ -14,6 +14,11 @@
  * @since 4.5.0 The optional `$autosave` parameter was deprecated and renamed to `$deprecated`.
  * @access private
  *
+<<<<<<< HEAD
+=======
+ * @staticvar array $fields
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param array|WP_Post $post       Optional. A post array or a WP_Post object being processed
  *                                  for insertion as a post revision. Default empty array.
  * @param bool          $deprecated Not used.
@@ -120,7 +125,11 @@ function wp_save_post_revision( $post_id ) {
 		return;
 	}
 
+<<<<<<< HEAD
 	if ( 'auto-draft' === $post->post_status ) {
+=======
+	if ( 'auto-draft' == $post->post_status ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return;
 	}
 
@@ -221,9 +230,15 @@ function wp_save_post_revision( $post_id ) {
 /**
  * Retrieve the autosaved data of the specified post.
  *
+<<<<<<< HEAD
  * Returns a post object with the information that was autosaved for the specified post.
  * If the optional $user_id is passed, returns the autosave for that user, otherwise
  * returns the latest autosave.
+=======
+ * Returns a post object containing the information that was autosaved for the
+ * specified post. If the optional $user_id is passed, returns the autosave for that user
+ * otherwise returns the latest autosave.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @since 2.6.0
  *
@@ -232,6 +247,7 @@ function wp_save_post_revision( $post_id ) {
  * @return WP_Post|false The autosaved data or false on failure or when no autosave exists.
  */
 function wp_get_post_autosave( $post_id, $user_id = 0 ) {
+<<<<<<< HEAD
 	global $wpdb;
 
 	$autosave_name = $post_id . '-autosave-v1';
@@ -261,6 +277,21 @@ function wp_get_post_autosave( $post_id, $user_id = 0 ) {
 	}
 
 	return get_post( $autosave[0] );
+=======
+	$revisions = wp_get_post_revisions( $post_id, array( 'check_enabled' => false ) );
+
+	foreach ( $revisions as $revision ) {
+		if ( false !== strpos( $revision->post_name, "{$post_id}-autosave" ) ) {
+			if ( $user_id && $user_id != $revision->post_author ) {
+				continue;
+			}
+
+			return $revision;
+		}
+	}
+
+	return false;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -322,7 +353,11 @@ function _wp_put_post_revision( $post = null, $autosave = false ) {
 		return new WP_Error( 'invalid_post', __( 'Invalid post ID.' ) );
 	}
 
+<<<<<<< HEAD
 	if ( isset( $post['post_type'] ) && 'revision' === $post['post_type'] ) {
+=======
+	if ( isset( $post['post_type'] ) && 'revision' == $post['post_type'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return new WP_Error( 'post_type', __( 'Cannot create a revision of a revision' ) );
 	}
 
@@ -354,9 +389,14 @@ function _wp_put_post_revision( $post = null, $autosave = false ) {
  * @since 2.6.0
  *
  * @param int|WP_Post $post   The post ID or object.
+<<<<<<< HEAD
  * @param string      $output Optional. The required return type. One of OBJECT, ARRAY_A, or ARRAY_N, which
  *                            correspond to a WP_Post object, an associative array, or a numeric array,
  *                            respectively. Default OBJECT.
+=======
+ * @param string      $output Optional. The required return type. One of OBJECT, ARRAY_A, or ARRAY_N, which correspond to
+ *                            a WP_Post object, an associative array, or a numeric array, respectively. Default OBJECT.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param string      $filter Optional sanitation filter. See sanitize_post().
  * @return WP_Post|array|null WP_Post (or array) on success, or null on failure.
  */
@@ -631,6 +671,7 @@ function _wp_preview_terms_filter( $terms, $post_id, $taxonomy ) {
 		return $terms;
 	}
 
+<<<<<<< HEAD
 	if ( empty( $_REQUEST['post_format'] ) || $post->ID != $post_id
 		|| 'post_format' !== $taxonomy || 'revision' === $post->post_type
 	) {
@@ -638,6 +679,13 @@ function _wp_preview_terms_filter( $terms, $post_id, $taxonomy ) {
 	}
 
 	if ( 'standard' === $_REQUEST['post_format'] ) {
+=======
+	if ( empty( $_REQUEST['post_format'] ) || $post->ID != $post_id || 'post_format' != $taxonomy || 'revision' == $post->post_type ) {
+		return $terms;
+	}
+
+	if ( 'standard' == $_REQUEST['post_format'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$terms = array();
 	} else {
 		$term = get_term_by( 'slug', 'post-format-' . sanitize_key( $_REQUEST['post_format'] ), 'post_format' );
@@ -669,8 +717,13 @@ function _wp_preview_post_thumbnail_filter( $value, $post_id, $meta_key ) {
 	if ( empty( $_REQUEST['_thumbnail_id'] ) ||
 		empty( $_REQUEST['preview_id'] ) ||
 		$post->ID != $post_id ||
+<<<<<<< HEAD
 		'_thumbnail_id' !== $meta_key ||
 		'revision' === $post->post_type ||
+=======
+		'_thumbnail_id' != $meta_key ||
+		'revision' == $post->post_type ||
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$post_id != $_REQUEST['preview_id'] ) {
 
 		return $value;

@@ -16,9 +16,15 @@ window.wp = window.wp || {};
 	 *
 	 * Fetch a JavaScript template for an id, and return a templating function for it.
 	 *
+<<<<<<< HEAD
 	 * @param {string} id A string that corresponds to a DOM element with an id prefixed with "tmpl-".
 	 *                    For example, "attachment" maps to "tmpl-attachment".
 	 * @return {function} A function that lazily-compiles the template requested.
+=======
+	 * @param  {string} id   A string that corresponds to a DOM element with an id prefixed with "tmpl-".
+	 *                       For example, "attachment" maps to "tmpl-attachment".
+	 * @return {function}    A function that lazily-compiles the template requested.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	wp.template = _.memoize(function ( id ) {
 		var compiled,
@@ -56,11 +62,19 @@ window.wp = window.wp || {};
 		 *
 		 * Sends a POST request to WordPress.
 		 *
+<<<<<<< HEAD
 		 * @param {(string|Object)} action The slug of the action to fire in WordPress or options passed
 		 *                                 to jQuery.ajax.
 		 * @param {Object=}         data   Optional. The data to populate $_POST with.
 		 * @return {$.promise} A jQuery promise that represents the request,
 		 *                     decorated with an abort() method.
+=======
+		 * @param  {(string|object)} action  The slug of the action to fire in WordPress or options passed
+		 *                                   to jQuery.ajax.
+		 * @param  {object=}         data    Optional. The data to populate $_POST with.
+		 * @return {$.promise}     A jQuery promise that represents the request,
+		 *                         decorated with an abort() method.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		post: function( action, data ) {
 			return wp.ajax.send({
@@ -73,11 +87,19 @@ window.wp = window.wp || {};
 		 *
 		 * Sends a POST request to WordPress.
 		 *
+<<<<<<< HEAD
 		 * @param {(string|Object)} action  The slug of the action to fire in WordPress or options passed
 		 *                                  to jQuery.ajax.
 		 * @param {Object=}         options Optional. The options passed to jQuery.ajax.
 		 * @return {$.promise} A jQuery promise that represents the request,
 		 *                     decorated with an abort() method.
+=======
+		 * @param  {(string|object)} action  The slug of the action to fire in WordPress or options passed
+		 *                                   to jQuery.ajax.
+		 * @param  {object=}         options Optional. The options passed to jQuery.ajax.
+		 * @return {$.promise}      A jQuery promise that represents the request,
+		 *                          decorated with an abort() method.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		send: function( action, options ) {
 			var promise, deferred;

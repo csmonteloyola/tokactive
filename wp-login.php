@@ -15,10 +15,17 @@ require __DIR__ . '/wp-load.php';
 if ( force_ssl_admin() && ! is_ssl() ) {
 	if ( 0 === strpos( $_SERVER['REQUEST_URI'], 'http' ) ) {
 		wp_safe_redirect( set_url_scheme( $_SERVER['REQUEST_URI'], 'https' ) );
+<<<<<<< HEAD
 		exit;
 	} else {
 		wp_safe_redirect( 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
 		exit;
+=======
+		exit();
+	} else {
+		wp_safe_redirect( 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+		exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 }
 
@@ -86,7 +93,16 @@ function login_header( $title = 'Log In', $message = '', $wp_error = null ) {
 	$login_title = apply_filters( 'login_title', $login_title, $title );
 
 	?><!DOCTYPE html>
+<<<<<<< HEAD
 	<html <?php language_attributes(); ?>>
+=======
+	<!--[if IE 8]>
+		<html xmlns="http://www.w3.org/1999/xhtml" class="ie8" <?php language_attributes(); ?>>
+	<![endif]-->
+	<!--[if !(IE 8) ]><!-->
+		<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
+	<!--<![endif]-->
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	<head>
 	<meta http-equiv="Content-Type" content="<?php bloginfo( 'html_type' ); ?>; charset=<?php bloginfo( 'charset' ); ?>" />
 	<title><?php echo $login_title; ?></title>
@@ -358,7 +374,11 @@ function retrieve_password() {
 	$user_data = false;
 
 	if ( empty( $_POST['user_login'] ) || ! is_string( $_POST['user_login'] ) ) {
+<<<<<<< HEAD
 		$errors->add( 'empty_username', __( '<strong>Error</strong>: Please enter a username or email address.' ) );
+=======
+		$errors->add( 'empty_username', __( '<strong>Error</strong>: Enter a username or email address.' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	} elseif ( strpos( $_POST['user_login'], '@' ) ) {
 		$user_data = get_user_by( 'email', trim( wp_unslash( $_POST['user_login'] ) ) );
 		if ( empty( $user_data ) ) {
@@ -376,6 +396,7 @@ function retrieve_password() {
 	 * @since 4.4.0 Added the `$errors` parameter.
 	 * @since 5.4.0 Added the `$user_data` parameter.
 	 *
+<<<<<<< HEAD
 	 * @param WP_Error      $errors    A WP_Error object containing any errors generated
 	 *                                 by using invalid credentials.
 	 * @param WP_User|false $user_data WP_User object if found, false if the user does not exist.
@@ -399,6 +420,14 @@ function retrieve_password() {
 	 */
 	$errors = apply_filters( 'lostpassword_errors', $errors, $user_data );
 
+=======
+	 * @param WP_Error $errors A WP_Error object containing any errors generated
+	 *                         by using invalid credentials.
+	 * @param WP_User|false    WP_User object if found, false if the user does not exist.
+	 */
+	do_action( 'lostpassword_post', $errors, $user_data );
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( $errors->has_errors() ) {
 		return $errors;
 	}
@@ -492,10 +521,13 @@ if ( isset( $_GET['key'] ) ) {
 	$action = 'resetpass';
 }
 
+<<<<<<< HEAD
 if ( isset( $_GET['checkemail'] ) ) {
 	$action = 'checkemail';
 }
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 $default_actions = array(
 	'confirm_admin_email',
 	'postpass',
@@ -505,9 +537,14 @@ $default_actions = array(
 	'resetpass',
 	'rp',
 	'register',
+<<<<<<< HEAD
 	'checkemail',
 	'confirmaction',
 	'login',
+=======
+	'login',
+	'confirmaction',
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	WP_Recovery_Mode_Link_Service::LOGIN_ACTION_ENTERED,
 );
 
@@ -617,7 +654,10 @@ switch ( $action ) {
 				update_option( 'admin_email_lifespan', time() + $remind_interval );
 			}
 
+<<<<<<< HEAD
 			$redirect_to = add_query_arg( 'admin_email_remind_later', 1, $redirect_to );
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			wp_safe_redirect( $redirect_to );
 			exit;
 		}
@@ -779,7 +819,11 @@ switch ( $action ) {
 		setcookie( 'wp-postpass_' . COOKIEHASH, $hasher->HashPassword( wp_unslash( $_POST['post_password'] ) ), $expire, COOKIEPATH, COOKIE_DOMAIN, $secure );
 
 		wp_safe_redirect( wp_get_referer() );
+<<<<<<< HEAD
 		exit;
+=======
+		exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	case 'logout':
 		check_admin_referer( 'log-out' );
@@ -815,7 +859,11 @@ switch ( $action ) {
 		$redirect_to = apply_filters( 'logout_redirect', $redirect_to, $requested_redirect_to, $user );
 
 		wp_safe_redirect( $redirect_to );
+<<<<<<< HEAD
 		exit;
+=======
+		exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	case 'lostpassword':
 	case 'retrievepassword':
@@ -825,7 +873,11 @@ switch ( $action ) {
 			if ( ! is_wp_error( $errors ) ) {
 				$redirect_to = ! empty( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : 'wp-login.php?checkemail=confirm';
 				wp_safe_redirect( $redirect_to );
+<<<<<<< HEAD
 				exit;
+=======
+				exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			}
 		}
 
@@ -1059,7 +1111,11 @@ switch ( $action ) {
 
 		if ( ! get_option( 'users_can_register' ) ) {
 			wp_redirect( site_url( 'wp-login.php?registration=disabled' ) );
+<<<<<<< HEAD
 			exit;
+=======
+			exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		$user_login = '';
@@ -1079,7 +1135,11 @@ switch ( $action ) {
 			if ( ! is_wp_error( $errors ) ) {
 				$redirect_to = ! empty( $_POST['redirect_to'] ) ? $_POST['redirect_to'] : 'wp-login.php?checkemail=registered';
 				wp_safe_redirect( $redirect_to );
+<<<<<<< HEAD
 				exit;
+=======
+				exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			}
 		}
 
@@ -1136,6 +1196,7 @@ switch ( $action ) {
 		login_footer( 'user_login' );
 		break;
 
+<<<<<<< HEAD
 	case 'checkemail':
 		$redirect_to = admin_url();
 		$errors      = new WP_Error();
@@ -1169,6 +1230,8 @@ switch ( $action ) {
 		login_footer();
 		break;
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	case 'confirmaction':
 		if ( ! isset( $_GET['request_id'] ) ) {
 			wp_die( __( 'Missing request ID.' ) );
@@ -1367,6 +1430,15 @@ switch ( $action ) {
 				$errors->add( 'loggedout', __( 'You are now logged out.' ), 'message' );
 			} elseif ( isset( $_GET['registration'] ) && 'disabled' === $_GET['registration'] ) {
 				$errors->add( 'registerdisabled', __( 'User registration is currently not allowed.' ) );
+<<<<<<< HEAD
+=======
+			} elseif ( isset( $_GET['checkemail'] ) && 'confirm' === $_GET['checkemail'] ) {
+				$errors->add( 'confirm', __( 'Check your email for the confirmation link.' ), 'message' );
+			} elseif ( isset( $_GET['checkemail'] ) && 'newpass' === $_GET['checkemail'] ) {
+				$errors->add( 'newpass', __( 'Check your email for your new password.' ), 'message' );
+			} elseif ( isset( $_GET['checkemail'] ) && 'registered' === $_GET['checkemail'] ) {
+				$errors->add( 'registered', __( 'Registration complete. Please check your email.' ), 'message' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			} elseif ( strpos( $redirect_to, 'about.php?updated' ) ) {
 				$errors->add( 'updated', __( '<strong>You have successfully updated WordPress!</strong> Please log back in to see what&#8217;s new.' ), 'message' );
 			} elseif ( WP_Recovery_Mode_Link_Service::LOGIN_ACTION_ENTERED === $action ) {
@@ -1464,6 +1536,7 @@ switch ( $action ) {
 			<p id="nav">
 				<?php
 
+<<<<<<< HEAD
 				if ( get_option( 'users_can_register' ) ) {
 					$registration_url = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), __( 'Register' ) );
 
@@ -1475,6 +1548,24 @@ switch ( $action ) {
 
 				?>
 				<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Lost your password?' ); ?></a>
+=======
+				if ( ! isset( $_GET['checkemail'] ) || ! in_array( $_GET['checkemail'], array( 'confirm', 'newpass' ), true ) ) {
+					if ( get_option( 'users_can_register' ) ) {
+						$registration_url = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), __( 'Register' ) );
+
+						/** This filter is documented in wp-includes/general-template.php */
+						echo apply_filters( 'register', $registration_url );
+
+						echo esc_html( $login_link_separator );
+					}
+
+					?>
+					<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Lost your password?' ); ?></a>
+					<?php
+				}
+
+				?>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			</p>
 			<?php
 		}

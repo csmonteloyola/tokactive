@@ -182,6 +182,10 @@ TABLE OF CONTENTS:
 	border-color: #ddd !important;
 	background: #f7f7f7 !important;
 	box-shadow: none !important;
+<<<<<<< HEAD
+=======
+	text-shadow: 0 1px 0 #fff !important;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	cursor: default;
 	transform: none !important;
 }
@@ -206,7 +210,11 @@ TABLE OF CONTENTS:
 
 .wp-core-ui .button-link:hover,
 .wp-core-ui .button-link:active {
+<<<<<<< HEAD
 	color: #006799;
+=======
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .wp-core-ui .button-link:focus {
@@ -233,6 +241,12 @@ TABLE OF CONTENTS:
 	background: transparent !important;
 }
 
+<<<<<<< HEAD
+=======
+.ie8 .wp-core-ui .button-link:focus {
+	outline: #5b9dd9 solid 1px;
+}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 /* ----------------------------------------------------------------------------
   3.0 - Primary Button Style
@@ -276,9 +290,15 @@ TABLE OF CONTENTS:
 .wp-core-ui .button-primary:disabled,
 .wp-core-ui .button-primary-disabled,
 .wp-core-ui .button-primary.disabled {
+<<<<<<< HEAD
 	color: #a0a5aa !important;
 	background: #f7f7f7 !important;
 	border-color: #ddd !important;
+=======
+	color: #66c6e4 !important;
+	background: #008ec2 !important;
+	border-color: #008ec2 !important;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	box-shadow: none !important;
 	text-shadow: none !important;
 	cursor: default;
@@ -354,11 +374,14 @@ TABLE OF CONTENTS:
 		margin-bottom: 4px;
 	}
 
+<<<<<<< HEAD
 	/* Copy attachment URL button in the legacy edit media page. */
 	.wp-core-ui .copy-to-clipboard-container .copy-attachment-url {
 		margin-bottom: 0;
 	}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	#media-upload.wp-core-ui .button {
 		padding: 0 10px 1px;
 		min-height: 24px;

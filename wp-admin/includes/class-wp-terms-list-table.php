@@ -61,7 +61,11 @@ class WP_Terms_List_Table extends WP_List_Table {
 		$tax = get_taxonomy( $taxonomy );
 
 		// @todo Still needed? Maybe just the show_ui part.
+<<<<<<< HEAD
 		if ( empty( $post_type ) || ! in_array( $post_type, get_post_types( array( 'show_ui' => true ) ), true ) ) {
+=======
+		if ( empty( $post_type ) || ! in_array( $post_type, get_post_types( array( 'show_ui' => true ) ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$post_type = 'post';
 		}
 
@@ -269,6 +273,7 @@ class WP_Terms_List_Table extends WP_List_Table {
 
 	/**
 	 * @param string $taxonomy
+<<<<<<< HEAD
 	 * @param array  $terms
 	 * @param array  $children
 	 * @param int    $start
@@ -276,6 +281,15 @@ class WP_Terms_List_Table extends WP_List_Table {
 	 * @param int    $count
 	 * @param int    $parent
 	 * @param int    $level
+=======
+	 * @param array $terms
+	 * @param array $children
+	 * @param int   $start
+	 * @param int   $per_page
+	 * @param int   $count
+	 * @param int   $parent
+	 * @param int   $level
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	private function _rows( $taxonomy, $terms, &$children, $start, $per_page, &$count, $parent = 0, $level = 0 ) {
 
@@ -300,7 +314,11 @@ class WP_Terms_List_Table extends WP_List_Table {
 					$my_parent    = get_term( $p, $taxonomy );
 					$my_parents[] = $my_parent;
 					$p            = $my_parent->parent;
+<<<<<<< HEAD
 					if ( in_array( $p, $parent_ids, true ) ) { // Prevent parent loops.
+=======
+					if ( in_array( $p, $parent_ids ) ) { // Prevent parent loops.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						break;
 					}
 					$parent_ids[] = $p;
@@ -332,8 +350,13 @@ class WP_Terms_List_Table extends WP_List_Table {
 
 	/**
 	 * @global string $taxonomy
+<<<<<<< HEAD
 	 * @param WP_Term $tag   Term object.
 	 * @param int     $level
+=======
+	 * @param WP_Term $tag Term object.
+	 * @param int $level
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function single_row( $tag, $level = 0 ) {
 		global $taxonomy;
@@ -576,7 +599,11 @@ class WP_Terms_List_Table extends WP_List_Table {
 			);
 		}
 
+<<<<<<< HEAD
 		if ( 'post' !== $this->screen->post_type ) {
+=======
+		if ( 'post' != $this->screen->post_type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$args['post_type'] = $this->screen->post_type;
 		}
 
@@ -600,8 +627,13 @@ class WP_Terms_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @param WP_Term $tag         Term object.
 	 * @param string  $column_name Name of the column.
+=======
+	 * @param WP_Term $tag Term object.
+	 * @param string $column_name
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string
 	 */
 	public function column_default( $tag, $column_name ) {

@@ -11,7 +11,12 @@
  * @param {jQuery}  $                                   jQuery object.
  * @param {object}  wp                                  WP object.
  * @param {object}  settings                            WP Updates settings.
+<<<<<<< HEAD
  * @param {string}  settings.ajax_nonce                 Ajax nonce.
+=======
+ * @param {string}  settings.ajax_nonce                 AJAX nonce.
+ * @param {object}  settings.l10n                       Translation strings.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param {object=} settings.plugins                    Base names of plugins in their different states.
  * @param {Array}   settings.plugins.all                Base names of all plugins.
  * @param {Array}   settings.plugins.active             Base names of active plugins.
@@ -26,10 +31,14 @@
  * @param {number}  settings.totals.count               Holds the amount of available updates.
  */
 (function( $, wp, settings ) {
+<<<<<<< HEAD
 	var $document = $( document ),
 		__ = wp.i18n.__,
 		_x = wp.i18n._x,
 		sprintf = wp.i18n.sprintf;
+=======
+	var $document = $( document );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	wp = wp || {};
 
@@ -52,6 +61,18 @@
 	wp.updates.ajaxNonce = settings.ajax_nonce;
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Localized strings.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @type {object}
+	 */
+	wp.updates.l10n = settings.l10n;
+
+	/**
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * Current search term.
 	 *
 	 * @since 4.6.0
@@ -150,7 +171,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object}  data
+=======
+	 * @param {object}  data
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {*=}      data.selector      Optional. Selector of an element to be replaced with the admin notice.
 	 * @param {string=} data.id            Optional. Unique id that will be used as the notice's id attribute.
 	 * @param {string=} data.className     Optional. Class names that will be used in the admin notice.
@@ -194,7 +219,11 @@
 	 * @since 4.6.0
 	 *
 	 * @param {string} action The type of Ajax request ('update-plugin', 'install-theme', etc).
+<<<<<<< HEAD
 	 * @param {Object} data   Data that needs to be passed to the ajax callback.
+=======
+	 * @param {object} data   Data that needs to be passed to the ajax callback.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return {$.promise}    A jQuery promise that represents the request,
 	 *                        decorated with an abort() method.
 	 */
@@ -243,8 +272,13 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object}  response
 	 * @param {Array=}  response.debug     Optional. Debug information.
+=======
+	 * @param {object}  response
+	 * @param {array=}  response.debug     Optional. Debug information.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string=} response.errorCode Optional. Error code for an error that occurred.
 	 */
 	wp.updates.ajaxAlways = function( response ) {
@@ -355,7 +389,11 @@
 	 * @since 4.2.0
 	 * @since 4.6.0 More accurately named `updatePlugin`.
 	 *
+<<<<<<< HEAD
 	 * @param {Object}               args         Arguments.
+=======
+	 * @param {object}               args         Arguments.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string}               args.plugin  Plugin basename.
 	 * @param {string}               args.slug    Plugin slug.
 	 * @param {updatePluginSuccess=} args.success Optional. Success callback. Default: wp.updates.updatePluginSuccess
@@ -374,6 +412,7 @@
 		if ( 'plugins' === pagenow || 'plugins-network' === pagenow ) {
 			$updateRow = $( 'tr[data-plugin="' + args.plugin + '"]' );
 			$message   = $updateRow.find( '.update-message' ).removeClass( 'notice-error' ).addClass( 'updating-message notice-warning' ).find( 'p' );
+<<<<<<< HEAD
 			message    = sprintf(
 				/* translators: %s: Plugin name and version. */
  				_x( 'Updating %s...', 'plugin' ),
@@ -387,18 +426,33 @@
  				_x( 'Updating %s...', 'plugin' ),
 				$message.data( 'name' )
 			);
+=======
+			message    = wp.updates.l10n.pluginUpdatingLabel.replace( '%s', $updateRow.find( '.plugin-title strong' ).text() );
+		} else if ( 'plugin-install' === pagenow || 'plugin-install-network' === pagenow ) {
+			$card    = $( '.plugin-card-' + args.slug );
+			$message = $card.find( '.update-now' ).addClass( 'updating-message' );
+			message  = wp.updates.l10n.pluginUpdatingLabel.replace( '%s', $message.data( 'name' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			// Remove previous error messages, if any.
 			$card.removeClass( 'plugin-card-update-failed' ).find( '.notice.notice-error' ).remove();
 		}
 
+<<<<<<< HEAD
 		if ( $message.html() !== __( 'Updating...' ) ) {
+=======
+		if ( $message.html() !== wp.updates.l10n.updating ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$message.data( 'originaltext', $message.html() );
 		}
 
 		$message
 			.attr( 'aria-label', message )
+<<<<<<< HEAD
 			.text( __( 'Updating...' ) );
+=======
+			.text( wp.updates.l10n.updating );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$document.trigger( 'wp-plugin-updating', args );
 
@@ -410,9 +464,14 @@
 	 *
 	 * @since 4.2.0
 	 * @since 4.6.0 More accurately named `updatePluginSuccess`.
+<<<<<<< HEAD
 	 * @since 5.5.0 Auto-update "time to next update" text cleared.
 	 *
 	 * @param {Object} response            Response from the server.
+=======
+	 *
+	 * @param {object} response            Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} response.slug       Slug of the plugin to be updated.
 	 * @param {string} response.plugin     Basename of the plugin to be updated.
 	 * @param {string} response.pluginName Name of the plugin to be updated.
@@ -433,9 +492,12 @@
 			// Update the version number in the row.
 			newText = $pluginRow.find( '.plugin-version-author-uri' ).html().replace( response.oldVersion, response.newVersion );
 			$pluginRow.find( '.plugin-version-author-uri' ).html( newText );
+<<<<<<< HEAD
 
 			// Clear the "time to next auto-update" text.
 			$pluginRow.find( '.auto-update-time' ).empty();
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		} else if ( 'plugin-install' === pagenow || 'plugin-install-network' === pagenow ) {
 			$updateMessage = $( '.plugin-card-' + response.slug ).find( '.update-now' )
 				.removeClass( 'updating-message' )
@@ -443,6 +505,7 @@
 		}
 
 		$updateMessage
+<<<<<<< HEAD
 			.attr(
 				'aria-label',
 				sprintf(
@@ -454,6 +517,12 @@
 			.text( _x( 'Updated!', 'plugin' ) );
 
 		wp.a11y.speak( __( 'Update completed successfully.' ) );
+=======
+			.attr( 'aria-label', wp.updates.l10n.pluginUpdatedLabel.replace( '%s', response.pluginName ) )
+			.text( wp.updates.l10n.pluginUpdated );
+
+		wp.a11y.speak( wp.updates.l10n.updatedMsg, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		wp.updates.decrementCount( 'plugin' );
 
@@ -466,7 +535,11 @@
 	 * @since 4.2.0
 	 * @since 4.6.0 More accurately named `updatePluginError`.
 	 *
+<<<<<<< HEAD
 	 * @param {Object}  response              Response from the server.
+=======
+	 * @param {object}  response              Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string}  response.slug         Slug of the plugin to be updated.
 	 * @param {string}  response.plugin       Basename of the plugin to be updated.
 	 * @param {string=} response.pluginName   Optional. Name of the plugin to be updated.
@@ -484,11 +557,15 @@
 			return;
 		}
 
+<<<<<<< HEAD
 		errorMessage = sprintf(
 			/* translators: %s: Error string for a failed update. */
 			__( 'Update failed: %s' ),
 			response.errorMessage
 		);
+=======
+		errorMessage = wp.updates.l10n.updateFailed.replace( '%s', response.errorMessage );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		if ( 'plugins' === pagenow || 'plugins-network' === pagenow ) {
 			if ( response.plugin ) {
@@ -500,6 +577,7 @@
 
 			if ( response.pluginName ) {
 				$message.find( 'p' )
+<<<<<<< HEAD
 					.attr(
 						'aria-label',
 						sprintf(
@@ -508,6 +586,9 @@
 							response.pluginName
 						)
 					);
+=======
+					.attr( 'aria-label', wp.updates.l10n.pluginUpdateFailedLabel.replace( '%s', response.pluginName ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			} else {
 				$message.find( 'p' ).removeAttr( 'aria-label' );
 			}
@@ -520,6 +601,7 @@
 				} ) );
 
 			$card.find( '.update-now' )
+<<<<<<< HEAD
 				.text(  __( 'Update failed.' ) )
 				.removeClass( 'updating-message' );
 
@@ -533,6 +615,13 @@
 							response.pluginName
 						)
 					);
+=======
+				.text( wp.updates.l10n.updateFailedShort ).removeClass( 'updating-message' );
+
+			if ( response.pluginName ) {
+				$card.find( '.update-now' )
+					.attr( 'aria-label', wp.updates.l10n.pluginUpdateFailedLabel.replace( '%s', response.pluginName ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			} else {
 				$card.find( '.update-now' ).removeAttr( 'aria-label' );
 			}
@@ -547,7 +636,11 @@
 
 					$card.find( '.update-now' )
 						.attr( 'aria-label', false )
+<<<<<<< HEAD
 						.text( __( 'Update Now' ) );
+=======
+						.text( wp.updates.l10n.updateNow );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}, 200 );
 			} );
 		}
@@ -562,7 +655,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object}                args         Arguments.
+=======
+	 * @param {object}                args         Arguments.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string}                args.slug    Plugin identifier in the WordPress.org Plugin repository.
 	 * @param {installPluginSuccess=} args.success Optional. Success callback. Default: wp.updates.installPluginSuccess
 	 * @param {installPluginError=}   args.error   Optional. Error callback. Default: wp.updates.installPluginError
@@ -582,12 +679,17 @@
 			$message = $( '[data-slug="' + args.slug + '"]' );
 		}
 
+<<<<<<< HEAD
 		if ( $message.html() !== __( 'Installing...' ) ) {
+=======
+		if ( $message.html() !== wp.updates.l10n.installing ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$message.data( 'originaltext', $message.html() );
 		}
 
 		$message
 			.addClass( 'updating-message' )
+<<<<<<< HEAD
 			.attr(
 				'aria-label',
 				sprintf(
@@ -599,6 +701,12 @@
 			.text( __( 'Installing...' ) );
 
 		wp.a11y.speak( __( 'Installing... please wait.' ) );
+=======
+			.attr( 'aria-label', wp.updates.l10n.pluginInstallingLabel.replace( '%s', $message.data( 'name' ) ) )
+			.text( wp.updates.l10n.installing );
+
+		wp.a11y.speak( wp.updates.l10n.installingMsg, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		// Remove previous error messages, if any.
 		$card.removeClass( 'plugin-card-install-failed' ).find( '.notice.notice-error' ).remove();
@@ -613,7 +721,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} response             Response from the server.
+=======
+	 * @param {object} response             Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} response.slug        Slug of the installed plugin.
 	 * @param {string} response.pluginName  Name of the installed plugin.
 	 * @param {string} response.activateUrl URL to activate the just installed plugin.
@@ -624,6 +736,7 @@
 		$message
 			.removeClass( 'updating-message' )
 			.addClass( 'updated-message installed button-disabled' )
+<<<<<<< HEAD
 			.attr(
 				'aria-label',
 				sprintf(
@@ -635,6 +748,12 @@
 			.text( _x( 'Installed!', 'plugin' ) );
 
 		wp.a11y.speak( __( 'Installation completed successfully.' ) );
+=======
+			.attr( 'aria-label', wp.updates.l10n.pluginInstalledLabel.replace( '%s', response.pluginName ) )
+			.text( wp.updates.l10n.pluginInstalled );
+
+		wp.a11y.speak( wp.updates.l10n.installedMsg, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$document.trigger( 'wp-plugin-install-success', response );
 
@@ -642,6 +761,7 @@
 			setTimeout( function() {
 
 				// Transform the 'Install' button into an 'Activate' button.
+<<<<<<< HEAD
 				$message.removeClass( 'install-now installed button-disabled updated-message' )
 					.addClass( 'activate-now button-primary' )
 					.attr( 'href', response.activateUrl );
@@ -669,6 +789,12 @@
 						)
 						.text( __( 'Activate' ) );
 				}
+=======
+				$message.removeClass( 'install-now installed button-disabled updated-message' ).addClass( 'activate-now button-primary' )
+					.attr( 'href', response.activateUrl )
+					.attr( 'aria-label', wp.updates.l10n.activatePluginLabel.replace( '%s', response.pluginName ) )
+					.text( wp.updates.l10n.activatePlugin );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			}, 1000 );
 		}
 	};
@@ -678,7 +804,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object}  response              Response from the server.
+=======
+	 * @param {object}  response              Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string}  response.slug         Slug of the plugin to be installed.
 	 * @param {string=} response.pluginName   Optional. Name of the plugin to be installed.
 	 * @param {string}  response.errorCode    Error code for the error that occurred.
@@ -697,11 +827,15 @@
 			return;
 		}
 
+<<<<<<< HEAD
 		errorMessage = sprintf(
 			/* translators: %s: Error string for a failed installation. */
 			__( 'Installation failed: %s' ),
 			response.errorMessage
 		);
+=======
+		errorMessage = wp.updates.l10n.installFailed.replace( '%s', response.errorMessage );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$card
 			.addClass( 'plugin-card-update-failed' )
@@ -719,6 +853,7 @@
 
 		$button
 			.removeClass( 'updating-message' ).addClass( 'button-disabled' )
+<<<<<<< HEAD
 			.attr(
 				'aria-label',
 				sprintf(
@@ -728,6 +863,10 @@
 				)
 			)
 			.text( __( 'Installation failed.' ) );
+=======
+			.attr( 'aria-label', wp.updates.l10n.pluginInstallFailedLabel.replace( '%s', $button.data( 'name' ) ) )
+			.text( wp.updates.l10n.installFailedShort );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		wp.a11y.speak( errorMessage, 'assertive' );
 
@@ -739,7 +878,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} response             Response from the server.
+=======
+	 * @param {object} response             Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} response.slug        Slug of the installed plugin.
 	 * @param {string} response.pluginName  Name of the installed plugin.
 	 * @param {string} response.activateUrl URL to activate the just installed plugin.
@@ -748,11 +891,15 @@
 		wp.updates.addAdminNotice( {
 			id:        'install-success',
 			className: 'notice-success is-dismissible',
+<<<<<<< HEAD
 			message:   sprintf(
 				/* translators: %s: Activation URL. */
 				__( 'Importer installed successfully. <a href="%s">Run importer</a>' ),
 				response.activateUrl + '&from=import'
 			)
+=======
+			message:   wp.updates.l10n.importerInstalledMsg.replace( '%s', response.activateUrl + '&from=import' )
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		} );
 
 		$( '[data-slug="' + response.slug + '"]' )
@@ -760,6 +907,7 @@
 			.addClass( 'activate-now' )
 			.attr({
 				'href': response.activateUrl + '&from=import',
+<<<<<<< HEAD
 				'aria-label':sprintf(
 					/* translators: %s: Importer name. */
 					__( 'Run %s' ),
@@ -769,6 +917,13 @@
 			.text( __( 'Run Importer' ) );
 
 		wp.a11y.speak( __( 'Installation completed successfully.' ) );
+=======
+				'aria-label': wp.updates.l10n.activateImporterLabel.replace( '%s', response.pluginName )
+			})
+			.text( wp.updates.l10n.activateImporter );
+
+		wp.a11y.speak( wp.updates.l10n.installedMsg, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$document.trigger( 'wp-importer-install-success', response );
 	};
@@ -778,18 +933,26 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object}  response              Response from the server.
+=======
+	 * @param {object}  response              Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string}  response.slug         Slug of the plugin to be installed.
 	 * @param {string=} response.pluginName   Optional. Name of the plugin to be installed.
 	 * @param {string}  response.errorCode    Error code for the error that occurred.
 	 * @param {string}  response.errorMessage The error that occurred.
 	 */
 	wp.updates.installImporterError = function( response ) {
+<<<<<<< HEAD
 		var errorMessage = sprintf(
 				/* translators: %s: Error string for a failed installation. */
 				__( 'Installation failed: %s' ),
 				response.errorMessage
 			),
+=======
+		var errorMessage = wp.updates.l10n.installFailed.replace( '%s', response.errorMessage ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$installLink = $( '[data-slug="' + response.slug + '"]' ),
 			pluginName = $installLink.data( 'name' );
 
@@ -809,6 +972,7 @@
 
 		$installLink
 			.removeClass( 'updating-message' )
+<<<<<<< HEAD
 			.attr(
 				'aria-label',
 				sprintf(
@@ -818,6 +982,10 @@
 				)
 			)
 			.text( __( 'Install Now' ) );
+=======
+			.text( wp.updates.l10n.installNow )
+			.attr( 'aria-label', wp.updates.l10n.pluginInstallNowLabel.replace( '%s', pluginName ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		wp.a11y.speak( errorMessage, 'assertive' );
 
@@ -829,7 +997,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object}               args         Arguments.
+=======
+	 * @param {object}               args         Arguments.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string}               args.plugin  Basename of the plugin to be deleted.
 	 * @param {string}               args.slug    Slug of the plugin to be deleted.
 	 * @param {deletePluginSuccess=} args.success Optional. Success callback. Default: wp.updates.deletePluginSuccess
@@ -845,6 +1017,7 @@
 			error: wp.updates.deletePluginError
 		}, args );
 
+<<<<<<< HEAD
 		if ( $link.html() !== __( 'Deleting...' ) ) {
 			$link
 				.data( 'originaltext', $link.html() )
@@ -852,6 +1025,15 @@
 		}
 
 		wp.a11y.speak( __( 'Deleting...' ) );
+=======
+		if ( $link.html() !== wp.updates.l10n.deleting ) {
+			$link
+				.data( 'originaltext', $link.html() )
+				.text( wp.updates.l10n.deleting );
+		}
+
+		wp.a11y.speak( wp.updates.l10n.deleting, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$document.trigger( 'wp-plugin-deleting', args );
 
@@ -941,12 +1123,20 @@
 				$views.find( '.all' ).remove();
 
 				if ( ! $form.find( 'tr.no-items' ).length ) {
+<<<<<<< HEAD
 					$form.find( '#the-list' ).append( '<tr class="no-items"><td class="colspanchange" colspan="' + columnCount + '">' + __( 'No plugins are currently available.' ) + '</td></tr>' );
+=======
+					$form.find( '#the-list' ).append( '<tr class="no-items"><td class="colspanchange" colspan="' + columnCount + '">' + wp.updates.l10n.noPlugins + '</td></tr>' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 			}
 		} );
 
+<<<<<<< HEAD
 		wp.a11y.speak( _x( 'Deleted!', 'plugin' ) );
+=======
+		wp.a11y.speak( wp.updates.l10n.pluginDeleted, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$document.trigger( 'wp-plugin-delete-success', response );
 	};
@@ -956,7 +1146,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object}  response              Response from the server.
+=======
+	 * @param {object}  response              Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string}  response.slug         Slug of the plugin to be deleted.
 	 * @param {string}  response.plugin       Base name of the plugin to be deleted
 	 * @param {string=} response.pluginName   Optional. Name of the plugin to be deleted.
@@ -1013,7 +1207,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object}              args         Arguments.
+=======
+	 * @param {object}              args         Arguments.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string}              args.slug    Theme stylesheet.
 	 * @param {updateThemeSuccess=} args.success Optional. Success callback. Default: wp.updates.updateThemeSuccess
 	 * @param {updateThemeError=}   args.error   Optional. Error callback. Default: wp.updates.updateThemeError
@@ -1051,12 +1249,21 @@
 			$notice = $notice.addClass( 'updating-message' ).find( 'p' );
 		}
 
+<<<<<<< HEAD
 		if ( $notice.html() !== __( 'Updating...' ) ) {
 			$notice.data( 'originaltext', $notice.html() );
 		}
 
 		wp.a11y.speak( __( 'Updating... please wait.' ) );
 		$notice.text( __( 'Updating...' ) );
+=======
+		if ( $notice.html() !== wp.updates.l10n.updating ) {
+			$notice.data( 'originaltext', $notice.html() );
+		}
+
+		wp.a11y.speak( wp.updates.l10n.updatingMsg, 'polite' );
+		$notice.text( wp.updates.l10n.updating );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$document.trigger( 'wp-theme-updating', args );
 
@@ -1067,11 +1274,18 @@
 	 * Updates the UI appropriately after a successful theme update.
 	 *
 	 * @since 4.6.0
+<<<<<<< HEAD
 	 * @since 5.5.0 Auto-update "time to next update" text cleared.
 	 *
 	 * @param {Object} response
 	 * @param {string} response.slug       Slug of the theme to be updated.
 	 * @param {Object} response.theme      Updated theme.
+=======
+	 *
+	 * @param {object} response
+	 * @param {string} response.slug       Slug of the theme to be updated.
+	 * @param {object} response.theme      Updated theme.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} response.oldVersion Old version of the theme.
 	 * @param {string} response.newVersion New version of the theme.
 	 */
@@ -1080,7 +1294,11 @@
 			$theme         = $( '[data-slug="' + response.slug + '"]' ),
 			updatedMessage = {
 				className: 'updated-message notice-success notice-alt',
+<<<<<<< HEAD
 				message:   _x( 'Updated!', 'theme' )
+=======
+				message:   wp.updates.l10n.themeUpdated
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			},
 			$notice, newText;
 
@@ -1101,23 +1319,33 @@
 			// Update the version number in the row.
 			newText = $theme.find( '.theme-version-author-uri' ).html().replace( response.oldVersion, response.newVersion );
 			$theme.find( '.theme-version-author-uri' ).html( newText );
+<<<<<<< HEAD
 
 			// Clear the "time to next auto-update" text.
 			$theme.find( '.auto-update-time' ).empty();
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		} else {
 			$notice = $( '.theme-info .notice' ).add( $theme.find( '.update-message' ) );
 
 			// Focus on Customize button after updating.
 			if ( isModalOpen ) {
 				$( '.load-customize:visible' ).focus();
+<<<<<<< HEAD
 				$( '.theme-info .theme-autoupdate' ).find( '.auto-update-time' ).empty();
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			} else {
 				$theme.find( '.load-customize' ).focus();
 			}
 		}
 
 		wp.updates.addAdminNotice( _.extend( { selector: $notice }, updatedMessage ) );
+<<<<<<< HEAD
 		wp.a11y.speak( __( 'Update completed successfully.' ) );
+=======
+		wp.a11y.speak( wp.updates.l10n.updatedMsg, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		wp.updates.decrementCount( 'theme' );
 
@@ -1134,18 +1362,26 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} response              Response from the server.
+=======
+	 * @param {object} response              Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} response.slug         Slug of the theme to be updated.
 	 * @param {string} response.errorCode    Error code for the error that occurred.
 	 * @param {string} response.errorMessage The error that occurred.
 	 */
 	wp.updates.updateThemeError = function( response ) {
 		var $theme       = $( '[data-slug="' + response.slug + '"]' ),
+<<<<<<< HEAD
 			errorMessage = sprintf(
 				/* translators: %s: Error string for a failed update. */
 				 __( 'Update failed: %s' ),
 				response.errorMessage
 			),
+=======
+			errorMessage = wp.updates.l10n.updateFailed.replace( '%s', response.errorMessage ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$notice;
 
 		if ( ! wp.updates.isValidResponse( response, 'update' ) ) {
@@ -1174,7 +1410,11 @@
 			message:   errorMessage
 		} );
 
+<<<<<<< HEAD
 		wp.a11y.speak( errorMessage );
+=======
+		wp.a11y.speak( errorMessage, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$document.trigger( 'wp-theme-update-error', response );
 	};
@@ -1184,7 +1424,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object}               args
+=======
+	 * @param {object}               args
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string}               args.slug    Theme stylesheet.
 	 * @param {installThemeSuccess=} args.success Optional. Success callback. Default: wp.updates.installThemeSuccess
 	 * @param {installThemeError=}   args.error   Optional. Error callback. Default: wp.updates.installThemeError
@@ -1201,11 +1445,16 @@
 
 		$message.addClass( 'updating-message' );
 		$message.parents( '.theme' ).addClass( 'focus' );
+<<<<<<< HEAD
 		if ( $message.html() !== __( 'Installing...' ) ) {
+=======
+		if ( $message.html() !== wp.updates.l10n.installing ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$message.data( 'originaltext', $message.html() );
 		}
 
 		$message
+<<<<<<< HEAD
 			.attr(
 				'aria-label',
 				sprintf(
@@ -1217,6 +1466,11 @@
 			.text( __( 'Installing...' ) );
 
 		wp.a11y.speak( __( 'Installing... please wait.' ) );
+=======
+			.text( wp.updates.l10n.installing )
+			.attr( 'aria-label', wp.updates.l10n.themeInstallingLabel.replace( '%s', $message.data( 'name' ) ) );
+		wp.a11y.speak( wp.updates.l10n.installingMsg, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		// Remove previous error messages, if any.
 		$( '.install-theme-info, [data-slug="' + args.slug + '"]' ).removeClass( 'theme-install-failed' ).find( '.notice.notice-error' ).remove();
@@ -1231,7 +1485,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} response              Response from the server.
+=======
+	 * @param {object} response              Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} response.slug         Slug of the theme to be installed.
 	 * @param {string} response.customizeUrl URL to the Customizer for the just installed theme.
 	 * @param {string} response.activateUrl  URL to activate the just installed theme.
@@ -1245,6 +1503,7 @@
 		$message = $card.find( '.button-primary' )
 			.removeClass( 'updating-message' )
 			.addClass( 'updated-message disabled' )
+<<<<<<< HEAD
 			.attr(
 				'aria-label',
 				sprintf(
@@ -1256,6 +1515,12 @@
 			.text( _x( 'Installed!', 'theme' ) );
 
 		wp.a11y.speak( __( 'Installation completed successfully.' ) );
+=======
+			.attr( 'aria-label', wp.updates.l10n.themeInstalledLabel.replace( '%s', response.themeName ) )
+			.text( wp.updates.l10n.themeInstalled );
+
+		wp.a11y.speak( wp.updates.l10n.installedMsg, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		setTimeout( function() {
 
@@ -1265,6 +1530,7 @@
 				$message
 					.attr( 'href', response.activateUrl )
 					.removeClass( 'theme-install updated-message disabled' )
+<<<<<<< HEAD
 					.addClass( 'activate' );
 
 				if ( 'themes-network' === pagenow ) {
@@ -1290,6 +1556,11 @@
 						)
 						.text( __( 'Activate' ) );
 				}
+=======
+					.addClass( 'activate' )
+					.attr( 'aria-label', wp.updates.l10n.activateThemeLabel.replace( '%s', response.themeName ) )
+					.text( wp.updates.l10n.activateTheme );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			}
 
 			if ( response.customizeUrl ) {
@@ -1299,7 +1570,11 @@
 					return $( '<a>' )
 						.attr( 'href', response.customizeUrl )
 						.addClass( 'button load-customize' )
+<<<<<<< HEAD
 						.text( __( 'Live Preview' ) );
+=======
+						.text( wp.updates.l10n.livePreview );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				} );
 			}
 		}, 1000 );
@@ -1310,18 +1585,26 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} response              Response from the server.
+=======
+	 * @param {object} response              Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} response.slug         Slug of the theme to be installed.
 	 * @param {string} response.errorCode    Error code for the error that occurred.
 	 * @param {string} response.errorMessage The error that occurred.
 	 */
 	wp.updates.installThemeError = function( response ) {
 		var $card, $button,
+<<<<<<< HEAD
 			errorMessage = sprintf(
 				/* translators: %s: Error string for a failed installation. */
 				__( 'Installation failed: %s' ),
 				response.errorMessage
 			),
+=======
+			errorMessage = wp.updates.l10n.installFailed.replace( '%s', response.errorMessage ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$message     = wp.updates.adminNotice( {
 				className: 'update-message notice-error notice-alt',
 				message:   errorMessage
@@ -1356,6 +1639,7 @@
 
 		$button
 			.removeClass( 'updating-message' )
+<<<<<<< HEAD
 			.attr(
 				'aria-label',
 				sprintf(
@@ -1365,6 +1649,10 @@
 				)
 			)
 			.text( __( 'Installation failed.' ) );
+=======
+			.attr( 'aria-label', wp.updates.l10n.themeInstallFailedLabel.replace( '%s', $button.data( 'name' ) ) )
+			.text( wp.updates.l10n.installFailedShort );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		wp.a11y.speak( errorMessage, 'assertive' );
 
@@ -1376,7 +1664,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object}              args
+=======
+	 * @param {object}              args
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string}              args.slug    Theme stylesheet.
 	 * @param {deleteThemeSuccess=} args.success Optional. Success callback. Default: wp.updates.deleteThemeSuccess
 	 * @param {deleteThemeError=}   args.error   Optional. Error callback. Default: wp.updates.deleteThemeError
@@ -1397,6 +1689,7 @@
 			error: wp.updates.deleteThemeError
 		}, args );
 
+<<<<<<< HEAD
 		if ( $button && $button.html() !== __( 'Deleting...' ) ) {
 			$button
 				.data( 'originaltext', $button.html() )
@@ -1404,6 +1697,15 @@
 		}
 
 		wp.a11y.speak( __( 'Deleting...' ) );
+=======
+		if ( $button && $button.html() !== wp.updates.l10n.deleting ) {
+			$button
+				.data( 'originaltext', $button.html() )
+				.text( wp.updates.l10n.deleting );
+		}
+
+		wp.a11y.speak( wp.updates.l10n.deleting, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		// Remove previous error messages, if any.
 		$( '.theme-info .update-message' ).remove();
@@ -1418,7 +1720,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} response      Response from the server.
+=======
+	 * @param {object} response      Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} response.slug Slug of the theme that was deleted.
 	 */
 	wp.updates.deleteThemeSuccess = function( response ) {
@@ -1466,7 +1772,11 @@
 			} );
 		}
 
+<<<<<<< HEAD
 		wp.a11y.speak( _x( 'Deleted!', 'theme' ) );
+=======
+		wp.a11y.speak( wp.updates.l10n.themeDeleted, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$document.trigger( 'wp-theme-delete-success', response );
 	};
@@ -1476,7 +1786,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} response              Response from the server.
+=======
+	 * @param {object} response              Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} response.slug         Slug of the theme to be deleted.
 	 * @param {string} response.errorCode    Error code for the error that occurred.
 	 * @param {string} response.errorMessage The error that occurred.
@@ -1486,11 +1800,15 @@
 			$button      = $( '.theme-actions .delete-theme' ),
 			updateRow    = wp.template( 'item-update-row' ),
 			$updateRow   = $themeRow.siblings( '#' + response.slug + '-update' ),
+<<<<<<< HEAD
 			errorMessage = sprintf(
 				/* translators: %s: Error string for a failed deletion. */
 				__( 'Deletion failed: %s' ),
 				response.errorMessage
 			),
+=======
+			errorMessage = wp.updates.l10n.deleteFailed.replace( '%s', response.errorMessage ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$message     = wp.updates.adminNotice( {
 				className: 'update-message notice-error notice-alt',
 				message:   errorMessage
@@ -1531,9 +1849,15 @@
 	 * @since 4.6.0
 	 * @private
 	 *
+<<<<<<< HEAD
 	 * @param {Object} data   Ajax payload.
 	 * @param {string} action The type of request to perform.
 	 * @return {Object} The Ajax payload with the appropriate callbacks.
+=======
+	 * @param {object} data   AJAX payload.
+	 * @param {string} action The type of request to perform.
+	 * @return {object} The AJAX payload with the appropriate callbacks.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	wp.updates._addCallbacks = function( data, action ) {
 		if ( 'import' === pagenow && 'install-plugin' === action ) {
@@ -1725,7 +2049,11 @@
 	 *
 	 * @since 4.2.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} response Ajax response.
+=======
+	 * @param {object} response Ajax response.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} action   The type of request to perform.
 	 */
 	wp.updates.credentialError = function( response, action ) {
@@ -1753,7 +2081,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} response              Response from the server.
+=======
+	 * @param {object} response              Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} response.errorCode    Error code for the error that occurred.
 	 * @param {string} response.errorMessage The error that occurred.
 	 * @param {string} action                The type of request to perform.
@@ -1769,11 +2101,19 @@
 	};
 
 	/**
+<<<<<<< HEAD
 	 * Validates an Ajax response to ensure it's a proper object.
 	 *
 	 * If the response deems to be invalid, an admin notice is being displayed.
 	 *
 	 * @param {(Object|string)} response              Response from the server.
+=======
+	 * Validates an AJAX response to ensure it's a proper object.
+	 *
+	 * If the response deems to be invalid, an admin notice is being displayed.
+	 *
+	 * @param {(object|string)} response              Response from the server.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {function=}       response.always       Optional. Callback for when the Deferred is resolved or rejected.
 	 * @param {string=}         response.statusText   Optional. Status message corresponding to the status code.
 	 * @param {string=}         response.responseText Optional. Request response as text.
@@ -1781,8 +2121,13 @@
 	 *                                                'update' or 'install'.
 	 */
 	wp.updates.isValidResponse = function( response, action ) {
+<<<<<<< HEAD
 		var error = __( 'Something went wrong.' ),
 			errorMessage;
+=======
+		var error = wp.updates.l10n.unknownError,
+		    errorMessage;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		// Make sure the response is a valid data object and not a Promise object.
 		if ( _.isObject( response ) && ! _.isFunction( response.always ) ) {
@@ -1790,11 +2135,19 @@
 		}
 
 		if ( _.isString( response ) && '-1' === response ) {
+<<<<<<< HEAD
 			error = __( 'An error has occurred. Please reload the page and try again.' );
 		} else if ( _.isString( response ) ) {
 			error = response;
 		} else if ( 'undefined' !== typeof response.readyState && 0 === response.readyState ) {
 			error = __( 'Connection lost or the server is busy. Please try again later.' );
+=======
+			error = wp.updates.l10n.nonceError;
+		} else if ( _.isString( response ) ) {
+			error = response;
+		} else if ( 'undefined' !== typeof response.readyState && 0 === response.readyState ) {
+			error = wp.updates.l10n.connectionError;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		} else if ( _.isString( response.responseText ) && '' !== response.responseText ) {
 			error = response.responseText;
 		} else if ( _.isString( response.statusText ) ) {
@@ -1803,6 +2156,7 @@
 
 		switch ( action ) {
 			case 'update':
+<<<<<<< HEAD
 				/* translators: %s: Error string for a failed update. */
 				errorMessage = __( 'Update failed: %s' );
 				break;
@@ -1815,6 +2169,17 @@
 			case 'delete':
 				/* translators: %s: Error string for a failed deletion. */
 				errorMessage = __( 'Deletion failed: %s' );
+=======
+				errorMessage = wp.updates.l10n.updateFailed;
+				break;
+
+			case 'install':
+				errorMessage = wp.updates.l10n.installFailed;
+				break;
+
+			case 'delete':
+				errorMessage = wp.updates.l10n.deleteFailed;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				break;
 		}
 
@@ -1838,7 +2203,11 @@
 			.removeClass( 'updating-message' )
 			.removeAttr( 'aria-label' )
 			.prop( 'disabled', true )
+<<<<<<< HEAD
 			.text( __( 'Update failed.' ) );
+=======
+			.text( wp.updates.l10n.updateFailedShort );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$( '.updating-message:not(.button):not(.thickbox)' )
 			.removeClass( 'updating-message notice-warning' )
@@ -1862,7 +2231,11 @@
 	 */
 	wp.updates.beforeunload = function() {
 		if ( wp.updates.ajaxLocked ) {
+<<<<<<< HEAD
 			return __( 'Updates may not complete if you navigate away from this page.' );
+=======
+			return wp.updates.l10n.beforeunload;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	};
 
@@ -1975,6 +2348,7 @@
 
 				if ( 'plugin-install' === pagenow || 'plugin-install-network' === pagenow ) {
 					if ( 'update-plugin' === job.action ) {
+<<<<<<< HEAD
 						$message.attr(
 							'aria-label',
 							sprintf(
@@ -1992,11 +2366,20 @@
 								$message.data( 'name' )
 							)
 						);
+=======
+						$message.attr( 'aria-label', wp.updates.l10n.pluginUpdateNowLabel.replace( '%s', $message.data( 'name' ) ) );
+					} else if ( 'install-plugin' === job.action ) {
+						$message.attr( 'aria-label', wp.updates.l10n.pluginInstallNowLabel.replace( '%s', $message.data( 'name' ) ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					}
 				}
 			}
 
+<<<<<<< HEAD
 			wp.a11y.speak( __( 'Update canceled.' ) );
+=======
+			wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		} );
 
 		/**
@@ -2072,9 +2455,15 @@
 
 					$message
 						.removeClass( 'updating-message' )
+<<<<<<< HEAD
 						.text( __( 'Install Now' ) );
 
 					wp.a11y.speak( __( 'Update canceled.' ) );
+=======
+						.text( wp.updates.l10n.installNow );
+
+					wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				} );
 			}
 
@@ -2107,6 +2496,7 @@
 
 					$button
 						.removeClass( 'updating-message' )
+<<<<<<< HEAD
 						.attr(
 							'aria-label',
 							sprintf(
@@ -2118,6 +2508,12 @@
 						.text( __( 'Install Now' ) );
 
 					wp.a11y.speak( __( 'Update canceled.' ) );
+=======
+						.text( wp.updates.l10n.installNow )
+						.attr( 'aria-label', wp.updates.l10n.pluginInstallNowLabel.replace( '%s', pluginName ) );
+
+					wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				} );
 			}
 
@@ -2137,6 +2533,7 @@
 		 * @param {Event} event Event interface.
 		 */
 		$bulkActionForm.on( 'click', '[data-plugin] a.delete', function( event ) {
+<<<<<<< HEAD
 			var $pluginRow = $( event.target ).parents( 'tr' ),
 				confirmMessage;
 
@@ -2157,6 +2554,13 @@
 			event.preventDefault();
 
 			if ( ! window.confirm( confirmMessage ) ) {
+=======
+			var $pluginRow = $( event.target ).parents( 'tr' );
+
+			event.preventDefault();
+
+			if ( ! window.confirm( wp.updates.l10n.aysDeleteUninstall.replace( '%s', $pluginRow.find( '.plugin-title strong' ).text() ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				return;
 			}
 
@@ -2203,6 +2607,7 @@
 		 * @param {Event} event Event interface.
 		 */
 		$document.on( 'click', '.themes-php.network-admin a.delete', function( event ) {
+<<<<<<< HEAD
 			var $themeRow = $( event.target ).parents( 'tr' ),
 				confirmMessage = sprintf(
 					/* translators: %s: Theme name. */
@@ -2213,6 +2618,13 @@
 			event.preventDefault();
 
 			if ( ! window.confirm( confirmMessage ) ) {
+=======
+			var $themeRow = $( event.target ).parents( 'tr' );
+
+			event.preventDefault();
+
+			if ( ! window.confirm( wp.updates.l10n.aysDelete.replace( '%s', $themeRow.find( '.theme-title strong' ).text() ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				return;
 			}
 
@@ -2263,7 +2675,11 @@
 				return wp.updates.addAdminNotice( {
 					id:        'no-items-selected',
 					className: 'notice-error is-dismissible',
+<<<<<<< HEAD
 					message:   __( 'Please select at least one item to perform this action on.' )
+=======
+					message:   wp.updates.l10n.noItemsSelected
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				} );
 			}
 
@@ -2274,11 +2690,15 @@
 					break;
 
 				case 'delete-selected':
+<<<<<<< HEAD
 					var confirmMessage = 'plugin' === type ?
 						__( 'Are you sure you want to delete the selected plugins and their data?' ) :
 						__( 'Caution: These themes may be active on other sites in the network. Are you sure you want to proceed?' );
 
 					if ( ! window.confirm( confirmMessage ) ) {
+=======
+					if ( ! window.confirm( 'plugin' === type ? wp.updates.l10n.aysBulkDelete : wp.updates.l10n.aysBulkDeleteThemes ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						event.preventDefault();
 						return;
 					}
@@ -2415,7 +2835,11 @@
 					.append( $( '<a />', {
 						'class': 'current',
 						'href': searchLocation,
+<<<<<<< HEAD
 						'text': __( 'Search Results' )
+=======
+						'text': wp.updates.l10n.searchResultsLabel
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					} ) );
 
 				$( '.wp-filter .filter-links .current' )
@@ -2438,6 +2862,7 @@
 				delete wp.updates.searchRequest;
 
 				if ( 0 === response.count ) {
+<<<<<<< HEAD
 					wp.a11y.speak( __( 'You do not appear to have any plugins available at this time.' ) );
 				} else {
 					wp.a11y.speak(
@@ -2447,6 +2872,11 @@
 							response.count
 						)
 					);
+=======
+					wp.a11y.speak( wp.updates.l10n.noPluginsFound );
+				} else {
+					wp.a11y.speak( wp.updates.l10n.pluginsFound.replace( '%d', response.count ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 			} );
 		}, 1000 ) );
@@ -2502,12 +2932,16 @@
 			wp.updates.searchRequest = wp.ajax.post( 'search-plugins', data ).done( function( response ) {
 
 				// Can we just ditch this whole subtitle business?
+<<<<<<< HEAD
 				var $subTitle    = $( '<span />' ).addClass( 'subtitle' ).html(
 					sprintf(
 						/* translators: %s: Search query. */
 						__( 'Search results for &#8220;%s&#8221;' ),
 						_.escape( data.s )
 					) ),
+=======
+				var $subTitle    = $( '<span />' ).addClass( 'subtitle' ).html( wp.updates.l10n.searchResults.replace( '%s', _.escape( data.s ) ) ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$oldSubTitle = $( '.wrap .subtitle' );
 
 				if ( ! data.s.length ) {
@@ -2524,6 +2958,7 @@
 				delete wp.updates.searchRequest;
 
 				if ( 0 === response.count ) {
+<<<<<<< HEAD
 					wp.a11y.speak( __( 'No plugins found. Try a different search.'  ) );
 				} else {
 					wp.a11y.speak(
@@ -2533,6 +2968,11 @@
 							response.count
 						)
 					);
+=======
+					wp.a11y.speak( wp.updates.l10n.noPluginsFound );
+				} else {
+					wp.a11y.speak( wp.updates.l10n.pluginsFound.replace( '%d', response.count ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 			} );
 		}, 500 ) );
@@ -2685,6 +3125,7 @@
 		 * @since 4.2.0
 		 */
 		$( window ).on( 'beforeunload', wp.updates.beforeunload );
+<<<<<<< HEAD
 
 		/**
 		 * Prevents the page form scrolling when activating auto-updates with the Spacebar key.
@@ -2851,5 +3292,7 @@
 				} );
 			}
 		);
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	} );
 })( jQuery, window.wp, window._wpUpdatesSettings );

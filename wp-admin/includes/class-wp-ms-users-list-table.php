@@ -24,6 +24,7 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @global string $mode       List table view mode.
 	 * @global string $usersearch
 	 * @global string $role
@@ -37,6 +38,14 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 		} else {
 			$mode = get_user_setting( 'network_users_list_mode', 'list' );
 		}
+=======
+	 * @global string $usersearch
+	 * @global string $role
+	 * @global string $mode
+	 */
+	public function prepare_items() {
+		global $usersearch, $role, $mode;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$usersearch = isset( $_REQUEST['s'] ) ? wp_unslash( trim( $_REQUEST['s'] ) ) : '';
 
@@ -90,6 +99,16 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 			$args['order'] = $_REQUEST['order'];
 		}
 
+<<<<<<< HEAD
+=======
+		if ( ! empty( $_REQUEST['mode'] ) ) {
+			$mode = 'excerpt' === $_REQUEST['mode'] ? 'excerpt' : 'list';
+			set_user_setting( 'network_users_list_mode', $mode );
+		} else {
+			$mode = get_user_setting( 'network_users_list_mode', 'list' );
+		}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		/** This filter is documented in wp-admin/includes/class-wp-users-list-table.php */
 		$args = apply_filters( 'users_list_table_query_args', $args );
 
@@ -114,8 +133,13 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 		if ( current_user_can( 'delete_users' ) ) {
 			$actions['delete'] = __( 'Delete' );
 		}
+<<<<<<< HEAD
 		$actions['spam']    = _x( 'Mark as spam', 'user' );
 		$actions['notspam'] = _x( 'Not spam', 'user' );
+=======
+		$actions['spam']    = _x( 'Mark as Spam', 'user' );
+		$actions['notspam'] = _x( 'Not Spam', 'user' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		return $actions;
 	}
@@ -281,7 +305,11 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 			<?php
 			echo $edit;
 
+<<<<<<< HEAD
 			if ( in_array( $user->user_login, $super_admins, true ) ) {
+=======
+			if ( in_array( $user->user_login, $super_admins ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				echo ' &mdash; ' . __( 'Super Admin' );
 			}
 			?>
@@ -422,6 +450,7 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 			 */
 			$actions = apply_filters( 'ms_user_list_site_actions', $actions, $val->userblog_id );
 
+<<<<<<< HEAD
 			$action_count = count( $actions );
 
 			$i = 0;
@@ -434,6 +463,15 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 				echo "<span class='$action'>$link$sep</span>";
 			}
 
+=======
+			$i            = 0;
+			$action_count = count( $actions );
+			foreach ( $actions as $action => $link ) {
+				++$i;
+				$sep = ( $i == $action_count ) ? '' : ' | ';
+				echo "<span class='$action'>$link$sep</span>";
+			}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			echo '</small></span><br/>';
 		}
 	}
@@ -443,8 +481,13 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 *
 	 * @since 4.3.0
 	 *
+<<<<<<< HEAD
 	 * @param WP_User $user        The current WP_User object.
 	 * @param string  $column_name The current column name.
+=======
+	 * @param WP_User $user       The current WP_User object.
+	 * @param string $column_name The current column name.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function column_default( $user, $column_name ) {
 		/** This filter is documented in wp-admin/includes/class-wp-users-list-table.php */
@@ -510,7 +553,11 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 			$actions['edit'] = '<a href="' . $edit_link . '">' . __( 'Edit' ) . '</a>';
 		}
 
+<<<<<<< HEAD
 		if ( current_user_can( 'delete_user', $user->ID ) && ! in_array( $user->user_login, $super_admins, true ) ) {
+=======
+		if ( current_user_can( 'delete_user', $user->ID ) && ! in_array( $user->user_login, $super_admins ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$actions['delete'] = '<a href="' . esc_url( network_admin_url( add_query_arg( '_wp_http_referer', urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ), wp_nonce_url( 'users.php', 'deleteuser' ) . '&amp;action=deleteuser&amp;id=' . $user->ID ) ) ) . '" class="delete">' . __( 'Delete' ) . '</a>';
 		}
 

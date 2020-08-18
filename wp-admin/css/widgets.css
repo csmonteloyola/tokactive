@@ -25,6 +25,10 @@
 	padding: 10px;
 	background: none;
 	cursor: pointer;
+<<<<<<< HEAD
+=======
+	outline: none;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .widget-title h3,
@@ -318,8 +322,12 @@
 
 .sidebar-name .handlediv:focus {
 	box-shadow: none;
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 1px solid transparent;
+=======
+	outline: none;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 #widgets-left .sidebar-name .toggle-indicator {
@@ -791,6 +799,7 @@ ul.CodeMirror-hints {
 /* =Media Queries
 -------------------------------------------------------------- */
 
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
 	.widgets-holder-wrap .widget-inside input[type="checkbox"],
 	.widgets-holder-wrap .widget-inside input[type="radio"],
@@ -800,6 +809,8 @@ ul.CodeMirror-hints {
 	}
 }
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 @media screen and (max-width: 480px) {
 	div.widget-liquid-left {
 		width: 100%;

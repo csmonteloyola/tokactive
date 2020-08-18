@@ -11,6 +11,11 @@
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
+=======
+ * @staticvar array $column_headers
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param string|WP_Screen $screen The screen you want the headers for
  * @return string[] The column header labels keyed by column ID.
  */
@@ -116,7 +121,11 @@ function meta_box_prefs( $screen ) {
 					continue;
 				}
 				// Submit box cannot be hidden.
+<<<<<<< HEAD
 				if ( 'submitdiv' === $box['id'] || 'linksubmitdiv' === $box['id'] ) {
+=======
+				if ( 'submitdiv' == $box['id'] || 'linksubmitdiv' == $box['id'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					continue;
 				}
 
@@ -126,12 +135,19 @@ function meta_box_prefs( $screen ) {
 					$widget_title = $box['args']['__widget_basename'];
 				}
 
+<<<<<<< HEAD
 				$is_hidden = in_array( $box['id'], $hidden, true );
 
 				printf(
 					'<label for="%1$s-hide"><input class="hide-postbox-tog" name="%1$s-hide" type="checkbox" id="%1$s-hide" value="%1$s" %2$s />%3$s</label>',
 					esc_attr( $box['id'] ),
 					checked( $is_hidden, false, false ),
+=======
+				printf(
+					'<label for="%1$s-hide"><input class="hide-postbox-tog" name="%1$s-hide" type="checkbox" id="%1$s-hide" value="%1$s" %2$s />%3$s</label>',
+					esc_attr( $box['id'] ),
+					checked( in_array( $box['id'], $hidden ), false, false ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$widget_title
 				);
 			}
@@ -159,8 +175,13 @@ function get_hidden_meta_boxes( $screen ) {
 	// Hide slug boxes by default.
 	if ( $use_defaults ) {
 		$hidden = array();
+<<<<<<< HEAD
 		if ( 'post' === $screen->base ) {
 			if ( in_array( $screen->post_type, array( 'post', 'page', 'attachment' ), true ) ) {
+=======
+		if ( 'post' == $screen->base ) {
+			if ( 'post' == $screen->post_type || 'page' == $screen->post_type || 'attachment' == $screen->post_type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$hidden = array( 'slugdiv', 'trackbacksdiv', 'postcustom', 'postexcerpt', 'commentstatusdiv', 'commentsdiv', 'authordiv', 'revisionsdiv' );
 			} else {
 				$hidden = array( 'slugdiv' );
@@ -197,7 +218,11 @@ function get_hidden_meta_boxes( $screen ) {
  * @since 3.1.0
  *
  * @param string $option An option name.
+<<<<<<< HEAD
  * @param mixed  $args   Option-dependent arguments.
+=======
+ * @param mixed $args Option-dependent arguments.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function add_screen_option( $option, $args = array() ) {
 	$current_screen = get_current_screen();

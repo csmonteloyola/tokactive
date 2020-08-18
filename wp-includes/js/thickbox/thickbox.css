@@ -143,7 +143,11 @@
 
 #TB_closeWindowButton:hover .tb-close-icon,
 #TB_closeWindowButton:focus .tb-close-icon {
+<<<<<<< HEAD
 	color: #006799;
+=======
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 #TB_closeWindowButton:focus .tb-close-icon {

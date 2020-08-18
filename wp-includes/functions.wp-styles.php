@@ -19,11 +19,17 @@
  */
 function wp_styles() {
 	global $wp_styles;
+<<<<<<< HEAD
 
 	if ( ! ( $wp_styles instanceof WP_Styles ) ) {
 		$wp_styles = new WP_Styles();
 	}
 
+=======
+	if ( ! ( $wp_styles instanceof WP_Styles ) ) {
+		$wp_styles = new WP_Styles();
+	}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	return $wp_styles;
 }
 
@@ -42,8 +48,11 @@ function wp_styles() {
  * @return string[] On success, an array of handles of processed WP_Dependencies items; otherwise, an empty array.
  */
 function wp_print_styles( $handles = false ) {
+<<<<<<< HEAD
 	global $wp_styles;
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( '' === $handles ) { // For 'wp_head'.
 		$handles = false;
 	}
@@ -59,6 +68,10 @@ function wp_print_styles( $handles = false ) {
 
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
 
+<<<<<<< HEAD
+=======
+	global $wp_styles;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( ! ( $wp_styles instanceof WP_Styles ) ) {
 		if ( ! $handles ) {
 			return array(); // No need to instantiate if nothing is there.
@@ -85,7 +98,11 @@ function wp_print_styles( $handles = false ) {
  * @return bool True on success, false on failure.
  */
 function wp_add_inline_style( $handle, $data ) {
+<<<<<<< HEAD
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__, $handle );
+=======
+	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	if ( false !== stripos( $data, '</style>' ) ) {
 		_doing_it_wrong(
@@ -127,7 +144,11 @@ function wp_add_inline_style( $handle, $data ) {
  * @return bool Whether the style has been registered. True on success, false on failure.
  */
 function wp_register_style( $handle, $src, $deps = array(), $ver = false, $media = 'all' ) {
+<<<<<<< HEAD
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__, $handle );
+=======
+	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	return wp_styles()->add( $handle, $src, $deps, $ver, $media );
 }
@@ -142,7 +163,11 @@ function wp_register_style( $handle, $src, $deps = array(), $ver = false, $media
  * @param string $handle Name of the stylesheet to be removed.
  */
 function wp_deregister_style( $handle ) {
+<<<<<<< HEAD
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__, $handle );
+=======
+	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	wp_styles()->remove( $handle );
 }
@@ -171,7 +196,11 @@ function wp_deregister_style( $handle ) {
  *                                 '(orientation: portrait)' and '(max-width: 640px)'.
  */
 function wp_enqueue_style( $handle, $src = '', $deps = array(), $ver = false, $media = 'all' ) {
+<<<<<<< HEAD
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__, $handle );
+=======
+	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	$wp_styles = wp_styles();
 
@@ -179,7 +208,10 @@ function wp_enqueue_style( $handle, $src = '', $deps = array(), $ver = false, $m
 		$_handle = explode( '?', $handle );
 		$wp_styles->add( $_handle[0], $src, $deps, $ver, $media );
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	$wp_styles->enqueue( $handle );
 }
 
@@ -193,7 +225,11 @@ function wp_enqueue_style( $handle, $src = '', $deps = array(), $ver = false, $m
  * @param string $handle Name of the stylesheet to be removed.
  */
 function wp_dequeue_style( $handle ) {
+<<<<<<< HEAD
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__, $handle );
+=======
+	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	wp_styles()->dequeue( $handle );
 }
@@ -209,7 +245,11 @@ function wp_dequeue_style( $handle ) {
  * @return bool Whether style is queued.
  */
 function wp_style_is( $handle, $list = 'enqueued' ) {
+<<<<<<< HEAD
 	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__, $handle );
+=======
+	_wp_scripts_maybe_doing_it_wrong( __FUNCTION__ );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	return (bool) wp_styles()->query( $handle, $list );
 }

@@ -21,7 +21,12 @@
  * @param string $comment_author Author of the comment.
  * @param string $comment_date   Date of the comment.
  * @param string $timezone       Timezone. Accepts 'blog' or 'gmt'. Default 'blog'.
+<<<<<<< HEAD
  * @return string|null Comment post ID on success.
+=======
+ *
+ * @return mixed Comment post ID on success.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function comment_exists( $comment_author, $comment_date, $timezone = 'blog' ) {
 	global $wpdb;
@@ -45,10 +50,13 @@ function comment_exists( $comment_author, $comment_date, $timezone = 'blog' ) {
  * Update a comment with values provided in $_POST.
  *
  * @since 2.0.0
+<<<<<<< HEAD
  * @since 5.5.0 A return value was added.
  *
  * @return int|WP_Error The value 1 if the comment was updated, 0 if not updated.
  *                      A WP_Error object on failure.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function edit_comment() {
 	if ( ! current_user_can( 'edit_comment', (int) $_POST['comment_ID'] ) ) {
@@ -96,7 +104,11 @@ function edit_comment() {
 		$_POST['comment_date'] = "$aa-$mm-$jj $hh:$mn:$ss";
 	}
 
+<<<<<<< HEAD
 	return wp_update_comment( $_POST, true );
+=======
+	wp_update_comment( $_POST );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -122,7 +134,11 @@ function get_comment_to_edit( $id ) {
 	 *
 	 * @since 2.0.0
 	 *
+<<<<<<< HEAD
 	 * @param string $comment_content Comment content.
+=======
+	 * @param string $comment->comment_content Comment content.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	$comment->comment_content = apply_filters( 'comment_edit_pre', $comment->comment_content );
 
@@ -184,12 +200,20 @@ function get_pending_comments_num( $post_id ) {
 }
 
 /**
+<<<<<<< HEAD
  * Adds avatars to relevant places in admin.
+=======
+ * Add avatars to relevant places in admin, or try to.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @since 2.5.0
  *
  * @param string $name User name.
+<<<<<<< HEAD
  * @return string Avatar with the user name.
+=======
+ * @return string Avatar with Admin name.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function floated_admin_avatar( $name ) {
 	$avatar = get_avatar( get_comment(), 32, 'mystery' );
@@ -200,7 +224,11 @@ function floated_admin_avatar( $name ) {
  * @since 2.7.0
  */
 function enqueue_comment_hotkeys_js() {
+<<<<<<< HEAD
 	if ( 'true' === get_user_option( 'comment_shortcuts' ) ) {
+=======
+	if ( 'true' == get_user_option( 'comment_shortcuts' ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		wp_enqueue_script( 'jquery-table-hotkeys' );
 	}
 }

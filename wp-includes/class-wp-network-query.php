@@ -169,7 +169,11 @@ class WP_Network_Query {
 	 * @since 4.6.0
 	 *
 	 * @param string|array $query Array or URL query string of parameters.
+<<<<<<< HEAD
 	 * @return array|int List of WP_Network objects, a list of network IDs when 'fields' is set to 'ids',
+=======
+	 * @return array|int List of WP_Network objects, a list of network ids when 'fields' is set to 'ids',
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *                   or the number of networks when 'count' is passed as a query var.
 	 */
 	public function query( $query ) {
@@ -182,7 +186,11 @@ class WP_Network_Query {
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @return array|int List of WP_Network objects, a list of network IDs when 'fields' is set to 'ids',
+=======
+	 * @return array|int List of WP_Network objects, a list of network ids when 'fields' is set to 'ids',
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *                   or the number of networks when 'count' is passed as a query var.
 	 */
 	public function get_networks() {
@@ -206,7 +214,11 @@ class WP_Network_Query {
 		 *
 		 * The expected return type from this filter depends on the value passed in the request query_vars.
 		 * When `$this->query_vars['count']` is set, the filter should return the network count as an int.
+<<<<<<< HEAD
 		 * When `'ids' === $this->query_vars['fields']`, the filter should return an array of network IDs.
+=======
+		 * When `'ids' === $this->query_vars['fields']`, the filter should return an array of network ids.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * Otherwise the filter should return an array of WP_Network objects.
 		 *
 		 * @since 5.2.0
@@ -262,7 +274,11 @@ class WP_Network_Query {
 
 		$network_ids = array_map( 'intval', $network_ids );
 
+<<<<<<< HEAD
 		if ( 'ids' === $this->query_vars['fields'] ) {
+=======
+		if ( 'ids' == $this->query_vars['fields'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$this->networks = $network_ids;
 			return $this->networks;
 		}
@@ -509,6 +525,10 @@ class WP_Network_Query {
 	 *
 	 * @param string   $string  Search string.
 	 * @param string[] $columns Array of columns to search.
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string Search SQL.
 	 */
 	protected function get_search_sql( $string, $columns ) {
@@ -550,7 +570,11 @@ class WP_Network_Query {
 		} elseif ( 'domain_length' === $orderby || 'path_length' === $orderby ) {
 			$field  = substr( $orderby, 0, -7 );
 			$parsed = "CHAR_LENGTH($wpdb->site.$field)";
+<<<<<<< HEAD
 		} elseif ( in_array( $orderby, $allowed_keys, true ) ) {
+=======
+		} elseif ( in_array( $orderby, $allowed_keys ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$parsed = "$wpdb->site.$orderby";
 		}
 

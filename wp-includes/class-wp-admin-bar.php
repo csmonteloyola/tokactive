@@ -424,6 +424,7 @@ class WP_Admin_Bar {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @param object $root
 	 */
 	final protected function _render( $root ) {
@@ -431,6 +432,26 @@ class WP_Admin_Bar {
 		// We have to do this here since admin bar shows on the front end.
 		$class = 'nojq nojs';
 		if ( wp_is_mobile() ) {
+=======
+	 * @global bool $is_IE
+	 * @param object $root
+	 */
+	final protected function _render( $root ) {
+		global $is_IE;
+
+		// Add browser classes.
+		// We have to do this here since admin bar shows on the front end.
+		$class = 'nojq nojs';
+		if ( $is_IE ) {
+			if ( strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE 7' ) ) {
+				$class .= ' ie7';
+			} elseif ( strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE 8' ) ) {
+				$class .= ' ie8';
+			} elseif ( strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE 9' ) ) {
+				$class .= ' ie9';
+			}
+		} elseif ( wp_is_mobile() ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$class .= ' mobile';
 		}
 

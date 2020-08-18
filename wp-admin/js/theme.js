@@ -28,6 +28,7 @@ themes.Model = Backbone.Model.extend({
 	initialize: function() {
 		var description;
 
+<<<<<<< HEAD
 		if ( this.get( 'slug' ) ) {
 			// If the theme is already installed, set an attribute.
 			if ( _.indexOf( themes.data.installedThemes, this.get( 'slug' ) ) !== -1 ) {
@@ -38,6 +39,11 @@ themes.Model = Backbone.Model.extend({
 			if ( themes.data.activeTheme === this.get( 'slug' ) ) {
 				this.set({ active: true });
 			}
+=======
+		// If theme is already installed, set an attribute.
+		if ( _.indexOf( themes.data.installedThemes, this.get( 'slug' ) ) !== -1 ) {
+			this.set({ installed: true });
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		// Set the attributes.
@@ -270,7 +276,11 @@ themes.Collection = Backbone.Collection.extend({
 		// it means we have a paginated request.
 		isPaginated = _.has( request, 'page' );
 
+<<<<<<< HEAD
 		// Reset the internal api page counter for non-paginated queries.
+=======
+		// Reset the internal api page counter for non paginated queries.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( ! isPaginated ) {
 			this.currentQuery.page = 1;
 		}
@@ -673,8 +683,12 @@ themes.view.Details = wp.Backbone.View.extend({
 		'click .delete-theme': 'deleteTheme',
 		'click .left': 'previousTheme',
 		'click .right': 'nextTheme',
+<<<<<<< HEAD
 		'click #update-theme': 'updateTheme',
 		'click .toggle-auto-update': 'autoupdateState'
+=======
+		'click #update-theme': 'updateTheme'
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	},
 
 	// The HTML template for the theme overlay.
@@ -795,6 +809,7 @@ themes.view.Details = wp.Backbone.View.extend({
 		this.trigger( 'theme:collapse' );
 	},
 
+<<<<<<< HEAD
 	// Set state of the auto-update settings link after it has been changed and saved.
 	autoupdateState: function() {
 		var callback,
@@ -815,6 +830,8 @@ themes.view.Details = wp.Backbone.View.extend({
 		$( document ).on( 'wp-auto-update-setting-changed', callback );
 	},
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	updateTheme: function( event ) {
 		var _this = this;
 		event.preventDefault();
@@ -1431,7 +1448,11 @@ themes.view.Search = wp.Backbone.View.extend({
  * @since 4.9.0
  *
  * @param {string} url - URL to navigate to.
+<<<<<<< HEAD
  * @param {Object} state - State.
+=======
+ * @param {object} state - State.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return {void}
  */
 function navigateRouter( url, state ) {
@@ -1844,7 +1865,11 @@ themes.view.Installer = themes.view.Appearance.extend({
 	/**
 	 * Get the checked filters.
 	 *
+<<<<<<< HEAD
 	 * @return {Array} of tags or false
+=======
+	 * @return {array} of tags or false
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	filtersChecked: function() {
 		var items = $( '.filter-group' ).find( ':checkbox' ),

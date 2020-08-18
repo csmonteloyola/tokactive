@@ -134,7 +134,11 @@ function insert_with_markers( $filename, $marker, $insertion ) {
 	$instructions = sprintf(
 		/* translators: 1: Marker. */
 		__(
+<<<<<<< HEAD
 			'The directives (lines) between "BEGIN %1$s" and "END %1$s" are
+=======
+			'The directives (lines) between `BEGIN %1$s` and `END %1$s` are
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 dynamically generated, and should only be modified via WordPress filters.
 Any changes to the directives between these markers will be overwritten.'
 		),
@@ -597,11 +601,17 @@ function wp_doc_link_parse( $content ) {
 			continue;
 		}
 
+<<<<<<< HEAD
 		if ( T_STRING == $tokens[ $t ][0] && ( '(' === $tokens[ $t + 1 ] || '(' === $tokens[ $t + 2 ] ) ) {
 			// If it's a function or class defined locally, there's not going to be any docs available.
 			if ( ( isset( $tokens[ $t - 2 ][1] ) && in_array( $tokens[ $t - 2 ][1], array( 'function', 'class' ), true ) )
 				|| ( isset( $tokens[ $t - 2 ][0] ) && T_OBJECT_OPERATOR == $tokens[ $t - 1 ][0] )
 			) {
+=======
+		if ( T_STRING == $tokens[ $t ][0] && ( '(' == $tokens[ $t + 1 ] || '(' == $tokens[ $t + 2 ] ) ) {
+			// If it's a function or class defined locally, there's not going to be any docs available.
+			if ( ( isset( $tokens[ $t - 2 ][1] ) && in_array( $tokens[ $t - 2 ][1], array( 'function', 'class' ) ) ) || ( isset( $tokens[ $t - 2 ][0] ) && T_OBJECT_OPERATOR == $tokens[ $t - 1 ][0] ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$ignore_functions[] = $tokens[ $t ][1];
 			}
 			// Add this to our stack of unique references.
@@ -625,7 +635,11 @@ function wp_doc_link_parse( $content ) {
 
 	$out = array();
 	foreach ( $functions as $function ) {
+<<<<<<< HEAD
 		if ( in_array( $function, $ignore_functions, true ) ) {
+=======
+		if ( in_array( $function, $ignore_functions ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			continue;
 		}
 		$out[] = $function;
@@ -658,9 +672,15 @@ function set_screen_options() {
 		$map_option = $option;
 		$type       = str_replace( 'edit_', '', $map_option );
 		$type       = str_replace( '_per_page', '', $type );
+<<<<<<< HEAD
 		if ( in_array( $type, get_taxonomies(), true ) ) {
 			$map_option = 'edit_tags_per_page';
 		} elseif ( in_array( $type, get_post_types(), true ) ) {
+=======
+		if ( in_array( $type, get_taxonomies() ) ) {
+			$map_option = 'edit_tags_per_page';
+		} elseif ( in_array( $type, get_post_types() ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$map_option = 'edit_per_page';
 		} else {
 			$option = str_replace( '-', '_', $option );
@@ -688,8 +708,11 @@ function set_screen_options() {
 				}
 				break;
 			default:
+<<<<<<< HEAD
 				$screen_option = false;
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				if ( '_page' === substr( $option, -5 ) || 'layout_columns' === $option ) {
 					/**
 					 * Filters a screen option value before it is set.
@@ -697,7 +720,11 @@ function set_screen_options() {
 					 * The filter can also be used to modify non-standard [items]_per_page
 					 * settings. See the parent function for a full list of standard options.
 					 *
+<<<<<<< HEAD
 					 * Returning false from the filter will skip saving the current option.
+=======
+					 * Returning false to the filter will skip saving the current option.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					 *
 					 * @since 2.8.0
 					 * @since 5.4.2 Only applied to options ending with '_page',
@@ -705,12 +732,21 @@ function set_screen_options() {
 					 *
 					 * @see set_screen_options()
 					 *
+<<<<<<< HEAD
 					 * @param mixed  $screen_option The value to save instead of the option value.
 					 *                              Default false (to skip saving the current option).
 					 * @param string $option        The option name.
 					 * @param int    $value         The option value.
 					 */
 					$screen_option = apply_filters( 'set-screen-option', $screen_option, $option, $value ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+=======
+					 * @param bool   $keep   Whether to save or skip saving the screen option value.
+					 *                       Default false.
+					 * @param string $option The option name.
+					 * @param int    $value  The number of rows to use.
+					 */
+					$value = apply_filters( 'set-screen-option', false, $option, $value ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 
 				/**
@@ -718,18 +754,31 @@ function set_screen_options() {
 				 *
 				 * The dynamic portion of the hook, `$option`, refers to the option name.
 				 *
+<<<<<<< HEAD
 				 * Returning false from the filter will skip saving the current option.
+=======
+				 * Returning false to the filter will skip saving the current option.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				 *
 				 * @since 5.4.2
 				 *
 				 * @see set_screen_options()
 				 *
+<<<<<<< HEAD
 				 * @param mixed   $screen_option The value to save instead of the option value.
 				 *                               Default false (to skip saving the current option).
 				 * @param string  $option        The option name.
 				 * @param int     $value         The option value.
 				 */
 				$value = apply_filters( "set_screen_option_{$option}", $screen_option, $option, $value );
+=======
+				 * @param bool   $keep   Whether to save or skip saving the screen option value.
+				 *                       Default false.
+				 * @param string $option The option name.
+				 * @param int    $value  The number of rows to use.
+				 */
+				$value = apply_filters( "set_screen_option_{$option}", false, $option, $value );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 				if ( false === $value ) {
 					return;
@@ -903,7 +952,11 @@ function iis7_add_rewrite_rule( $filename, $rewrite_rule ) {
  * @since 2.8.0
  *
  * @param DOMDocument $doc
+<<<<<<< HEAD
  * @param string      $filename
+=======
+ * @param string $filename
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function saveDomDocument( $doc, $filename ) { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
 	$config = $doc->saveXML();
@@ -932,9 +985,14 @@ function admin_color_scheme_picker( $user_id ) {
 		$_wp_admin_css_colors = array_filter(
 			array_merge(
 				array(
+<<<<<<< HEAD
 					'fresh'  => '',
 					'light'  => '',
 					'modern' => '',
+=======
+					'fresh' => '',
+					'light' => '',
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				),
 				$_wp_admin_css_colors
 			)
@@ -1014,6 +1072,7 @@ function wp_color_scheme_settings() {
 }
 
 /**
+<<<<<<< HEAD
  * Displays the viewport meta in the admin.
  *
  * @since 5.5.0
@@ -1047,6 +1106,16 @@ function wp_admin_viewport_meta() {
  */
 function _customizer_mobile_viewport_meta( $viewport_meta ) {
 	return trim( $viewport_meta, ',' ) . ',minimum-scale=0.5,maximum-scale=1.2';
+=======
+ * @since 3.3.0
+ */
+function _ipad_meta() {
+	if ( wp_is_mobile() ) {
+		?>
+		<meta name="viewport" id="viewport-meta" content="width=device-width, initial-scale=1">
+		<?php
+	}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -1056,7 +1125,11 @@ function _customizer_mobile_viewport_meta( $viewport_meta ) {
  *
  * @param array  $response  The Heartbeat response.
  * @param array  $data      The $_POST data sent.
+<<<<<<< HEAD
  * @param string $screen_id The screen ID.
+=======
+ * @param string $screen_id The screen id.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return array The Heartbeat response.
  */
 function wp_check_locked_posts( $response, $data, $screen_id ) {
@@ -1078,9 +1151,15 @@ function wp_check_locked_posts( $response, $data, $screen_id ) {
 						'text' => sprintf( __( '%s is currently editing' ), $user->display_name ),
 					);
 
+<<<<<<< HEAD
 					if ( get_option( 'show_avatars' ) ) {
 						$send['avatar_src']    = get_avatar_url( $user->ID, array( 'size' => 18 ) );
 						$send['avatar_src_2x'] = get_avatar_url( $user->ID, array( 'size' => 36 ) );
+=======
+					$avatar = get_avatar( $user->ID, 18 );
+					if ( $avatar && preg_match( "|src='([^']+)'|", $avatar, $matches ) ) {
+						$send['avatar_src'] = $matches[1];
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					}
 
 					$checked[ $key ] = $send;
@@ -1103,7 +1182,11 @@ function wp_check_locked_posts( $response, $data, $screen_id ) {
  *
  * @param array  $response  The Heartbeat response.
  * @param array  $data      The $_POST data sent.
+<<<<<<< HEAD
  * @param string $screen_id The screen ID.
+=======
+ * @param string $screen_id The screen id.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return array The Heartbeat response.
  */
 function wp_refresh_post_lock( $response, $data, $screen_id ) {
@@ -1128,9 +1211,17 @@ function wp_refresh_post_lock( $response, $data, $screen_id ) {
 				'text' => sprintf( __( '%s has taken over and is currently editing.' ), $user->display_name ),
 			);
 
+<<<<<<< HEAD
 			if ( get_option( 'show_avatars' ) ) {
 				$error['avatar_src']    = get_avatar_url( $user->ID, array( 'size' => 64 ) );
 				$error['avatar_src_2x'] = get_avatar_url( $user->ID, array( 'size' => 128 ) );
+=======
+			$avatar = get_avatar( $user->ID, 64 );
+			if ( $avatar ) {
+				if ( preg_match( "|src='([^']+)'|", $avatar, $matches ) ) {
+					$error['avatar_src'] = $matches[1];
+				}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			}
 
 			$send['lock_error'] = $error;
@@ -1154,7 +1245,11 @@ function wp_refresh_post_lock( $response, $data, $screen_id ) {
  *
  * @param array  $response  The Heartbeat response.
  * @param array  $data      The $_POST data sent.
+<<<<<<< HEAD
  * @param string $screen_id The screen ID.
+=======
+ * @param string $screen_id The screen id.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return array The Heartbeat response.
  */
 function wp_refresh_post_nonces( $response, $data, $screen_id ) {
@@ -1190,7 +1285,11 @@ function wp_refresh_post_nonces( $response, $data, $screen_id ) {
  *
  * @since 5.0.0
  *
+<<<<<<< HEAD
  * @param array $response The Heartbeat response.
+=======
+ * @param array  $response  The Heartbeat response.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return array The Heartbeat response.
  */
 function wp_refresh_heartbeat_nonces( $response ) {
@@ -1427,6 +1526,10 @@ All at ###SITENAME###
  *
  * @param string  $title Page title.
  * @param WP_Post $page  Page data object.
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string Page title.
  */
 function _wp_privacy_settings_filter_draft_page_titles( $title, $page ) {
@@ -1444,7 +1547,11 @@ function _wp_privacy_settings_filter_draft_page_titles( $title, $page ) {
  * @since 5.1.0
  * @since 5.1.1 Added the {@see 'wp_is_php_version_acceptable'} filter.
  *
+<<<<<<< HEAD
  * @return array|false Array of PHP version data. False on failure.
+=======
+ * @return array|false $response Array of PHP version data. False on failure.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function wp_check_php_version() {
 	$version = phpversion();

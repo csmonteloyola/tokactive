@@ -122,6 +122,7 @@ class Walker_Page extends Walker {
 
 		if ( ! empty( $current_page ) ) {
 			$_current_page = get_post( $current_page );
+<<<<<<< HEAD
 
 			if ( $_current_page && in_array( $page->ID, $_current_page->ancestors, true ) ) {
 				$css_class[] = 'current_page_ancestor';
@@ -130,6 +131,14 @@ class Walker_Page extends Walker {
 			if ( $page->ID == $current_page ) {
 				$css_class[] = 'current_page_item';
 			} elseif ( $_current_page && $page->ID === $_current_page->post_parent ) {
+=======
+			if ( $_current_page && in_array( $page->ID, $_current_page->ancestors ) ) {
+				$css_class[] = 'current_page_ancestor';
+			}
+			if ( $page->ID == $current_page ) {
+				$css_class[] = 'current_page_item';
+			} elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$css_class[] = 'current_page_parent';
 			}
 		} elseif ( get_option( 'page_for_posts' ) == $page->ID ) {
@@ -201,7 +210,11 @@ class Walker_Page extends Walker {
 		);
 
 		if ( ! empty( $args['show_date'] ) ) {
+<<<<<<< HEAD
 			if ( 'modified' === $args['show_date'] ) {
+=======
+			if ( 'modified' == $args['show_date'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$time = $page->post_modified;
 			} else {
 				$time = $page->post_date;

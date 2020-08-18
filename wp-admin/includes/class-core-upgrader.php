@@ -104,7 +104,11 @@ class Core_Upgrader extends WP_Upgrader {
 		 */
 		if ( $parsed_args['do_rollback'] && $current->packages->rollback ) {
 			$to_download = 'rollback';
+<<<<<<< HEAD
 		} elseif ( $current->packages->partial && 'reinstall' !== $current->response && $wp_version == $current->partial_version && $partial ) {
+=======
+		} elseif ( $current->packages->partial && 'reinstall' != $current->response && $wp_version == $current->partial_version && $partial ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$to_download = 'partial';
 		} elseif ( $current->packages->new_bundled && version_compare( $wp_version, $current->new_bundled, '<' )
 			&& ( ! defined( 'CORE_UPGRADE_SKIP_NEW_BUNDLED' ) || ! CORE_UPGRADE_SKIP_NEW_BUNDLED ) ) {
@@ -161,7 +165,10 @@ class Core_Upgrader extends WP_Upgrader {
 		}
 		$wp_filesystem->chmod( $wp_dir . 'wp-admin/includes/update-core.php', FS_CHMOD_FILE );
 
+<<<<<<< HEAD
 		wp_opcache_invalidate( ABSPATH . 'wp-admin/includes/update-core.php' );
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		require_once ABSPATH . 'wp-admin/includes/update-core.php';
 
 		if ( ! function_exists( 'update_core' ) ) {
@@ -403,7 +410,11 @@ class Core_Upgrader extends WP_Upgrader {
 
 		foreach ( $checksums as $file => $checksum ) {
 			// Skip files which get updated.
+<<<<<<< HEAD
 			if ( 'wp-content' === substr( $file, 0, 10 ) ) {
+=======
+			if ( 'wp-content' == substr( $file, 0, 10 ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				continue;
 			}
 			if ( ! file_exists( ABSPATH . $file ) || md5_file( ABSPATH . $file ) !== $checksum ) {

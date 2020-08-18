@@ -33,9 +33,20 @@ function render_block_core_block( $attributes ) {
  * Registers the `core/block` block.
  */
 function register_block_core_block() {
+<<<<<<< HEAD
 	register_block_type_from_metadata(
 		__DIR__ . '/block',
 		array(
+=======
+	register_block_type(
+		'core/block',
+		array(
+			'attributes'      => array(
+				'ref' => array(
+					'type' => 'number',
+				),
+			),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			'render_callback' => 'render_block_core_block',
 		)
 	);

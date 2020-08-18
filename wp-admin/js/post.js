@@ -4,19 +4,31 @@
  * @output wp-admin/js/post.js
  */
 
+<<<<<<< HEAD
  /* global ajaxurl, wpAjax, postboxes, pagenow, tinymce, alert, deleteUserSetting, ClipboardJS */
  /* global theList:true, theExtraList:true, getUserSetting, setUserSetting, commentReply, commentsBox */
  /* global WPSetThumbnailHTML, wptitlehint */
 
 // Backward compatibility: prevent fatal errors.
+=======
+ /* global postL10n, ajaxurl, wpAjax, setPostThumbnailL10n, postboxes, pagenow, tinymce, alert, deleteUserSetting */
+ /* global theList:true, theExtraList:true, getUserSetting, setUserSetting, commentReply, commentsBox */
+ /* global WPSetThumbnailHTML, wptitlehint */
+
+// Backwards compatibility: prevent fatal errors.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 window.makeSlugeditClickable = window.editPermalink = function(){};
 
 // Make sure the wp object exists.
 window.wp = window.wp || {};
 
 ( function( $ ) {
+<<<<<<< HEAD
 	var titleHasFocus = false,
 		__ = wp.i18n.__;
+=======
+	var titleHasFocus = false;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * Control loading of comments on the post and term edit pages.
@@ -30,12 +42,21 @@ window.wp = window.wp || {};
 		st : 0,
 
 		/**
+<<<<<<< HEAD
 		 * Fetch comments using Ajax and display them in the box.
 		 *
 		 * @memberof commentsBox
 		 *
 		 * @param {number} total Total number of comments for this post.
 		 * @param {number} num   Optional. Number of comments to fetch, defaults to 20.
+=======
+		 * Fetch comments using AJAX and display them in the box.
+		 *
+		 * @memberof commentsBox
+		 *
+		 * @param {int} total Total number of comments for this post.
+		 * @param {int} num   Optional. Number of comments to fetch, defaults to 20.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {boolean} Always returns false.
 		 */
 		get : function(total, num) {
@@ -74,11 +95,19 @@ window.wp = window.wp || {};
 						if ( commentsBox.st > commentsBox.total )
 							$('#show-comments').hide();
 						else
+<<<<<<< HEAD
 							$('#show-comments').show().children('a').text( __( 'Show more comments' ) );
 
 						return;
 					} else if ( 1 == r ) {
 						$('#show-comments').text( __( 'No more comments found.' ) );
+=======
+							$('#show-comments').show().children('a').html(postL10n.showcomm);
+
+						return;
+					} else if ( 1 == r ) {
+						$('#show-comments').html(postL10n.endcomm);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						return;
 					}
 
@@ -94,7 +123,11 @@ window.wp = window.wp || {};
 		 *
 		 * @memberof commentsBox
 		 *
+<<<<<<< HEAD
 		 * @param {number} total Total number of comments to load.
+=======
+		 * @param {int} total Total number of comments to load.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		load: function(total){
 			this.st = jQuery('#the-comment-list tr.comment:visible').length;
@@ -116,7 +149,11 @@ window.wp = window.wp || {};
 	/**
 	 * Set the Image ID of the Featured Image
 	 *
+<<<<<<< HEAD
 	 * @param {number} id The post_id of the image to use as Featured Image.
+=======
+	 * @param {int} id The post_id of the image to use as Featured Image.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @global
 	 */
@@ -145,7 +182,11 @@ window.wp = window.wp || {};
 			 */
 			function(str){
 			if ( str == '0' ) {
+<<<<<<< HEAD
 				alert( __( 'Could not set that as the thumbnail image. Try a different attachment.' ) );
+=======
+				alert( setPostThumbnailL10n.error );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			} else {
 				WPSetThumbnailHTML(str);
 			}
@@ -201,6 +242,7 @@ window.wp = window.wp || {};
 					}
 
 					if ( received.lock_error.avatar_src ) {
+<<<<<<< HEAD
 						avatar = $( '<img />', {
 							'class': 'avatar avatar-64 photo',
 							width: 64,
@@ -209,6 +251,9 @@ window.wp = window.wp || {};
 							src: received.lock_error.avatar_src,
 							srcset: received.lock_error.avatar_src_2x ? received.lock_error.avatar_src_2x + ' 2x' : undefined
 						} );
+=======
+						avatar = $( '<img class="avatar avatar-64 photo" width="64" height="64" alt="" />' ).attr( 'src', received.lock_error.avatar_src.replace( /&amp;/g, '&' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						wrap.find('div.post-locked-avatar').empty().append( avatar );
 					}
 
@@ -296,6 +341,10 @@ window.wp = window.wp || {};
  */
 jQuery(document).ready( function($) {
 	var stamp, visibility, $submitButtons, updateVisibility, updateText,
+<<<<<<< HEAD
+=======
+		sticky = '',
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$textarea = $('#content'),
 		$document = $(document),
 		postId = $('#post_ID').val() || 0,
@@ -304,10 +353,14 @@ jQuery(document).ready( function($) {
 		$postVisibilitySelect = $('#post-visibility-select'),
 		$timestampdiv = $('#timestampdiv'),
 		$postStatusSelect = $('#post-status-select'),
+<<<<<<< HEAD
 		isMac = window.navigator.platform ? window.navigator.platform.indexOf( 'Mac' ) !== -1 : false,
 		copyAttachmentURLClipboard = new ClipboardJS( '.copy-attachment-url.edit-media' ),
 		copyAttachmentURLSuccessTimeout,
 		__ = wp.i18n.__, _x = wp.i18n._x;
+=======
+		isMac = window.navigator.platform ? window.navigator.platform.indexOf( 'Mac' ) !== -1 : false;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	postboxes.add_postbox_toggles(pagenow);
 
@@ -475,7 +528,11 @@ jQuery(document).ready( function($) {
 			$submitButtons.removeClass( 'disabled' );
 		}
 	}).on( 'before-autosave.edit-post', function() {
+<<<<<<< HEAD
 		$( '.autosave-message' ).text( __( 'Saving Draft…' ) );
+=======
+		$( '.autosave-message' ).text( postL10n.savingText );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}).on( 'after-autosave.edit-post', function( event, data ) {
 		$( '.autosave-message' ).text( data.message );
 
@@ -494,7 +551,11 @@ jQuery(document).ready( function($) {
 		if ( ( editor && ! editor.isHidden() && editor.isDirty() ) ||
 			( wp.autosave && wp.autosave.server.postChanged() ) ) {
 
+<<<<<<< HEAD
 			return __( 'The changes you made will be lost if you navigate away from this page.' );
+=======
+			return postL10n.saveAlert;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	}).on( 'unload.edit-post', function( event ) {
 		if ( ! releaseLock ) {
@@ -754,6 +815,7 @@ jQuery(document).ready( function($) {
 
 			// Determine what the publish should be depending on the date and post status.
 			if ( attemptedDate > currentDate && $('#original_post_status').val() != 'future' ) {
+<<<<<<< HEAD
 				publishOn = __( 'Schedule for:' );
 				$('#publish').val( _x( 'Schedule', 'post action/button label' ) );
 			} else if ( attemptedDate <= currentDate && $('#original_post_status').val() != 'publish' ) {
@@ -762,6 +824,16 @@ jQuery(document).ready( function($) {
 			} else {
 				publishOn = __( 'Published on:' );
 				$('#publish').val( __( 'Update' ) );
+=======
+				publishOn = postL10n.publishOnFuture;
+				$('#publish').val( postL10n.schedule );
+			} else if ( attemptedDate <= currentDate && $('#original_post_status').val() != 'publish' ) {
+				publishOn = postL10n.publishOn;
+				$('#publish').val( postL10n.publish );
+			} else {
+				publishOn = postL10n.publishOnPast;
+				$('#publish').val( postL10n.update );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			}
 
 			// If the date is the same, set it to trigger update events.
@@ -771,8 +843,12 @@ jQuery(document).ready( function($) {
 			} else {
 				$('#timestamp').html(
 					'\n' + publishOn + ' <b>' +
+<<<<<<< HEAD
 					// translators: 1: Month, 2: Day, 3: Year, 4: Hour, 5: Minute.
 					__( '%1$s %2$s, %3$s at %4$s:%5$s' )
+=======
+					postL10n.dateFormat
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						.replace( '%1$s', $( 'option[value="' + mm + '"]', '#mm' ).attr( 'data-text' ) )
 						.replace( '%2$s', parseInt( jj, 10 ) )
 						.replace( '%3$s', aa )
@@ -784,11 +860,19 @@ jQuery(document).ready( function($) {
 
 			// Add "privately published" to post status when applies.
 			if ( $postVisibilitySelect.find('input:radio:checked').val() == 'private' ) {
+<<<<<<< HEAD
 				$('#publish').val( __( 'Update' ) );
 				if ( 0 === optPublish.length ) {
 					postStatus.append('<option value="publish">' + __( 'Privately Published' ) + '</option>');
 				} else {
 					optPublish.html( __( 'Privately Published' ) );
+=======
+				$('#publish').val( postL10n.update );
+				if ( 0 === optPublish.length ) {
+					postStatus.append('<option value="publish">' + postL10n.privatelyPublished + '</option>');
+				} else {
+					optPublish.html( postL10n.privatelyPublished );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 				$('option[value="publish"]', postStatus).prop('selected', true);
 				$('#misc-publishing-actions .edit-post-status').hide();
@@ -799,7 +883,11 @@ jQuery(document).ready( function($) {
 						postStatus.val($('#hidden_post_status').val());
 					}
 				} else {
+<<<<<<< HEAD
 					optPublish.html( __( 'Published' ) );
+=======
+					optPublish.html( postL10n.published );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 				if ( postStatus.is(':hidden') )
 					$('#misc-publishing-actions .edit-post-status').show();
@@ -817,9 +905,15 @@ jQuery(document).ready( function($) {
 			} else {
 				$('#save-post').show();
 				if ( $('option:selected', postStatus).val() == 'pending' ) {
+<<<<<<< HEAD
 					$('#save-post').show().val( __( 'Save as Pending' ) );
 				} else {
 					$('#save-post').show().val( __( 'Save Draft' ) );
+=======
+					$('#save-post').show().val( postL10n.savePending );
+				} else {
+					$('#save-post').show().val( postL10n.saveDraft );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 			}
 			return true;
@@ -851,12 +945,16 @@ jQuery(document).ready( function($) {
 
 		// Set the selected visibility as current.
 		$postVisibilitySelect.find('.save-post-visibility').click( function( event ) { // Crazyhorse - multiple OK cancels.
+<<<<<<< HEAD
 			var visibilityLabel = '', selectedVisibility = $postVisibilitySelect.find('input:radio:checked').val();
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$postVisibilitySelect.slideUp('fast');
 			$('#visibility .edit-visibility').show().focus();
 			updateText();
 
+<<<<<<< HEAD
 			if ( 'public' !== selectedVisibility ) {
 				$('#sticky').prop('checked', false);
 			}
@@ -874,6 +972,19 @@ jQuery(document).ready( function($) {
 			}
 
 			$('#post-visibility-display').text( visibilityLabel );
+=======
+			if ( $postVisibilitySelect.find('input:radio:checked').val() != 'public' ) {
+				$('#sticky').prop('checked', false);
+			}
+
+			if ( $('#sticky').prop('checked') ) {
+				sticky = 'Sticky';
+			} else {
+				sticky = '';
+			}
+
+			$('#post-visibility-display').html(	postL10n[ $postVisibilitySelect.find('input:radio:checked').val() + sticky ]	);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			event.preventDefault();
 		});
 
@@ -957,7 +1068,11 @@ jQuery(document).ready( function($) {
 
 	/**
 	 * Handle the editing of the post_name. Create the required HTML elements and
+<<<<<<< HEAD
 	 * update the changes via Ajax.
+=======
+	 * update the changes via AJAX.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @global
 	 *
@@ -986,7 +1101,11 @@ jQuery(document).ready( function($) {
 		$el = $( '#editable-post-name' );
 		revert_e = $el.html();
 
+<<<<<<< HEAD
 		buttons.html( '<button type="button" class="save button button-small">' + __( 'OK' ) + '</button> <button type="button" class="cancel button-link">' + __( 'Cancel' ) + '</button>' );
+=======
+		buttons.html( '<button type="button" class="save button button-small">' + postL10n.ok + '</button> <button type="button" class="cancel button-link">' + postL10n.cancel + '</button>' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		// Save permalink changes.
 		buttons.children( '.save' ).click( function() {
@@ -1019,7 +1138,11 @@ jQuery(document).ready( function($) {
 					permalink.html(permalinkOrig);
 					real_slug.val(new_slug);
 					$( '.edit-slug' ).focus();
+<<<<<<< HEAD
 					wp.a11y.speak( __( 'Permalink saved' ) );
+=======
+					wp.a11y.speak( postL10n.permalinkSaved );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 			);
 		});
@@ -1236,6 +1359,7 @@ jQuery(document).ready( function($) {
 			window.history.replaceState( null, null, location );
 		});
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Copies the attachment URL in the Edit Media page to the clipboard.
@@ -1268,6 +1392,9 @@ jQuery(document).ready( function($) {
 		wp.a11y.speak( __( 'The file URL has been copied to your clipboard' ) );
 	} );
 } );
+=======
+});
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 /**
  * TinyMCE word count display

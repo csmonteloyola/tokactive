@@ -2,6 +2,11 @@
  * @output wp-includes/js/wp-pointer.js
  */
 
+<<<<<<< HEAD
+=======
+/* global wpPointerL10n */
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * Initializes the wp-pointer widget using jQuery UI Widget Factory.
  */
@@ -17,7 +22,12 @@
 				return $(this).text();
 			},
 			buttons: function( event, t ) {
+<<<<<<< HEAD
 				var button = $('<a class="close" href="#"></a>').text( wp.i18n.__( 'Dismiss' ) );
+=======
+				var close  = ( wpPointerL10n ) ? wpPointerL10n.dismiss : 'Dismiss',
+					button = $('<a class="close" href="#">' + close + '</a>');
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 				return button.bind( 'click.pointer', function(e) {
 					e.preventDefault();

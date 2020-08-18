@@ -53,7 +53,11 @@ class Walker_Category extends Walker {
 	 *                       value is 'list'. See wp_list_categories(). Default empty array.
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
+<<<<<<< HEAD
 		if ( 'list' !== $args['style'] ) {
+=======
+		if ( 'list' != $args['style'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return;
 		}
 
@@ -74,7 +78,11 @@ class Walker_Category extends Walker {
 	 *                       value is 'list'. See wp_list_categories(). Default empty array.
 	 */
 	public function end_lvl( &$output, $depth = 0, $args = array() ) {
+<<<<<<< HEAD
 		if ( 'list' !== $args['style'] ) {
+=======
+		if ( 'list' != $args['style'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return;
 		}
 
@@ -186,7 +194,11 @@ class Walker_Category extends Walker {
 		if ( ! empty( $args['show_count'] ) ) {
 			$link .= ' (' . number_format_i18n( $category->count ) . ')';
 		}
+<<<<<<< HEAD
 		if ( 'list' === $args['style'] ) {
+=======
+		if ( 'list' == $args['style'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$output     .= "\t<li";
 			$css_classes = array(
 				'cat-item',
@@ -258,7 +270,11 @@ class Walker_Category extends Walker {
 	 *                       to output. See wp_list_categories(). Default empty array.
 	 */
 	public function end_el( &$output, $page, $depth = 0, $args = array() ) {
+<<<<<<< HEAD
 		if ( 'list' !== $args['style'] ) {
+=======
+		if ( 'list' != $args['style'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return;
 		}
 

@@ -27,7 +27,11 @@ if ( isset( $_GET['action'] ) ) {
 			check_admin_referer( 'deleteuser' );
 
 			$id = intval( $_GET['id'] );
+<<<<<<< HEAD
 			if ( $id > 1 ) {
+=======
+			if ( '0' != $id && '1' != $id ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$_POST['allusers'] = array( $id ); // confirm_delete_users() can only handle arrays.
 				$title             = __( 'Users' );
 				$parent_file       = 'users.php';
@@ -39,7 +43,11 @@ if ( isset( $_GET['action'] ) ) {
 			} else {
 				wp_redirect( network_admin_url( 'users.php' ) );
 			}
+<<<<<<< HEAD
 			exit;
+=======
+			exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		case 'allusers':
 			if ( ! current_user_can( 'manage_network_users' ) ) {
@@ -66,7 +74,11 @@ if ( isset( $_GET['action'] ) ) {
 								confirm_delete_users( $_POST['allusers'] );
 								echo '</div>';
 								require_once ABSPATH . 'wp-admin/admin-footer.php';
+<<<<<<< HEAD
 								exit;
+=======
+								exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 							case 'spam':
 								$user = get_userdata( $user_id );
@@ -116,13 +128,22 @@ if ( isset( $_GET['action'] ) ) {
 
 				if ( ! in_array( $doaction, array( 'delete', 'spam', 'notspam' ), true ) ) {
 					$sendback = wp_get_referer();
+<<<<<<< HEAD
 					$user_ids = (array) $_POST['allusers'];
 
+=======
+
+					$user_ids = (array) $_POST['allusers'];
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					/** This action is documented in wp-admin/network/site-themes.php */
 					$sendback = apply_filters( 'handle_network_bulk_actions-' . get_current_screen()->id, $sendback, $doaction, $user_ids ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 
 					wp_safe_redirect( $sendback );
+<<<<<<< HEAD
 					exit;
+=======
+					exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 
 				wp_safe_redirect(
@@ -142,7 +163,11 @@ if ( isset( $_GET['action'] ) ) {
 				}
 				wp_redirect( $location );
 			}
+<<<<<<< HEAD
 			exit;
+=======
+			exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		case 'dodelete':
 			check_admin_referer( 'ms-users-delete' );
@@ -157,7 +182,11 @@ if ( isset( $_GET['action'] ) ) {
 							continue;
 						}
 
+<<<<<<< HEAD
 						if ( ! empty( $_POST['delete'] ) && 'reassign' === $_POST['delete'][ $blogid ][ $id ] ) {
+=======
+						if ( ! empty( $_POST['delete'] ) && 'reassign' == $_POST['delete'][ $blogid ][ $id ] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							remove_user_from_blog( $id, $blogid, (int) $user_id );
 						} else {
 							remove_user_from_blog( $id, $blogid );
@@ -165,9 +194,13 @@ if ( isset( $_GET['action'] ) ) {
 					}
 				}
 			}
+<<<<<<< HEAD
 
 			$i = 0;
 
+=======
+			$i = 0;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( is_array( $_POST['user'] ) && ! empty( $_POST['user'] ) ) {
 				foreach ( $_POST['user'] as $id ) {
 					if ( ! current_user_can( 'delete_user', $id ) ) {
@@ -178,7 +211,11 @@ if ( isset( $_GET['action'] ) ) {
 				}
 			}
 
+<<<<<<< HEAD
 			if ( 1 === $i ) {
+=======
+			if ( 1 == $i ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$deletefunction = 'delete';
 			} else {
 				$deletefunction = 'all_delete';
@@ -193,7 +230,11 @@ if ( isset( $_GET['action'] ) ) {
 					network_admin_url( 'users.php' )
 				)
 			);
+<<<<<<< HEAD
 			exit;
+=======
+			exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 }
 

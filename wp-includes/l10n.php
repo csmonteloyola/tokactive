@@ -129,7 +129,10 @@ function determine_locale() {
 	 * @param string|null $locale The locale to return and short-circuit. Default null.
 	 */
 	$determined_locale = apply_filters( 'pre_determine_locale', null );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( ! empty( $determined_locale ) && is_string( $determined_locale ) ) {
 		return $determined_locale;
 	}
@@ -166,7 +169,10 @@ function determine_locale() {
  * *Note:* Don't use translate() directly, use __() or related functions.
  *
  * @since 2.2.0
+<<<<<<< HEAD
  * @since 5.5.0 Introduced gettext-{$domain} filter.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param string $text   Text to translate.
  * @param string $domain Optional. Text domain. Unique identifier for retrieving translated strings.
@@ -182,6 +188,7 @@ function translate( $text, $domain = 'default' ) {
 	 *
 	 * @since 2.0.11
 	 *
+<<<<<<< HEAD
 	 * @param string $translation Translated text.
 	 * @param string $text        Text to translate.
 	 * @param string $domain      Text domain. Unique identifier for retrieving translated strings.
@@ -202,6 +209,13 @@ function translate( $text, $domain = 'default' ) {
 	$translation = apply_filters( "gettext_{$domain}", $translation, $text, $domain );
 
 	return $translation;
+=======
+	 * @param string $translation  Translated text.
+	 * @param string $text         Text to translate.
+	 * @param string $domain       Text domain. Unique identifier for retrieving translated strings.
+	 */
+	return apply_filters( 'gettext', $translation, $text, $domain );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -232,7 +246,10 @@ function before_last_bar( $string ) {
  * *Note:* Don't use translate_with_gettext_context() directly, use _x() or related functions.
  *
  * @since 2.8.0
+<<<<<<< HEAD
  * @since 5.5.0 Introduced gettext_with_context-{$domain} filter.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param string $text    Text to translate.
  * @param string $context Context information for the translators.
@@ -243,12 +260,16 @@ function before_last_bar( $string ) {
 function translate_with_gettext_context( $text, $context, $domain = 'default' ) {
 	$translations = get_translations_for_domain( $domain );
 	$translation  = $translations->translate( $text, $context );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/**
 	 * Filters text with its translation based on context information.
 	 *
 	 * @since 2.8.0
 	 *
+<<<<<<< HEAD
 	 * @param string $translation Translated text.
 	 * @param string $text        Text to translate.
 	 * @param string $context     Context information for the translators.
@@ -271,6 +292,14 @@ function translate_with_gettext_context( $text, $context, $domain = 'default' ) 
 	$translation = apply_filters( "gettext_with_context_{$domain}", $translation, $text, $context, $domain );
 
 	return $translation;
+=======
+	 * @param string $translation  Translated text.
+	 * @param string $text         Text to translate.
+	 * @param string $context      Context information for the translators.
+	 * @param string $domain       Text domain. Unique identifier for retrieving translated strings.
+	 */
+	return apply_filters( 'gettext_with_context', $translation, $text, $context, $domain );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -454,7 +483,10 @@ function esc_html_x( $text, $context, $domain = 'default' ) {
  *     printf( _n( '%s person', '%s people', $count, 'text-domain' ), number_format_i18n( $count ) );
  *
  * @since 2.8.0
+<<<<<<< HEAD
  * @since 5.5.0 Introduced ngettext-{$domain} filter.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param string $single The text to be used if the number is singular.
  * @param string $plural The text to be used if the number is plural.
@@ -478,6 +510,7 @@ function _n( $single, $plural, $number, $domain = 'default' ) {
 	 * @param string $number      The number to compare against to use either the singular or plural form.
 	 * @param string $domain      Text domain. Unique identifier for retrieving translated strings.
 	 */
+<<<<<<< HEAD
 	$translation = apply_filters( 'ngettext', $translation, $single, $plural, $number, $domain );
 
 	/**
@@ -496,6 +529,9 @@ function _n( $single, $plural, $number, $domain = 'default' ) {
 	$translation = apply_filters( "ngettext_{$domain}", $translation, $single, $plural, $number, $domain );
 
 	return $translation;
+=======
+	return apply_filters( 'ngettext', $translation, $single, $plural, $number, $domain );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -512,7 +548,10 @@ function _n( $single, $plural, $number, $domain = 'default' ) {
  *     printf( _nx( '%s group', '%s groups', $animals, 'group of animals', 'text-domain' ), number_format_i18n( $animals ) );
  *
  * @since 2.8.0
+<<<<<<< HEAD
  * @since 5.5.0 Introduced ngettext_with_context-{$domain} filter.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param string $single  The text to be used if the number is singular.
  * @param string $plural  The text to be used if the number is plural.
@@ -538,6 +577,7 @@ function _nx( $single, $plural, $number, $context, $domain = 'default' ) {
 	 * @param string $context     Context information for the translators.
 	 * @param string $domain      Text domain. Unique identifier for retrieving translated strings.
 	 */
+<<<<<<< HEAD
 	$translation = apply_filters( 'ngettext_with_context', $translation, $single, $plural, $number, $context, $domain );
 
 	/**
@@ -557,6 +597,9 @@ function _nx( $single, $plural, $number, $context, $domain = 'default' ) {
 	$translation = apply_filters( "ngettext_with_context_{$domain}", $translation, $single, $plural, $number, $context, $domain );
 
 	return $translation;
+=======
+	return apply_filters( 'ngettext_with_context', $translation, $single, $plural, $number, $context, $domain );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -712,7 +755,11 @@ function load_textdomain( $domain, $mofile ) {
 	 */
 	$plugin_override = apply_filters( 'override_load_textdomain', false, $domain, $mofile );
 
+<<<<<<< HEAD
 	if ( true === (bool) $plugin_override ) {
+=======
+	if ( true == $plugin_override ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		unset( $l10n_unloaded[ $domain ] );
 
 		return true;
@@ -1223,6 +1270,10 @@ function _load_textdomain_just_in_time( $domain ) {
  * @access private
  *
  * @see _load_textdomain_just_in_time()
+<<<<<<< HEAD
+=======
+ * @staticvar array $available_translations
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param string $domain Text domain. Unique identifier for retrieving translated strings.
  * @param bool   $reset  Whether to reset the internal cache. Used by the switch to locale functionality.
@@ -1251,6 +1302,10 @@ function _get_path_to_translation( $domain, $reset = false ) {
  * @access private
  *
  * @see _get_path_to_translation()
+<<<<<<< HEAD
+=======
+ * @staticvar array $cached_mofiles
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param string $domain Text domain. Unique identifier for retrieving translated strings.
  * @return string|false The path to the translation file or false if no translation file was found.
@@ -1278,12 +1333,20 @@ function _get_path_to_translation_from_lang_dir( $domain ) {
 	$mofile = "{$domain}-{$locale}.mo";
 
 	$path = WP_LANG_DIR . '/plugins/' . $mofile;
+<<<<<<< HEAD
 	if ( in_array( $path, $cached_mofiles, true ) ) {
+=======
+	if ( in_array( $path, $cached_mofiles ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return $path;
 	}
 
 	$path = WP_LANG_DIR . '/themes/' . $mofile;
+<<<<<<< HEAD
 	if ( in_array( $path, $cached_mofiles, true ) ) {
+=======
+	if ( in_array( $path, $cached_mofiles ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return $path;
 	}
 
@@ -1298,6 +1361,10 @@ function _get_path_to_translation_from_lang_dir( $domain ) {
  * @since 2.8.0
  *
  * @global MO[] $l10n
+<<<<<<< HEAD
+=======
+ * @staticvar NOOP_Translations $noop_translations
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param string $domain Text domain. Unique identifier for retrieving translated strings.
  * @return Translations|NOOP_Translations A Translations instance.
@@ -1435,7 +1502,11 @@ function wp_get_installed_translations( $type ) {
 		if ( ! preg_match( '/(?:(.+)-)?([a-z]{2,3}(?:_[A-Z]{2})?(?:_[a-z0-9]+)?).po/', $file, $match ) ) {
 			continue;
 		}
+<<<<<<< HEAD
 		if ( ! in_array( substr( $file, 0, -3 ) . '.mo', $files, true ) ) {
+=======
+		if ( ! in_array( substr( $file, 0, -3 ) . '.mo', $files ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			continue;
 		}
 

@@ -6,8 +6,12 @@
 
 // Privacy request action handling.
 jQuery( document ).ready( function( $ ) {
+<<<<<<< HEAD
 	var __ = wp.i18n.__,
 		copiedNoticeTimeout;
+=======
+	var strings = window.privacyToolsL10n || {};
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	function setActionState( $action, state ) {
 		$action.children().addClass( 'hidden' );
@@ -77,7 +81,11 @@ jQuery( document ).ready( function( $ ) {
 		setExportProgress( 0 );
 
 		function onExportDoneSuccess( zipUrl ) {
+<<<<<<< HEAD
 			var summaryMessage = __( 'The personal data export link for this user was sent.' );
+=======
+			var summaryMessage = strings.emailSent;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			setActionState( $action, 'export-personal-data-success' );
 
@@ -86,6 +94,7 @@ jQuery( document ).ready( function( $ ) {
 			if ( 'undefined' !== typeof zipUrl ) {
 				window.location = zipUrl;
 			} else if ( ! sendAsEmail ) {
+<<<<<<< HEAD
 				onExportFailure( __( 'No personal data export file was generated.' ) );
 			}
 
@@ -108,6 +117,26 @@ jQuery( document ).ready( function( $ ) {
 			var progress       = ( exportersCount > 0 ? exporterIndex / exportersCount : 0 ),
 				progressString = Math.round( progress * 100 ).toString() + '%';
 
+=======
+				onExportFailure( strings.noExportFile );
+			}
+
+			setTimeout( function(){ $rowActions.removeClass( 'processing' ); }, 500 );
+		}
+
+		function onExportFailure( errorMessage ) {
+			setActionState( $action, 'export-personal-data-failed' );
+			if ( errorMessage ) {
+				appendResultsAfterRow( $requestRow, 'notice-error', strings.exportError, [ errorMessage ] );
+			}
+
+			setTimeout( function(){ $rowActions.removeClass( 'processing' ); }, 500 );
+		}
+
+		function setExportProgress( exporterIndex ) {
+			var progress       = ( exportersCount > 0 ? exporterIndex / exportersCount : 0 );
+			var progressString = Math.round( progress * 100 ).toString() + '%';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$progress.html( progressString );
 		}
 
@@ -130,7 +159,11 @@ jQuery( document ).ready( function( $ ) {
 
 				if ( ! response.success ) {
 					// e.g. invalid request ID.
+<<<<<<< HEAD
 					setTimeout( function() { onExportFailure( response.data ); }, 500 );
+=======
+					setTimeout( function(){ onExportFailure( response.data ); }, 500 );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					return;
 				}
 
@@ -141,12 +174,20 @@ jQuery( document ).ready( function( $ ) {
 					if ( exporterIndex < exportersCount ) {
 						setTimeout( doNextExport( exporterIndex + 1, 1 ) );
 					} else {
+<<<<<<< HEAD
 						setTimeout( function() { onExportDoneSuccess( responseData.url ); }, 500 );
+=======
+						setTimeout( function(){ onExportDoneSuccess( responseData.url ); }, 500 );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					}
 				}
 			}).fail( function( jqxhr, textStatus, error ) {
 				// e.g. Nonce failure.
+<<<<<<< HEAD
 				setTimeout( function() { onExportFailure( error ); }, 500 );
+=======
+				setTimeout( function(){ onExportFailure( error ); }, 500 );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			});
 		}
 
@@ -178,28 +219,46 @@ jQuery( document ).ready( function( $ ) {
 		setErasureProgress( 0 );
 
 		function onErasureDoneSuccess() {
+<<<<<<< HEAD
 			var summaryMessage = __( 'No personal data was found for this user.' ),
 				classes = 'notice-success';
+=======
+			var summaryMessage = strings.noDataFound;
+			var classes = 'notice-success';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			setActionState( $action, 'remove-personal-data-success' );
 
 			if ( false === hasRemoved ) {
 				if ( false === hasRetained ) {
+<<<<<<< HEAD
 					summaryMessage = __( 'No personal data was found for this user.' );
 				} else {
 					summaryMessage = __( 'Personal data was found for this user but was not erased.' );
+=======
+					summaryMessage = strings.noDataFound;
+				} else {
+					summaryMessage = strings.noneRemoved;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					classes = 'notice-warning';
 				}
 			} else {
 				if ( false === hasRetained ) {
+<<<<<<< HEAD
 					summaryMessage = __( 'All of the personal data found for this user was erased.' );
 				} else {
 					summaryMessage = __( 'Personal data was found for this user but some of the personal data found was not erased.' );
+=======
+					summaryMessage = strings.foundAndRemoved;
+				} else {
+					summaryMessage = strings.someNotRemoved;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					classes = 'notice-warning';
 				}
 			}
 			appendResultsAfterRow( $requestRow, classes, summaryMessage, messages );
 
+<<<<<<< HEAD
 			setTimeout( function() { $rowActions.removeClass( 'processing' ); }, 500 );
 		}
 
@@ -217,6 +276,21 @@ jQuery( document ).ready( function( $ ) {
 			var progress       = ( erasersCount > 0 ? eraserIndex / erasersCount : 0 ),
 				progressString = Math.round( progress * 100 ).toString() + '%';
 
+=======
+			setTimeout( function(){ $rowActions.removeClass( 'processing' ); }, 500 );
+		}
+
+		function onErasureFailure() {
+			setActionState( $action, 'remove-personal-data-failed' );
+			appendResultsAfterRow( $requestRow, 'notice-error', strings.removalError, [] );
+
+			setTimeout( function(){ $rowActions.removeClass( 'processing' ); }, 500 );
+		}
+
+		function setErasureProgress( eraserIndex ) {
+			var progress       = ( erasersCount > 0 ? eraserIndex / erasersCount : 0 );
+			var progressString = Math.round( progress * 100 ).toString() + '%';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$progress.html( progressString );
 		}
 
@@ -235,7 +309,11 @@ jQuery( document ).ready( function( $ ) {
 				var responseData = response.data;
 
 				if ( ! response.success ) {
+<<<<<<< HEAD
 					setTimeout( function() { onErasureFailure(); }, 500 );
+=======
+					setTimeout( function(){ onErasureFailure(); }, 500 );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					return;
 				}
 				if ( responseData.items_removed ) {
@@ -254,11 +332,19 @@ jQuery( document ).ready( function( $ ) {
 					if ( eraserIndex < erasersCount ) {
 						setTimeout( doNextErasure( eraserIndex + 1, 1 ) );
 					} else {
+<<<<<<< HEAD
 						setTimeout( function() { onErasureDoneSuccess(); }, 500 );
 					}
 				}
 			}).fail( function() {
 				setTimeout( function() { onErasureFailure(); }, 500 );
+=======
+						setTimeout( function(){ onErasureDoneSuccess(); }, 500 );
+					}
+				}
+			}).fail( function() {
+				setTimeout( function(){ onErasureFailure(); }, 500 );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			});
 		}
 
@@ -268,6 +354,7 @@ jQuery( document ).ready( function( $ ) {
 		doNextErasure( 1, 1 );
 	});
 
+<<<<<<< HEAD
 	// Privacy Policy page, copy action.
 	$( document ).on( 'click', function( event ) {
 		var $parent,
@@ -277,6 +364,12 @@ jQuery( document ).ready( function( $ ) {
 			copiedNotice = $target.siblings( '.success' );
 
 		clearTimeout( copiedNoticeTimeout );
+=======
+	// Privacy policy page, copy button.
+	$( document ).on( 'click', function( event ) {
+		var $target = $( event.target );
+		var $parent, $container, range;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		if ( $target.is( 'button.privacy-text-copy' ) ) {
 			$parent = $target.parent().parent();
@@ -291,6 +384,7 @@ jQuery( document ).ready( function( $ ) {
 					var documentPosition = document.documentElement.scrollTop,
 						bodyPosition     = document.body.scrollTop;
 
+<<<<<<< HEAD
 					// Setup copy.
 					window.getSelection().removeAllRanges();
 
@@ -299,20 +393,33 @@ jQuery( document ).ready( function( $ ) {
 					$container.addClass( 'hide-privacy-policy-tutorial' );
 
 					// Copy action.
+=======
+					window.getSelection().removeAllRanges();
+					range = document.createRange();
+					$container.addClass( 'hide-privacy-policy-tutorial' );
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					range.selectNodeContents( $container[0] );
 					window.getSelection().addRange( range );
 					document.execCommand( 'copy' );
 
+<<<<<<< HEAD
 					// Reset section.
 					$container.removeClass( 'hide-privacy-policy-tutorial' );
 					window.getSelection().removeAllRanges();
 
 					// Return scroll position - see #49540.
+=======
+					$container.removeClass( 'hide-privacy-policy-tutorial' );
+					window.getSelection().removeAllRanges();
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					if ( documentPosition > 0 && documentPosition !== document.documentElement.scrollTop ) {
 						document.documentElement.scrollTop = documentPosition;
 					} else if ( bodyPosition > 0 && bodyPosition !== document.body.scrollTop ) {
 						document.body.scrollTop = bodyPosition;
 					}
+<<<<<<< HEAD
 
 					// Display and speak notice to indicate action complete.
 					copiedNotice.addClass( 'visible' );
@@ -322,8 +429,14 @@ jQuery( document ).ready( function( $ ) {
 					copiedNoticeTimeout = setTimeout( function() {
 						copiedNotice.removeClass( 'visible' );
 					}, 3000 );
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				} catch ( er ) {}
 			}
 		}
 	});
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c

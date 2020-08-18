@@ -88,6 +88,7 @@ function register_rest_route( $namespace, $route, $args = array(), $override = f
 
 		$arg_group         = array_merge( $defaults, $arg_group );
 		$arg_group['args'] = array_merge( $common_args, $arg_group['args'] );
+<<<<<<< HEAD
 
 		if ( ! isset( $arg_group['permission_callback'] ) ) {
 			_doing_it_wrong(
@@ -102,6 +103,8 @@ function register_rest_route( $namespace, $route, $args = array(), $override = f
 				'5.5.0'
 			);
 		}
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	$full_route = '/' . $clean_namespace . '/' . trim( $route, '/' );
@@ -119,8 +122,13 @@ function register_rest_route( $namespace, $route, $args = array(), $override = f
  *
  * @param string|array $object_type Object(s) the field is being registered
  *                                  to, "post"|"term"|"comment" etc.
+<<<<<<< HEAD
  * @param string       $attribute   The attribute name.
  * @param array        $args {
+=======
+ * @param string $attribute         The attribute name.
+ * @param array  $args {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *     Optional. An array of arguments used to handle the registered field.
  *
  *     @type callable|null $get_callback    Optional. The callback function used to retrieve the field value. Default is
@@ -192,6 +200,7 @@ function rest_api_register_rewrites() {
  * @since 4.4.0
  */
 function rest_api_default_filters() {
+<<<<<<< HEAD
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 		// Deprecated reporting.
 		add_action( 'deprecated_function_run', 'rest_handle_deprecated_function', 10, 3 );
@@ -201,6 +210,13 @@ function rest_api_default_filters() {
 		add_action( 'doing_it_wrong_run', 'rest_handle_doing_it_wrong', 10, 3 );
 		add_filter( 'doing_it_wrong_trigger_error', '__return_false' );
 	}
+=======
+	// Deprecated reporting.
+	add_action( 'deprecated_function_run', 'rest_handle_deprecated_function', 10, 3 );
+	add_filter( 'deprecated_function_trigger_error', '__return_false' );
+	add_action( 'deprecated_argument_run', 'rest_handle_deprecated_argument', 10, 3 );
+	add_filter( 'deprecated_argument_trigger_error', '__return_false' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	// Default serving.
 	add_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
@@ -250,9 +266,19 @@ function create_initial_rest_routes() {
 
 	// Terms.
 	foreach ( get_taxonomies( array( 'show_in_rest' => true ), 'object' ) as $taxonomy ) {
+<<<<<<< HEAD
 		$controller = $taxonomy->get_rest_controller();
 
 		if ( ! $controller ) {
+=======
+		$class = ! empty( $taxonomy->rest_controller_class ) ? $taxonomy->rest_controller_class : 'WP_REST_Terms_Controller';
+
+		if ( ! class_exists( $class ) ) {
+			continue;
+		}
+		$controller = new $class( $taxonomy->name );
+		if ( ! is_subclass_of( $controller, 'WP_REST_Controller' ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			continue;
 		}
 
@@ -285,10 +311,13 @@ function create_initial_rest_routes() {
 	$controller = new WP_REST_Block_Renderer_Controller;
 	$controller->register_routes();
 
+<<<<<<< HEAD
 	// Block Types.
 	$controller = new WP_REST_Block_Types_Controller();
 	$controller->register_routes();
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	// Settings.
 	$controller = new WP_REST_Settings_Controller;
 	$controller->register_routes();
@@ -297,6 +326,7 @@ function create_initial_rest_routes() {
 	$controller = new WP_REST_Themes_Controller;
 	$controller->register_routes();
 
+<<<<<<< HEAD
 	// Plugins.
 	$controller = new WP_REST_Plugins_Controller();
 	$controller->register_routes();
@@ -305,6 +335,8 @@ function create_initial_rest_routes() {
 	$controller = new WP_REST_Block_Directory_Controller();
 	$controller->register_routes();
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -532,22 +564,34 @@ function rest_ensure_request( $request ) {
 /**
  * Ensures a REST response is a response object (for consistency).
  *
+<<<<<<< HEAD
  * This implements WP_REST_Response, allowing usage of `set_status`/`header`/etc
+=======
+ * This implements WP_HTTP_Response, allowing usage of `set_status`/`header`/etc
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * without needing to double-check the object. Will also allow WP_Error to indicate error
  * responses, so users should immediately check for this value.
  *
  * @since 4.4.0
  *
+<<<<<<< HEAD
  * @param WP_REST_Response|WP_Error|WP_HTTP_Response|mixed $response Response to check.
  * @return WP_REST_Response|WP_Error If response generated an error, WP_Error, if response
  *                                   is already an instance, WP_REST_Response, otherwise
  *                                   returns a new WP_REST_Response instance.
+=======
+ * @param WP_HTTP_Response|WP_Error|mixed $response Response to check.
+ * @return WP_REST_Response|mixed If response generated an error, WP_Error, if response
+ *                                is already an instance, WP_HTTP_Response, otherwise
+ *                                returns a new WP_REST_Response instance.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function rest_ensure_response( $response ) {
 	if ( is_wp_error( $response ) ) {
 		return $response;
 	}
 
+<<<<<<< HEAD
 	if ( $response instanceof WP_REST_Response ) {
 		return $response;
 	}
@@ -560,6 +604,10 @@ function rest_ensure_response( $response ) {
 			$response->get_status(),
 			$response->get_headers()
 		);
+=======
+	if ( $response instanceof WP_HTTP_Response ) {
+		return $response;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	return new WP_REST_Response( $response );
@@ -602,7 +650,11 @@ function rest_handle_deprecated_argument( $function, $message, $version ) {
 	if ( ! WP_DEBUG || headers_sent() ) {
 		return;
 	}
+<<<<<<< HEAD
 	if ( $message ) {
+=======
+	if ( ! empty( $message ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		/* translators: 1: Function name, 2: WordPress version number, 3: Error message. */
 		$string = sprintf( __( '%1$s (since %2$s; %3$s)' ), $function, $version, $message );
 	} else {
@@ -614,6 +666,7 @@ function rest_handle_deprecated_argument( $function, $message, $version ) {
 }
 
 /**
+<<<<<<< HEAD
  * Handles _doing_it_wrong errors.
  *
  * @since 5.5.0
@@ -641,6 +694,8 @@ function rest_handle_doing_it_wrong( $function, $message, $version ) {
 }
 
 /**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * Sends Cross-Origin Resource Sharing headers with API requests.
  *
  * @since 4.4.0
@@ -768,12 +823,19 @@ function rest_send_allow_header( $response, $server, $request ) {
 /**
  * Recursively computes the intersection of arrays using keys for comparison.
  *
+<<<<<<< HEAD
  * @since 5.3.0
  *
  * @param array $array1 The array with master keys to check.
  * @param array $array2 An array to compare keys against.
  * @return array An associative array containing all the entries of array1 which have keys
  *               that are present in all arguments.
+=======
+ * @param  array $array1 The array with master keys to check.
+ * @param  array $array2 An array to compare keys against.
+ *
+ * @return array An associative array containing all the entries of array1 which have keys that are present in all arguments.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function _rest_array_intersect_key_recursive( $array1, $array2 ) {
 	$array1 = array_intersect_key( $array1, $array2 );
@@ -793,6 +855,10 @@ function _rest_array_intersect_key_recursive( $array1, $array2 ) {
  * @param WP_REST_Response $response Current response being served.
  * @param WP_REST_Server   $server   ResponseHandler instance (usually WP_REST_Server).
  * @param WP_REST_Request  $request  The request that was used to make current response.
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return WP_REST_Response Response to be served, trimmed down to contain a subset of fields.
  */
 function rest_filter_response_fields( $response, $server, $request ) {
@@ -912,6 +978,7 @@ function rest_output_link_wp_head() {
 		return;
 	}
 
+<<<<<<< HEAD
 	printf( '<link rel="https://api.w.org/" href="%s" />', esc_url( $api_root ) );
 
 	$resource = rest_get_queried_resource_route();
@@ -919,6 +986,9 @@ function rest_output_link_wp_head() {
 	if ( $resource ) {
 		printf( '<link rel="alternate" type="application/json" href="%s" />', esc_url( rest_url( $resource ) ) );
 	}
+=======
+	echo "<link rel='https://api.w.org/' href='" . esc_url( $api_root ) . "' />\n";
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -937,6 +1007,7 @@ function rest_output_link_header() {
 		return;
 	}
 
+<<<<<<< HEAD
 	header( sprintf( 'Link: <%s>; rel="https://api.w.org/"', esc_url_raw( $api_root ) ), false );
 
 	$resource = rest_get_queried_resource_route();
@@ -944,6 +1015,9 @@ function rest_output_link_header() {
 	if ( $resource ) {
 		header( sprintf( 'Link: <%s>; rel="alternate"; type="application/json"', esc_url_raw( rest_url( $resource ) ) ), false );
 	}
+=======
+	header( 'Link: <' . esc_url_raw( $api_root ) . '>; rel="https://api.w.org/"', false );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -1029,6 +1103,7 @@ function rest_cookie_collect_status() {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves the avatar urls in various sizes.
  *
  * @since 4.7.0
@@ -1073,6 +1148,8 @@ function rest_get_avatar_sizes() {
 }
 
 /**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * Parses an RFC3339 time into a Unix timestamp.
  *
  * @since 4.4.0
@@ -1097,6 +1174,7 @@ function rest_parse_date( $date, $force_utc = false ) {
 }
 
 /**
+<<<<<<< HEAD
  * Parses a 3 or 6 digit hex color (with #).
  *
  * @since 5.4.0
@@ -1114,6 +1192,8 @@ function rest_parse_hex_color( $color ) {
 }
 
 /**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * Parses a date into both its local and UTC equivalent, in MySQL datetime format.
  *
  * @since 4.4.0
@@ -1171,9 +1251,15 @@ function rest_authorization_required_code() {
  *
  * @since 4.7.0
  *
+<<<<<<< HEAD
  * @param mixed           $value
  * @param WP_REST_Request $request
  * @param string          $param
+=======
+ * @param  mixed            $value
+ * @param  WP_REST_Request  $request
+ * @param  string           $param
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return true|WP_Error
  */
 function rest_validate_request_arg( $value, $request, $param ) {
@@ -1191,9 +1277,15 @@ function rest_validate_request_arg( $value, $request, $param ) {
  *
  * @since 4.7.0
  *
+<<<<<<< HEAD
  * @param mixed           $value
  * @param WP_REST_Request $request
  * @param string          $param
+=======
+ * @param  mixed            $value
+ * @param  WP_REST_Request  $request
+ * @param  string           $param
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return mixed
  */
 function rest_sanitize_request_arg( $value, $request, $param ) {
@@ -1203,7 +1295,11 @@ function rest_sanitize_request_arg( $value, $request, $param ) {
 	}
 	$args = $attributes['args'][ $param ];
 
+<<<<<<< HEAD
 	return rest_sanitize_value_from_schema( $value, $args, $param );
+=======
+	return rest_sanitize_value_from_schema( $value, $args );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -1214,9 +1310,15 @@ function rest_sanitize_request_arg( $value, $request, $param ) {
  *
  * @since 4.7.0
  *
+<<<<<<< HEAD
  * @param mixed           $value
  * @param WP_REST_Request $request
  * @param string          $param
+=======
+ * @param  mixed            $value
+ * @param  WP_REST_Request  $request
+ * @param  string           $param
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return mixed
  */
 function rest_parse_request_arg( $value, $request, $param ) {
@@ -1238,7 +1340,11 @@ function rest_parse_request_arg( $value, $request, $param ) {
  *
  * @since 4.7.0
  *
+<<<<<<< HEAD
  * @param string $ip IP address.
+=======
+ * @param  string $ip IP address.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|false The valid IP address, otherwise false.
  */
 function rest_is_ip_address( $ip ) {
@@ -1306,6 +1412,7 @@ function rest_is_boolean( $maybe_bool ) {
 }
 
 /**
+<<<<<<< HEAD
  * Determines if a given value is integer-like.
  *
  * @since 5.5.0
@@ -1536,12 +1643,56 @@ function rest_stabilize_value( $value ) {
 	}
 
 	return $value;
+=======
+ * Retrieves the avatar urls in various sizes.
+ *
+ * @since 4.7.0
+ *
+ * @see get_avatar_url()
+ *
+ * @param mixed $id_or_email The Gravatar to retrieve a URL for. Accepts a user_id, gravatar md5 hash,
+ *                           user email, WP_User object, WP_Post object, or WP_Comment object.
+ * @return array Avatar URLs keyed by size. Each value can be a URL string or boolean false.
+ */
+function rest_get_avatar_urls( $id_or_email ) {
+	$avatar_sizes = rest_get_avatar_sizes();
+
+	$urls = array();
+	foreach ( $avatar_sizes as $size ) {
+		$urls[ $size ] = get_avatar_url( $id_or_email, array( 'size' => $size ) );
+	}
+
+	return $urls;
+}
+
+/**
+ * Retrieves the pixel sizes for avatars.
+ *
+ * @since 4.7.0
+ *
+ * @return int[] List of pixel sizes for avatars. Default `[ 24, 48, 96 ]`.
+ */
+function rest_get_avatar_sizes() {
+	/**
+	 * Filters the REST avatar sizes.
+	 *
+	 * Use this filter to adjust the array of sizes returned by the
+	 * `rest_get_avatar_sizes` function.
+	 *
+	 * @since 4.4.0
+	 *
+	 * @param int[] $sizes An array of int values that are the pixel sizes for avatars.
+	 *                     Default `[ 24, 48, 96 ]`.
+	 */
+	return apply_filters( 'rest_avatar_sizes', array( 24, 48, 96 ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
  * Validate a value based on a schema.
  *
  * @since 4.7.0
+<<<<<<< HEAD
  * @since 4.9.0 Support the "object" type.
  * @since 5.2.0 Support validating "additionalProperties" against a schema.
  * @since 5.3.0 Support multiple types.
@@ -1550,6 +1701,8 @@ function rest_stabilize_value( $value ) {
  *              Support the "minLength", "maxLength" and "pattern" keywords for strings.
  *              Support the "minItems", "maxItems" and "uniqueItems" keywords for arrays.
  *              Validate required properties.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param mixed  $value The value to validate.
  * @param array  $args  Schema array to use for validation.
@@ -1557,6 +1710,7 @@ function rest_stabilize_value( $value ) {
  * @return true|WP_Error
  */
 function rest_validate_value_from_schema( $value, $args, $param = '' ) {
+<<<<<<< HEAD
 	$allowed_types = array( 'array', 'object', 'string', 'number', 'integer', 'boolean', 'null' );
 
 	if ( ! isset( $args['type'] ) ) {
@@ -1586,10 +1740,33 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 
 	if ( 'array' === $args['type'] ) {
 		if ( ! rest_is_array( $value ) ) {
+=======
+	if ( is_array( $args['type'] ) ) {
+		foreach ( $args['type'] as $type ) {
+			$type_args         = $args;
+			$type_args['type'] = $type;
+
+			if ( true === rest_validate_value_from_schema( $value, $type_args, $param ) ) {
+				return true;
+			}
+		}
+
+		/* translators: 1: Parameter, 2: List of types. */
+		return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s is not of type %2$s.' ), $param, implode( ',', $args['type'] ) ) );
+	}
+
+	if ( 'array' === $args['type'] ) {
+		if ( ! is_null( $value ) ) {
+			$value = wp_parse_list( $value );
+		}
+
+		if ( ! wp_is_numeric_array( $value ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			/* translators: 1: Parameter, 2: Type name. */
 			return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s is not of type %2$s.' ), $param, 'array' ) );
 		}
 
+<<<<<<< HEAD
 		$value = rest_sanitize_array( $value );
 
 		if ( isset( $args['items'] ) ) {
@@ -1619,10 +1796,35 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 
 	if ( 'object' === $args['type'] ) {
 		if ( ! rest_is_object( $value ) ) {
+=======
+		foreach ( $value as $index => $v ) {
+			$is_valid = rest_validate_value_from_schema( $v, $args['items'], $param . '[' . $index . ']' );
+			if ( is_wp_error( $is_valid ) ) {
+				return $is_valid;
+			}
+		}
+	}
+
+	if ( 'object' === $args['type'] ) {
+		if ( '' === $value ) {
+			$value = array();
+		}
+
+		if ( $value instanceof stdClass ) {
+			$value = (array) $value;
+		}
+
+		if ( $value instanceof JsonSerializable ) {
+			$value = $value->jsonSerialize();
+		}
+
+		if ( ! is_array( $value ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			/* translators: 1: Parameter, 2: Type name. */
 			return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s is not of type %2$s.' ), $param, 'object' ) );
 		}
 
+<<<<<<< HEAD
 		$value = rest_sanitize_object( $value );
 
 		if ( isset( $args['required'] ) && is_array( $args['required'] ) ) { // schema version 4
@@ -1641,6 +1843,8 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 			}
 		}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		foreach ( $value as $property => $v ) {
 			if ( isset( $args['properties'][ $property ] ) ) {
 				$is_valid = rest_validate_value_from_schema( $v, $args['properties'][ $property ], $param . '[' . $property . ']' );
@@ -1679,12 +1883,20 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 		}
 	}
 
+<<<<<<< HEAD
 	if ( in_array( $args['type'], array( 'integer', 'number' ), true ) && ! is_numeric( $value ) ) {
+=======
+	if ( in_array( $args['type'], array( 'integer', 'number' ) ) && ! is_numeric( $value ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		/* translators: 1: Parameter, 2: Type name. */
 		return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s is not of type %2$s.' ), $param, $args['type'] ) );
 	}
 
+<<<<<<< HEAD
 	if ( 'integer' === $args['type'] && ! rest_is_integer( $value ) ) {
+=======
+	if ( 'integer' === $args['type'] && round( floatval( $value ) ) !== floatval( $value ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		/* translators: 1: Parameter, 2: Type name. */
 		return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s is not of type %2$s.' ), $param, 'integer' ) );
 	}
@@ -1694,6 +1906,7 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 		return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s is not of type %2$s.' ), $param, 'boolean' ) );
 	}
 
+<<<<<<< HEAD
 	if ( 'string' === $args['type'] ) {
 		if ( ! is_string( $value ) ) {
 			/* translators: 1: Parameter, 2: Type name. */
@@ -1745,6 +1958,15 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 				}
 				break;
 
+=======
+	if ( 'string' === $args['type'] && ! is_string( $value ) ) {
+		/* translators: 1: Parameter, 2: Type name. */
+		return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s is not of type %2$s.' ), $param, 'string' ) );
+	}
+
+	if ( isset( $args['format'] ) ) {
+		switch ( $args['format'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			case 'date-time':
 				if ( ! rest_parse_date( $value ) ) {
 					return new WP_Error( 'rest_invalid_date', __( 'Invalid date.' ) );
@@ -1762,12 +1984,15 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 					return new WP_Error( 'rest_invalid_param', sprintf( __( '%s is not a valid IP address.' ), $param ) );
 				}
 				break;
+<<<<<<< HEAD
 			case 'uuid':
 				if ( ! wp_is_uuid( $value ) ) {
 					/* translators: %s is the name of a JSON field expecting a valid uuid. */
 					return new WP_Error( 'rest_invalid_uuid', sprintf( __( '%s is not a valid UUID.' ), $param ) );
 				}
 				break;
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	}
 
@@ -1820,6 +2045,7 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
  * Sanitize a value based on a schema.
  *
  * @since 4.7.0
+<<<<<<< HEAD
  * @since 5.5.0 Added the `$param` parameter.
  *
  * @param mixed  $value The value to sanitize.
@@ -1868,20 +2094,84 @@ function rest_sanitize_value_from_schema( $value, $args, $param = '' ) {
 			return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s has duplicate items.' ), $param ) );
 		}
 
+=======
+ *
+ * @param mixed $value The value to sanitize.
+ * @param array $args  Schema array to use for sanitization.
+ * @return true|WP_Error
+ */
+function rest_sanitize_value_from_schema( $value, $args ) {
+	if ( is_array( $args['type'] ) ) {
+		// Determine which type the value was validated against,
+		// and use that type when performing sanitization.
+		$validated_type = '';
+
+		foreach ( $args['type'] as $type ) {
+			$type_args         = $args;
+			$type_args['type'] = $type;
+
+			if ( ! is_wp_error( rest_validate_value_from_schema( $value, $type_args ) ) ) {
+				$validated_type = $type;
+				break;
+			}
+		}
+
+		if ( ! $validated_type ) {
+			return null;
+		}
+
+		$args['type'] = $validated_type;
+	}
+
+	if ( 'array' === $args['type'] ) {
+		if ( empty( $args['items'] ) ) {
+			return (array) $value;
+		}
+
+		$value = wp_parse_list( $value );
+		foreach ( $value as $index => $v ) {
+			$value[ $index ] = rest_sanitize_value_from_schema( $v, $args['items'] );
+		}
+
+		// Normalize to numeric array so nothing unexpected is in the keys.
+		$value = array_values( $value );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return $value;
 	}
 
 	if ( 'object' === $args['type'] ) {
+<<<<<<< HEAD
 		$value = rest_sanitize_object( $value );
 
 		foreach ( $value as $property => $v ) {
 			if ( isset( $args['properties'][ $property ] ) ) {
 				$value[ $property ] = rest_sanitize_value_from_schema( $v, $args['properties'][ $property ], $param . '[' . $property . ']' );
+=======
+		if ( $value instanceof stdClass ) {
+			$value = (array) $value;
+		}
+
+		if ( $value instanceof JsonSerializable ) {
+			$value = $value->jsonSerialize();
+		}
+
+		if ( ! is_array( $value ) ) {
+			return array();
+		}
+
+		foreach ( $value as $property => $v ) {
+			if ( isset( $args['properties'][ $property ] ) ) {
+				$value[ $property ] = rest_sanitize_value_from_schema( $v, $args['properties'][ $property ] );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			} elseif ( isset( $args['additionalProperties'] ) ) {
 				if ( false === $args['additionalProperties'] ) {
 					unset( $value[ $property ] );
 				} elseif ( is_array( $args['additionalProperties'] ) ) {
+<<<<<<< HEAD
 					$value[ $property ] = rest_sanitize_value_from_schema( $v, $args['additionalProperties'], $param . '[' . $property . ']' );
+=======
+					$value[ $property ] = rest_sanitize_value_from_schema( $v, $args['additionalProperties'] );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 			}
 		}
@@ -1905,6 +2195,7 @@ function rest_sanitize_value_from_schema( $value, $args, $param = '' ) {
 		return rest_sanitize_boolean( $value );
 	}
 
+<<<<<<< HEAD
 	// This behavior matches rest_validate_value_from_schema().
 	if ( isset( $args['format'] )
 		&& ( ! isset( $args['type'] ) || 'string' === $args['type'] || ! in_array( $args['type'], $allowed_types, true ) )
@@ -1913,6 +2204,10 @@ function rest_sanitize_value_from_schema( $value, $args, $param = '' ) {
 			case 'hex-color':
 				return (string) sanitize_hex_color( $value );
 
+=======
+	if ( isset( $args['format'] ) ) {
+		switch ( $args['format'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			case 'date-time':
 				return sanitize_text_field( $value );
 
@@ -1925,9 +2220,12 @@ function rest_sanitize_value_from_schema( $value, $args, $param = '' ) {
 
 			case 'ip':
 				return sanitize_text_field( $value );
+<<<<<<< HEAD
 
 			case 'uuid':
 				return sanitize_text_field( $value );
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	}
 
@@ -1944,9 +2242,15 @@ function rest_sanitize_value_from_schema( $value, $args, $param = '' ) {
  *
  * @since 5.0.0
  *
+<<<<<<< HEAD
  * @param array  $memo Reduce accumulator.
  * @param string $path REST API path to preload.
  * @return array Modified reduce accumulator.
+=======
+ * @param  array  $memo Reduce accumulator.
+ * @param  string $path REST API path to preload.
+ * @return array        Modified reduce accumulator.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function rest_preload_api_request( $memo, $path ) {
 	// array_reduce() doesn't support passing an array in PHP 5.2,
@@ -2028,6 +2332,7 @@ function rest_parse_embed_param( $embed ) {
 
 	return $rels;
 }
+<<<<<<< HEAD
 
 /**
  * Filters the response to remove any fields not available in the given context.
@@ -2257,3 +2562,5 @@ function rest_get_queried_resource_route() {
 	 */
 	return apply_filters( 'rest_queried_resource_route', $route );
 }
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c

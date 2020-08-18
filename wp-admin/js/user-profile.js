@@ -2,10 +2,17 @@
  * @output wp-admin/js/user-profile.js
  */
 
+<<<<<<< HEAD
 /* global ajaxurl, pwsL10n */
 (function($) {
 	var updateLock = false,
 		__ = wp.i18n.__,
+=======
+/* global ajaxurl, pwsL10n, userProfileL10n */
+(function($) {
+	var updateLock = false,
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$pass1Row,
 		$pass1,
 		$pass2,
@@ -39,7 +46,11 @@
 		}
 
 		// Once zxcvbn loads, passwords strength is known.
+<<<<<<< HEAD
 		$( '#pw-weak-text-label' ).text( __( 'Confirm use of weak password' ) );
+=======
+		$( '#pw-weak-text-label' ).html( userProfileL10n.warnWeak );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	function bindPass1() {
@@ -64,10 +75,17 @@
 	function resetToggle( show ) {
 		$toggleButton
 			.attr({
+<<<<<<< HEAD
 				'aria-label': show ? __( 'Show password' ) : __( 'Hide password' )
 			})
 			.find( '.text' )
 				.text( show ? __( 'Show' ) : __( 'Hide' ) )
+=======
+				'aria-label': show ? userProfileL10n.ariaShow : userProfileL10n.ariaHide
+			})
+			.find( '.text' )
+				.text( show ? userProfileL10n.show : userProfileL10n.hide )
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			.end()
 			.find( '.dashicons' )
 				.removeClass( show ? 'dashicons-hidden' : 'dashicons-visibility' )
@@ -220,7 +238,11 @@
 			return;
 		}
 
+<<<<<<< HEAD
 		strength = wp.passwordStrength.meter( pass1, wp.passwordStrength.userInputDisallowedList(), pass1 );
+=======
+		strength = wp.passwordStrength.meter( pass1, wp.passwordStrength.userInputBlacklist(), pass1 );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		switch ( strength ) {
 			case -1:
@@ -402,7 +424,11 @@
 	/* Warn the user if password was generated but not saved */
 	$( window ).on( 'beforeunload', function () {
 		if ( true === updateLock ) {
+<<<<<<< HEAD
 			return __( 'Your new password has not been saved.' );
+=======
+			return userProfileL10n.warn;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	} );
 

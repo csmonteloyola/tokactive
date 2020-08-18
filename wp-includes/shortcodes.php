@@ -63,7 +63,11 @@ $shortcode_tags = array();
 function add_shortcode( $tag, $callback ) {
 	global $shortcode_tags;
 
+<<<<<<< HEAD
 	if ( '' === trim( $tag ) ) {
+=======
+	if ( '' == trim( $tag ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$message = __( 'Invalid shortcode name: Empty name given.' );
 		_doing_it_wrong( __FUNCTION__, $message, '4.4.0' );
 		return;
@@ -365,9 +369,15 @@ function do_shortcode_tag( $m ) {
  *
  * @since 4.2.3
  *
+<<<<<<< HEAD
  * @param string $content     Content to search for shortcodes.
  * @param bool   $ignore_html When true, all square braces inside elements will be encoded.
  * @param array  $tagnames    List of shortcodes to find.
+=======
+ * @param string $content Content to search for shortcodes
+ * @param bool $ignore_html When true, all square braces inside elements will be encoded.
+ * @param array $tagnames List of shortcodes to find.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string Content with shortcodes filtered out.
  */
 function do_shortcodes_in_html_tags( $content, $ignore_html, $tagnames ) {
@@ -386,7 +396,11 @@ function do_shortcodes_in_html_tags( $content, $ignore_html, $tagnames ) {
 	$textarr = wp_html_split( $content );
 
 	foreach ( $textarr as &$element ) {
+<<<<<<< HEAD
 		if ( '' === $element || '<' !== $element[0] ) {
+=======
+		if ( '' == $element || '<' !== $element[0] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			continue;
 		}
 
@@ -511,8 +525,13 @@ function get_shortcode_atts_regex() {
  *
  * @param string $text
  * @return array|string List of attribute values.
+<<<<<<< HEAD
  *                      Returns empty array if '""' === trim( $text ).
  *                      Returns empty string if '' === trim( $text ).
+=======
+ *                      Returns empty array if trim( $text ) == '""'.
+ *                      Returns empty string if trim( $text ) == ''.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *                      All other matches are checked for not empty().
  */
 function shortcode_parse_atts( $text ) {

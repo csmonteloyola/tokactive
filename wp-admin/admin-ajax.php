@@ -139,7 +139,10 @@ $core_actions_post = array(
 	'health-check-background-updates',
 	'health-check-loopback-requests',
 	'health-check-get-sizes',
+<<<<<<< HEAD
 	'toggle-auto-updates',
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 );
 
 // Deprecated.
@@ -147,11 +150,19 @@ $core_actions_post_deprecated = array( 'wp-fullscreen-save-post', 'press-this-sa
 $core_actions_post            = array_merge( $core_actions_post, $core_actions_post_deprecated );
 
 // Register core Ajax calls.
+<<<<<<< HEAD
 if ( ! empty( $_GET['action'] ) && in_array( $_GET['action'], $core_actions_get, true ) ) {
 	add_action( 'wp_ajax_' . $_GET['action'], 'wp_ajax_' . str_replace( '-', '_', $_GET['action'] ), 1 );
 }
 
 if ( ! empty( $_POST['action'] ) && in_array( $_POST['action'], $core_actions_post, true ) ) {
+=======
+if ( ! empty( $_GET['action'] ) && in_array( $_GET['action'], $core_actions_get ) ) {
+	add_action( 'wp_ajax_' . $_GET['action'], 'wp_ajax_' . str_replace( '-', '_', $_GET['action'] ), 1 );
+}
+
+if ( ! empty( $_POST['action'] ) && in_array( $_POST['action'], $core_actions_post ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	add_action( 'wp_ajax_' . $_POST['action'], 'wp_ajax_' . str_replace( '-', '_', $_POST['action'] ), 1 );
 }
 

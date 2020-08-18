@@ -145,7 +145,11 @@ media.events = _.extend( {}, Backbone.Events );
  * Makes it easier to bind events using transitions.
  *
  * @param {string} selector
+<<<<<<< HEAD
  * @param {number} sensitivity
+=======
+ * @param {Number} sensitivity
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return {Promise}
  */
 media.transition = function( selector, sensitivity ) {
@@ -272,7 +276,11 @@ media.view.Heading = __webpack_require__( 105 );
  *
  * @class
  *
+<<<<<<< HEAD
  * @param {Object}        options          Options hash for the region.
+=======
+ * @param {object}        options          Options hash for the region.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param {string}        options.id       Unique identifier for the region.
  * @param {Backbone.View} options.view     A parent view the region exists within.
  * @param {string}        options.selector jQuery selector for the region within the parent view.
@@ -1091,7 +1099,11 @@ Library = wp.media.controller.State.extend(/** @lends wp.media.controller.Librar
 	 * @since 4.4.1
 	 *
 	 * @param {wp.media.model.Attachment} attachment
+<<<<<<< HEAD
 	 * @return {boolean}
+=======
+	 * @return {Boolean}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	isImageAttachment: function( attachment ) {
 		// If uploading, we know the filename but not the mime type.
@@ -1108,7 +1120,11 @@ Library = wp.media.controller.State.extend(/** @lends wp.media.controller.Librar
 	 * @since 3.6.0
 	 *
 	 * @param {wp.media.model.Attachment} attachment
+<<<<<<< HEAD
 	 * @return {boolean}
+=======
+	 * @return {Boolean}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	canEmbed: function( attachment ) {
 		// If uploading, we know the filename but not the mime type.
@@ -2890,7 +2906,11 @@ var Frame = wp.media.View.extend(/** @lends wp.media.view.Frame.prototype */{
 	/**
 	 * Check if a mode is enabled on the frame.
 	 *
+<<<<<<< HEAD
 	 * @param string mode Mode ID.
+=======
+	 * @param  string mode Mode ID.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return bool
 	 */
 	isModeActive: function( mode ) {
@@ -4642,7 +4662,11 @@ var FocusManager = wp.media.View.extend(/** @lends wp.media.view.FocusManager.pr
 	/**
 	 * Initializes the Focus Manager.
 	 *
+<<<<<<< HEAD
 	 * @param {Object} options The Focus Manager options.
+=======
+	 * @param {object} options The Focus Manager options.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @since 5.3.0
 	 *
@@ -4658,7 +4682,11 @@ var FocusManager = wp.media.View.extend(/** @lends wp.media.view.FocusManager.pr
 	 *
 	 * @since 5.3.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} event jQuery event object.
+=======
+	 * @param {object} event jQuery event object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @return {void}
 	 */
@@ -4677,7 +4705,11 @@ var FocusManager = wp.media.View.extend(/** @lends wp.media.view.FocusManager.pr
 	 *
 	 * @since 5.3.0
 	 *
+<<<<<<< HEAD
 	 * @return {Object} A jQuery collection of tabbable elements.
+=======
+	 * @return {object} A jQuery collection of tabbable elements.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	getTabbables: function() {
 		// Skip the file input added by Plupload.
@@ -4737,7 +4769,11 @@ var FocusManager = wp.media.View.extend(/** @lends wp.media.view.FocusManager.pr
 	 *
 	 * @since 5.2.3
 	 *
+<<<<<<< HEAD
 	 * @param {Object} visibleElement The jQuery object representing the element that should not be hidden.
+=======
+	 * @param {object} visibleElement The jQuery object representing the element that should not be hidden.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @return {void}
 	 */
@@ -4794,7 +4830,11 @@ var FocusManager = wp.media.View.extend(/** @lends wp.media.view.FocusManager.pr
 	 *
 	 * @since 5.2.3
 	 *
+<<<<<<< HEAD
 	 * @param {Object} element The DOM element that should be checked.
+=======
+	 * @param {object} element The DOM element that should be checked.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @return {boolean} Whether the element should not be hidden from assistive technologies.
 	 */
@@ -4841,7 +4881,11 @@ var FocusManager = wp.media.View.extend(/** @lends wp.media.view.FocusManager.pr
 	 *
 	 * @since 5.3.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} event jQuery event object.
+=======
+	 * @param {object} event jQuery event object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @return {void}
 	 */
@@ -4865,7 +4909,11 @@ var FocusManager = wp.media.View.extend(/** @lends wp.media.view.FocusManager.pr
 	 *
 	 * @since 5.3.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} event jQuery event object.
+=======
+	 * @param {object} event jQuery event object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @return {void}
 	 */
@@ -4901,7 +4949,11 @@ var FocusManager = wp.media.View.extend(/** @lends wp.media.view.FocusManager.pr
 	 *
 	 * @since 5.3.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} event jQuery event object.
+=======
+	 * @param {object} event jQuery event object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @return {void}
 	 */
@@ -4952,7 +5004,11 @@ var FocusManager = wp.media.View.extend(/** @lends wp.media.view.FocusManager.pr
 	 *
 	 * @since 5.3.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} tab The tab DOM element.
+=======
+	 * @param {object} tab The tab DOM element.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @return {void}
 	 */
@@ -5171,7 +5227,11 @@ EditorUploader = View.extend(/** @lends wp.media.view.EditorUploader.prototype *
 	/**
 	 * Check browser support for drag'n'drop.
 	 *
+<<<<<<< HEAD
 	 * @return {boolean}
+=======
+	 * @return {Boolean}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	browserSupport: function() {
 		var supports = false, div = document.createElement('div');
@@ -5236,7 +5296,11 @@ EditorUploader = View.extend(/** @lends wp.media.view.EditorUploader.prototype *
 	 * When a file is dropped on the editor uploader, open up an editor media workflow
 	 * and upload the file immediately.
 	 *
+<<<<<<< HEAD
 	 * @param {jQuery.Event} event The 'drop' event.
+=======
+	 * @param  {jQuery.Event} event The 'drop' event.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	drop: function( event ) {
 		var $wrap, uploadView;
@@ -6793,7 +6857,11 @@ Attachment = View.extend(/** @lends wp.media.view.Attachment.prototype */{
 		this[ this.selected() ? 'select' : 'deselect' ]();
 	},
 	/**
+<<<<<<< HEAD
 	 * @return {unresolved|boolean}
+=======
+	 * @return {unresolved|Boolean}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	selected: function() {
 		var selection = this.options.selection;
@@ -7008,8 +7076,13 @@ Attachment = View.extend(/** @lends wp.media.view.Attachment.prototype */{
 	 * Add the model if it isn't in the selection, if it is in the selection,
 	 * remove it.
 	 *
+<<<<<<< HEAD
 	 * @param {[type]} event [description]
 	 * @return {[type]} [description]
+=======
+	 * @param  {[type]} event [description]
+	 * @return {[type]}       [description]
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	checkClickHandler: function ( event ) {
 		var selection = this.options.selection;
@@ -8994,12 +9067,19 @@ module.exports = Playlist;
 /* 91 */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 /* global ClipboardJS */
 var Attachment = wp.media.view.Attachment,
 	l10n = wp.media.view.l10n,
 	$ = jQuery,
 	Details,
 	__ = wp.i18n.__;
+=======
+var Attachment = wp.media.view.Attachment,
+	l10n = wp.media.view.l10n,
+	$ = jQuery,
+	Details;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 Details = Attachment.extend(/** @lends wp.media.view.Attachment.Details.prototype */{
 	tagName:   'div',
@@ -9025,6 +9105,7 @@ Details = Attachment.extend(/** @lends wp.media.view.Attachment.Details.prototyp
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Copies the attachment URL to the clipboard.
 	 *
 	 * @since 5.5.0
@@ -9061,6 +9142,8 @@ Details = Attachment.extend(/** @lends wp.media.view.Attachment.Details.prototyp
 	 },
 
 	/**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * Shows the details of an attachment.
 	 *
 	 * @since 3.5.0
@@ -9077,8 +9160,11 @@ Details = Attachment.extend(/** @lends wp.media.view.Attachment.Details.prototyp
 
 		// Call 'initialize' directly on the parent class.
 		Attachment.prototype.initialize.apply( this, arguments );
+<<<<<<< HEAD
 
 		this.copyAttachmentDetailsURLClipboard();
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	},
 
 	/**

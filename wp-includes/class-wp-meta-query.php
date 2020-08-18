@@ -109,7 +109,11 @@ class WP_Meta_Query {
 	 *
 	 *     @type string $relation Optional. The MySQL keyword used to join
 	 *                            the clauses of the query. Accepts 'AND', or 'OR'. Default 'AND'.
+<<<<<<< HEAD
 	 *     @type array  ...$0 {
+=======
+	 *     @type array {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *         Optional. An array of first-order clause parameters, or another fully-formed meta query.
 	 *
 	 *         @type string $key         Meta key to filter by.
@@ -138,7 +142,11 @@ class WP_Meta_Query {
 			return;
 		}
 
+<<<<<<< HEAD
 		if ( isset( $meta_query['relation'] ) && 'OR' === strtoupper( $meta_query['relation'] ) ) {
+=======
+		if ( isset( $meta_query['relation'] ) && strtoupper( $meta_query['relation'] ) == 'OR' ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$this->relation = 'OR';
 		} else {
 			$this->relation = 'AND';
@@ -295,7 +303,11 @@ class WP_Meta_Query {
 			return 'CHAR';
 		}
 
+<<<<<<< HEAD
 		if ( 'NUMERIC' === $meta_type ) {
+=======
+		if ( 'NUMERIC' == $meta_type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$meta_type = 'SIGNED';
 		}
 
@@ -687,7 +699,11 @@ class WP_Meta_Query {
 		if ( array_key_exists( 'value', $clause ) ) {
 			$meta_value = $clause['value'];
 
+<<<<<<< HEAD
 			if ( in_array( $meta_compare, array( 'IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN' ), true ) ) {
+=======
+			if ( in_array( $meta_compare, array( 'IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				if ( ! is_array( $meta_value ) ) {
 					$meta_value = preg_split( '/[,\s]+/', $meta_value );
 				}
@@ -780,9 +796,15 @@ class WP_Meta_Query {
 	 *
 	 * @since 4.1.0
 	 *
+<<<<<<< HEAD
 	 * @param array $clause       Query clause.
 	 * @param array $parent_query Parent query of $clause.
 	 * @return string|false Table alias if found, otherwise false.
+=======
+	 * @param  array       $clause       Query clause.
+	 * @param  array       $parent_query Parent query of $clause.
+	 * @return string|bool Table alias if found, otherwise false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	protected function find_compatible_table_alias( $clause, $parent_query ) {
 		$alias = false;
@@ -811,7 +833,11 @@ class WP_Meta_Query {
 
 			$clause_compare  = strtoupper( $clause['compare'] );
 			$sibling_compare = strtoupper( $sibling['compare'] );
+<<<<<<< HEAD
 			if ( in_array( $clause_compare, $compatible_compares, true ) && in_array( $sibling_compare, $compatible_compares, true ) ) {
+=======
+			if ( in_array( $clause_compare, $compatible_compares ) && in_array( $sibling_compare, $compatible_compares ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$alias = $sibling['alias'];
 				break;
 			}

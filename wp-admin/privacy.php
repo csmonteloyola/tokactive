@@ -18,10 +18,13 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 <div class="wrap about__container">
 
 	<div class="about__header">
+<<<<<<< HEAD
 		<div class="about__header-text">
 			<?php _e( 'Speed. Search. Security.' ); ?>
 		</div>
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<div class="about__header-title">
 			<p>
 				<?php _e( 'WordPress' ); ?>
@@ -29,6 +32,15 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 			</p>
 		</div>
 
+<<<<<<< HEAD
+=======
+		<div class="about__header-text">
+			<p>
+				<?php _e( 'Building more with blocks, faster and easier.' ); ?>
+			</p>
+		</div>
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<nav class="about__header-navigation nav-tab-wrapper wp-clearfix" aria-label="<?php esc_attr_e( 'Secondary menu' ); ?>">
 			<a href="about.php" class="nav-tab"><?php _e( 'What&#8217;s New' ); ?></a>
 			<a href="credits.php" class="nav-tab"><?php _e( 'Credits' ); ?></a>

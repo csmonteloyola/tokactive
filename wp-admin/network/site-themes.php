@@ -158,9 +158,15 @@ if ( $action ) {
 	exit;
 }
 
+<<<<<<< HEAD
 if ( isset( $_GET['action'] ) && 'update-site' === $_GET['action'] ) {
 	wp_safe_redirect( $referer );
 	exit;
+=======
+if ( isset( $_GET['action'] ) && 'update-site' == $_GET['action'] ) {
+	wp_safe_redirect( $referer );
+	exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 add_thickbox();
@@ -188,7 +194,11 @@ network_edit_site_nav(
 
 if ( isset( $_GET['enabled'] ) ) {
 	$enabled = absint( $_GET['enabled'] );
+<<<<<<< HEAD
 	if ( 1 === $enabled ) {
+=======
+	if ( 1 == $enabled ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$message = __( 'Theme enabled.' );
 	} else {
 		/* translators: %s: Number of themes. */
@@ -197,14 +207,22 @@ if ( isset( $_GET['enabled'] ) ) {
 	echo '<div id="message" class="updated notice is-dismissible"><p>' . sprintf( $message, number_format_i18n( $enabled ) ) . '</p></div>';
 } elseif ( isset( $_GET['disabled'] ) ) {
 	$disabled = absint( $_GET['disabled'] );
+<<<<<<< HEAD
 	if ( 1 === $disabled ) {
+=======
+	if ( 1 == $disabled ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$message = __( 'Theme disabled.' );
 	} else {
 		/* translators: %s: Number of themes. */
 		$message = _n( '%s theme disabled.', '%s themes disabled.', $disabled );
 	}
 	echo '<div id="message" class="updated notice is-dismissible"><p>' . sprintf( $message, number_format_i18n( $disabled ) ) . '</p></div>';
+<<<<<<< HEAD
 } elseif ( isset( $_GET['error'] ) && 'none' === $_GET['error'] ) {
+=======
+} elseif ( isset( $_GET['error'] ) && 'none' == $_GET['error'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	echo '<div id="message" class="error notice is-dismissible"><p>' . __( 'No theme selected.' ) . '</p></div>';
 }
 ?>

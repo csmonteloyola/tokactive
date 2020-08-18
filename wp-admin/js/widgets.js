@@ -16,6 +16,23 @@ window.wpWidgets = {
 	hoveredSidebar: null,
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Translations.
+	 *
+	 * Exported from PHP in wp_default_scripts().
+	 *
+	 * @var {object}
+	 */
+	l10n: {
+		save: '{save}',
+		saved: '{saved}',
+		saveAlert: '{saveAlert}',
+		widgetAdded: '{widgetAdded}'
+	},
+
+	/**
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * Lookup of which widgets have had change events triggered.
 	 *
 	 * @var {object}
@@ -95,7 +112,11 @@ window.wpWidgets = {
 					$( this ).find( '.widget-inside :tabbable:first' ).focus();
 				} );
 
+<<<<<<< HEAD
 				event.returnValue = wp.i18n.__( 'The changes you made will be lost if you navigate away from this page.' );
+=======
+				event.returnValue = wpWidgets.l10n.saveAlert;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				return event.returnValue;
 			}
 		});
@@ -127,11 +148,19 @@ window.wpWidgets = {
 				// Save button is initially disabled, but is enabled when a field is changed.
 				if ( ! widget.data( 'dirty-state-initialized' ) ) {
 					saveButton = inside.find( '.widget-control-save' );
+<<<<<<< HEAD
 					saveButton.prop( 'disabled', true ).val( wp.i18n.__( 'Saved' ) );
 					inside.on( 'input change', function() {
 						self.dirtyWidgets[ widgetId ] = true;
 						widget.addClass( 'widget-dirty' );
 						saveButton.prop( 'disabled', false ).val( wp.i18n.__( 'Save' ) );
+=======
+					saveButton.prop( 'disabled', true ).val( wpWidgets.l10n.saved );
+					inside.on( 'input change', function() {
+						self.dirtyWidgets[ widgetId ] = true;
+						widget.addClass( 'widget-dirty' );
+						saveButton.prop( 'disabled', false ).val( wpWidgets.l10n.save );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					});
 					widget.data( 'dirty-state-initialized', true );
 				}
@@ -234,7 +263,11 @@ window.wpWidgets = {
 			 *
 			 * @ignore
 			 *
+<<<<<<< HEAD
 			 * @param {Object} event jQuery event object.
+=======
+			 * @param {object} event jQuery event object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 */
 			over: function( event ) {
 				var $wrap = $( event.target ).parent();
@@ -259,7 +292,11 @@ window.wpWidgets = {
 			 *
 			 * @ignore
 			 *
+<<<<<<< HEAD
 			 * @param {Object} event jQuery event object.
+=======
+			 * @param {object} event jQuery event object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 */
 			out: function( event ) {
 				if ( wpWidgets.hoveredSidebar ) {
@@ -572,7 +609,11 @@ window.wpWidgets = {
 					wpWidgets.appendTitle( widget );
 
 					// Re-disable the save button.
+<<<<<<< HEAD
 					widget.find( '.widget-control-save' ).prop( 'disabled', true ).val( wp.i18n.__( 'Saved' ) );
+=======
+					widget.find( '.widget-control-save' ).prop( 'disabled', true ).val( wpWidgets.l10n.saved );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 					widget.removeClass( 'widget-dirty' );
 
@@ -703,7 +744,11 @@ window.wpWidgets = {
 			// have to queue this "by hand".
 			widget.find( '.widget-title' ).trigger('click');
 			// At the end of the animation, announce the widget has been added.
+<<<<<<< HEAD
 			window.wp.a11y.speak( wp.i18n.__( 'Widget has been added to the selected sidebar' ), 'assertive' );
+=======
+			window.wp.a11y.speak( wpWidgets.l10n.widgetAdded, 'assertive' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}, 250 );
 	},
 
@@ -729,7 +774,11 @@ window.wpWidgets = {
 	 *
 	 * Used when a Widget gets dragged in/out of the Sidebar and never dropped.
 	 *
+<<<<<<< HEAD
 	 * @param {Object} event jQuery event object.
+=======
+	 * @param {object} event jQuery event object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	closeSidebar: function( event ) {
 		this.hoveredSidebar

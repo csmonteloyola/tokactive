@@ -22,7 +22,11 @@
  * @since 2.1.0
  * @access private
  *
+<<<<<<< HEAD
  * @param array        $bookmarks List of bookmarks to traverse.
+=======
+ * @param array $bookmarks List of bookmarks to traverse.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param string|array $args {
  *     Optional. Bookmarks arguments.
  *
@@ -83,7 +87,11 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
 		$title = $desc;
 
 		if ( $parsed_args['show_updated'] ) {
+<<<<<<< HEAD
 			if ( '00' !== substr( $bookmark->link_updated_f, 0, 2 ) ) {
+=======
+			if ( '00' != substr( $bookmark->link_updated_f, 0, 2 ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$title .= ' (';
 				$title .= sprintf(
 					/* translators: %s: Date and time of last update. */
@@ -98,6 +106,7 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
 		}
 		$alt = ' alt="' . $name . ( $parsed_args['show_description'] ? ' ' . $title : '' ) . '"';
 
+<<<<<<< HEAD
 		if ( '' !== $title ) {
 			$title = ' title="' . $title . '"';
 		}
@@ -107,6 +116,17 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
 		}
 		$target = $bookmark->link_target;
 		if ( '' !== $target ) {
+=======
+		if ( '' != $title ) {
+			$title = ' title="' . $title . '"';
+		}
+		$rel = $bookmark->link_rel;
+		if ( '' != $rel ) {
+			$rel = ' rel="' . esc_attr( $rel ) . '"';
+		}
+		$target = $bookmark->link_target;
+		if ( '' != $target ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$target = ' target="' . $target . '"';
 		}
 		$output .= '<a href="' . $the_link . '"' . $rel . $title . $target . '>';
@@ -134,7 +154,11 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
 			$output .= '</em>';
 		}
 
+<<<<<<< HEAD
 		if ( $parsed_args['show_description'] && '' !== $desc ) {
+=======
+		if ( $parsed_args['show_description'] && '' != $desc ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$output .= $parsed_args['between'] . $desc;
 		}
 
@@ -173,7 +197,11 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
  *                                      Accepts 'ASC' (ascending) or 'DESC' (descending). Default 'ASC'.
  *     @type int      $limit            Amount of bookmarks to display. Accepts 1+ or -1 for all.
  *                                      Default -1.
+<<<<<<< HEAD
  *     @type string   $category         Comma-separated list of category IDs to include links from.
+=======
+ *     @type string   $category         Comma-separated list of category ids to include links from.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *                                      Default empty.
  *     @type string   $category_name    Category to retrieve links for by name. Default empty.
  *     @type int|bool $hide_invisible   Whether to show or hide links marked as 'invisible'. Accepts

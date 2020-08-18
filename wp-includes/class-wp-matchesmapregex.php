@@ -79,7 +79,11 @@ class WP_MatchesMapRegex {
 	/**
 	 * preg_replace_callback hook
 	 *
+<<<<<<< HEAD
 	 * @param array $matches preg_replace regexp matches
+=======
+	 * @param  array $matches preg_replace regexp matches
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string
 	 */
 	public function callback( $matches ) {

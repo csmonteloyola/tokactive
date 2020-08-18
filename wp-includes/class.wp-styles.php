@@ -139,6 +139,7 @@ class WP_Styles extends WP_Dependencies {
 	 * Processes a style dependency.
 	 *
 	 * @since 2.6.0
+<<<<<<< HEAD
 	 * @since 5.5.0 Added the `$group` parameter.
 	 *
 	 * @see WP_Dependencies::do_item()
@@ -149,6 +150,15 @@ class WP_Styles extends WP_Dependencies {
 	 * @return bool True on success, false on failure.
 	 */
 	public function do_item( $handle, $group = false ) {
+=======
+	 *
+	 * @see WP_Dependencies::do_item()
+	 *
+	 * @param string $handle The style's registered handle.
+	 * @return bool True on success, false on failure.
+	 */
+	public function do_item( $handle ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( ! parent::do_item( $handle ) ) {
 			return false;
 		}

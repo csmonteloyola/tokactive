@@ -65,7 +65,10 @@ class WP_Customize_Code_Editor_Control extends WP_Customize_Control {
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @see WP_Customize_Control::json()
 	 *
 	 * @return array Array of parameters passed to the JavaScript.

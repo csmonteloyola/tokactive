@@ -378,7 +378,11 @@ abstract class ParagonIE_Sodium_Core32_Ed25519 extends ParagonIE_Sodium_Core32_C
      */
     public static function small_order($R)
     {
+<<<<<<< HEAD
         static $blocklist = array(
+=======
+        static $blacklist = array(
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
             /* 0 (order 4) */
             array(
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -464,6 +468,7 @@ abstract class ParagonIE_Sodium_Core32_Ed25519 extends ParagonIE_Sodium_Core32_C
                 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
             )
         );
+<<<<<<< HEAD
         /** @var array<int, array<int, int>> $blocklist */
         $countBlocklist = count($blocklist);
 
@@ -471,6 +476,15 @@ abstract class ParagonIE_Sodium_Core32_Ed25519 extends ParagonIE_Sodium_Core32_C
             $c = 0;
             for ($j = 0; $j < 32; ++$j) {
                 $c |= self::chrToInt($R[$j]) ^ $blocklist[$i][$j];
+=======
+        /** @var array<int, array<int, int>> $blacklist */
+        $countBlacklist = count($blacklist);
+
+        for ($i = 0; $i < $countBlacklist; ++$i) {
+            $c = 0;
+            for ($j = 0; $j < 32; ++$j) {
+                $c |= self::chrToInt($R[$j]) ^ $blacklist[$i][$j];
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
             }
             if ($c === 0) {
                 return true;

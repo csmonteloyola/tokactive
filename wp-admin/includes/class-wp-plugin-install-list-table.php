@@ -117,26 +117,47 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		$nonmenu_tabs = array( 'plugin-information' ); // Valid actions to perform which do not have a Menu item.
 
 		/**
+<<<<<<< HEAD
 		 * Filters the tabs shown on the Add Plugins screen.
 		 *
 		 * @since 2.7.0
 		 *
 		 * @param string[] $tabs The tabs shown on the Add Plugins screen. Defaults include
 		 *                       'featured', 'popular', 'recommended', 'favorites', and 'upload'.
+=======
+		 * Filters the tabs shown on the Plugin Install screen.
+		 *
+		 * @since 2.7.0
+		 *
+		 * @param string[] $tabs The tabs shown on the Plugin Install screen. Defaults include 'featured', 'popular',
+		 *                      'recommended', 'favorites', and 'upload'.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		$tabs = apply_filters( 'install_plugins_tabs', $tabs );
 
 		/**
+<<<<<<< HEAD
 		 * Filters tabs not associated with a menu item on the Add Plugins screen.
 		 *
 		 * @since 2.7.0
 		 *
 		 * @param string[] $nonmenu_tabs The tabs that don't have a menu item on the Add Plugins screen.
+=======
+		 * Filters tabs not associated with a menu item on the Plugin Install screen.
+		 *
+		 * @since 2.7.0
+		 *
+		 * @param string[] $nonmenu_tabs The tabs that don't have a menu item on the Plugin Install screen.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		$nonmenu_tabs = apply_filters( 'install_plugins_nonmenu_tabs', $nonmenu_tabs );
 
 		// If a non-valid menu tab has been selected, And it's not a non-menu action.
+<<<<<<< HEAD
 		if ( empty( $tab ) || ( ! isset( $tabs[ $tab ] ) && ! in_array( $tab, (array) $nonmenu_tabs, true ) ) ) {
+=======
+		if ( empty( $tab ) || ( ! isset( $tabs[ $tab ] ) && ! in_array( $tab, (array) $nonmenu_tabs ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$tab = key( $tabs );
 		}
 
@@ -207,14 +228,22 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Filters API request arguments for each Add Plugins screen tab.
+=======
+		 * Filters API request arguments for each Plugin Install screen tab.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 *
 		 * The dynamic portion of the hook name, `$tab`, refers to the plugin install tabs.
 		 * Default tabs include 'featured', 'popular', 'recommended', 'favorites', and 'upload'.
 		 *
 		 * @since 3.7.0
 		 *
+<<<<<<< HEAD
 		 * @param array|false $args Plugin install API arguments.
+=======
+		 * @param array|bool $args Plugin Install API arguments.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		$args = apply_filters( "install_plugins_table_api_args_{$tab}", $args );
 
@@ -528,7 +557,11 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 									esc_attr( $plugin['slug'] ),
 									esc_url( $status['url'] ),
 									/* translators: %s: Plugin name and version. */
+<<<<<<< HEAD
 									esc_attr( sprintf( _x( 'Install %s now', 'plugin' ), $name ) ),
+=======
+									esc_attr( sprintf( __( 'Install %s now' ), $name ) ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 									esc_attr( $name ),
 									__( 'Install Now' )
 								);
@@ -550,7 +583,11 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 									esc_attr( $plugin['slug'] ),
 									esc_url( $status['url'] ),
 									/* translators: %s: Plugin name and version. */
+<<<<<<< HEAD
 									esc_attr( sprintf( _x( 'Update %s now', 'plugin' ), $name ) ),
+=======
+									esc_attr( sprintf( __( 'Update %s now' ), $name ) ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 									esc_attr( $name ),
 									__( 'Update Now' )
 								);
@@ -698,7 +735,11 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 					<h3>
 						<a href="<?php echo esc_url( $details_link ); ?>" class="thickbox open-plugin-details-modal">
 						<?php echo $title; ?>
+<<<<<<< HEAD
 						<img src="<?php echo esc_attr( $plugin_icon_url ); ?>" class="plugin-icon" alt="" />
+=======
+						<img src="<?php echo esc_attr( $plugin_icon_url ); ?>" class="plugin-icon" alt="">
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						</a>
 					</h3>
 				</div>

@@ -21,7 +21,11 @@ class _WP_Dependency {
 	 * The handle name.
 	 *
 	 * @since 2.6.0
+<<<<<<< HEAD
 	 * @var string
+=======
+	 * @var null
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public $handle;
 
@@ -29,7 +33,11 @@ class _WP_Dependency {
 	 * The handle source.
 	 *
 	 * @since 2.6.0
+<<<<<<< HEAD
 	 * @var string
+=======
+	 * @var null
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public $src;
 
@@ -55,7 +63,11 @@ class _WP_Dependency {
 	 * Additional arguments for the handle.
 	 *
 	 * @since 2.6.0
+<<<<<<< HEAD
 	 * @var array
+=======
+	 * @var null
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public $args = null;  // Custom property, such as $in_footer or $media.
 
@@ -90,7 +102,11 @@ class _WP_Dependency {
 	 * @since 5.3.0 Formalized the existing `...$args` parameter by adding it
 	 *              to the function signature.
 	 *
+<<<<<<< HEAD
 	 * @param mixed ...$args Dependency information.
+=======
+	 * @param ...$args Dependency information.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function __construct( ...$args ) {
 		list( $this->handle, $this->src, $this->deps, $this->ver, $this->args ) = $args;

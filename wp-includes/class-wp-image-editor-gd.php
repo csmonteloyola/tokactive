@@ -146,9 +146,15 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 *
 	 * @since 3.5.0
 	 *
+<<<<<<< HEAD
 	 * @param int|null $max_w Image width.
 	 * @param int|null $max_h Image height.
 	 * @param bool     $crop
+=======
+	 * @param  int|null $max_w Image width.
+	 * @param  int|null $max_h Image height.
+	 * @param  bool     $crop
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return true|WP_Error
 	 */
 	public function resize( $max_w, $max_h, $crop = false ) {
@@ -171,8 +177,13 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @param int        $max_w
 	 * @param int        $max_h
+=======
+	 * @param int $max_w
+	 * @param int $max_h
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param bool|array $crop
 	 * @return resource|WP_Error
 	 */
@@ -415,7 +426,11 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @param resource    $image
+=======
+	 * @param resource $image
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param string|null $filename
 	 * @param string|null $mime_type
 	 * @return array|WP_Error
@@ -453,6 +468,7 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 		$perms = $stat['mode'] & 0000666; // Same permissions as parent folder, strip off the executable bits.
 		chmod( $filename, $perms );
 
+<<<<<<< HEAD
 		return array(
 			'path'      => $filename,
 			/**
@@ -462,6 +478,17 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 			 *
 			 * @param string $filename Name of the file.
 			 */
+=======
+		/**
+		 * Filters the name of the saved image file.
+		 *
+		 * @since 2.6.0
+		 *
+		 * @param string $filename Name of the file.
+		 */
+		return array(
+			'path'      => $filename,
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			'file'      => wp_basename( apply_filters( 'image_make_intermediate_size', $filename ) ),
 			'width'     => $this->size['width'],
 			'height'    => $this->size['height'],
@@ -499,8 +526,13 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * @since 3.5.0
 	 *
 	 * @param string|stream $filename
+<<<<<<< HEAD
 	 * @param callable      $function
 	 * @param array         $arguments
+=======
+	 * @param callable $function
+	 * @param array $arguments
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return bool
 	 */
 	protected function make_image( $filename, $function, $arguments ) {

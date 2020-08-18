@@ -100,6 +100,10 @@ function permalink_anchor( $mode = 'id' ) {
  *
  * @param int|WP_Post $post      Optional. Post ID or post object. Default is the global `$post`.
  * @param bool        $leavename Optional. Whether to keep post name or page name. Default false.
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|false The permalink URL or false if post does not exist.
  */
 function get_the_permalink( $post = 0, $leavename = false ) {
@@ -130,7 +134,11 @@ function get_permalink( $post = 0, $leavename = false ) {
 		$leavename ? '' : '%pagename%',
 	);
 
+<<<<<<< HEAD
 	if ( is_object( $post ) && isset( $post->filter ) && 'sample' === $post->filter ) {
+=======
+	if ( is_object( $post ) && isset( $post->filter ) && 'sample' == $post->filter ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$sample = true;
 	} else {
 		$post   = get_post( $post );
@@ -145,7 +153,11 @@ function get_permalink( $post = 0, $leavename = false ) {
 		return get_page_link( $post, $leavename, $sample );
 	} elseif ( 'attachment' === $post->post_type ) {
 		return get_attachment_link( $post, $leavename );
+<<<<<<< HEAD
 	} elseif ( in_array( $post->post_type, get_post_types( array( '_builtin' => false ) ), true ) ) {
+=======
+	} elseif ( in_array( $post->post_type, get_post_types( array( '_builtin' => false ) ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return get_post_permalink( $post, $leavename, $sample );
 	}
 
@@ -164,7 +176,11 @@ function get_permalink( $post = 0, $leavename = false ) {
 	 */
 	$permalink = apply_filters( 'pre_post_link', $permalink, $post, $leavename );
 
+<<<<<<< HEAD
 	if ( $permalink && ! in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft', 'future' ), true ) ) {
+=======
+	if ( '' != $permalink && ! in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft', 'future' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$category = '';
 		if ( strpos( $permalink, '%category%' ) !== false ) {
@@ -257,8 +273,13 @@ function get_permalink( $post = 0, $leavename = false ) {
  * @global WP_Rewrite $wp_rewrite WordPress rewrite component.
  *
  * @param int|WP_Post $id        Optional. Post ID or post object. Default is the global `$post`.
+<<<<<<< HEAD
  * @param bool        $leavename Optional. Whether to keep post name. Default false.
  * @param bool        $sample    Optional. Is it a sample permalink. Default false.
+=======
+ * @param bool        $leavename Optional, defaults to false. Whether to keep post name. Default false.
+ * @param bool        $sample    Optional, defaults to false. Is it a sample permalink. Default false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|WP_Error The post permalink.
  */
 function get_post_permalink( $id = 0, $leavename = false, $sample = false ) {
@@ -274,7 +295,11 @@ function get_post_permalink( $id = 0, $leavename = false, $sample = false ) {
 
 	$slug = $post->post_name;
 
+<<<<<<< HEAD
 	$draft_or_pending = get_post_status( $post ) && in_array( get_post_status( $post ), array( 'draft', 'pending', 'auto-draft', 'future' ), true );
+=======
+	$draft_or_pending = get_post_status( $post ) && in_array( get_post_status( $post ), array( 'draft', 'pending', 'auto-draft', 'future' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	$post_type = get_post_type_object( $post->post_type );
 
@@ -370,7 +395,11 @@ function _get_page_link( $post = false, $leavename = false, $sample = false ) {
 
 	$post = get_post( $post );
 
+<<<<<<< HEAD
 	$draft_or_pending = in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ), true );
+=======
+	$draft_or_pending = in_array( $post->post_status, array( 'draft', 'pending', 'auto-draft' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	$link = $wp_rewrite->get_page_permastruct();
 
@@ -416,7 +445,11 @@ function get_attachment_link( $post = null, $leavename = false ) {
 
 	$post   = get_post( $post );
 	$parent = ( $post->post_parent > 0 && $post->post_parent != $post->ID ) ? get_post( $post->post_parent ) : false;
+<<<<<<< HEAD
 	if ( $parent && ! in_array( $parent->post_type, get_post_types(), true ) ) {
+=======
+	if ( $parent && ! in_array( $parent->post_type, get_post_types() ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$parent = false;
 	}
 
@@ -619,8 +652,12 @@ function get_feed_link( $feed = '' ) {
 	global $wp_rewrite;
 
 	$permalink = $wp_rewrite->get_feed_permastruct();
+<<<<<<< HEAD
 
 	if ( '' !== $permalink ) {
+=======
+	if ( '' != $permalink ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( false !== strpos( $feed, 'comments_' ) ) {
 			$feed      = str_replace( 'comments_', '', $feed );
 			$permalink = $wp_rewrite->get_comment_feed_permastruct();
@@ -681,7 +718,11 @@ function get_post_comments_feed_link( $post_id = 0, $feed = '' ) {
 	$post       = get_post( $post_id );
 	$unattached = 'attachment' === $post->post_type && 0 === (int) $post->post_parent;
 
+<<<<<<< HEAD
 	if ( get_option( 'permalink_structure' ) ) {
+=======
+	if ( '' != get_option( 'permalink_structure' ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( 'page' === get_option( 'show_on_front' ) && get_option( 'page_on_front' ) == $post_id ) {
 			$url = _get_page_link( $post_id );
 		} else {
@@ -794,7 +835,11 @@ function get_author_feed_link( $author_id, $feed = '' ) {
 		$feed = get_default_feed();
 	}
 
+<<<<<<< HEAD
 	if ( ! $permalink_structure ) {
+=======
+	if ( '' == $permalink_structure ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$link = home_url( "?feed=$feed&amp;author=" . $author_id );
 	} else {
 		$link = get_author_posts_url( $author_id );
@@ -866,10 +911,17 @@ function get_term_feed_link( $term_id, $taxonomy = 'category', $feed = '' ) {
 
 	$permalink_structure = get_option( 'permalink_structure' );
 
+<<<<<<< HEAD
 	if ( ! $permalink_structure ) {
 		if ( 'category' === $taxonomy ) {
 			$link = home_url( "?feed=$feed&amp;cat=$term_id" );
 		} elseif ( 'post_tag' === $taxonomy ) {
+=======
+	if ( '' == $permalink_structure ) {
+		if ( 'category' == $taxonomy ) {
+			$link = home_url( "?feed=$feed&amp;cat=$term_id" );
+		} elseif ( 'post_tag' == $taxonomy ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$link = home_url( "?feed=$feed&amp;tag=$term->slug" );
 		} else {
 			$t    = get_taxonomy( $taxonomy );
@@ -886,7 +938,11 @@ function get_term_feed_link( $term_id, $taxonomy = 'category', $feed = '' ) {
 		$link = trailingslashit( $link ) . user_trailingslashit( $feed_link, 'feed' );
 	}
 
+<<<<<<< HEAD
 	if ( 'category' === $taxonomy ) {
+=======
+	if ( 'category' == $taxonomy ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		/**
 		 * Filters the category feed link.
 		 *
@@ -896,7 +952,11 @@ function get_term_feed_link( $term_id, $taxonomy = 'category', $feed = '' ) {
 		 * @param string $feed Feed type. Possible values include 'rss2', 'atom'.
 		 */
 		$link = apply_filters( 'category_feed_link', $link, $feed );
+<<<<<<< HEAD
 	} elseif ( 'post_tag' === $taxonomy ) {
+=======
+	} elseif ( 'post_tag' == $taxonomy ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		/**
 		 * Filters the post tag feed link.
 		 *
@@ -1364,7 +1424,11 @@ function get_edit_post_link( $id = 0, $context = 'display' ) {
 
 	if ( 'revision' === $post->post_type ) {
 		$action = '';
+<<<<<<< HEAD
 	} elseif ( 'display' === $context ) {
+=======
+	} elseif ( 'display' == $context ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$action = '&amp;action=edit';
 	} else {
 		$action = '&action=edit';
@@ -1552,7 +1616,11 @@ function edit_comment_link( $text = null, $before = '', $after = '' ) {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
  * @param int|stdClass $link Optional. Bookmark ID. Default is the ID of the current bookmark.
+=======
+ * @param int|stdClass $link Optional. Bookmark ID. Default is the id of the current bookmark.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|void The edit bookmark link URL.
  */
 function get_edit_bookmark_link( $link = 0 ) {
@@ -2122,7 +2190,10 @@ function get_next_post_link( $format = '%link &raquo;', $link = '%title', $in_sa
  * Displays the next post link that is adjacent to the current post.
  *
  * @since 1.5.0
+<<<<<<< HEAD
  *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @see get_next_post_link()
  *
  * @param string       $format         Optional. Link anchor format. Default '&laquo; %link'.
@@ -2269,7 +2340,11 @@ function get_pagenum_link( $pagenum = 1, $escape = true ) {
 
 		$base = trailingslashit( get_bloginfo( 'url' ) );
 
+<<<<<<< HEAD
 		if ( $wp_rewrite->using_index_permalinks() && ( $pagenum > 1 || '' !== $request ) ) {
+=======
+		if ( $wp_rewrite->using_index_permalinks() && ( $pagenum > 1 || '' != $request ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$base .= $wp_rewrite->index . '/';
 		}
 
@@ -2329,8 +2404,13 @@ function get_next_posts_page_link( $max_page = 0 ) {
  *
  * @since 0.71
  *
+<<<<<<< HEAD
  * @param int  $max_page Optional. Max pages. Default 0.
  * @param bool $echo     Optional. Whether to echo the link. Default true.
+=======
+ * @param int   $max_page Optional. Max pages. Default 0.
+ * @param bool  $echo     Optional. Whether to echo the link. Default true.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|void The link URL for next posts page if `$echo = false`.
  */
 function next_posts( $max_page = 0, $echo = true ) {
@@ -2551,7 +2631,10 @@ function posts_nav_link( $sep = '', $prelabel = '', $nxtlabel = '' ) {
  * @since 4.1.0
  * @since 4.4.0 Introduced the `in_same_term`, `excluded_terms`, and `taxonomy` arguments.
  * @since 5.3.0 Added the `aria_label` parameter.
+<<<<<<< HEAD
  * @since 5.5.0 Added the `class` parameter.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param array $args {
  *     Optional. Default post navigation arguments. Default empty array.
@@ -2563,7 +2646,10 @@ function posts_nav_link( $sep = '', $prelabel = '', $nxtlabel = '' ) {
  *     @type string       $taxonomy           Taxonomy, if `$in_same_term` is true. Default 'category'.
  *     @type string       $screen_reader_text Screen reader text for the nav element. Default 'Post navigation'.
  *     @type string       $aria_label         ARIA label text for the nav element. Default 'Posts'.
+<<<<<<< HEAD
  *     @type string       $class              Custom class for the nav element. Default 'post-navigation'.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * }
  * @return string Markup for post links.
  */
@@ -2583,7 +2669,10 @@ function get_the_post_navigation( $args = array() ) {
 			'taxonomy'           => 'category',
 			'screen_reader_text' => __( 'Post navigation' ),
 			'aria_label'         => __( 'Posts' ),
+<<<<<<< HEAD
 			'class'              => 'post-navigation',
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		)
 	);
 
@@ -2607,7 +2696,11 @@ function get_the_post_navigation( $args = array() ) {
 
 	// Only add markup if there's somewhere to navigate to.
 	if ( $previous || $next ) {
+<<<<<<< HEAD
 		$navigation = _navigation_markup( $previous . $next, $args['class'], $args['screen_reader_text'], $args['aria_label'] );
+=======
+		$navigation = _navigation_markup( $previous . $next, 'post-navigation', $args['screen_reader_text'], $args['aria_label'] );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	return $navigation;
@@ -2630,7 +2723,10 @@ function the_post_navigation( $args = array() ) {
  *
  * @since 4.1.0
  * @since 5.3.0 Added the `aria_label` parameter.
+<<<<<<< HEAD
  * @since 5.5.0 Added the `class` parameter.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @global WP_Query $wp_query WordPress Query object.
  *
@@ -2644,7 +2740,10 @@ function the_post_navigation( $args = array() ) {
  *     @type string $screen_reader_text Screen reader text for the nav element.
  *                                      Default 'Posts navigation'.
  *     @type string $aria_label         ARIA label text for the nav element. Default 'Posts'.
+<<<<<<< HEAD
  *     @type string $class              Custom class for the nav element. Default 'posts-navigation'.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * }
  * @return string Markup for posts links.
  */
@@ -2665,7 +2764,10 @@ function get_the_posts_navigation( $args = array() ) {
 				'next_text'          => __( 'Newer posts' ),
 				'screen_reader_text' => __( 'Posts navigation' ),
 				'aria_label'         => __( 'Posts' ),
+<<<<<<< HEAD
 				'class'              => 'posts-navigation',
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			)
 		);
 
@@ -2680,7 +2782,11 @@ function get_the_posts_navigation( $args = array() ) {
 			$navigation .= '<div class="nav-next">' . $next_link . '</div>';
 		}
 
+<<<<<<< HEAD
 		$navigation = _navigation_markup( $navigation, $args['class'], $args['screen_reader_text'], $args['aria_label'] );
+=======
+		$navigation = _navigation_markup( $navigation, 'posts-navigation', $args['screen_reader_text'], $args['aria_label'] );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	return $navigation;
@@ -2703,7 +2809,10 @@ function the_posts_navigation( $args = array() ) {
  *
  * @since 4.1.0
  * @since 5.3.0 Added the `aria_label` parameter.
+<<<<<<< HEAD
  * @since 5.5.0 Added the `class` parameter.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param array $args {
  *     Optional. Default pagination arguments, see paginate_links().
@@ -2711,7 +2820,10 @@ function the_posts_navigation( $args = array() ) {
  *     @type string $screen_reader_text Screen reader text for navigation element.
  *                                      Default 'Posts navigation'.
  *     @type string $aria_label         ARIA label text for the nav element. Default 'Posts'.
+<<<<<<< HEAD
  *     @type string $class              Custom class for the nav element. Default 'pagination'.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * }
  * @return string Markup for pagination links.
  */
@@ -2733,12 +2845,19 @@ function get_the_posts_pagination( $args = array() ) {
 				'next_text'          => _x( 'Next', 'next set of posts' ),
 				'screen_reader_text' => __( 'Posts navigation' ),
 				'aria_label'         => __( 'Posts' ),
+<<<<<<< HEAD
 				'class'              => 'pagination',
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			)
 		);
 
 		// Make sure we get a string back. Plain is the next best thing.
+<<<<<<< HEAD
 		if ( isset( $args['type'] ) && 'array' === $args['type'] ) {
+=======
+		if ( isset( $args['type'] ) && 'array' == $args['type'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$args['type'] = 'plain';
 		}
 
@@ -2746,7 +2865,11 @@ function get_the_posts_pagination( $args = array() ) {
 		$links = paginate_links( $args );
 
 		if ( $links ) {
+<<<<<<< HEAD
 			$navigation = _navigation_markup( $links, $args['class'], $args['screen_reader_text'], $args['aria_label'] );
+=======
+			$navigation = _navigation_markup( $links, 'pagination', $args['screen_reader_text'], $args['aria_label'] );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	}
 
@@ -2773,12 +2896,18 @@ function the_posts_pagination( $args = array() ) {
  * @access private
  *
  * @param string $links              Navigational links.
+<<<<<<< HEAD
  * @param string $class              Optional. Custom class for the nav element.
  *                                   Default 'posts-navigation'.
  * @param string $screen_reader_text Optional. Screen reader text for the nav element.
  *                                   Default 'Posts navigation'.
  * @param string $aria_label         Optional. ARIA label for the nav element.
  *                                   Defaults to the value of `$screen_reader_text`.
+=======
+ * @param string $class              Optional. Custom class for the nav element. Default: 'posts-navigation'.
+ * @param string $screen_reader_text Optional. Screen reader text for the nav element. Default: 'Posts navigation'.
+ * @param string $aria_label         Optional. ARIA label for the nav element. Default: same value as $screen_reader_text.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string Navigation template tag.
  */
 function _navigation_markup( $links, $class = 'posts-navigation', $screen_reader_text = '', $aria_label = '' ) {
@@ -2836,7 +2965,11 @@ function get_comments_pagenum_link( $pagenum = 1, $max_page = 0 ) {
 
 	$result = get_permalink();
 
+<<<<<<< HEAD
 	if ( 'newest' === get_option( 'default_comments_page' ) ) {
+=======
+	if ( 'newest' == get_option( 'default_comments_page' ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( $pagenum != $max_page ) {
 			if ( $wp_rewrite->using_permalinks() ) {
 				$result = user_trailingslashit( trailingslashit( $result ) . $wp_rewrite->comments_pagination_base . '-' . $pagenum, 'commentpaged' );
@@ -3028,7 +3161,10 @@ function paginate_comments_links( $args = array() ) {
  *
  * @since 4.4.0
  * @since 5.3.0 Added the `aria_label` parameter.
+<<<<<<< HEAD
  * @since 5.5.0 Added the `class` parameter.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param array $args {
  *     Optional. Default comments navigation arguments.
@@ -3039,7 +3175,10 @@ function paginate_comments_links( $args = array() ) {
  *                                      Default 'Newer comments'.
  *     @type string $screen_reader_text Screen reader text for the nav element. Default 'Comments navigation'.
  *     @type string $aria_label         ARIA label text for the nav element. Default 'Comments'.
+<<<<<<< HEAD
  *     @type string $class              Custom class for the nav element. Default 'comment-navigation'.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * }
  * @return string Markup for comments links.
  */
@@ -3060,7 +3199,10 @@ function get_the_comments_navigation( $args = array() ) {
 				'next_text'          => __( 'Newer comments' ),
 				'screen_reader_text' => __( 'Comments navigation' ),
 				'aria_label'         => __( 'Comments' ),
+<<<<<<< HEAD
 				'class'              => 'comment-navigation',
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			)
 		);
 
@@ -3075,7 +3217,11 @@ function get_the_comments_navigation( $args = array() ) {
 			$navigation .= '<div class="nav-next">' . $next_link . '</div>';
 		}
 
+<<<<<<< HEAD
 		$navigation = _navigation_markup( $navigation, $args['class'], $args['screen_reader_text'], $args['aria_label'] );
+=======
+		$navigation = _navigation_markup( $navigation, 'comment-navigation', $args['screen_reader_text'], $args['aria_label'] );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	return $navigation;
@@ -3097,7 +3243,10 @@ function the_comments_navigation( $args = array() ) {
  *
  * @since 4.4.0
  * @since 5.3.0 Added the `aria_label` parameter.
+<<<<<<< HEAD
  * @since 5.5.0 Added the `class` parameter.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @see paginate_comments_links()
  *
@@ -3106,7 +3255,10 @@ function the_comments_navigation( $args = array() ) {
  *
  *     @type string $screen_reader_text Screen reader text for the nav element. Default 'Comments navigation'.
  *     @type string $aria_label         ARIA label text for the nav element. Default 'Comments'.
+<<<<<<< HEAD
  *     @type string $class              Custom class for the nav element. Default 'comments-pagination'.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * }
  * @return string Markup for pagination links.
  */
@@ -3123,20 +3275,31 @@ function get_the_comments_pagination( $args = array() ) {
 		array(
 			'screen_reader_text' => __( 'Comments navigation' ),
 			'aria_label'         => __( 'Comments' ),
+<<<<<<< HEAD
 			'class'              => 'comments-pagination',
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		)
 	);
 	$args['echo'] = false;
 
 	// Make sure we get a string back. Plain is the next best thing.
+<<<<<<< HEAD
 	if ( isset( $args['type'] ) && 'array' === $args['type'] ) {
+=======
+	if ( isset( $args['type'] ) && 'array' == $args['type'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$args['type'] = 'plain';
 	}
 
 	$links = paginate_comments_links( $args );
 
 	if ( $links ) {
+<<<<<<< HEAD
 		$navigation = _navigation_markup( $links, $args['class'], $args['screen_reader_text'], $args['aria_label'] );
+=======
+		$navigation = _navigation_markup( $links, 'comments-pagination', $args['screen_reader_text'], $args['aria_label'] );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	return $navigation;
@@ -3162,9 +3325,15 @@ function the_comments_pagination( $args = array() ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @param string      $path   Optional. Path relative to the home URL. Default empty.
  * @param string|null $scheme Optional. Scheme to give the home URL context. Accepts
  *                            'http', 'https', 'relative', 'rest', or null. Default null.
+=======
+ * @param  string      $path   Optional. Path relative to the home URL. Default empty.
+ * @param  string|null $scheme Optional. Scheme to give the home URL context. Accepts
+ *                             'http', 'https', 'relative', 'rest', or null. Default null.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string Home URL link with optional path appended.
  */
 function home_url( $path = '', $scheme = null ) {
@@ -3182,10 +3351,17 @@ function home_url( $path = '', $scheme = null ) {
  *
  * @global string $pagenow
  *
+<<<<<<< HEAD
  * @param int         $blog_id Optional. Site ID. Default null (current site).
  * @param string      $path    Optional. Path relative to the home URL. Default empty.
  * @param string|null $scheme  Optional. Scheme to give the home URL context. Accepts
  *                             'http', 'https', 'relative', 'rest', or null. Default null.
+=======
+ * @param  int         $blog_id Optional. Site ID. Default null (current site).
+ * @param  string      $path    Optional. Path relative to the home URL. Default empty.
+ * @param  string|null $scheme  Optional. Scheme to give the home URL context. Accepts
+ *                              'http', 'https', 'relative', 'rest', or null. Default null.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string Home URL link with optional path appended.
  */
 function get_home_url( $blog_id = null, $path = '', $scheme = null ) {
@@ -3201,7 +3377,11 @@ function get_home_url( $blog_id = null, $path = '', $scheme = null ) {
 		restore_current_blog();
 	}
 
+<<<<<<< HEAD
 	if ( ! in_array( $scheme, array( 'http', 'https', 'relative' ), true ) ) {
+=======
+	if ( ! in_array( $scheme, array( 'http', 'https', 'relative' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( is_ssl() && ! is_admin() && 'wp-login.php' !== $pagenow ) {
 			$scheme = 'https';
 		} else {
@@ -3401,11 +3581,19 @@ function content_url( $path = '' ) {
  *
  * @since 2.6.0
  *
+<<<<<<< HEAD
  * @param string $path   Optional. Extra path appended to the end of the URL, including
  *                       the relative directory if $plugin is supplied. Default empty.
  * @param string $plugin Optional. A full path to a file inside a plugin or mu-plugin.
  *                       The URL will be relative to its directory. Default empty.
  *                       Typically this is done by passing `__FILE__` as the argument.
+=======
+ * @param  string $path   Optional. Extra path appended to the end of the URL, including
+ *                        the relative directory if $plugin is supplied. Default empty.
+ * @param  string $plugin Optional. A full path to a file inside a plugin or mu-plugin.
+ *                        The URL will be relative to its directory. Default empty.
+ *                        Typically this is done by passing `__FILE__` as the argument.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string Plugins URL link with optional paths appended.
  */
 function plugins_url( $path = '', $plugin = '' ) {
@@ -3424,7 +3612,11 @@ function plugins_url( $path = '', $plugin = '' ) {
 
 	if ( ! empty( $plugin ) && is_string( $plugin ) ) {
 		$folder = dirname( plugin_basename( $plugin ) );
+<<<<<<< HEAD
 		if ( '.' !== $folder ) {
+=======
+		if ( '.' != $folder ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$url .= '/' . ltrim( $folder, '/' );
 		}
 	}
@@ -3470,7 +3662,11 @@ function network_site_url( $path = '', $scheme = null ) {
 
 	$current_network = get_network();
 
+<<<<<<< HEAD
 	if ( 'relative' === $scheme ) {
+=======
+	if ( 'relative' == $scheme ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$url = $current_network->path;
 	} else {
 		$url = set_url_scheme( 'http://' . $current_network->domain . $current_network->path, $scheme );
@@ -3503,9 +3699,15 @@ function network_site_url( $path = '', $scheme = null ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @param string $path   Optional. Path relative to the home URL. Default empty.
  * @param string $scheme Optional. Scheme to give the home URL context. Accepts
  *                       'http', 'https', or 'relative'. Default null.
+=======
+ * @param  string $path   Optional. Path relative to the home URL. Default empty.
+ * @param  string $scheme Optional. Scheme to give the home URL context. Accepts
+ *                        'http', 'https', or 'relative'. Default null.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string Home URL link with optional path appended.
  */
 function network_home_url( $path = '', $scheme = null ) {
@@ -3516,11 +3718,19 @@ function network_home_url( $path = '', $scheme = null ) {
 	$current_network = get_network();
 	$orig_scheme     = $scheme;
 
+<<<<<<< HEAD
 	if ( ! in_array( $scheme, array( 'http', 'https', 'relative' ), true ) ) {
 		$scheme = is_ssl() && ! is_admin() ? 'https' : 'http';
 	}
 
 	if ( 'relative' === $scheme ) {
+=======
+	if ( ! in_array( $scheme, array( 'http', 'https', 'relative' ) ) ) {
+		$scheme = is_ssl() && ! is_admin() ? 'https' : 'http';
+	}
+
+	if ( 'relative' == $scheme ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$url = $current_network->path;
 	} else {
 		$url = set_url_scheme( 'http://' . $current_network->domain . $current_network->path, $scheme );
@@ -3646,7 +3856,11 @@ function self_admin_url( $path = '', $scheme = 'admin' ) {
  * @param string      $url    Absolute URL that includes a scheme
  * @param string|null $scheme Optional. Scheme to give $url. Currently 'http', 'https', 'login',
  *                            'login_post', 'admin', 'relative', 'rest', 'rpc', or null. Default null.
+<<<<<<< HEAD
  * @return string URL with chosen scheme.
+=======
+ * @return string $url URL with chosen scheme.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function set_url_scheme( $url, $scheme = null ) {
 	$orig_scheme = $scheme;
@@ -3664,7 +3878,11 @@ function set_url_scheme( $url, $scheme = null ) {
 		$url = 'http:' . $url;
 	}
 
+<<<<<<< HEAD
 	if ( 'relative' === $scheme ) {
+=======
+	if ( 'relative' == $scheme ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$url = ltrim( preg_replace( '#^\w+://[^/]*#', '', $url ) );
 		if ( '' !== $url && '/' === $url[0] ) {
 			$url = '/' . ltrim( $url, "/ \t\n\r\0\x0B" );
@@ -3706,15 +3924,22 @@ function get_dashboard_url( $user_id = 0, $path = '', $scheme = 'admin' ) {
 	$user_id = $user_id ? (int) $user_id : get_current_user_id();
 
 	$blogs = get_blogs_of_user( $user_id );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( is_multisite() && ! user_can( $user_id, 'manage_network' ) && empty( $blogs ) ) {
 		$url = user_admin_url( $path, $scheme );
 	} elseif ( ! is_multisite() ) {
 		$url = admin_url( $path, $scheme );
 	} else {
 		$current_blog = get_current_blog_id();
+<<<<<<< HEAD
 
 		if ( $current_blog && ( user_can( $user_id, 'manage_network' ) || in_array( $current_blog, array_keys( $blogs ), true ) ) ) {
+=======
+		if ( $current_blog && ( user_can( $user_id, 'manage_network' ) || in_array( $current_blog, array_keys( $blogs ) ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$url = admin_url( $path, $scheme );
 		} else {
 			$active = get_active_blog_for_user( $user_id );
@@ -3803,7 +4028,11 @@ function wp_get_canonical_url( $post = null ) {
 	if ( get_queried_object_id() === $post->ID ) {
 		$page = get_query_var( 'page', 0 );
 		if ( $page >= 2 ) {
+<<<<<<< HEAD
 			if ( ! get_option( 'permalink_structure' ) ) {
+=======
+			if ( '' == get_option( 'permalink_structure' ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$canonical_url = add_query_arg( 'page', $page, $canonical_url );
 			} else {
 				$canonical_url = trailingslashit( $canonical_url ) . user_trailingslashit( $page, 'single_paged' );
@@ -3862,10 +4091,17 @@ function rel_canonical() {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @param int    $id          Optional. A post or site ID. Default is 0, which means the current post or site.
  * @param string $context     Optional. Whether the ID is a 'site' id, 'post' id, or 'media' id. If 'post',
  *                            the post_type of the post is consulted. If 'query', the current query is consulted
  *                            to determine the ID and context. Default 'post'.
+=======
+ * @param int    $id          Optional. A post or site id. Default is 0, which means the current post or site.
+ * @param string $context     Optional. Whether the id is a 'site' id, 'post' id, or 'media' id. If 'post',
+ *                            the post_type of the post is consulted. If 'query', the current query is consulted
+ *                            to determine the id and context. Default 'post'.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param bool   $allow_slugs Optional. Whether to allow post slugs in the shortlink. It is up to the plugin how
  *                            and whether to honor this. Default true.
  * @return string A shortlink or an empty string if no shortlink exists for the requested resource or if shortlinks
@@ -3875,6 +4111,7 @@ function wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
 	/**
 	 * Filters whether to preempt generating a shortlink for the given post.
 	 *
+<<<<<<< HEAD
 	 * Returning a truthy value from the filter will effectively short-circuit
 	 * the shortlink generation process, returning that value instead.
 	 *
@@ -3884,6 +4121,17 @@ function wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
 	 * @param int          $id          Post ID, or 0 for the current post.
 	 * @param string       $context     The context for the link. One of 'post' or 'query',
 	 * @param bool         $allow_slugs Whether to allow post slugs in the shortlink.
+=======
+	 * Passing a truthy value to the filter will effectively short-circuit the
+	 * shortlink-generation process, returning that value instead.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param bool|string $return      Short-circuit return value. Either false or a URL string.
+	 * @param int         $id          Post ID, or 0 for the current post.
+	 * @param string      $context     The context for the link. One of 'post' or 'query',
+	 * @param bool        $allow_slugs Whether to allow post slugs in the shortlink.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	$shortlink = apply_filters( 'pre_get_shortlink', false, $id, $context, $allow_slugs );
 
@@ -3892,10 +4140,17 @@ function wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
 	}
 
 	$post_id = 0;
+<<<<<<< HEAD
 	if ( 'query' === $context && is_singular() ) {
 		$post_id = get_queried_object_id();
 		$post    = get_post( $post_id );
 	} elseif ( 'post' === $context ) {
+=======
+	if ( 'query' == $context && is_singular() ) {
+		$post_id = get_queried_object_id();
+		$post    = get_post( $post_id );
+	} elseif ( 'post' == $context ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$post = get_post( $id );
 		if ( ! empty( $post->ID ) ) {
 			$post_id = $post->ID;
@@ -4454,6 +4709,10 @@ function the_privacy_policy_link( $before = '', $after = '' ) {
  *
  * @param string $before Optional. Display before privacy policy link. Default empty.
  * @param string $after  Optional. Display after privacy policy link. Default empty.
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string Markup for the link and surrounding elements. Empty string if it
  *                doesn't exist.
  */

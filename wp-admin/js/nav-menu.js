@@ -9,7 +9,11 @@
  * @output wp-admin/js/nav-menu.js
  */
 
+<<<<<<< HEAD
 /* global menus, postboxes, columns, isRtl, ajaxurl, wpNavMenu */
+=======
+/* global menus, postboxes, columns, isRtl, navMenuL10n, ajaxurl, wpNavMenu */
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 (function($) {
 
@@ -429,7 +433,11 @@
 		 * Refreshes advanced accessibility buttons for one menu item.
 		 * Shows or hides buttons based on the location of the menu item.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} itemToRefresh The menu item that might need its advanced accessibility buttons refreshed
+=======
+		 * @param  {object} itemToRefresh The menu item that might need its advanced accessibility buttons refreshed
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		refreshAdvancedAccessibilityOfItem : function( itemToRefresh ) {
 
@@ -588,7 +596,11 @@
 				if ( title ) {
 					titleEl.text( title ).removeClass( 'no-title' );
 				} else {
+<<<<<<< HEAD
 					titleEl.text( wp.i18n._x( '(no label)', 'missing menu item navigation label' ) ).addClass( 'no-title' );
+=======
+					titleEl.text( navMenuL10n.untitled ).addClass( 'no-title' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 			} );
 		},
@@ -920,7 +932,11 @@
 				q = input.val();
 
 			/*
+<<<<<<< HEAD
 			 * Minimum characters for a search. Also avoid a new Ajax search when
+=======
+			 * Minimum characters for a search. Also avoid a new AJAX search when
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 * the pressed key (e.g. arrows) doesn't change the searched term.
 			 */
 			if ( q.length < minSearchLength || api.lastSearch == q ) {
@@ -1050,7 +1066,11 @@
 			if ( 0 !== $('#menu-to-edit').length || 0 !== $('.menu-location-menus select').length ) {
 				window.onbeforeunload = function(){
 					if ( api.menusChanged )
+<<<<<<< HEAD
 						return wp.i18n.__( 'The changes you made will be lost if you navigate away from this page.' );
+=======
+						return navMenuL10n.saveAlert;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				};
 			} else {
 				// Make the post boxes read-only, as they can't be used yet.
@@ -1220,7 +1240,11 @@
 
 		eventOnClickMenuDelete : function() {
 			// Delete warning AYS.
+<<<<<<< HEAD
 			if ( window.confirm( wp.i18n.__( 'You are about to permanently delete this menu.\n\'Cancel\' to stop, \'OK\' to delete.' ) ) ) {
+=======
+			if ( window.confirm( navMenuL10n.warnDeleteMenu ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				window.onbeforeunload = null;
 				return true;
 			}
@@ -1253,7 +1277,11 @@
 			$item;
 
 			if( ! $items.length ) {
+<<<<<<< HEAD
 				$('.categorychecklist', panel).html( '<li><p>' + wp.i18n.__( 'No results found.' ) + '</p></li>' );
+=======
+				$('.categorychecklist', panel).html( '<li><p>' + navMenuL10n.noResultsFound + '</p></li>' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$( '.spinner', panel ).removeClass( 'is-active' );
 				wrapper.addClass( 'has-no-menu-item' );
 				return;
@@ -1292,8 +1320,12 @@
 
 		/**
 		 * Remove a menu item.
+<<<<<<< HEAD
 		 *
 		 * @param {Object} el The element to be removed as a jQuery object.
+=======
+		 * @param  {object} el The element to be removed as a jQuery object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 *
 		 * @fires document#menu-removing-item Passes the element to be removed.
 		 */

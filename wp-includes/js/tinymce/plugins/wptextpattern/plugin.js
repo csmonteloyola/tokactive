@@ -52,9 +52,15 @@
 	/**
 	 * Escapes characters for use in a Regular Expression.
 	 *
+<<<<<<< HEAD
 	 * @param {String} string Characters to escape
 	 *
 	 * @return {String} Escaped characters
+=======
+	 * @param  {String} string Characters to escape
+	 *
+	 * @return {String}        Escaped characters
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	function escapeRegExp( string ) {
 		return string.replace( /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&' );
@@ -120,7 +126,11 @@
 			var format;
 			var zero;
 
+<<<<<<< HEAD
 			// We need a non-empty text node with an offset greater than zero.
+=======
+			// We need a non empty text node with an offset greater than zero.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( ! node || node.nodeType !== 3 || ! node.data.length || ! offset ) {
 				return;
 			}

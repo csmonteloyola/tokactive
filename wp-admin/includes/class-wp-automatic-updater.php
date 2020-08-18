@@ -143,19 +143,28 @@ class WP_Automatic_Updater {
 
 		// Only relax the filesystem checks when the update doesn't include new files.
 		$allow_relaxed_file_ownership = false;
+<<<<<<< HEAD
 		if ( 'core' === $type && isset( $item->new_files ) && ! $item->new_files ) {
+=======
+		if ( 'core' == $type && isset( $item->new_files ) && ! $item->new_files ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$allow_relaxed_file_ownership = true;
 		}
 
 		// If we can't do an auto core update, we may still be able to email the user.
 		if ( ! $skin->request_filesystem_credentials( false, $context, $allow_relaxed_file_ownership ) || $this->is_vcs_checkout( $context ) ) {
+<<<<<<< HEAD
 			if ( 'core' === $type ) {
+=======
+			if ( 'core' == $type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$this->send_core_update_notification_email( $item );
 			}
 			return false;
 		}
 
 		// Next up, is this an item we can update?
+<<<<<<< HEAD
 		if ( 'core' === $type ) {
 			$update = Core_Upgrader::should_update_to_version( $item->current );
 		} elseif ( 'plugin' === $type || 'theme' === $type ) {
@@ -166,25 +175,36 @@ class WP_Automatic_Updater {
 				$auto_updates = (array) get_site_option( "auto_update_{$type}s", array() );
 				$update       = in_array( $item->{$type}, $auto_updates, true );
 			}
+=======
+		if ( 'core' == $type ) {
+			$update = Core_Upgrader::should_update_to_version( $item->current );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		} else {
 			$update = ! empty( $item->autoupdate );
 		}
 
+<<<<<<< HEAD
 		// If the `disable_autoupdate` flag is set, override any user-choice, but allow filters.
 		if ( ! empty( $item->disable_autoupdate ) ) {
 			$update = $item->disable_autoupdate;
 		}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		/**
 		 * Filters whether to automatically update core, a plugin, a theme, or a language.
 		 *
 		 * The dynamic portion of the hook name, `$type`, refers to the type of update
+<<<<<<< HEAD
 		 * being checked. Potential hook names include:
 		 *
 		 *  - `auto_update_core`
 		 *  - `auto_update_plugin`
 		 *  - `auto_update_theme`
 		 *  - `auto_update_translation`
+=======
+		 * being checked. Can be 'core', 'theme', 'plugin', or 'translation'.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 *
 		 * Generally speaking, plugins, themes, and major core versions are not updated
 		 * by default, while translations and minor and development versions for core
@@ -202,14 +222,22 @@ class WP_Automatic_Updater {
 		$update = apply_filters( "auto_update_{$type}", $update, $item );
 
 		if ( ! $update ) {
+<<<<<<< HEAD
 			if ( 'core' === $type ) {
+=======
+			if ( 'core' == $type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$this->send_core_update_notification_email( $item );
 			}
 			return false;
 		}
 
 		// If it's a core update, are we actually compatible with its requirements?
+<<<<<<< HEAD
 		if ( 'core' === $type ) {
+=======
+		if ( 'core' == $type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			global $wpdb;
 
 			$php_compat = version_compare( phpversion(), $item->php_version, '>=' );
@@ -224,8 +252,13 @@ class WP_Automatic_Updater {
 			}
 		}
 
+<<<<<<< HEAD
 		// If updating a plugin or theme, ensure the minimum PHP version requirements are satisfied.
 		if ( in_array( $type, array( 'plugin', 'theme' ), true ) ) {
+=======
+		// If updating a plugin, ensure the minimum PHP version requirements are satisfied.
+		if ( 'plugin' === $type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( ! empty( $item->requires_php ) && version_compare( phpversion(), $item->requires_php, '<' ) ) {
 				return false;
 			}
@@ -286,6 +319,10 @@ class WP_Automatic_Updater {
 	 *
 	 * @param string $type The type of update being checked: 'core', 'theme', 'plugin', 'translation'.
 	 * @param object $item The update offer.
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return null|WP_Error
 	 */
 	public function update( $type, $item ) {
@@ -361,7 +398,11 @@ class WP_Automatic_Updater {
 		}
 
 		$allow_relaxed_file_ownership = false;
+<<<<<<< HEAD
 		if ( 'core' === $type && isset( $item->new_files ) && ! $item->new_files ) {
+=======
+		if ( 'core' == $type && isset( $item->new_files ) && ! $item->new_files ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$allow_relaxed_file_ownership = true;
 		}
 
@@ -384,6 +425,7 @@ class WP_Automatic_Updater {
 			$upgrade_result = new WP_Error( 'fs_unavailable', __( 'Could not access filesystem.' ) );
 		}
 
+<<<<<<< HEAD
 		if ( 'core' === $type ) {
 			if ( is_wp_error( $upgrade_result )
 				&& ( 'up_to_date' === $upgrade_result->get_error_code()
@@ -391,14 +433,25 @@ class WP_Automatic_Updater {
 			) {
 				// These aren't actual errors, treat it as a skipped-update instead
 				// to avoid triggering the post-core update failure routines.
+=======
+		if ( 'core' == $type ) {
+			if ( is_wp_error( $upgrade_result ) && ( 'up_to_date' == $upgrade_result->get_error_code() || 'locked' == $upgrade_result->get_error_code() ) ) {
+				// These aren't actual errors, treat it as a skipped-update instead to avoid triggering the post-core update failure routines.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				return false;
 			}
 
 			// Core doesn't output this, so let's append it so we don't get confused.
 			if ( is_wp_error( $upgrade_result ) ) {
+<<<<<<< HEAD
 				$skin->error( __( 'Installation failed.' ), $upgrade_result );
 			} else {
 				$skin->feedback( __( 'WordPress updated successfully.' ) );
+=======
+				$skin->error( __( 'Installation Failed' ), $upgrade_result );
+			} else {
+				$skin->feedback( __( 'WordPress updated successfully' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			}
 		}
 
@@ -518,8 +571,11 @@ class WP_Automatic_Updater {
 
 			if ( ! empty( $this->update_results['core'] ) ) {
 				$this->after_core_update( $this->update_results['core'][0] );
+<<<<<<< HEAD
 			} elseif ( ! empty( $this->update_results['plugin'] ) || ! empty( $this->update_results['theme'] ) ) {
 				$this->after_plugin_theme_update( $this->update_results );
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			}
 
 			/**
@@ -600,7 +656,11 @@ class WP_Automatic_Updater {
 		 */
 		$send               = true;
 		$transient_failures = array( 'incompatible_archive', 'download_failed', 'insane_distro', 'locked' );
+<<<<<<< HEAD
 		if ( in_array( $error_code, $transient_failures, true ) && ! get_site_option( 'auto_core_update_failed' ) ) {
+=======
+		if ( in_array( $error_code, $transient_failures ) && ! get_site_option( 'auto_core_update_failed' ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			wp_schedule_single_event( time() + HOUR_IN_SECONDS, 'wp_maybe_auto_update' );
 			$send = false;
 		}
@@ -619,7 +679,11 @@ class WP_Automatic_Updater {
 				'error_code' => $error_code,
 				'error_data' => $result->get_error_data(),
 				'timestamp'  => time(),
+<<<<<<< HEAD
 				'retry'      => in_array( $error_code, $transient_failures, true ),
+=======
+				'retry'      => in_array( $error_code, $transient_failures ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			)
 		);
 
@@ -649,13 +713,20 @@ class WP_Automatic_Updater {
 		);
 
 		$next_user_core_update = get_preferred_from_update_core();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		// If the update transient is empty, use the update we just performed.
 		if ( ! $next_user_core_update ) {
 			$next_user_core_update = $core_update;
 		}
+<<<<<<< HEAD
 
 		$newer_version_available = ( 'upgrade' === $next_user_core_update->response && version_compare( $next_user_core_update->version, $core_update->version, '>' ) );
+=======
+		$newer_version_available = ( 'upgrade' == $next_user_core_update->response && version_compare( $next_user_core_update->version, $core_update->version, '>' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		/**
 		 * Filters whether to send an email following an automatic background core update.
@@ -693,7 +764,11 @@ class WP_Automatic_Updater {
 				return;
 		}
 
+<<<<<<< HEAD
 		// If the auto-update is not to the latest version, say that the current version of WP is available instead.
+=======
+		// If the auto update is not to the latest version, say that the current version of WP is available instead.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$version = 'success' === $type ? $core_update->current : $next_user_core_update->current;
 		$subject = sprintf( $subject, wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ), $version );
 
@@ -740,7 +815,11 @@ class WP_Automatic_Updater {
 
 				// Don't show this message if there is a newer version available.
 				// Potential for confusion, and also not useful for them to know at this point.
+<<<<<<< HEAD
 				if ( 'fail' === $type && ! $newer_version_available ) {
+=======
+				if ( 'fail' == $type && ! $newer_version_available ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$body .= __( 'We tried but were unable to update your site automatically.' ) . ' ';
 				}
 
@@ -803,7 +882,11 @@ class WP_Automatic_Updater {
 
 		$body .= "\n\n" . __( 'The WordPress Team' ) . "\n";
 
+<<<<<<< HEAD
 		if ( 'critical' === $type && is_wp_error( $result ) ) {
+=======
+		if ( 'critical' == $type && is_wp_error( $result ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$body .= "\n***\n\n";
 			/* translators: %s: WordPress version. */
 			$body .= sprintf( __( 'Your site was running version %s.' ), get_bloginfo( 'version' ) );
@@ -812,7 +895,11 @@ class WP_Automatic_Updater {
 
 			// If we had a rollback and we're still critical, then the rollback failed too.
 			// Loop through all errors (the main WP_Error, the update result, the rollback result) for code, data, etc.
+<<<<<<< HEAD
 			if ( 'rollback_was_required' === $result->get_error_code() ) {
+=======
+			if ( 'rollback_was_required' == $result->get_error_code() ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$errors = array( $result, $result->get_error_data()->update, $result->get_error_data()->rollback );
 			} else {
 				$errors = array( $result );
@@ -822,6 +909,7 @@ class WP_Automatic_Updater {
 				if ( ! is_wp_error( $error ) ) {
 					continue;
 				}
+<<<<<<< HEAD
 
 				$error_code = $error->get_error_code();
 				/* translators: %s: Error code. */
@@ -835,12 +923,26 @@ class WP_Automatic_Updater {
 					$body .= "\n" . $error->get_error_message();
 				}
 
+=======
+				$error_code = $error->get_error_code();
+				/* translators: %s: Error code. */
+				$body .= "\n\n" . sprintf( __( 'Error code: %s' ), $error_code );
+				if ( 'rollback_was_required' == $error_code ) {
+					continue;
+				}
+				if ( $error->get_error_message() ) {
+					$body .= "\n" . $error->get_error_message();
+				}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$error_data = $error->get_error_data();
 				if ( $error_data ) {
 					$body .= "\n" . implode( ', ', (array) $error_data );
 				}
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$body .= "\n";
 		}
 
@@ -873,6 +975,7 @@ class WP_Automatic_Updater {
 		wp_mail( $email['to'], wp_specialchars_decode( $email['subject'] ), $email['body'], $email['headers'] );
 	}
 
+<<<<<<< HEAD
 
 	/**
 	 * If we tried to perform plugin or theme updates, check if we should send an email.
@@ -1185,6 +1288,8 @@ class WP_Automatic_Updater {
 		}
 	}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/**
 	 * Prepares and sends an email of a full log of background update results, useful for debugging and geekery.
 	 *

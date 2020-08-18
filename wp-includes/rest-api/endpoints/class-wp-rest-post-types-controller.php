@@ -60,10 +60,16 @@ class WP_REST_Post_Types_Controller extends WP_REST_Controller {
 					),
 				),
 				array(
+<<<<<<< HEAD
 					'methods'             => WP_REST_Server::READABLE,
 					'callback'            => array( $this, 'get_item' ),
 					'permission_callback' => '__return_true',
 					'args'                => array(
+=======
+					'methods'  => WP_REST_Server::READABLE,
+					'callback' => array( $this, 'get_item' ),
+					'args'     => array(
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						'context' => $this->get_context_param( array( 'default' => 'view' ) ),
 					),
 				),

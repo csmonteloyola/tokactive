@@ -116,10 +116,16 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			'/' . $this->rest_base . '/me',
 			array(
 				array(
+<<<<<<< HEAD
 					'methods'             => WP_REST_Server::READABLE,
 					'permission_callback' => '__return_true',
 					'callback'            => array( $this, 'get_current_item' ),
 					'args'                => array(
+=======
+					'methods'  => WP_REST_Server::READABLE,
+					'callback' => array( $this, 'get_current_item' ),
+					'args'     => array(
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						'context' => $this->get_context_param( array( 'default' => 'view' ) ),
 					),
 				),
@@ -162,6 +168,10 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 	 * @param int|bool        $value   The value passed to the reassign parameter.
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @param string          $param   The parameter that is being sanitized.
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return int|bool|WP_Error
 	 */
 	public function check_reassign( $value, $request, $param ) {
@@ -1095,7 +1105,11 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 	 * @since 4.7.0
 	 *
 	 * @param WP_REST_Request $request Request object.
+<<<<<<< HEAD
 	 * @return object User object.
+=======
+	 * @return object $prepared_user User object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	protected function prepare_item_for_database( $request ) {
 		$prepared_user = new stdClass;
@@ -1246,7 +1260,11 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 		if ( ! validate_username( $username ) ) {
 			return new WP_Error(
 				'rest_user_invalid_username',
+<<<<<<< HEAD
 				__( 'This username is invalid because it uses illegal characters. Please enter a valid username.' ),
+=======
+				__( 'Username contains invalid characters.' ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				array( 'status' => 400 )
 			);
 		}

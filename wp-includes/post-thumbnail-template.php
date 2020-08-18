@@ -43,6 +43,7 @@ function has_post_thumbnail( $post = null ) {
  *
  * @since 2.9.0
  * @since 4.4.0 `$post` can be a post ID or WP_Post object.
+<<<<<<< HEAD
  * @since 5.5.0 The return value for a non-existing post
  *              was changed to false instead of an empty string.
  *
@@ -57,6 +58,17 @@ function get_post_thumbnail_id( $post = null ) {
 		return false;
 	}
 
+=======
+ *
+ * @param int|WP_Post $post Optional. Post ID or WP_Post object. Default is global `$post`.
+ * @return int|string Post thumbnail ID or empty string if the post does not exist.
+ */
+function get_post_thumbnail_id( $post = null ) {
+	$post = get_post( $post );
+	if ( ! $post ) {
+		return '';
+	}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	return (int) get_post_meta( $post->ID, '_thumbnail_id', true );
 }
 
@@ -102,7 +114,10 @@ function update_post_thumbnail_cache( $wp_query = null ) {
 	}
 
 	$thumb_ids = array();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	foreach ( $wp_query->posts as $post ) {
 		$id = get_post_thumbnail_id( $post->ID );
 		if ( $id ) {
@@ -139,11 +154,17 @@ function update_post_thumbnail_cache( $wp_query = null ) {
  */
 function get_the_post_thumbnail( $post = null, $size = 'post-thumbnail', $attr = '' ) {
 	$post = get_post( $post );
+<<<<<<< HEAD
 
 	if ( ! $post ) {
 		return '';
 	}
 
+=======
+	if ( ! $post ) {
+		return '';
+	}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	$post_thumbnail_id = get_post_thumbnail_id( $post );
 
 	/**
@@ -173,11 +194,17 @@ function get_the_post_thumbnail( $post = null, $size = 'post-thumbnail', $attr =
 		 *                                        and height values (in that order). Default 'post-thumbnail'.
 		 */
 		do_action( 'begin_fetch_post_thumbnail_html', $post->ID, $post_thumbnail_id, $size );
+<<<<<<< HEAD
 
 		if ( in_the_loop() ) {
 			update_post_thumbnail_cache();
 		}
 
+=======
+		if ( in_the_loop() ) {
+			update_post_thumbnail_cache();
+		}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$html = wp_get_attachment_image( $post_thumbnail_id, $size, false, $attr );
 
 		/**
@@ -195,7 +222,10 @@ function get_the_post_thumbnail( $post = null, $size = 'post-thumbnail', $attr =
 	} else {
 		$html = '';
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/**
 	 * Filters the post thumbnail HTML.
 	 *
@@ -223,11 +253,17 @@ function get_the_post_thumbnail( $post = null, $size = 'post-thumbnail', $attr =
  */
 function get_the_post_thumbnail_url( $post = null, $size = 'post-thumbnail' ) {
 	$post_thumbnail_id = get_post_thumbnail_id( $post );
+<<<<<<< HEAD
 
 	if ( ! $post_thumbnail_id ) {
 		return false;
 	}
 
+=======
+	if ( ! $post_thumbnail_id ) {
+		return false;
+	}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	return wp_get_attachment_image_url( $post_thumbnail_id, $size );
 }
 
@@ -242,7 +278,10 @@ function get_the_post_thumbnail_url( $post = null, $size = 'post-thumbnail' ) {
  */
 function the_post_thumbnail_url( $size = 'post-thumbnail' ) {
 	$url = get_the_post_thumbnail_url( null, $size );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( $url ) {
 		echo esc_url( $url );
 	}
@@ -258,7 +297,10 @@ function the_post_thumbnail_url( $size = 'post-thumbnail' ) {
  */
 function get_the_post_thumbnail_caption( $post = null ) {
 	$post_thumbnail_id = get_post_thumbnail_id( $post );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( ! $post_thumbnail_id ) {
 		return '';
 	}

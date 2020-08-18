@@ -38,7 +38,11 @@
 	 * @param {RegExp} settings.shortcodesRegExp                  Optional. Regular expression to find shortcodes.
 	 * @param {Object} settings.l10n                              Optional. Localization object containing specific
 	 *                                                            configuration for the current localization.
+<<<<<<< HEAD
 	 * @param {string} settings.l10n.type                         Optional. Method of finding words to count.
+=======
+	 * @param {String} settings.l10n.type                         Optional. Method of finding words to count.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {Array}  settings.l10n.shortcodes                   Optional. Array of shortcodes that should be removed
 	 *                                                            from the text.
 	 *
@@ -148,10 +152,17 @@
 	 *
 	 * @memberof wp.utils.wordcounter
 	 *
+<<<<<<< HEAD
 	 * @param {string}  text Text to count elements in.
 	 * @param {string}  type Optional. Specify type to use.
 	 *
 	 * @return {number} The number of items counted.
+=======
+	 * @param {String}  text Text to count elements in.
+	 * @param {String}  type Optional. Specify type to use.
+	 *
+	 * @return {Number} The number of items counted.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	WordCounter.prototype.count = function( text, type ) {
 		var count = 0;

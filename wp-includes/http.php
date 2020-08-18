@@ -15,6 +15,11 @@
  * @since 2.7.0
  * @access private
  *
+<<<<<<< HEAD
+=======
+ * @staticvar WP_Http $http
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return WP_Http HTTP Transport object.
  */
 function _wp_http_get_object() {
@@ -373,7 +378,11 @@ function wp_http_supports( $capabilities = array(), $url = null ) {
 
 	if ( $url && ! isset( $capabilities['ssl'] ) ) {
 		$scheme = parse_url( $url, PHP_URL_SCHEME );
+<<<<<<< HEAD
 		if ( 'https' === $scheme || 'ssl' === $scheme ) {
+=======
+		if ( 'https' == $scheme || 'ssl' == $scheme ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$capabilities['ssl'] = true;
 		}
 	}
@@ -457,7 +466,11 @@ function is_allowed_http_origin( $origin = null ) {
 		$origin = get_http_origin();
 	}
 
+<<<<<<< HEAD
 	if ( $origin && ! in_array( $origin, get_allowed_http_origins(), true ) ) {
+=======
+	if ( $origin && ! in_array( $origin, get_allowed_http_origins() ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$origin = '';
 	}
 
@@ -520,7 +533,11 @@ function wp_http_validate_url( $url ) {
 		return false;
 	}
 
+<<<<<<< HEAD
 	$parsed_url = parse_url( $url );
+=======
+	$parsed_url = @parse_url( $url );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( ! $parsed_url || empty( $parsed_url['host'] ) ) {
 		return false;
 	}
@@ -533,7 +550,11 @@ function wp_http_validate_url( $url ) {
 		return false;
 	}
 
+<<<<<<< HEAD
 	$parsed_home = parse_url( get_option( 'home' ) );
+=======
+	$parsed_home = @parse_url( get_option( 'home' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	if ( isset( $parsed_home['host'] ) ) {
 		$same_host = strtolower( $parsed_home['host'] ) === strtolower( $parsed_url['host'] );
@@ -593,7 +614,11 @@ function wp_http_validate_url( $url ) {
 }
 
 /**
+<<<<<<< HEAD
  * Mark allowed redirect hosts safe for HTTP requests as well.
+=======
+ * Whitelists allowed redirect hosts for safe HTTP requests as well.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * Attached to the {@see 'http_request_host_is_external'} filter.
  *
@@ -611,14 +636,22 @@ function allowed_http_request_hosts( $is_external, $host ) {
 }
 
 /**
+<<<<<<< HEAD
  * Adds any domain in a multisite installation for safe HTTP requests to the
  * allowed list.
+=======
+ * Whitelists any domain in a multisite installation for safe HTTP requests.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * Attached to the {@see 'http_request_host_is_external'} filter.
  *
  * @since 3.6.0
  *
  * @global wpdb $wpdb WordPress database abstraction object.
+<<<<<<< HEAD
+=======
+ * @staticvar array $queried
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param bool   $is_external
  * @param string $host
@@ -652,6 +685,12 @@ function ms_allowed_http_request_hosts( $is_external, $host ) {
  * in the query are being handled inconsistently. This function works around those
  * differences as well.
  *
+<<<<<<< HEAD
+=======
+ * Error suppression is used as prior to PHP 5.3.3, an E_WARNING would be generated
+ * when URL parsing failed.
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @since 4.4.0
  * @since 4.7.0 The `$component` parameter was added for parity with PHP's `parse_url()`.
  *
@@ -679,7 +718,11 @@ function wp_parse_url( $url, $component = -1 ) {
 		$url        = 'placeholder://placeholder' . $url;
 	}
 
+<<<<<<< HEAD
 	$parts = parse_url( $url );
+=======
+	$parts = @parse_url( $url );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	if ( false === $parts ) {
 		// Parsing failure.

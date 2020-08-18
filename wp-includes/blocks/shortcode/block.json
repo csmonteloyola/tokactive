@@ -6,10 +6,13 @@
 			"type": "string",
 			"source": "html"
 		}
+<<<<<<< HEAD
 	},
 	"supports": {
 		"className": false,
 		"customClassName": false,
 		"html": false
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 }

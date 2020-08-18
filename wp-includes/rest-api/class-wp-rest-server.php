@@ -243,6 +243,7 @@ class WP_REST_Server {
 		 * https://miki.it/blog/2014/7/8/abusing-jsonp-with-rosetta-flash/
 		 */
 		$this->send_header( 'X-Content-Type-Options', 'nosniff' );
+<<<<<<< HEAD
 		$expose_headers = array( 'X-WP-Total', 'X-WP-TotalPages', 'Link' );
 
 		/**
@@ -279,6 +280,10 @@ class WP_REST_Server {
 		$allow_headers = apply_filters( 'rest_allowed_cors_headers', $allow_headers );
 
 		$this->send_header( 'Access-Control-Allow-Headers', implode( ', ', $allow_headers ) );
+=======
+		$this->send_header( 'Access-Control-Expose-Headers', 'X-WP-Total, X-WP-TotalPages' );
+		$this->send_header( 'Access-Control-Allow-Headers', 'Authorization, Content-Type' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		/**
 		 * Send nocache headers on authenticated requests.
@@ -492,8 +497,13 @@ class WP_REST_Server {
 	 * @return array {
 	 *     Data with sub-requests embedded.
 	 *
+<<<<<<< HEAD
 	 *     @type array $_links    Links.
 	 *     @type array $_embedded Embeddeds.
+=======
+	 *     @type array [$_links]    Links.
+	 *     @type array [$_embedded] Embeddeds.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * }
 	 */
 	public function response_to_data( $response, $embed ) {
@@ -616,8 +626,13 @@ class WP_REST_Server {
 	 * @return array {
 	 *     Data with sub-requests embedded.
 	 *
+<<<<<<< HEAD
 	 *     @type array $_links    Links.
 	 *     @type array $_embedded Embeddeds.
+=======
+	 *     @type array [$_links]    Links.
+	 *     @type array [$_embedded] Embeddeds.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * }
 	 */
 	protected function embed_links( $data, $embed = true ) {
@@ -628,8 +643,12 @@ class WP_REST_Server {
 		$embedded = array();
 
 		foreach ( $data['_links'] as $rel => $links ) {
+<<<<<<< HEAD
 			// If a list of relations was specified, and the link relation
 			// is not in the list of allowed relations, don't process the link.
+=======
+			// If a list of relations was specified, and the link relation is not in the whitelist, don't process the link.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( is_array( $embed ) && ! in_array( $rel, $embed, true ) ) {
 				continue;
 			}
@@ -1004,9 +1023,15 @@ class WP_REST_Server {
 				 *
 				 * @since 4.7.0
 				 *
+<<<<<<< HEAD
 				 * @param WP_REST_Response|WP_HTTP_Response|WP_Error|mixed $response Result to send to the client. Usually a WP_REST_Response or WP_Error.
 				 * @param array                                            $handler  Route handler used for the request.
 				 * @param WP_REST_Request                                  $request  Request used to generate the response.
+=======
+				 * @param WP_HTTP_Response|WP_Error $response Result to send to the client. Usually a WP_REST_Response or WP_Error.
+				 * @param array                     $handler  Route handler used for the request.
+				 * @param WP_REST_Request           $request  Request used to generate the response.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				 */
 				$response = apply_filters( 'rest_request_before_callbacks', $response, $handler, $request );
 
@@ -1067,9 +1092,15 @@ class WP_REST_Server {
 				 *
 				 * @since 4.7.0
 				 *
+<<<<<<< HEAD
 				 * @param WP_REST_Response|WP_HTTP_Response|WP_Error|mixed $response Result to send to the client. Usually a WP_REST_Response or WP_Error.
 				 * @param array                                            $handler  Route handler used for the request.
 				 * @param WP_REST_Request                                  $request  Request used to generate the response.
+=======
+				 * @param WP_HTTP_Response|WP_Error $response Result to send to the client. Usually a WP_REST_Response or WP_Error.
+				 * @param array                     $handler  Route handler used for the request.
+				 * @param WP_REST_Request           $request  Request used to generate the response.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				 */
 				$response = apply_filters( 'rest_request_after_callbacks', $response, $handler, $request );
 
@@ -1406,16 +1437,28 @@ class WP_REST_Server {
 	 * @return string Raw request data.
 	 */
 	public static function get_raw_data() {
+<<<<<<< HEAD
 		// phpcs:disable PHPCompatibility.Variables.RemovedPredefinedGlobalVariables.http_raw_post_dataDeprecatedRemoved
 		global $HTTP_RAW_POST_DATA;
 
 		// $HTTP_RAW_POST_DATA was deprecated in PHP 5.6 and removed in PHP 7.0.
+=======
+		global $HTTP_RAW_POST_DATA;
+
+		/*
+		 * A bug in PHP < 5.2.2 makes $HTTP_RAW_POST_DATA not set by default,
+		 * but we can do it ourself.
+		 */
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( ! isset( $HTTP_RAW_POST_DATA ) ) {
 			$HTTP_RAW_POST_DATA = file_get_contents( 'php://input' );
 		}
 
 		return $HTTP_RAW_POST_DATA;
+<<<<<<< HEAD
 		// phpcs:enable
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**

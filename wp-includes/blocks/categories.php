@@ -89,9 +89,36 @@ function build_dropdown_script_block_core_categories( $dropdown_id ) {
  * Registers the `core/categories` block on server.
  */
 function register_block_core_categories() {
+<<<<<<< HEAD
 	register_block_type_from_metadata(
 		__DIR__ . '/categories',
 		array(
+=======
+	register_block_type(
+		'core/categories',
+		array(
+			'attributes'      => array(
+				'align'             => array(
+					'type' => 'string',
+					'enum' => array( 'left', 'center', 'right', 'wide', 'full' ),
+				),
+				'className'         => array(
+					'type' => 'string',
+				),
+				'displayAsDropdown' => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'showHierarchy'     => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'showPostCounts'    => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+			),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			'render_callback' => 'render_block_core_categories',
 		)
 	);

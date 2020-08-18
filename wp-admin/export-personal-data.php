@@ -62,7 +62,11 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 
 		<div class="wp-privacy-request-form-field">
 			<label for="username_or_email_for_privacy_request"><?php esc_html_e( 'Username or email address' ); ?></label>
+<<<<<<< HEAD
 			<input type="text" required class="regular-text ltr" id="username_or_email_for_privacy_request" name="username_or_email_for_privacy_request" />
+=======
+			<input type="text" required class="regular-text" id="username_or_email_for_privacy_request" name="username_or_email_for_privacy_request" />
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			<?php submit_button( __( 'Send Request' ), 'secondary', 'submit', false ); ?>
 		</div>
 		<?php wp_nonce_field( 'personal-data-request' ); ?>

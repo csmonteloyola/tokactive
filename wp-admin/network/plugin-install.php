@@ -7,7 +7,11 @@
  * @since 3.1.0
  */
 
+<<<<<<< HEAD
 if ( isset( $_GET['tab'] ) && ( 'plugin-information' === $_GET['tab'] ) ) {
+=======
+if ( isset( $_GET['tab'] ) && ( 'plugin-information' == $_GET['tab'] ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	define( 'IFRAME_REQUEST', true );
 }
 

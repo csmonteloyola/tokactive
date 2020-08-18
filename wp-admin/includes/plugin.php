@@ -91,7 +91,11 @@ function get_plugin_data( $plugin_file, $markup = true, $translate = true ) {
 		_deprecated_argument( __FUNCTION__, '3.0.0', sprintf( __( 'The %1$s plugin header is deprecated. Use %2$s instead.' ), '<code>Site Wide Only: true</code>', '<code>Network: true</code>' ) );
 		$plugin_data['Network'] = $plugin_data['_sitewide'];
 	}
+<<<<<<< HEAD
 	$plugin_data['Network'] = ( 'true' === strtolower( $plugin_data['Network'] ) );
+=======
+	$plugin_data['Network'] = ( 'true' == strtolower( $plugin_data['Network'] ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	unset( $plugin_data['_sitewide'] );
 
 	// If no text domain is defined fall back to the plugin slug.
@@ -156,7 +160,11 @@ function _get_plugin_data_markup_translate( $plugin_file, $plugin_data, $markup 
 					load_plugin_textdomain( $textdomain, false, dirname( $plugin_file ) );
 				}
 			}
+<<<<<<< HEAD
 		} elseif ( 'hello.php' === basename( $plugin_file ) ) {
+=======
+		} elseif ( 'hello.php' == basename( $plugin_file ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$textdomain = 'default';
 		}
 		if ( $textdomain ) {
@@ -295,6 +303,7 @@ function get_plugins( $plugin_folder = '' ) {
 	// Files in wp-content/plugins directory.
 	$plugins_dir  = @ opendir( $plugin_root );
 	$plugin_files = array();
+<<<<<<< HEAD
 
 	if ( $plugins_dir ) {
 		while ( ( $file = readdir( $plugins_dir ) ) !== false ) {
@@ -320,11 +329,36 @@ function get_plugins( $plugin_folder = '' ) {
 				}
 			} else {
 				if ( '.php' === substr( $file, -4 ) ) {
+=======
+	if ( $plugins_dir ) {
+		while ( ( $file = readdir( $plugins_dir ) ) !== false ) {
+			if ( substr( $file, 0, 1 ) == '.' ) {
+				continue;
+			}
+			if ( is_dir( $plugin_root . '/' . $file ) ) {
+				$plugins_subdir = @ opendir( $plugin_root . '/' . $file );
+				if ( $plugins_subdir ) {
+					while ( ( $subfile = readdir( $plugins_subdir ) ) !== false ) {
+						if ( substr( $subfile, 0, 1 ) == '.' ) {
+							continue;
+						}
+						if ( substr( $subfile, -4 ) == '.php' ) {
+							$plugin_files[] = "$file/$subfile";
+						}
+					}
+					closedir( $plugins_subdir );
+				}
+			} else {
+				if ( substr( $file, -4 ) == '.php' ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$plugin_files[] = $file;
 				}
 			}
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		closedir( $plugins_dir );
 	}
 
@@ -375,7 +409,11 @@ function get_mu_plugins() {
 	$plugins_dir = @opendir( WPMU_PLUGIN_DIR );
 	if ( $plugins_dir ) {
 		while ( ( $file = readdir( $plugins_dir ) ) !== false ) {
+<<<<<<< HEAD
 			if ( '.php' === substr( $file, -4 ) ) {
+=======
+			if ( substr( $file, -4 ) == '.php' ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$plugin_files[] = $file;
 			}
 		}
@@ -529,7 +567,11 @@ function _get_dropins() {
  * @return bool True, if in the active plugins list. False, not in the list.
  */
 function is_plugin_active( $plugin ) {
+<<<<<<< HEAD
 	return in_array( $plugin, (array) get_option( 'active_plugins', array() ), true ) || is_plugin_active_for_network( $plugin );
+=======
+	return in_array( $plugin, (array) get_option( 'active_plugins', array() ) ) || is_plugin_active_for_network( $plugin );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -542,7 +584,10 @@ function is_plugin_active( $plugin ) {
  * Conditional Tags} article in the Theme Developer Handbook.
  *
  * @since 3.1.0
+<<<<<<< HEAD
  *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @see is_plugin_active()
  *
  * @param string $plugin Path to the plugin file relative to the plugins directory.
@@ -651,13 +696,18 @@ function activate_plugin( $plugin, $redirect = '', $network_wide = false, $silen
 		return $requirements;
 	}
 
+<<<<<<< HEAD
 	if ( ( $network_wide && ! isset( $current[ $plugin ] ) ) || ( ! $network_wide && ! in_array( $plugin, $current, true ) ) ) {
+=======
+	if ( ( $network_wide && ! isset( $current[ $plugin ] ) ) || ( ! $network_wide && ! in_array( $plugin, $current ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( ! empty( $redirect ) ) {
 			// We'll override this later if the plugin can be included without fatal error.
 			wp_redirect( add_query_arg( '_error_nonce', wp_create_nonce( 'plugin-activation-error_' . $plugin ), $redirect ) );
 		}
 
 		ob_start();
+<<<<<<< HEAD
 
 		if ( ! defined( 'WP_SANDBOX_SCRAPING' ) ) {
 			define( 'WP_SANDBOX_SCRAPING', true );
@@ -665,6 +715,13 @@ function activate_plugin( $plugin, $redirect = '', $network_wide = false, $silen
 
 		wp_register_plugin_realpath( WP_PLUGIN_DIR . '/' . $plugin );
 		$_wp_plugin_file = $plugin;
+=======
+		wp_register_plugin_realpath( WP_PLUGIN_DIR . '/' . $plugin );
+		$_wp_plugin_file = $plugin;
+		if ( ! defined( 'WP_SANDBOX_SCRAPING' ) ) {
+			define( 'WP_SANDBOX_SCRAPING', true );
+		}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		include_once WP_PLUGIN_DIR . '/' . $plugin;
 		$plugin = $_wp_plugin_file; // Avoid stomping of the $plugin variable in a plugin.
 
@@ -679,7 +736,11 @@ function activate_plugin( $plugin, $redirect = '', $network_wide = false, $silen
 			 *
 			 * @param string $plugin       Path to the plugin file relative to the plugins directory.
 			 * @param bool   $network_wide Whether to enable the plugin for all sites in the network
+<<<<<<< HEAD
 			 *                             or just the current site. Multisite only. Default false.
+=======
+			 *                             or just the current site. Multisite only. Default is false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 */
 			do_action( 'activate_plugin', $plugin, $network_wide );
 
@@ -694,7 +755,11 @@ function activate_plugin( $plugin, $redirect = '', $network_wide = false, $silen
 			 * @since 2.0.0
 			 *
 			 * @param bool $network_wide Whether to enable the plugin for all sites in the network
+<<<<<<< HEAD
 			 *                           or just the current site. Multisite only. Default false.
+=======
+			 *                           or just the current site. Multisite only. Default is false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 */
 			do_action( "activate_{$plugin}", $network_wide );
 		}
@@ -721,7 +786,11 @@ function activate_plugin( $plugin, $redirect = '', $network_wide = false, $silen
 			 *
 			 * @param string $plugin       Path to the plugin file relative to the plugins directory.
 			 * @param bool   $network_wide Whether to enable the plugin for all sites in the network
+<<<<<<< HEAD
 			 *                             or just the current site. Multisite only. Default false.
+=======
+			 *                             or just the current site. Multisite only. Default is false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 */
 			do_action( 'activated_plugin', $plugin, $network_wide );
 		}
@@ -792,7 +861,11 @@ function deactivate_plugins( $plugins, $silent = false, $network_wide = null ) {
 		}
 
 		if ( true !== $network_wide ) {
+<<<<<<< HEAD
 			$key = array_search( $plugin, $current, true );
+=======
+			$key = array_search( $plugin, $current );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( false !== $key ) {
 				$do_blog = true;
 				unset( $current[ $key ] );
@@ -858,7 +931,11 @@ function deactivate_plugins( $plugins, $silent = false, $network_wide = null ) {
  * @param string          $redirect     Redirect to page after successful activation.
  * @param bool            $network_wide Whether to enable the plugin for all sites in the network.
  *                                      Default false.
+<<<<<<< HEAD
  * @param bool            $silent       Prevent calling activation hooks. Default false.
+=======
+ * @param bool $silent                  Prevent calling activation hooks. Default false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return bool|WP_Error True when finished or WP_Error if there were errors during a plugin activation.
  */
 function activate_plugins( $plugins, $redirect = '', $network_wide = false, $silent = false ) {
@@ -1109,6 +1186,7 @@ function validate_plugin( $plugin ) {
 }
 
 /**
+<<<<<<< HEAD
  * Validates the plugin requirements for WordPress version and PHP version.
  *
  * Uses the information from `Requires at least` and `Requires PHP` headers
@@ -1120,11 +1198,17 @@ function validate_plugin( $plugin ) {
  * @since 5.2.0
  * @since 5.3.0 Added support for reading the headers from the plugin's
  *              main PHP file, with `readme.txt` as a fallback.
+=======
+ * Validate the plugin requirements for WP version and PHP version.
+ *
+ * @since 5.2.0
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param string $plugin Path to the plugin file relative to the plugins directory.
  * @return true|WP_Error True if requirements are met, WP_Error on failure.
  */
 function validate_plugin_requirements( $plugin ) {
+<<<<<<< HEAD
 	$plugin_headers = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin );
 
 	$requirements = array(
@@ -1136,6 +1220,16 @@ function validate_plugin_requirements( $plugin ) {
 
 	if ( file_exists( $readme_file ) ) {
 		$readme_headers = get_file_data(
+=======
+	$readme_file = WP_PLUGIN_DIR . '/' . dirname( $plugin ) . '/readme.txt';
+	$plugin_data = array(
+		'requires'     => '',
+		'requires_php' => '',
+	);
+
+	if ( file_exists( $readme_file ) ) {
+		$plugin_data = get_file_data(
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$readme_file,
 			array(
 				'requires'     => 'Requires at least',
@@ -1143,6 +1237,7 @@ function validate_plugin_requirements( $plugin ) {
 			),
 			'plugin'
 		);
+<<<<<<< HEAD
 
 		$requirements = array_merge( $readme_headers, $requirements );
 	}
@@ -1196,6 +1291,45 @@ function validate_plugin_requirements( $plugin ) {
 				$plugin_headers['Name'],
 				$requirements['requires']
 			) . '</p>'
+=======
+	}
+
+	$plugin_data = array_merge( $plugin_data, get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin ) );
+
+	// Check for headers in the plugin's PHP file, give precedence to the plugin headers.
+	$plugin_data['requires']     = ! empty( $plugin_data['RequiresWP'] ) ? $plugin_data['RequiresWP'] : $plugin_data['requires'];
+	$plugin_data['requires_php'] = ! empty( $plugin_data['RequiresPHP'] ) ? $plugin_data['RequiresPHP'] : $plugin_data['requires_php'];
+
+	$plugin_data['wp_compatible']  = is_wp_version_compatible( $plugin_data['requires'] );
+	$plugin_data['php_compatible'] = is_php_version_compatible( $plugin_data['requires_php'] );
+
+	if ( ! $plugin_data['wp_compatible'] && ! $plugin_data['php_compatible'] ) {
+		return new WP_Error(
+			'plugin_wp_php_incompatible',
+			sprintf(
+				/* translators: %s: Plugin name. */
+				__( '<strong>Error:</strong> Current WordPress and PHP versions do not meet minimum requirements for %s.' ),
+				$plugin_data['Name']
+			)
+		);
+	} elseif ( ! $plugin_data['php_compatible'] ) {
+		return new WP_Error(
+			'plugin_php_incompatible',
+			sprintf(
+				/* translators: %s: Plugin name. */
+				__( '<strong>Error:</strong> Current PHP version does not meet minimum requirements for %s.' ),
+				$plugin_data['Name']
+			)
+		);
+	} elseif ( ! $plugin_data['wp_compatible'] ) {
+		return new WP_Error(
+			'plugin_wp_incompatible',
+			sprintf(
+				/* translators: %s: Plugin name. */
+				__( '<strong>Error:</strong> Current WordPress version does not meet minimum requirements for %s.' ),
+				$plugin_data['Name']
+			)
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		);
 	}
 
@@ -1254,9 +1388,14 @@ function uninstall_plugin( $plugin ) {
 		unset( $uninstallable_plugins );
 
 		define( 'WP_UNINSTALL_PLUGIN', $file );
+<<<<<<< HEAD
 
 		wp_register_plugin_realpath( WP_PLUGIN_DIR . '/' . $file );
 		include_once WP_PLUGIN_DIR . '/' . dirname( $file ) . '/uninstall.php';
+=======
+		wp_register_plugin_realpath( WP_PLUGIN_DIR . '/' . $file );
+		include WP_PLUGIN_DIR . '/' . dirname( $file ) . '/uninstall.php';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		return true;
 	}
@@ -1268,7 +1407,11 @@ function uninstall_plugin( $plugin ) {
 		unset( $uninstallable_plugins );
 
 		wp_register_plugin_realpath( WP_PLUGIN_DIR . '/' . $file );
+<<<<<<< HEAD
 		include_once WP_PLUGIN_DIR . '/' . $file;
+=======
+		include WP_PLUGIN_DIR . '/' . $file;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		add_action( "uninstall_{$file}", $callable );
 
@@ -1474,7 +1617,11 @@ function add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, 
 	 * Backward-compatibility for plugins using add_management_page().
 	 * See wp-admin/admin.php for redirect from edit.php to tools.php.
 	 */
+<<<<<<< HEAD
 	if ( 'tools.php' === $parent_slug ) {
+=======
+	if ( 'tools.php' == $parent_slug ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$_registered_pages[ get_plugin_page_hookname( $menu_slug, 'edit.php' ) ] = true;
 	}
 
@@ -1849,6 +1996,7 @@ function menu_page_url( $menu_slug, $echo = true ) {
  * @since 1.5.0
  *
  * @global string $parent_file
+<<<<<<< HEAD
  * @global array  $menu
  * @global array  $submenu
  * @global string $pagenow
@@ -1860,13 +2008,28 @@ function menu_page_url( $menu_slug, $echo = true ) {
  *
  * @param string $parent The slug name for the parent menu (or the file name of a standard
  *                       WordPress admin page). Default empty string.
+=======
+ * @global array $menu
+ * @global array $submenu
+ * @global string $pagenow
+ * @global string $typenow
+ * @global string $plugin_page
+ * @global array $_wp_real_parent_file
+ * @global array $_wp_menu_nopriv
+ * @global array $_wp_submenu_nopriv
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string The parent file of the current admin page.
  */
 function get_admin_page_parent( $parent = '' ) {
 	global $parent_file, $menu, $submenu, $pagenow, $typenow,
 		$plugin_page, $_wp_real_parent_file, $_wp_menu_nopriv, $_wp_submenu_nopriv;
 
+<<<<<<< HEAD
 	if ( ! empty( $parent ) && 'admin.php' !== $parent ) {
+=======
+	if ( ! empty( $parent ) && 'admin.php' != $parent ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( isset( $_wp_real_parent_file[ $parent ] ) ) {
 			$parent = $_wp_real_parent_file[ $parent ];
 		}
@@ -1956,7 +2119,11 @@ function get_admin_page_title() {
 				if ( $menu_array[2] == $pagenow ) {
 					$title = $menu_array[3];
 					return $menu_array[3];
+<<<<<<< HEAD
 				} elseif ( isset( $plugin_page ) && ( $plugin_page == $menu_array[2] ) && ( $hook == $menu_array[5] ) ) {
+=======
+				} elseif ( isset( $plugin_page ) && ( $plugin_page == $menu_array[2] ) && ( $hook == $menu_array[3] ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$title = $menu_array[3];
 					return $menu_array[3];
 				}
@@ -2048,7 +2215,11 @@ function get_plugin_page_hookname( $plugin_page, $parent_page ) {
 	$parent = get_admin_page_parent( $parent_page );
 
 	$page_type = 'admin';
+<<<<<<< HEAD
 	if ( empty( $parent_page ) || 'admin.php' === $parent_page || isset( $admin_page_hooks[ $plugin_page ] ) ) {
+=======
+	if ( empty( $parent_page ) || 'admin.php' == $parent_page || isset( $admin_page_hooks[ $plugin_page ] ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( isset( $admin_page_hooks[ $plugin_page ] ) ) {
 			$page_type = 'toplevel';
 		} elseif ( isset( $admin_page_hooks[ $parent ] ) ) {
@@ -2159,6 +2330,7 @@ function user_can_access_admin_page() {
 	return true;
 }
 
+<<<<<<< HEAD
 /* Allowed list functions */
 
 /**
@@ -2171,40 +2343,76 @@ function user_can_access_admin_page() {
  *              Please consider writing more inclusive code.
  *
  * @global array $new_allowed_options
+=======
+/* Whitelist functions */
+
+/**
+ * Refreshes the value of the options whitelist available via the 'whitelist_options' hook.
+ *
+ * See the {@see 'whitelist_options'} filter.
+ *
+ * @since 2.7.0
+ *
+ * @global array $new_whitelist_options
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param array $options
  * @return array
  */
 function option_update_filter( $options ) {
+<<<<<<< HEAD
 	global $new_allowed_options;
 
 	if ( is_array( $new_allowed_options ) ) {
 		$options = add_allowed_options( $new_allowed_options, $options );
+=======
+	global $new_whitelist_options;
+
+	if ( is_array( $new_whitelist_options ) ) {
+		$options = add_option_whitelist( $new_whitelist_options, $options );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	return $options;
 }
 
 /**
+<<<<<<< HEAD
  * Adds an array of options to the list of allowed options.
  *
  * @since 2.7.0
  *
  * @global array $allowed_options
+=======
+ * Adds an array of options to the options whitelist.
+ *
+ * @since 2.7.0
+ *
+ * @global array $whitelist_options
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param array        $new_options
  * @param string|array $options
  * @return array
  */
+<<<<<<< HEAD
 function add_allowed_options( $new_options, $options = '' ) {
 	if ( '' === $options ) {
 		global $allowed_options;
 	} else {
 		$allowed_options = $options;
+=======
+function add_option_whitelist( $new_options, $options = '' ) {
+	if ( '' == $options ) {
+		global $whitelist_options;
+	} else {
+		$whitelist_options = $options;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	foreach ( $new_options as $page => $keys ) {
 		foreach ( $keys as $key ) {
+<<<<<<< HEAD
 			if ( ! isset( $allowed_options[ $page ] ) || ! is_array( $allowed_options[ $page ] ) ) {
 				$allowed_options[ $page ]   = array();
 				$allowed_options[ $page ][] = $key;
@@ -2212,11 +2420,21 @@ function add_allowed_options( $new_options, $options = '' ) {
 				$pos = array_search( $key, $allowed_options[ $page ], true );
 				if ( false === $pos ) {
 					$allowed_options[ $page ][] = $key;
+=======
+			if ( ! isset( $whitelist_options[ $page ] ) || ! is_array( $whitelist_options[ $page ] ) ) {
+				$whitelist_options[ $page ]   = array();
+				$whitelist_options[ $page ][] = $key;
+			} else {
+				$pos = array_search( $key, $whitelist_options[ $page ] );
+				if ( false === $pos ) {
+					$whitelist_options[ $page ][] = $key;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 			}
 		}
 	}
 
+<<<<<<< HEAD
 	return $allowed_options;
 }
 
@@ -2226,30 +2444,60 @@ function add_allowed_options( $new_options, $options = '' ) {
  * @since 5.5.0
  *
  * @global array $allowed_options
+=======
+	return $whitelist_options;
+}
+
+/**
+ * Removes a list of options from the options whitelist.
+ *
+ * @since 2.7.0
+ *
+ * @global array $whitelist_options
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param array        $del_options
  * @param string|array $options
  * @return array
  */
+<<<<<<< HEAD
 function remove_allowed_options( $del_options, $options = '' ) {
 	if ( '' === $options ) {
 		global $allowed_options;
 	} else {
 		$allowed_options = $options;
+=======
+function remove_option_whitelist( $del_options, $options = '' ) {
+	if ( '' == $options ) {
+		global $whitelist_options;
+	} else {
+		$whitelist_options = $options;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	foreach ( $del_options as $page => $keys ) {
 		foreach ( $keys as $key ) {
+<<<<<<< HEAD
 			if ( isset( $allowed_options[ $page ] ) && is_array( $allowed_options[ $page ] ) ) {
 				$pos = array_search( $key, $allowed_options[ $page ], true );
 				if ( false !== $pos ) {
 					unset( $allowed_options[ $page ][ $pos ] );
+=======
+			if ( isset( $whitelist_options[ $page ] ) && is_array( $whitelist_options[ $page ] ) ) {
+				$pos = array_search( $key, $whitelist_options[ $page ] );
+				if ( false !== $pos ) {
+					unset( $whitelist_options[ $page ][ $pos ] );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 			}
 		}
 	}
 
+<<<<<<< HEAD
 	return $allowed_options;
+=======
+	return $whitelist_options;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -2292,7 +2540,10 @@ function plugin_sandbox_scrape( $plugin ) {
 	if ( ! defined( 'WP_SANDBOX_SCRAPING' ) ) {
 		define( 'WP_SANDBOX_SCRAPING', true );
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	wp_register_plugin_realpath( WP_PLUGIN_DIR . '/' . $plugin );
 	include WP_PLUGIN_DIR . '/' . $plugin;
 }

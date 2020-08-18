@@ -339,12 +339,20 @@ class WP_Recovery_Mode {
 	 *
 	 * @global array $wp_theme_directories
 	 *
+<<<<<<< HEAD
 	 * @param array $error Error that was triggered.
 	 * @return array|false {
 	 *     Extension details.
 	 *
 	 *     @type string $slug The extension slug. This is the plugin or theme's directory.
 	 *     @type string $type The extension type. Either 'plugin' or 'theme'.
+=======
+	 * @param array  $error Error that was triggered.
+	 *
+	 * @return array|false {
+	 *      @type string  $slug  The extension slug. This is the plugin or theme's directory.
+	 *      @type string  $type  The extension type. Either 'plugin' or 'theme'.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * }
 	 */
 	protected function get_extension_for_error( $error ) {

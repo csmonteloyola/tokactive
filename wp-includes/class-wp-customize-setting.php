@@ -13,9 +13,15 @@
  * Handles saving and sanitizing of settings.
  *
  * @since 3.4.0
+<<<<<<< HEAD
  *
  * @see WP_Customize_Manager
  * @link https://developer.wordpress.org/themes/customize-api
+=======
+ * @link https://developer.wordpress.org/themes/customize-api
+ *
+ * @see WP_Customize_Manager
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 class WP_Customize_Setting {
 	/**
@@ -97,7 +103,11 @@ class WP_Customize_Setting {
 	 * Callback to convert a Customize PHP setting value to a value that is JSON serializable.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @var callable
+=======
+	 * @var string
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public $sanitize_js_callback = '';
 
@@ -546,7 +556,11 @@ class WP_Customize_Setting {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param mixed $default A default value which is used as a fallback. Default null.
+=======
+	 * @param mixed $default A default value which is used as a fallback. Default is null.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return mixed The default value on failure, otherwise the sanitized and validated value.
 	 */
 	final public function post_value( $default = null ) {
@@ -846,9 +860,15 @@ class WP_Customize_Setting {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param array $root
 	 * @param array $keys
 	 * @param bool  $create Default false.
+=======
+	 * @param $root
+	 * @param $keys
+	 * @param bool $create Default is false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return array|void Keys are 'root', 'node', and 'key'.
 	 */
 	final protected function multidimensional( &$root, $keys, $create = false ) {
@@ -901,8 +921,13 @@ class WP_Customize_Setting {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param array $root
 	 * @param array $keys
+=======
+	 * @param $root
+	 * @param $keys
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param mixed $value The value to update.
 	 * @return mixed
 	 */
@@ -927,9 +952,15 @@ class WP_Customize_Setting {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param array $root
 	 * @param array $keys
 	 * @param mixed $default A default value which is used as a fallback. Default null.
+=======
+	 * @param $root
+	 * @param $keys
+	 * @param mixed $default A default value which is used as a fallback. Default is null.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return mixed The requested value or the default value.
 	 */
 	final protected function multidimensional_get( $root, $keys, $default = null ) {
@@ -946,8 +977,13 @@ class WP_Customize_Setting {
 	 *
 	 * @since 3.4.0
 	 *
+<<<<<<< HEAD
 	 * @param array $root
 	 * @param array $keys
+=======
+	 * @param $root
+	 * @param $keys
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return bool True if value is set, false if not.
 	 */
 	final protected function multidimensional_isset( $root, $keys ) {

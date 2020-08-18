@@ -55,13 +55,19 @@ class WP_Filesystem_Base {
 	 */
 	public function abspath() {
 		$folder = $this->find_folder( ABSPATH );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		// Perhaps the FTP folder is rooted at the WordPress install.
 		// Check for wp-includes folder in root. Could have some false positives, but rare.
 		if ( ! $folder && $this->is_dir( '/' . WPINC ) ) {
 			$folder = '/';
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return $folder;
 	}
 
@@ -100,7 +106,11 @@ class WP_Filesystem_Base {
 		$theme_root = get_theme_root( $theme );
 
 		// Account for relative theme roots.
+<<<<<<< HEAD
 		if ( '/themes' === $theme_root || ! is_dir( $theme_root ) ) {
+=======
+		if ( '/themes' == $theme_root || ! is_dir( $theme_root ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$theme_root = WP_CONTENT_DIR . $theme_root;
 		}
 
@@ -190,7 +200,10 @@ class WP_Filesystem_Base {
 				if ( ! defined( $constant ) ) {
 					continue;
 				}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				if ( $folder === $dir ) {
 					return trailingslashit( constant( $constant ) );
 				}
@@ -201,21 +214,32 @@ class WP_Filesystem_Base {
 				if ( ! defined( $constant ) ) {
 					continue;
 				}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				if ( 0 === stripos( $folder, $dir ) ) { // $folder starts with $dir.
 					$potential_folder = preg_replace( '#^' . preg_quote( $dir, '#' ) . '/#i', trailingslashit( constant( $constant ) ), $folder );
 					$potential_folder = trailingslashit( $potential_folder );
 
 					if ( $this->is_dir( $potential_folder ) ) {
 						$this->cache[ $folder ] = $potential_folder;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						return $potential_folder;
 					}
 				}
 			}
+<<<<<<< HEAD
 		} elseif ( 'direct' === $this->method ) {
 			$folder = str_replace( '\\', '/', $folder ); // Windows path sanitisation.
 
+=======
+		} elseif ( 'direct' == $this->method ) {
+			$folder = str_replace( '\\', '/', $folder ); // Windows path sanitisation.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return trailingslashit( $folder );
 		}
 
@@ -229,6 +253,7 @@ class WP_Filesystem_Base {
 		if ( $this->exists( $folder ) ) { // Folder exists at that absolute path.
 			$folder                 = trailingslashit( $folder );
 			$this->cache[ $folder ] = $folder;
+<<<<<<< HEAD
 
 			return $folder;
 		}
@@ -239,6 +264,14 @@ class WP_Filesystem_Base {
 			$this->cache[ $folder ] = $return;
 		}
 
+=======
+			return $folder;
+		}
+		$return = $this->search_for_folder( $folder );
+		if ( $return ) {
+			$this->cache[ $folder ] = $return;
+		}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return $return;
 	}
 
@@ -255,7 +288,11 @@ class WP_Filesystem_Base {
 	 * @return string|false The location of the remote path, false to cease looping.
 	 */
 	public function search_for_folder( $folder, $base = '.', $loop = false ) {
+<<<<<<< HEAD
 		if ( empty( $base ) || '.' === $base ) {
+=======
+		if ( empty( $base ) || '.' == $base ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$base = trailingslashit( $this->cwd() );
 		}
 
@@ -289,7 +326,10 @@ class WP_Filesystem_Base {
 
 				// Let's try that folder:
 				$newdir = trailingslashit( path_join( $base, $key ) );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				if ( $this->verbose ) {
 					/* translators: %s: Directory name. */
 					printf( "\n" . __( 'Changing to %s' ) . "<br/>\n", $newdir );
@@ -298,7 +338,10 @@ class WP_Filesystem_Base {
 				// Only search for the remaining path tokens in the directory, not the full path again.
 				$newfolder = implode( '/', array_slice( $folder_parts, $index + 1 ) );
 				$ret       = $this->search_for_folder( $newfolder, $newdir, $loop );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				if ( $ret ) {
 					return $ret;
 				}
@@ -312,13 +355,20 @@ class WP_Filesystem_Base {
 				/* translators: %s: Directory name. */
 				printf( "\n" . __( 'Found %s' ) . "<br/>\n", $base . $last_path );
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return trailingslashit( $base . $last_path );
 		}
 
 		// Prevent this function from looping again.
 		// No need to proceed if we've just searched in `/`.
+<<<<<<< HEAD
 		if ( $loop || '/' === $base ) {
+=======
+		if ( $loop || '/' == $base ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return false;
 		}
 
@@ -342,7 +392,10 @@ class WP_Filesystem_Base {
 	 */
 	public function gethchmod( $file ) {
 		$perms = intval( $this->getchmod( $file ), 8 );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( ( $perms & 0xC000 ) == 0xC000 ) { // Socket.
 			$info = 's';
 		} elseif ( ( $perms & 0xA000 ) == 0xA000 ) { // Symbolic Link.
@@ -381,7 +434,10 @@ class WP_Filesystem_Base {
 		$info .= ( ( $perms & 0x0001 ) ?
 					( ( $perms & 0x0200 ) ? 't' : 'x' ) :
 					( ( $perms & 0x0200 ) ? 'T' : '-' ) );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return $info;
 	}
 
@@ -416,8 +472,12 @@ class WP_Filesystem_Base {
 		$attarray = preg_split( '//', $mode );
 
 		for ( $i = 0, $c = count( $attarray ); $i < $c; $i++ ) {
+<<<<<<< HEAD
 			$key = array_search( $attarray[ $i ], $legal, true );
 
+=======
+			$key = array_search( $attarray[ $i ], $legal );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( $key ) {
 				$realmode .= $legal[ $key ];
 			}
@@ -436,7 +496,10 @@ class WP_Filesystem_Base {
 		$newmode .= $mode[1] + $mode[2] + $mode[3];
 		$newmode .= $mode[4] + $mode[5] + $mode[6];
 		$newmode .= $mode[7] + $mode[8] + $mode[9];
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return $newmode;
 	}
 

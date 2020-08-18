@@ -61,7 +61,11 @@ function check_upload_size( $file ) {
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param int  $blog_id Site ID.
+<<<<<<< HEAD
  * @param bool $drop    True if site's database tables should be dropped. Default false.
+=======
+ * @param bool $drop    True if site's database tables should be dropped. Default is false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function wpmu_delete_blog( $blog_id, $drop = false ) {
 	global $wpdb;
@@ -160,12 +164,19 @@ function wpmu_delete_user( $id ) {
 	 * Fires before a user is deleted from the network.
 	 *
 	 * @since MU (3.0.0)
+<<<<<<< HEAD
 	 * @since 5.5.0 Added the `$user` parameter.
 	 *
 	 * @param int     $id   ID of the user about to be deleted from the network.
 	 * @param WP_User $user WP_User object of the user about to be deleted from the network.
 	 */
 	do_action( 'wpmu_delete_user', $id, $user );
+=======
+	 *
+	 * @param int $id ID of the user about to be deleted from the network.
+	 */
+	do_action( 'wpmu_delete_user', $id );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	$blogs = get_blogs_of_user( $id );
 
@@ -202,7 +213,11 @@ function wpmu_delete_user( $id ) {
 	clean_user_cache( $user );
 
 	/** This action is documented in wp-admin/includes/user.php */
+<<<<<<< HEAD
 	do_action( 'deleted_user', $id, null, $user );
+=======
+	do_action( 'deleted_user', $id, null );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	return true;
 }
@@ -698,12 +713,20 @@ function site_admin_notice() {
 		return false;
 	}
 
+<<<<<<< HEAD
 	if ( 'upgrade.php' === $pagenow ) {
+=======
+	if ( 'upgrade.php' == $pagenow ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return;
 	}
 
 	if ( get_site_option( 'wpmu_upgrade_site' ) != $wp_db_version ) {
+<<<<<<< HEAD
 		echo "<div class='update-nag notice notice-warning inline'>" . sprintf(
+=======
+		echo "<div class='update-nag'>" . sprintf(
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			/* translators: %s: URL to Upgrade Network screen. */
 			__( 'Thank you for Updating! Please visit the <a href="%s">Upgrade Network</a> page to update all your sites.' ),
 			esc_url( network_admin_url( 'upgrade.php' ) )
@@ -858,7 +881,11 @@ function confirm_delete_users( $users ) {
 	?>
 	<h1><?php esc_html_e( 'Users' ); ?></h1>
 
+<<<<<<< HEAD
 	<?php if ( 1 === count( $users ) ) : ?>
+=======
+	<?php if ( 1 == count( $users ) ) : ?>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<p><?php _e( 'You have chosen to delete the user from all networks and sites.' ); ?></p>
 	<?php else : ?>
 		<p><?php _e( 'You have chosen to delete the following users from all networks and sites.' ); ?></p>
@@ -875,7 +902,11 @@ function confirm_delete_users( $users ) {
 	<?php
 	$allusers = (array) $_POST['allusers'];
 	foreach ( $allusers as $user_id ) {
+<<<<<<< HEAD
 		if ( '' !== $user_id && '0' != $user_id ) {
+=======
+		if ( '' != $user_id && '0' != $user_id ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$delete_user = get_userdata( $user_id );
 
 			if ( ! current_user_can( 'delete_user', $delete_user->ID ) ) {
@@ -888,7 +919,11 @@ function confirm_delete_users( $users ) {
 				);
 			}
 
+<<<<<<< HEAD
 			if ( in_array( $delete_user->user_login, $site_admins, true ) ) {
+=======
+			if ( in_array( $delete_user->user_login, $site_admins ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				wp_die(
 					sprintf(
 						/* translators: %s: User login. */
@@ -924,12 +959,16 @@ function confirm_delete_users( $users ) {
 							'fields'  => array( 'ID', 'user_login' ),
 						)
 					);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					if ( is_array( $blog_users ) && ! empty( $blog_users ) ) {
 						$user_site      = "<a href='" . esc_url( get_home_url( $details->userblog_id ) ) . "'>{$details->blogname}</a>";
 						$user_dropdown  = '<label for="reassign_user" class="screen-reader-text">' . __( 'Select a user' ) . '</label>';
 						$user_dropdown .= "<select name='blog[$user_id][$key]' id='reassign_user'>";
 						$user_list      = '';
+<<<<<<< HEAD
 
 						foreach ( $blog_users as $user ) {
 							if ( ! in_array( (int) $user->ID, $allusers, true ) ) {
@@ -941,6 +980,16 @@ function confirm_delete_users( $users ) {
 							$user_list = $admin_out;
 						}
 
+=======
+						foreach ( $blog_users as $user ) {
+							if ( ! in_array( $user->ID, $allusers ) ) {
+								$user_list .= "<option value='{$user->ID}'>{$user->user_login}</option>";
+							}
+						}
+						if ( '' == $user_list ) {
+							$user_list = $admin_out;
+						}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						$user_dropdown .= $user_list;
 						$user_dropdown .= "</select>\n";
 						?>
@@ -976,7 +1025,11 @@ function confirm_delete_users( $users ) {
 	/** This action is documented in wp-admin/users.php */
 	do_action( 'delete_user_form', $current_user, $allusers );
 
+<<<<<<< HEAD
 	if ( 1 === count( $users ) ) :
+=======
+	if ( 1 == count( $users ) ) :
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		?>
 		<p><?php _e( 'Once you hit &#8220;Confirm Deletion&#8221;, the user will be permanently removed.' ); ?></p>
 	<?php else : ?>
@@ -1018,7 +1071,11 @@ jQuery(document).ready( function($) {
  *
  * @since 4.6.0
  *
+<<<<<<< HEAD
  * @param array $args {
+=======
+ * @param $args {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *     Optional. Array or string of Query parameters. Default empty array.
  *
  *     @type int    $blog_id  The site ID. Default is the current site.

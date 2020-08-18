@@ -106,7 +106,11 @@ window.wp = window.wp || {};
 		/**
 		 * Open the Customizer overlay for a specific URL.
 		 *
+<<<<<<< HEAD
 		 * @param string src URL to load in the Customizer.
+=======
+		 * @param  string src URL to load in the Customizer.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		open: function( src ) {
 

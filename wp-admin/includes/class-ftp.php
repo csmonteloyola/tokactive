@@ -899,7 +899,11 @@ class ftp_base {
 $mod_sockets = extension_loaded( 'sockets' );
 if ( ! $mod_sockets && function_exists( 'dl' ) && is_callable( 'dl' ) ) {
 	$prefix = ( PHP_SHLIB_SUFFIX == 'dll' ) ? 'php_' : '';
+<<<<<<< HEAD
 	@dl( $prefix . 'sockets.' . PHP_SHLIB_SUFFIX ); // phpcs:ignore PHPCompatibility.FunctionUse.RemovedFunctions.dlDeprecated
+=======
+	@dl( $prefix . 'sockets.' . PHP_SHLIB_SUFFIX );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	$mod_sockets = extension_loaded( 'sockets' );
 }
 

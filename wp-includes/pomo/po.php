@@ -71,8 +71,13 @@ if ( ! class_exists( 'PO', false ) ) :
 		/**
 		 * Same as {@link export}, but writes the result to a file
 		 *
+<<<<<<< HEAD
 		 * @param string $filename        Where to write the PO string.
 		 * @param bool   $include_headers Whether to include the headers in the export.
+=======
+		 * @param string $filename where to write the PO string
+		 * @param bool $include_headers whether to include tje headers in the export
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return bool true on success, false on error
 		 */
 		function export_to_file( $filename, $include_headers = true ) {
@@ -92,8 +97,11 @@ if ( ! class_exists( 'PO', false ) ) :
 		 * Text to include as a comment before the start of the PO contents
 		 *
 		 * Doesn't need to include # in the beginning of lines, these are added automatically
+<<<<<<< HEAD
 		 *
 		 * @param string $text Text to include as a comment.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		function set_comment_before_headers( $text ) {
 			$this->comments_before_headers = $text;
@@ -151,7 +159,11 @@ if ( ! class_exists( 'PO', false ) ) :
 				$chars = $chars[0];
 				foreach ( $chars as $char ) {
 					if ( ! $previous_is_backslash ) {
+<<<<<<< HEAD
 						if ( '\\' === $char ) {
+=======
+						if ( '\\' == $char ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							$previous_is_backslash = true;
 						} else {
 							$unpoified .= $char;
@@ -296,7 +308,11 @@ if ( ! class_exists( 'PO', false ) ) :
 				if ( ! $res ) {
 					break;
 				}
+<<<<<<< HEAD
 				if ( '' === $res['entry']->singular ) {
+=======
+				if ( '' == $res['entry']->singular ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$this->set_headers( $this->make_headers( $res['entry']->translations[0] ) );
 				} else {
 					$this->add_entry( $res['entry'] );
@@ -452,23 +468,43 @@ if ( ! class_exists( 'PO', false ) ) :
 		}
 
 		/**
+<<<<<<< HEAD
 		 * @param resource $f
 		 * @param string   $action
+=======
+		 * @staticvar string   $last_line
+		 * @staticvar boolean  $use_last_line
+		 *
+		 * @param     resource $f
+		 * @param     string   $action
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return boolean
 		 */
 		function read_line( $f, $action = 'read' ) {
 			static $last_line     = '';
 			static $use_last_line = false;
+<<<<<<< HEAD
 			if ( 'clear' === $action ) {
 				$last_line = '';
 				return true;
 			}
 			if ( 'put-back' === $action ) {
+=======
+			if ( 'clear' == $action ) {
+				$last_line = '';
+				return true;
+			}
+			if ( 'put-back' == $action ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$use_last_line = true;
 				return true;
 			}
 			$line          = $use_last_line ? $last_line : fgets( $f );
+<<<<<<< HEAD
 			$line          = ( "\r\n" === substr( $line, -2 ) ) ? rtrim( $line, "\r\n" ) . "\n" : $line;
+=======
+			$line          = ( "\r\n" == substr( $line, -2 ) ) ? rtrim( $line, "\r\n" ) . "\n" : $line;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$last_line     = $line;
 			$use_last_line = false;
 			return $line;
@@ -481,11 +517,19 @@ if ( ! class_exists( 'PO', false ) ) :
 		function add_comment_to_entry( &$entry, $po_comment_line ) {
 			$first_two = substr( $po_comment_line, 0, 2 );
 			$comment   = trim( substr( $po_comment_line, 2 ) );
+<<<<<<< HEAD
 			if ( '#:' === $first_two ) {
 				$entry->references = array_merge( $entry->references, preg_split( '/\s+/', $comment ) );
 			} elseif ( '#.' === $first_two ) {
 				$entry->extracted_comments = trim( $entry->extracted_comments . "\n" . $comment );
 			} elseif ( '#,' === $first_two ) {
+=======
+			if ( '#:' == $first_two ) {
+				$entry->references = array_merge( $entry->references, preg_split( '/\s+/', $comment ) );
+			} elseif ( '#.' == $first_two ) {
+				$entry->extracted_comments = trim( $entry->extracted_comments . "\n" . $comment );
+			} elseif ( '#,' == $first_two ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$entry->flags = array_merge( $entry->flags, preg_split( '/,\s*/', $comment ) );
 			} else {
 				$entry->translator_comments = trim( $entry->translator_comments . "\n" . $comment );
@@ -497,10 +541,17 @@ if ( ! class_exists( 'PO', false ) ) :
 		 * @return string
 		 */
 		public static function trim_quotes( $s ) {
+<<<<<<< HEAD
 			if ( '"' === substr( $s, 0, 1 ) ) {
 				$s = substr( $s, 1 );
 			}
 			if ( '"' === substr( $s, -1, 1 ) ) {
+=======
+			if ( substr( $s, 0, 1 ) == '"' ) {
+				$s = substr( $s, 1 );
+			}
+			if ( substr( $s, -1, 1 ) == '"' ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$s = substr( $s, 0, -1 );
 			}
 			return $s;

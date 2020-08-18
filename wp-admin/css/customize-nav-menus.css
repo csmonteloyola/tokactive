@@ -269,8 +269,12 @@
 
 .customize-screen-options-toggle:focus,
 #customize-controls .customize-info .customize-help-toggle:focus {
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 1px solid transparent;
+=======
+	outline: none;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .customize-screen-options-toggle:before {
@@ -476,6 +480,13 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+<<<<<<< HEAD
+=======
+.ie8 .menu-item-bar .item-delete:before {
+	top: -10px;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .menu-item-bar .item-delete:hover,
 .menu-item-bar .item-delete:focus {
 	box-shadow: none;

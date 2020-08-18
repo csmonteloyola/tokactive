@@ -22,7 +22,11 @@ $action = isset( $_POST['action'] ) ? $_POST['action'] : 'splash';
 $blogs = get_blogs_of_user( $current_user->ID );
 
 $updated = false;
+<<<<<<< HEAD
 if ( 'updateblogsettings' === $action && isset( $_POST['primary_blog'] ) ) {
+=======
+if ( 'updateblogsettings' == $action && isset( $_POST['primary_blog'] ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	check_admin_referer( 'update-my-sites' );
 
 	$blog = get_site( (int) $_POST['primary_blog'] );
@@ -66,7 +70,11 @@ echo esc_html( $title );
 </h1>
 
 <?php
+<<<<<<< HEAD
 if ( in_array( get_site_option( 'registration' ), array( 'all', 'blog' ), true ) ) {
+=======
+if ( in_array( get_site_option( 'registration' ), array( 'all', 'blog' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/** This filter is documented in wp-login.php */
 	$sign_up_url = apply_filters( 'wp_signup_location', network_site_url( 'wp-signup.php' ) );
 	printf( ' <a href="%s" class="page-title-action">%s</a>', esc_url( $sign_up_url ), esc_html_x( 'Add New', 'site' ) );
@@ -107,12 +115,19 @@ else :
 	 * @param string $context       Context of the setting (global or site-specific). Default 'global'.
 	 */
 	$settings_html = apply_filters( 'myblogs_options', '', 'global' );
+<<<<<<< HEAD
 
 	if ( $settings_html ) {
 		echo '<h3>' . __( 'Global Settings' ) . '</h3>';
 		echo $settings_html;
 	}
 
+=======
+	if ( '' != $settings_html ) {
+		echo '<h3>' . __( 'Global Settings' ) . '</h3>';
+		echo $settings_html;
+	}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	reset( $blogs );
 
 	foreach ( $blogs as $user_blog ) {
@@ -136,12 +151,18 @@ else :
 		 * @param object $user_blog An object containing the site data.
 		 */
 		$actions = apply_filters( 'myblogs_blog_actions', $actions, $user_blog );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		echo "<p class='my-sites-actions'>" . $actions . '</p>';
 
 		/** This filter is documented in wp-admin/my-sites.php */
 		echo apply_filters( 'myblogs_options', '', $user_blog );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		echo '</li>';
 
 		restore_current_blog();

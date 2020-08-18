@@ -22,7 +22,11 @@ class WP_Http_Streams {
 	 * @since 2.7.0
 	 * @since 3.7.0 Combined with the fsockopen transport and switched to stream_socket_client().
 	 *
+<<<<<<< HEAD
 	 * @param string       $url  The request URL.
+=======
+	 * @param string $url The request URL.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param string|array $args Optional. Override the defaults.
 	 * @return array|WP_Error Array containing 'headers', 'body', 'response', 'cookies', 'filename'. A WP_Error instance upon error
 	 */
@@ -84,7 +88,11 @@ class WP_Http_Streams {
 		 * to ::1, which fails when the server is not set up for it. For compatibility, always
 		 * connect to the IPv4 address.
 		 */
+<<<<<<< HEAD
 		if ( 'localhost' === strtolower( $connect_host ) ) {
+=======
+		if ( 'localhost' == strtolower( $connect_host ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$connect_host = '127.0.0.1';
 		}
 
@@ -186,8 +194,13 @@ class WP_Http_Streams {
 
 		$include_port_in_host_header = (
 			( $proxy->is_enabled() && $proxy->send_through_proxy( $url ) ) ||
+<<<<<<< HEAD
 			( 'http' === $arrURL['scheme'] && 80 != $arrURL['port'] ) ||
 			( 'https' === $arrURL['scheme'] && 443 != $arrURL['port'] )
+=======
+			( 'http' == $arrURL['scheme'] && 80 != $arrURL['port'] ) ||
+			( 'https' == $arrURL['scheme'] && 443 != $arrURL['port'] )
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		);
 
 		if ( $include_port_in_host_header ) {
@@ -334,9 +347,13 @@ class WP_Http_Streams {
 		}
 
 		// If the body was chunk encoded, then decode it.
+<<<<<<< HEAD
 		if ( ! empty( $process['body'] ) && isset( $arrHeaders['headers']['transfer-encoding'] )
 			&& 'chunked' === $arrHeaders['headers']['transfer-encoding']
 		) {
+=======
+		if ( ! empty( $process['body'] ) && isset( $arrHeaders['headers']['transfer-encoding'] ) && 'chunked' == $arrHeaders['headers']['transfer-encoding'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$process['body'] = WP_Http::chunkTransferDecode( $process['body'] );
 		}
 
@@ -402,12 +419,20 @@ class WP_Http_Streams {
 		}
 
 		// Exact hostname/IP matches.
+<<<<<<< HEAD
 		if ( in_array( strtolower( $host ), $certificate_hostnames, true ) ) {
+=======
+		if ( in_array( strtolower( $host ), $certificate_hostnames ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return true;
 		}
 
 		// IP's can't be wildcards, Stop processing.
+<<<<<<< HEAD
 		if ( 'ip' === $host_type ) {
+=======
+		if ( 'ip' == $host_type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return false;
 		}
 
@@ -419,7 +444,11 @@ class WP_Http_Streams {
 		// Wildcard subdomains certs (*.example.com) are valid for a.example.com but not a.b.example.com.
 		$wildcard_host = preg_replace( '/^[^.]+\./', '*.', $host );
 
+<<<<<<< HEAD
 		return in_array( strtolower( $wildcard_host ), $certificate_hostnames, true );
+=======
+		return in_array( strtolower( $wildcard_host ), $certificate_hostnames );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**

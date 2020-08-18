@@ -288,7 +288,11 @@ abstract class WP_REST_Controller {
 	 *
 	 * @since 4.7.0
 	 *
+<<<<<<< HEAD
 	 * @param array  $data    Response data to filter.
+=======
+	 * @param array  $data    Response data to fiter.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param string $context Context defined in the schema.
 	 * @return array Filtered response.
 	 */
@@ -296,7 +300,36 @@ abstract class WP_REST_Controller {
 
 		$schema = $this->get_item_schema();
 
+<<<<<<< HEAD
 		return rest_filter_response_by_context( $data, $schema, $context );
+=======
+		foreach ( $data as $key => $value ) {
+			if ( empty( $schema['properties'][ $key ] ) || empty( $schema['properties'][ $key ]['context'] ) ) {
+				continue;
+			}
+
+			if ( ! in_array( $context, $schema['properties'][ $key ]['context'], true ) ) {
+				unset( $data[ $key ] );
+				continue;
+			}
+
+			if ( 'object' === $schema['properties'][ $key ]['type'] && ! empty( $schema['properties'][ $key ]['properties'] ) ) {
+				foreach ( $schema['properties'][ $key ]['properties'] as $attribute => $details ) {
+					if ( empty( $details['context'] ) ) {
+						continue;
+					}
+
+					if ( ! in_array( $context, $details['context'], true ) ) {
+						if ( isset( $data[ $key ][ $attribute ] ) ) {
+							unset( $data[ $key ][ $attribute ] );
+						}
+					}
+				}
+			}
+		}
+
+		return $data;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -626,6 +659,7 @@ abstract class WP_REST_Controller {
 	 */
 	public function get_endpoint_args_for_item_schema( $method = WP_REST_Server::CREATABLE ) {
 
+<<<<<<< HEAD
 		$schema                  = $this->get_item_schema();
 		$schema_properties       = ! empty( $schema['properties'] ) ? $schema['properties'] : array();
 		$endpoint_args           = array();
@@ -646,6 +680,11 @@ abstract class WP_REST_Controller {
 			'minItems',
 			'maxItems',
 		);
+=======
+		$schema            = $this->get_item_schema();
+		$schema_properties = ! empty( $schema['properties'] ) ? $schema['properties'] : array();
+		$endpoint_args     = array();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		foreach ( $schema_properties as $field_id => $params ) {
 
@@ -671,7 +710,11 @@ abstract class WP_REST_Controller {
 				$endpoint_args[ $field_id ]['required'] = true;
 			}
 
+<<<<<<< HEAD
 			foreach ( $valid_schema_properties as $schema_prop ) {
+=======
+			foreach ( array( 'type', 'format', 'enum', 'items', 'properties', 'additionalProperties' ) as $schema_prop ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				if ( isset( $params[ $schema_prop ] ) ) {
 					$endpoint_args[ $field_id ][ $schema_prop ] = $params[ $schema_prop ];
 				}

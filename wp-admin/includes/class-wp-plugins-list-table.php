@@ -16,6 +16,7 @@
  * @see WP_List_Table
  */
 class WP_Plugins_List_Table extends WP_List_Table {
+<<<<<<< HEAD
 	/**
 	 * Whether to show the auto-updates UI.
 	 *
@@ -24,6 +25,8 @@ class WP_Plugins_List_Table extends WP_List_Table {
 	 * @var bool True if auto-updates UI is to be shown, false otherwise.
 	 */
 	protected $show_autoupdates = true;
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * Constructor.
@@ -47,10 +50,15 @@ class WP_Plugins_List_Table extends WP_List_Table {
 			)
 		);
 
+<<<<<<< HEAD
 		$allowed_statuses = array( 'active', 'inactive', 'recently_activated', 'upgrade', 'mustuse', 'dropins', 'search', 'paused', 'auto-update-enabled', 'auto-update-disabled' );
 
 		$status = 'all';
 		if ( isset( $_REQUEST['plugin_status'] ) && in_array( $_REQUEST['plugin_status'], $allowed_statuses, true ) ) {
+=======
+		$status = 'all';
+		if ( isset( $_REQUEST['plugin_status'] ) && in_array( $_REQUEST['plugin_status'], array( 'active', 'inactive', 'recently_activated', 'upgrade', 'mustuse', 'dropins', 'search', 'paused' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$status = $_REQUEST['plugin_status'];
 		}
 
@@ -59,11 +67,14 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		}
 
 		$page = $this->get_pagenum();
+<<<<<<< HEAD
 
 		$this->show_autoupdates = wp_is_auto_update_enabled_for_type( 'plugin' )
 			&& current_user_can( 'update_plugins' )
 			&& ( ! is_multisite() || $this->screen->in_admin( 'network' ) )
 			&& ! in_array( $status, array( 'mustuse', 'dropins' ), true );
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -116,12 +127,15 @@ class WP_Plugins_List_Table extends WP_List_Table {
 			'dropins'            => array(),
 			'paused'             => array(),
 		);
+<<<<<<< HEAD
 		if ( $this->show_autoupdates ) {
 			$auto_updates = (array) get_site_option( 'auto_update_plugins', array() );
 
 			$plugins['auto-update-enabled']  = array();
 			$plugins['auto-update-disabled'] = array();
 		}
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$screen = $this->screen;
 
@@ -203,6 +217,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		foreach ( (array) $plugins['all'] as $plugin_file => $plugin_data ) {
 			// Extra info if known. array_merge() ensures $plugin_data has precedence if keys collide.
 			if ( isset( $plugin_info->response[ $plugin_file ] ) ) {
+<<<<<<< HEAD
 				$plugin_data = array_merge( (array) $plugin_info->response[ $plugin_file ], array( 'update-supported' => true ), $plugin_data );
 			} elseif ( isset( $plugin_info->no_update[ $plugin_file ] ) ) {
 				$plugin_data = array_merge( (array) $plugin_info->no_update[ $plugin_file ], array( 'update-supported' => true ), $plugin_data );
@@ -243,6 +258,21 @@ class WP_Plugins_List_Table extends WP_List_Table {
 			// Make sure that $plugins['upgrade'] also receives the extra info since it is used on ?plugin_status=upgrade.
 			if ( isset( $plugins['upgrade'][ $plugin_file ] ) ) {
 				$plugins['upgrade'][ $plugin_file ] = $plugin_data;
+=======
+				$plugin_data                    = array_merge( (array) $plugin_info->response[ $plugin_file ], $plugin_data );
+				$plugins['all'][ $plugin_file ] = $plugin_data;
+				// Make sure that $plugins['upgrade'] also receives the extra info since it is used on ?plugin_status=upgrade.
+				if ( isset( $plugins['upgrade'][ $plugin_file ] ) ) {
+					$plugins['upgrade'][ $plugin_file ] = $plugin_data;
+				}
+			} elseif ( isset( $plugin_info->no_update[ $plugin_file ] ) ) {
+				$plugin_data                    = array_merge( (array) $plugin_info->no_update[ $plugin_file ], $plugin_data );
+				$plugins['all'][ $plugin_file ] = $plugin_data;
+				// Make sure that $plugins['upgrade'] also receives the extra info since it is used on ?plugin_status=upgrade.
+				if ( isset( $plugins['upgrade'][ $plugin_file ] ) ) {
+					$plugins['upgrade'][ $plugin_file ] = $plugin_data;
+				}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			}
 
 			// Filter into individual sections.
@@ -279,6 +309,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 				// Populate the inactive list with plugins that aren't activated.
 				$plugins['inactive'][ $plugin_file ] = $plugin_data;
 			}
+<<<<<<< HEAD
 
 			if ( $this->show_autoupdates ) {
 				$enabled = in_array( $plugin_file, $auto_updates, true ) && $plugin_data['update-supported'];
@@ -292,6 +323,8 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					$plugins['auto-update-disabled'][ $plugin_file ] = $plugin_data;
 				}
 			}
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		if ( strlen( $s ) ) {
@@ -304,7 +337,11 @@ class WP_Plugins_List_Table extends WP_List_Table {
 			$totals[ $type ] = count( $list );
 		}
 
+<<<<<<< HEAD
 		if ( empty( $plugins[ $status ] ) && ! in_array( $status, array( 'all', 'search' ), true ) ) {
+=======
+		if ( empty( $plugins[ $status ] ) && ! in_array( $status, array( 'all', 'search' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$status = 'all';
 		}
 
@@ -417,7 +454,11 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		} elseif ( ! empty( $plugins['all'] ) ) {
 			_e( 'No plugins found.' );
 		} else {
+<<<<<<< HEAD
 			_e( 'No plugins are currently available.' );
+=======
+			_e( 'You do not appear to have any plugins available at this time.' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	}
 
@@ -458,6 +499,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 	public function get_columns() {
 		global $status;
 
+<<<<<<< HEAD
 		$columns = array(
 			'cb'          => ! in_array( $status, array( 'mustuse', 'dropins' ), true ) ? '<input type="checkbox" />' : '',
 			'name'        => __( 'Plugin' ),
@@ -469,6 +511,13 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		}
 
 		return $columns;
+=======
+		return array(
+			'cb'          => ! in_array( $status, array( 'mustuse', 'dropins' ) ) ? '<input type="checkbox" />' : '',
+			'name'        => __( 'Plugin' ),
+			'description' => __( 'Description' ),
+		);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -558,6 +607,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 						$count
 					);
 					break;
+<<<<<<< HEAD
 				case 'auto-update-enabled':
 					/* translators: %s: Number of plugins. */
 					$text = _n(
@@ -574,6 +624,8 @@ class WP_Plugins_List_Table extends WP_List_Table {
 						$count
 					);
 					break;
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			}
 
 			if ( 'search' !== $type ) {
@@ -598,11 +650,19 @@ class WP_Plugins_List_Table extends WP_List_Table {
 
 		$actions = array();
 
+<<<<<<< HEAD
 		if ( 'active' !== $status ) {
 			$actions['activate-selected'] = $this->screen->in_admin( 'network' ) ? __( 'Network Activate' ) : __( 'Activate' );
 		}
 
 		if ( 'inactive' !== $status && 'recent' !== $status ) {
+=======
+		if ( 'active' != $status ) {
+			$actions['activate-selected'] = $this->screen->in_admin( 'network' ) ? __( 'Network Activate' ) : __( 'Activate' );
+		}
+
+		if ( 'inactive' != $status && 'recent' != $status ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$actions['deactivate-selected'] = $this->screen->in_admin( 'network' ) ? __( 'Network Deactivate' ) : __( 'Deactivate' );
 		}
 
@@ -610,6 +670,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 			if ( current_user_can( 'update_plugins' ) ) {
 				$actions['update-selected'] = __( 'Update' );
 			}
+<<<<<<< HEAD
 
 			if ( current_user_can( 'delete_plugins' ) && ( 'active' !== $status ) ) {
 				$actions['delete-selected'] = __( 'Delete' );
@@ -623,6 +684,11 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					$actions['disable-auto-update-selected'] = __( 'Disable Auto-updates' );
 				}
 			}
+=======
+			if ( current_user_can( 'delete_plugins' ) && ( 'active' != $status ) ) {
+				$actions['delete-selected'] = __( 'Delete' );
+			}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		return $actions;
@@ -635,7 +701,11 @@ class WP_Plugins_List_Table extends WP_List_Table {
 	public function bulk_actions( $which = '' ) {
 		global $status;
 
+<<<<<<< HEAD
 		if ( in_array( $status, array( 'mustuse', 'dropins' ), true ) ) {
+=======
+		if ( in_array( $status, array( 'mustuse', 'dropins' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return;
 		}
 
@@ -649,13 +719,21 @@ class WP_Plugins_List_Table extends WP_List_Table {
 	protected function extra_tablenav( $which ) {
 		global $status;
 
+<<<<<<< HEAD
 		if ( ! in_array( $status, array( 'recently_activated', 'mustuse', 'dropins' ), true ) ) {
+=======
+		if ( ! in_array( $status, array( 'recently_activated', 'mustuse', 'dropins' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return;
 		}
 
 		echo '<div class="alignleft actions">';
 
+<<<<<<< HEAD
 		if ( 'recently_activated' === $status ) {
+=======
+		if ( 'recently_activated' == $status ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			submit_button( __( 'Clear List' ), '', 'clear-recent-list', false );
 		} elseif ( 'top' === $which && 'mustuse' === $status ) {
 			echo '<p>' . sprintf(
@@ -690,7 +768,11 @@ class WP_Plugins_List_Table extends WP_List_Table {
 	public function display_rows() {
 		global $status;
 
+<<<<<<< HEAD
 		if ( is_multisite() && ! $this->screen->in_admin( 'network' ) && in_array( $status, array( 'mustuse', 'dropins' ), true ) ) {
+=======
+		if ( is_multisite() && ! $this->screen->in_admin( 'network' ) && in_array( $status, array( 'mustuse', 'dropins' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return;
 		}
 
@@ -709,6 +791,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 	 */
 	public function single_row( $item ) {
 		global $status, $page, $s, $totals;
+<<<<<<< HEAD
 		static $plugin_id_attrs = array();
 
 		list( $plugin_file, $plugin_data ) = $item;
@@ -727,6 +810,12 @@ class WP_Plugins_List_Table extends WP_List_Table {
 
 		$context = $status;
 		$screen  = $this->screen;
+=======
+
+		list( $plugin_file, $plugin_data ) = $item;
+		$context                           = $status;
+		$screen                            = $this->screen;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		// Pre-order.
 		$actions = array(
@@ -780,9 +869,14 @@ class WP_Plugins_List_Table extends WP_List_Table {
 				if ( $is_active ) {
 					if ( current_user_can( 'manage_network_plugins' ) ) {
 						$actions['deactivate'] = sprintf(
+<<<<<<< HEAD
 							'<a href="%s" id="deactivate-%s" aria-label="%s">%s</a>',
 							wp_nonce_url( 'plugins.php?action=deactivate&amp;plugin=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'deactivate-plugin_' . $plugin_file ),
 							esc_attr( $plugin_id_attr ),
+=======
+							'<a href="%s" aria-label="%s">%s</a>',
+							wp_nonce_url( 'plugins.php?action=deactivate&amp;plugin=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'deactivate-plugin_' . $plugin_file ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							/* translators: %s: Plugin name. */
 							esc_attr( sprintf( _x( 'Network Deactivate %s', 'plugin' ), $plugin_data['Name'] ) ),
 							__( 'Network Deactivate' )
@@ -791,20 +885,32 @@ class WP_Plugins_List_Table extends WP_List_Table {
 				} else {
 					if ( current_user_can( 'manage_network_plugins' ) ) {
 						$actions['activate'] = sprintf(
+<<<<<<< HEAD
 							'<a href="%s" id="activate-%s" class="edit" aria-label="%s">%s</a>',
 							wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'activate-plugin_' . $plugin_file ),
 							esc_attr( $plugin_id_attr ),
+=======
+							'<a href="%s" class="edit" aria-label="%s">%s</a>',
+							wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'activate-plugin_' . $plugin_file ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							/* translators: %s: Plugin name. */
 							esc_attr( sprintf( _x( 'Network Activate %s', 'plugin' ), $plugin_data['Name'] ) ),
 							__( 'Network Activate' )
 						);
 					}
+<<<<<<< HEAD
 
 					if ( current_user_can( 'delete_plugins' ) && ! is_plugin_active( $plugin_file ) ) {
 						$actions['delete'] = sprintf(
 							'<a href="%s" id="delete-%s" class="delete" aria-label="%s">%s</a>',
 							wp_nonce_url( 'plugins.php?action=delete-selected&amp;checked[]=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'bulk-plugins' ),
 							esc_attr( $plugin_id_attr ),
+=======
+					if ( current_user_can( 'delete_plugins' ) && ! is_plugin_active( $plugin_file ) ) {
+						$actions['delete'] = sprintf(
+							'<a href="%s" class="delete" aria-label="%s">%s</a>',
+							wp_nonce_url( 'plugins.php?action=delete-selected&amp;checked[]=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'bulk-plugins' ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							/* translators: %s: Plugin name. */
 							esc_attr( sprintf( _x( 'Delete %s', 'plugin' ), $plugin_data['Name'] ) ),
 							__( 'Delete' )
@@ -823,20 +929,32 @@ class WP_Plugins_List_Table extends WP_List_Table {
 				} elseif ( $is_active ) {
 					if ( current_user_can( 'deactivate_plugin', $plugin_file ) ) {
 						$actions['deactivate'] = sprintf(
+<<<<<<< HEAD
 							'<a href="%s" id="deactivate-%s" aria-label="%s">%s</a>',
 							wp_nonce_url( 'plugins.php?action=deactivate&amp;plugin=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'deactivate-plugin_' . $plugin_file ),
 							esc_attr( $plugin_id_attr ),
+=======
+							'<a href="%s" aria-label="%s">%s</a>',
+							wp_nonce_url( 'plugins.php?action=deactivate&amp;plugin=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'deactivate-plugin_' . $plugin_file ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							/* translators: %s: Plugin name. */
 							esc_attr( sprintf( _x( 'Deactivate %s', 'plugin' ), $plugin_data['Name'] ) ),
 							__( 'Deactivate' )
 						);
 					}
+<<<<<<< HEAD
 
 					if ( current_user_can( 'resume_plugin', $plugin_file ) && is_plugin_paused( $plugin_file ) ) {
 						$actions['resume'] = sprintf(
 							'<a href="%s" id="resume-%s" class="resume-link" aria-label="%s">%s</a>',
 							wp_nonce_url( 'plugins.php?action=resume&amp;plugin=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'resume-plugin_' . $plugin_file ),
 							esc_attr( $plugin_id_attr ),
+=======
+					if ( current_user_can( 'resume_plugin', $plugin_file ) && is_plugin_paused( $plugin_file ) ) {
+						$actions['resume'] = sprintf(
+							'<a class="resume-link" href="%s" aria-label="%s">%s</a>',
+							wp_nonce_url( 'plugins.php?action=resume&amp;plugin=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'resume-plugin_' . $plugin_file ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							/* translators: %s: Plugin name. */
 							esc_attr( sprintf( _x( 'Resume %s', 'plugin' ), $plugin_data['Name'] ) ),
 							__( 'Resume' )
@@ -845,9 +963,14 @@ class WP_Plugins_List_Table extends WP_List_Table {
 				} else {
 					if ( current_user_can( 'activate_plugin', $plugin_file ) ) {
 						$actions['activate'] = sprintf(
+<<<<<<< HEAD
 							'<a href="%s" id="activate-%s" class="edit" aria-label="%s">%s</a>',
 							wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'activate-plugin_' . $plugin_file ),
 							esc_attr( $plugin_id_attr ),
+=======
+							'<a href="%s" class="edit" aria-label="%s">%s</a>',
+							wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'activate-plugin_' . $plugin_file ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							/* translators: %s: Plugin name. */
 							esc_attr( sprintf( _x( 'Activate %s', 'plugin' ), $plugin_data['Name'] ) ),
 							__( 'Activate' )
@@ -856,9 +979,14 @@ class WP_Plugins_List_Table extends WP_List_Table {
 
 					if ( ! is_multisite() && current_user_can( 'delete_plugins' ) ) {
 						$actions['delete'] = sprintf(
+<<<<<<< HEAD
 							'<a href="%s" id="delete-%s" class="delete" aria-label="%s">%s</a>',
 							wp_nonce_url( 'plugins.php?action=delete-selected&amp;checked[]=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'bulk-plugins' ),
 							esc_attr( $plugin_id_attr ),
+=======
+							'<a href="%s" class="delete" aria-label="%s">%s</a>',
+							wp_nonce_url( 'plugins.php?action=delete-selected&amp;checked[]=' . urlencode( $plugin_file ) . '&amp;plugin_status=' . $context . '&amp;paged=' . $page . '&amp;s=' . $s, 'bulk-plugins' ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							/* translators: %s: Plugin name. */
 							esc_attr( sprintf( _x( 'Delete %s', 'plugin' ), $plugin_data['Name'] ) ),
 							__( 'Delete' )
@@ -947,7 +1075,11 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		$compatible_php = is_php_version_compatible( $requires_php );
 		$class          = $is_active ? 'active' : 'inactive';
 		$checkbox_id    = 'checkbox_' . md5( $plugin_data['Name'] );
+<<<<<<< HEAD
 		if ( $restrict_network_active || $restrict_network_only || in_array( $status, array( 'mustuse', 'dropins' ), true ) || ! $compatible_php ) {
+=======
+		if ( $restrict_network_active || $restrict_network_only || in_array( $status, array( 'mustuse', 'dropins' ) ) || ! $compatible_php ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$checkbox = '';
 		} else {
 			$checkbox = sprintf(
@@ -959,7 +1091,11 @@ class WP_Plugins_List_Table extends WP_List_Table {
 				esc_attr( $plugin_file )
 			);
 		}
+<<<<<<< HEAD
 		if ( 'dropins' !== $context ) {
+=======
+		if ( 'dropins' != $context ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$description = '<p>' . ( $plugin_data['Description'] ? $plugin_data['Description'] : '&nbsp;' ) . '</p>';
 			$plugin_name = $plugin_data['Name'];
 		}
@@ -974,10 +1110,14 @@ class WP_Plugins_List_Table extends WP_List_Table {
 			$class .= ' paused';
 		}
 
+<<<<<<< HEAD
 		if ( is_uninstallable_plugin( $plugin_file ) ) {
 			$class .= ' is-uninstallable';
 		}
 
+=======
+		$plugin_slug = isset( $plugin_data['slug'] ) ? $plugin_data['slug'] : sanitize_title( $plugin_name );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		printf(
 			'<tr class="%s" data-slug="%s" data-plugin="%s">',
 			esc_attr( $class ),
@@ -987,12 +1127,18 @@ class WP_Plugins_List_Table extends WP_List_Table {
 
 		list( $columns, $hidden, $sortable, $primary ) = $this->get_column_info();
 
+<<<<<<< HEAD
 		$auto_updates      = (array) get_site_option( 'auto_update_plugins', array() );
 		$available_updates = get_site_transient( 'update_plugins' );
 
 		foreach ( $columns as $column_name => $column_display_name ) {
 			$extra_classes = '';
 			if ( in_array( $column_name, $hidden, true ) ) {
+=======
+		foreach ( $columns as $column_name => $column_display_name ) {
+			$extra_classes = '';
+			if ( in_array( $column_name, $hidden ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$extra_classes = ' hidden';
 			}
 
@@ -1054,6 +1200,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					 *
 					 * @since 2.8.0
 					 *
+<<<<<<< HEAD
 					 * @param string[] $plugin_meta An array of the plugin's metadata, including
 					 *                              the version, author, author URI, and plugin URI.
 					 * @param string   $plugin_file Path to the plugin file relative to the plugins directory.
@@ -1065,6 +1212,18 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					 */
 					$plugin_meta = apply_filters( 'plugin_row_meta', $plugin_meta, $plugin_file, $plugin_data, $status );
 
+=======
+					 * @param string[] $plugin_meta An array of the plugin's metadata,
+					 *                              including the version, author,
+					 *                              author URI, and plugin URI.
+					 * @param string   $plugin_file Path to the plugin file relative to the plugins directory.
+					 * @param array    $plugin_data An array of plugin data.
+					 * @param string   $status      Status of the plugin. Defaults are 'All', 'Active',
+					 *                              'Inactive', 'Recently Activated', 'Upgrade', 'Must-Use',
+					 *                              'Drop-ins', 'Search', 'Paused'.
+					 */
+					$plugin_meta = apply_filters( 'plugin_row_meta', $plugin_meta, $plugin_file, $plugin_data, $status );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					echo implode( ' | ', $plugin_meta );
 
 					echo '</div>';
@@ -1083,6 +1242,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 
 					echo '</td>';
 					break;
+<<<<<<< HEAD
 				case 'auto-updates':
 					if ( ! $this->show_autoupdates ) {
 						break;
@@ -1164,6 +1324,8 @@ class WP_Plugins_List_Table extends WP_List_Table {
 					echo '</td>';
 
 					break;
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				default:
 					$classes = "$column_name column-$column_name $class";
 
@@ -1190,6 +1352,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		 * Fires after each row in the Plugins list table.
 		 *
 		 * @since 2.3.0
+<<<<<<< HEAD
 		 * @since 5.5.0 Added 'auto-update-enabled' and 'auto-update-disabled' to possible values for `$status`.
 		 *
 		 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
@@ -1198,6 +1361,14 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		 *                            values are: 'all', 'active', 'inactive', 'recently_activated',
 		 *                            'upgrade', 'mustuse', 'dropins', 'search', 'paused',
 		 *                            'auto-update-enabled', 'auto-update-disabled'.
+=======
+		 *
+		 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
+		 * @param array  $plugin_data An array of plugin data.
+		 * @param string $status      Status of the plugin. Defaults are 'All', 'Active',
+		 *                            'Inactive', 'Recently Activated', 'Upgrade', 'Must-Use',
+		 *                            'Drop-ins', 'Search', 'Paused'.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		do_action( 'after_plugin_row', $plugin_file, $plugin_data, $status );
 
@@ -1208,6 +1379,7 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		 * to the plugin file, relative to the plugins directory.
 		 *
 		 * @since 2.7.0
+<<<<<<< HEAD
 		 * @since 5.5.0 Added 'auto-update-enabled' and 'auto-update-disabled' to possible values for `$status`.
 		 *
 		 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
@@ -1216,6 +1388,14 @@ class WP_Plugins_List_Table extends WP_List_Table {
 		 *                            values are: 'all', 'active', 'inactive', 'recently_activated',
 		 *                            'upgrade', 'mustuse', 'dropins', 'search', 'paused',
 		 *                            'auto-update-enabled', 'auto-update-disabled'.
+=======
+		 *
+		 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
+		 * @param array  $plugin_data An array of plugin data.
+		 * @param string $status      Status of the plugin. Defaults are 'All', 'Active',
+		 *                            'Inactive', 'Recently Activated', 'Upgrade', 'Must-Use',
+		 *                            'Drop-ins', 'Search', 'Paused'.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		do_action( "after_plugin_row_{$plugin_file}", $plugin_file, $plugin_data, $status );
 	}

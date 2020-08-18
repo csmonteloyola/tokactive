@@ -62,12 +62,21 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 *
 	 * @since 3.1.0
 	 *
+<<<<<<< HEAD
 	 * @global string $mode List table view mode.
 	 * @global string $s
 	 * @global wpdb   $wpdb WordPress database abstraction object.
 	 */
 	public function prepare_items() {
 		global $mode, $s, $wpdb;
+=======
+	 * @global string $s
+	 * @global string $mode
+	 * @global wpdb   $wpdb WordPress database abstraction object.
+	 */
+	public function prepare_items() {
+		global $s, $mode, $wpdb;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		if ( ! empty( $_REQUEST['mode'] ) ) {
 			$mode = 'excerpt' === $_REQUEST['mode'] ? 'excerpt' : 'list';
@@ -213,6 +222,10 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * @since 5.3.0
 	 *
 	 * @return array
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	protected function get_views() {
 		$counts = wp_count_sites();
@@ -289,8 +302,13 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 		if ( current_user_can( 'delete_sites' ) ) {
 			$actions['delete'] = __( 'Delete' );
 		}
+<<<<<<< HEAD
 		$actions['spam']    = _x( 'Mark as spam', 'site' );
 		$actions['notspam'] = _x( 'Not spam', 'site' );
+=======
+		$actions['spam']    = _x( 'Mark as Spam', 'site' );
+		$actions['notspam'] = _x( 'Not Spam', 'site' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		return $actions;
 	}
@@ -575,7 +593,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @global string $mode List table view mode.
+=======
+	 * @global string $mode
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function display_rows() {
 		foreach ( $this->items as $blog ) {

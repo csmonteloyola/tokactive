@@ -6,7 +6,11 @@
 /* global ajaxurl, tagBox, array_unique_noempty */
 
 ( function( $ ) {
+<<<<<<< HEAD
 	var tagDelimiter = wp.i18n._x( ',', 'tag delimiter' ) || ',';
+=======
+	var tagDelimiter = ( window.tagsSuggestL10n && window.tagsSuggestL10n.tagDelimiter ) || ',';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * Filters unique items and returns a new array.
@@ -164,7 +168,11 @@
 					 */
 					xbutton = $( '<button type="button" id="' + id + '-check-num-' + key + '" class="ntdelbutton">' +
 						'<span class="remove-tag-icon" aria-hidden="true"></span>' +
+<<<<<<< HEAD
 						'<span class="screen-reader-text">' + wp.i18n.__( 'Remove term:' ) + ' ' + listItem.html() + '</span>' +
+=======
+						'<span class="screen-reader-text">' + window.tagsSuggestL10n.removeTerm + ' ' + listItem.html() + '</span>' +
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						'</button>' );
 
 					/**
@@ -284,8 +292,13 @@
 			 *
 			 * @since 2.9.0
 			 *
+<<<<<<< HEAD
 			 * @param {number|string} r The response message from the Ajax call.
 			 * @param {string} stat The status of the Ajax request.
+=======
+			 * @param {number|string} r The response message from the AJAX call.
+			 * @param {string} stat The status of the AJAX request.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 *
 			 * @return {void}
 			 */
@@ -334,11 +347,19 @@
 
 			switch ( this.userAction ) {
 				case 'remove':
+<<<<<<< HEAD
 					message = wp.i18n.__( 'Term removed.' );
 					break;
 
 				case 'add':
 					message = wp.i18n.__( 'Term added.' );
+=======
+					message = window.tagsSuggestL10n.termRemoved;
+					break;
+
+				case 'add':
+					message = window.tagsSuggestL10n.termAdded;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					break;
 
 				default:

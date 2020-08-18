@@ -10,10 +10,24 @@ if ( ! window.wp ) {
 
 wp.themePluginEditor = (function( $ ) {
 	'use strict';
+<<<<<<< HEAD
 	var component, TreeLinks,
 		__ = wp.i18n.__, _n = wp.i18n._n, sprintf = wp.i18n.sprintf;
 
 	component = {
+=======
+	var component, TreeLinks;
+
+	component = {
+		l10n: {
+			lintError: {
+				singular: '',
+				plural: ''
+			},
+			saveAlert: '',
+			saveError: ''
+		},
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		codeEditor: {},
 		instance: null,
 		noticeElements: {},
@@ -27,8 +41,13 @@ wp.themePluginEditor = (function( $ ) {
 	 * @since 4.9.0
 	 *
 	 * @param {jQuery}         form - Form element.
+<<<<<<< HEAD
 	 * @param {Object}         settings - Settings.
 	 * @param {Object|boolean} settings.codeEditor - Code editor settings (or `false` if syntax highlighting is disabled).
+=======
+	 * @param {object}         settings - Settings.
+	 * @param {object|boolean} settings.codeEditor - Code editor settings (or `false` if syntax highlighting is disabled).
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return {void}
 	 */
 	component.init = function init( form, settings ) {
@@ -68,7 +87,11 @@ wp.themePluginEditor = (function( $ ) {
 
 		$( window ).on( 'beforeunload', function() {
 			if ( component.dirty ) {
+<<<<<<< HEAD
 				return __( 'The changes you made will be lost if you navigate away from this page.' );
+=======
+				return component.l10n.saveAlert;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			}
 			return undefined;
 		} );
@@ -117,7 +140,11 @@ wp.themePluginEditor = (function( $ ) {
 	 * Constrain tabbing within the warning modal.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 * @param {Object} event jQuery event object.
+=======
+	 * @param {object} event jQuery event object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return {void}
 	 */
 	component.constrainTabbing = function( event ) {
@@ -226,7 +253,11 @@ wp.themePluginEditor = (function( $ ) {
 			var notice = $.extend(
 				{
 					code: 'save_error',
+<<<<<<< HEAD
 					message: __( 'Something went wrong. Your change may not have been saved. Please try again. There is also a chance that you may need to manually fix and upload the file over FTP.' )
+=======
+					message: component.l10n.saveError
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				},
 				response,
 				{
@@ -254,7 +285,11 @@ wp.themePluginEditor = (function( $ ) {
 	 *
 	 * @since 4.9.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object}   notice - Notice.
+=======
+	 * @param {object}   notice - Notice.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string}   notice.code - Code.
 	 * @param {string}   notice.type - Type.
 	 * @param {string}   notice.message - Message.
@@ -368,11 +403,16 @@ wp.themePluginEditor = (function( $ ) {
 		 * @return {void}
 		 */
 		codeEditorSettings.onUpdateErrorNotice = function onUpdateErrorNotice( errorAnnotations ) {
+<<<<<<< HEAD
 			var noticeElement;
+=======
+			var message, noticeElement;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			component.submitButton.toggleClass( 'disabled', errorAnnotations.length > 0 );
 
 			if ( 0 !== errorAnnotations.length ) {
+<<<<<<< HEAD
 				noticeElement = component.addNotice({
 					code: 'lint_errors',
 					type: 'error',
@@ -385,6 +425,17 @@ wp.themePluginEditor = (function( $ ) {
 						),
 						String( errorAnnotations.length )
 					),
+=======
+				if ( 1 === errorAnnotations.length ) {
+					message = component.l10n.lintError.singular.replace( '%d', '1' );
+				} else {
+					message = component.l10n.lintError.plural.replace( '%d', String( errorAnnotations.length ) );
+				}
+				noticeElement = component.addNotice({
+					code: 'lint_errors',
+					type: 'error',
+					message: message,
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					dismissible: false
 				});
 				noticeElement.find( 'input[type=checkbox]' ).on( 'click', function() {

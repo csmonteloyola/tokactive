@@ -42,6 +42,10 @@ function wp_paused_themes() {
  * @since 5.2.0
  *
  * @param array $error Error details {@see error_get_last()}
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string Formatted error description.
  */
 function wp_get_extension_error_description( $error ) {

@@ -843,6 +843,7 @@ h3.customize-section-title {
 	background: #fff;
 	color: #0073aa;
 	border-top-color: #0073aa;
+<<<<<<< HEAD
 	box-shadow: none;
 	/* Only visible in Windows High Contrast mode */
 	outline: 1px solid transparent;
@@ -853,6 +854,12 @@ h3.customize-section-title {
 	outline: 1px solid transparent;
 	outline-offset: 1px;
 }
+=======
+	outline: none;
+	box-shadow: none;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 .customize-panel-back:hover,
 .customize-panel-back:focus,
@@ -861,10 +868,15 @@ h3.customize-section-title {
 	color: #0073aa;
 	background: #f3f3f5;
 	border-right-color: #0073aa;
+<<<<<<< HEAD
 	box-shadow: none;
 	/* Only visible in Windows High Contrast mode */
 	outline: 2px solid transparent;
 	outline-offset: -2px;
+=======
+	outline: none;
+	box-shadow: none;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .customize-controls-close:before {
@@ -910,6 +922,14 @@ p.customize-section-description {
 	text-align: left;
 }
 
+<<<<<<< HEAD
+=======
+.section-description-buttons button.button-link {
+	color: #0073aa;
+	text-decoration: underline;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .customize-control {
 	width: 100%;
 	float: right;
@@ -1399,7 +1419,10 @@ p.customize-section-description {
 	border-color: #007cba;
 	border-style: solid;
 	box-shadow: 0 0 0 1px #007cba;
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	outline: 2px solid transparent;
 }
 
@@ -2217,10 +2240,15 @@ p.customize-section-description {
 		color: #0073aa;
 		background: #f3f3f5;
 		border-right-color: #0073aa;
+<<<<<<< HEAD
 		box-shadow: none;
 		/* Only visible in Windows High Contrast mode */
 		outline: 2px solid transparent;
 		outline-offset: -2px;
+=======
+		outline: none;
+		box-shadow: none;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	.showing-themes #customize-header-actions {

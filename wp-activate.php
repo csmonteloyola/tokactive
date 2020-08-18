@@ -57,7 +57,11 @@ if ( null === $result || ( is_wp_error( $result ) && 'invalid_key' === $result->
 } elseif ( is_wp_error( $result ) ) {
 	$error_code = $result->get_error_code();
 
+<<<<<<< HEAD
 	if ( ! in_array( $error_code, $valid_error_codes, true ) ) {
+=======
+	if ( ! in_array( $error_code, $valid_error_codes ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		status_header( 400 );
 	}
 }
@@ -117,8 +121,11 @@ add_action( 'wp_head', 'wpmu_activate_stylesheet' );
 add_action( 'wp_head', 'wp_sensitive_page_meta' );
 
 get_header( 'wp-activate' );
+<<<<<<< HEAD
 
 $blog_details = get_blog_details();
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 ?>
 
 <div id="signup-content" class="widecolumn">
@@ -126,7 +133,11 @@ $blog_details = get_blog_details();
 	<?php if ( ! $key ) { ?>
 
 		<h2><?php _e( 'Activation Key Required' ); ?></h2>
+<<<<<<< HEAD
 		<form name="activateform" id="activateform" method="post" action="<?php echo network_site_url( $blog_details->path . 'wp-activate.php' ); ?>">
+=======
+		<form name="activateform" id="activateform" method="post" action="<?php echo network_site_url( 'wp-activate.php' ); ?>">
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			<p>
 				<label for="key"><?php _e( 'Activation Key:' ); ?></label>
 				<br /><input type="text" name="key" id="key" value="" size="50" />
@@ -138,7 +149,11 @@ $blog_details = get_blog_details();
 
 		<?php
 	} else {
+<<<<<<< HEAD
 		if ( is_wp_error( $result ) && in_array( $result->get_error_code(), $valid_error_codes, true ) ) {
+=======
+		if ( is_wp_error( $result ) && in_array( $result->get_error_code(), $valid_error_codes ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$signup = $result->get_error_data();
 			?>
 			<h2><?php _e( 'Your account is now active!' ); ?></h2>
@@ -148,7 +163,11 @@ $blog_details = get_blog_details();
 				printf(
 					/* translators: 1: Login URL, 2: Username, 3: User email address, 4: Lost password URL. */
 					__( 'Your account has been activated. You may now <a href="%1$s">log in</a> to the site using your chosen username of &#8220;%2$s&#8221;. Please check your email inbox at %3$s for your password and login instructions. If you do not receive an email, please check your junk or spam folder. If you still do not receive an email within an hour, you can <a href="%4$s">reset your password</a>.' ),
+<<<<<<< HEAD
 					network_site_url( $blog_details->path . 'wp-login.php', 'login' ),
+=======
+					network_site_url( 'wp-login.php', 'login' ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$signup->user_login,
 					$signup->user_email,
 					wp_lostpassword_url()
@@ -157,7 +176,11 @@ $blog_details = get_blog_details();
 				printf(
 					/* translators: 1: Site URL, 2: Username, 3: User email address, 4: Lost password URL. */
 					__( 'Your site at %1$s is active. You may now log in to your site using your chosen username of &#8220;%2$s&#8221;. Please check your email inbox at %3$s for your password and login instructions. If you do not receive an email, please check your junk or spam folder. If you still do not receive an email within an hour, you can <a href="%4$s">reset your password</a>.' ),
+<<<<<<< HEAD
 					sprintf( '<a href="http://%1$s%2$s">%1$s%2$s</a>', $signup->domain, $blog_details->path ),
+=======
+					sprintf( '<a href="http://%1$s">%1$s</a>', $signup->domain ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$signup->user_login,
 					$signup->user_email,
 					wp_lostpassword_url()
@@ -197,12 +220,17 @@ $blog_details = get_blog_details();
 			<?php else : ?>
 				<p class="view">
 				<?php
+<<<<<<< HEAD
 					printf(
 						/* translators: 1: Login URL, 2: Network home URL. */
 						__( 'Your account is now activated. <a href="%1$s">Log in</a> or go back to the <a href="%2$s">homepage</a>.' ),
 						network_site_url( $blog_details->path . 'wp-login.php', 'login' ),
 						network_home_url( $blog_details->path )
 					);
+=======
+					/* translators: 1: Login URL, 2: Network home URL. */
+					printf( __( 'Your account is now activated. <a href="%1$s">Log in</a> or go back to the <a href="%2$s">homepage</a>.' ), network_site_url( 'wp-login.php', 'login' ), network_home_url() );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				?>
 				</p>
 				<?php

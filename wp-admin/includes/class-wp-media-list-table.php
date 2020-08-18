@@ -41,8 +41,13 @@ class WP_Media_List_Table extends WP_List_Table {
 		$this->detached = ( isset( $_REQUEST['attachment-filter'] ) && 'detached' === $_REQUEST['attachment-filter'] );
 
 		$this->modes = array(
+<<<<<<< HEAD
 			'list' => __( 'List view' ),
 			'grid' => __( 'Grid view' ),
+=======
+			'list' => __( 'List View' ),
+			'grid' => __( 'Grid View' ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		);
 
 		parent::__construct(
@@ -61,6 +66,7 @@ class WP_Media_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @global string   $mode                  List table view mode.
 	 * @global WP_Query $wp_query              WordPress Query object.
 	 * @global array    $post_mime_types
@@ -93,11 +99,25 @@ class WP_Media_List_Table extends WP_List_Table {
 		if ( ! empty( $not_in ) ) {
 			$_REQUEST['post__not_in'] = $not_in;
 		}
+=======
+	 * @global WP_Query $wp_query              WordPress Query object.
+	 * @global array    $post_mime_types
+	 * @global array    $avail_post_mime_types
+	 * @global string   $mode
+	 */
+	public function prepare_items() {
+		global $wp_query, $post_mime_types, $avail_post_mime_types, $mode;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		list( $post_mime_types, $avail_post_mime_types ) = wp_edit_attachments_query( $_REQUEST );
 
 		$this->is_trash = isset( $_REQUEST['attachment-filter'] ) && 'trash' === $_REQUEST['attachment-filter'];
 
+<<<<<<< HEAD
+=======
+		$mode = empty( $_REQUEST['mode'] ) ? 'list' : $_REQUEST['mode'];
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$this->set_pagination_args(
 			array(
 				'total_items' => $wp_query->found_posts,
@@ -172,12 +192,20 @@ class WP_Media_List_Table extends WP_List_Table {
 		if ( MEDIA_TRASH ) {
 			if ( $this->is_trash ) {
 				$actions['untrash'] = __( 'Restore' );
+<<<<<<< HEAD
 				$actions['delete']  = __( 'Delete permanently' );
+=======
+				$actions['delete']  = __( 'Delete Permanently' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			} else {
 				$actions['trash'] = __( 'Move to Trash' );
 			}
 		} else {
+<<<<<<< HEAD
 			$actions['delete'] = __( 'Delete permanently' );
+=======
+			$actions['delete'] = __( 'Delete Permanently' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		if ( $this->detached ) {
@@ -197,6 +225,7 @@ class WP_Media_List_Table extends WP_List_Table {
 		?>
 		<div class="actions">
 		<?php
+<<<<<<< HEAD
 		if ( ! $this->is_trash ) {
 			$this->months_dropdown( 'attachment' );
 		}
@@ -205,6 +234,18 @@ class WP_Media_List_Table extends WP_List_Table {
 		do_action( 'restrict_manage_posts', $this->screen->post_type, $which );
 
 		submit_button( __( 'Filter' ), '', 'filter_action', false, array( 'id' => 'post-query-submit' ) );
+=======
+		if ( ! is_singular() ) {
+			if ( ! $this->is_trash ) {
+				$this->months_dropdown( 'attachment' );
+			}
+
+			/** This action is documented in wp-admin/includes/class-wp-posts-list-table.php */
+			do_action( 'restrict_manage_posts', $this->screen->post_type, $which );
+
+			submit_button( __( 'Filter' ), '', 'filter_action', false, array( 'id' => 'post-query-submit' ) );
+		}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		if ( $this->is_trash && current_user_can( 'edit_others_posts' ) && $this->has_items() ) {
 			submit_button( __( 'Empty Trash' ), 'apply', 'delete_all', false );
@@ -679,6 +720,10 @@ class WP_Media_List_Table extends WP_List_Table {
 	/**
 	 * @param WP_Post $post
 	 * @param string  $att_title
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return array
 	 */
 	private function _get_row_actions( $post, $att_title ) {

@@ -53,10 +53,13 @@
 //                                                            ///
 /////////////////////////////////////////////////////////////////
 
+<<<<<<< HEAD
 if (!defined('GETID3_INCLUDEPATH')) { // prevent path-exposing attacks that access modules directly on public webservers
 	exit;
 }
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 define('GETID3_FLV_TAG_AUDIO',          8);
 define('GETID3_FLV_TAG_VIDEO',          9);
 define('GETID3_FLV_TAG_META',          18);
@@ -601,6 +604,10 @@ class AMFReader
 			// null
 			case 6:
 				return null;
+<<<<<<< HEAD
+=======
+				break;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			// Mixed array
 			case 8:

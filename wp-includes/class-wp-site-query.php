@@ -59,7 +59,11 @@ class WP_Site_Query {
 	 * Date query container.
 	 *
 	 * @since 4.6.0
+<<<<<<< HEAD
 	 * @var WP_Date_Query A date query instance.
+=======
+	 * @var object WP_Date_Query
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public $date_query = false;
 
@@ -245,7 +249,11 @@ class WP_Site_Query {
 	 * @since 4.6.0
 	 *
 	 * @param string|array $query Array or URL query string of parameters.
+<<<<<<< HEAD
 	 * @return array|int List of WP_Site objects, a list of site IDs when 'fields' is set to 'ids',
+=======
+	 * @return array|int List of WP_Site objects, a list of site ids when 'fields' is set to 'ids',
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *                   or the number of sites when 'count' is passed as a query var.
 	 */
 	public function query( $query ) {
@@ -261,7 +269,11 @@ class WP_Site_Query {
 	 *
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
+<<<<<<< HEAD
 	 * @return array|int List of WP_Site objects, a list of site IDs when 'fields' is set to 'ids',
+=======
+	 * @return array|int List of WP_Site objects, a list of site ids when 'fields' is set to 'ids',
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *                   or the number of sites when 'count' is passed as a query var.
 	 */
 	public function get_sites() {
@@ -297,7 +309,11 @@ class WP_Site_Query {
 		 *
 		 * The expected return type from this filter depends on the value passed in the request query_vars:
 		 * When `$this->query_vars['count']` is set, the filter should return the site count as an int.
+<<<<<<< HEAD
 		 * When `'ids' === $this->query_vars['fields']`, the filter should return an array of site IDs.
+=======
+		 * When `'ids' == $this->query_vars['fields']`, the filter should return an array of site ids.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * Otherwise the filter should return an array of WP_Site objects.
 		 *
 		 * @since 5.2.0
@@ -353,7 +369,11 @@ class WP_Site_Query {
 
 		$site_ids = array_map( 'intval', $site_ids );
 
+<<<<<<< HEAD
 		if ( 'ids' === $this->query_vars['fields'] ) {
+=======
+		if ( 'ids' == $this->query_vars['fields'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$this->sites = $site_ids;
 
 			return $this->sites;

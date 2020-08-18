@@ -64,7 +64,11 @@ jQuery(document).ready( function($) {
 	window.ajaxWidgets = ['dashboard_primary'];
 
 	/**
+<<<<<<< HEAD
 	 * Triggers widget updates via Ajax.
+=======
+	 * Triggers widget updates via AJAX.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @since 2.7.0
 	 *
@@ -103,7 +107,11 @@ jQuery(document).ready( function($) {
 		// If we have received a specific element to fetch, check if it is valid.
 		if ( el ) {
 			el = el.toString();
+<<<<<<< HEAD
 			// If the element is available as Ajax widget, show it.
+=======
+			// If the element is available as AJAX widget, show it.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( $.inArray(el, ajaxWidgets) !== -1 ) {
 				// Show element without any delay.
 				show(0, el);

@@ -22,6 +22,7 @@ $plugin = isset( $_REQUEST['plugin'] ) ? wp_unslash( $_REQUEST['plugin'] ) : '';
 $s      = isset( $_REQUEST['s'] ) ? urlencode( wp_unslash( $_REQUEST['s'] ) ) : '';
 
 // Clean up request URI from temporary args for screen options/paging uri's to work as expected.
+<<<<<<< HEAD
 $query_args_to_remove = array(
 	'error',
 	'deleted',
@@ -37,6 +38,9 @@ $query_args_to_remove = array(
 );
 
 $_SERVER['REQUEST_URI'] = remove_query_arg( $query_args_to_remove, $_SERVER['REQUEST_URI'] );
+=======
+$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'error', 'deleted', 'activate', 'activate-multi', 'deactivate', 'deactivate-multi', '_error_nonce' ), $_SERVER['REQUEST_URI'] );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 wp_enqueue_script( 'updates' );
 
@@ -57,7 +61,11 @@ if ( $action ) {
 
 			$result = activate_plugin( $plugin, self_admin_url( 'plugins.php?error=true&plugin=' . urlencode( $plugin ) ), is_network_admin() );
 			if ( is_wp_error( $result ) ) {
+<<<<<<< HEAD
 				if ( 'unexpected_output' === $result->get_error_code() ) {
+=======
+				if ( 'unexpected_output' == $result->get_error_code() ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$redirect = self_admin_url( 'plugins.php?error=true&charsout=' . strlen( $result->get_error_data() ) . '&plugin=' . urlencode( $plugin ) . "&plugin_status=$status&paged=$page&s=$s" );
 					wp_redirect( add_query_arg( '_error_nonce', wp_create_nonce( 'plugin-activation-error_' . $plugin ), $redirect ) );
 					exit;
@@ -76,10 +84,17 @@ if ( $action ) {
 				update_site_option( 'recently_activated', $recent );
 			}
 
+<<<<<<< HEAD
 			if ( isset( $_GET['from'] ) && 'import' === $_GET['from'] ) {
 				// Overrides the ?error=true one above and redirects to the Imports page, stripping the -importer suffix.
 				wp_redirect( self_admin_url( 'import.php?import=' . str_replace( '-importer', '', dirname( $plugin ) ) ) );
 			} elseif ( isset( $_GET['from'] ) && 'press-this' === $_GET['from'] ) {
+=======
+			if ( isset( $_GET['from'] ) && 'import' == $_GET['from'] ) {
+				// Overrides the ?error=true one above and redirects to the Imports page, stripping the -importer suffix.
+				wp_redirect( self_admin_url( 'import.php?import=' . str_replace( '-importer', '', dirname( $plugin ) ) ) );
+			} elseif ( isset( $_GET['from'] ) && 'press-this' == $_GET['from'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				wp_redirect( self_admin_url( 'press-this.php' ) );
 			} else {
 				// Overrides the ?error=true one above.
@@ -298,6 +313,7 @@ if ( $action ) {
 			if ( ! isset( $_REQUEST['verify-delete'] ) ) {
 				wp_enqueue_script( 'jquery' );
 				require_once ABSPATH . 'wp-admin/admin-header.php';
+<<<<<<< HEAD
 
 				?>
 				<div class="wrap">
@@ -310,6 +326,17 @@ if ( $action ) {
 					$plugin_slug = dirname( $plugin );
 
 					if ( '.' === $plugin_slug ) {
+=======
+				?>
+			<div class="wrap">
+				<?php
+					$plugin_info              = array();
+					$have_non_network_plugins = false;
+				foreach ( (array) $plugins as $plugin ) {
+					$plugin_slug = dirname( $plugin );
+
+					if ( '.' == $plugin_slug ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						$data = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin );
 						if ( $data ) {
 							$plugin_info[ $plugin ]                     = $data;
@@ -332,11 +359,17 @@ if ( $action ) {
 						}
 					}
 				}
+<<<<<<< HEAD
 
 				$plugins_to_delete = count( $plugin_info );
 
 				?>
 				<?php if ( 1 === $plugins_to_delete ) : ?>
+=======
+					$plugins_to_delete = count( $plugin_info );
+				?>
+				<?php if ( 1 == $plugins_to_delete ) : ?>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					<h1><?php _e( 'Delete Plugin' ); ?></h1>
 					<?php if ( $have_non_network_plugins && is_network_admin() ) : ?>
 						<div class="error"><p><strong><?php _e( 'Caution:' ); ?></strong> <?php _e( 'This plugin may be active on other sites in the network.' ); ?></p></div>
@@ -351,9 +384,13 @@ if ( $action ) {
 				<?php endif; ?>
 					<ul class="ul-disc">
 						<?php
+<<<<<<< HEAD
 
 						$data_to_delete = false;
 
+=======
+						$data_to_delete = false;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						foreach ( $plugin_info as $plugin ) {
 							if ( $plugin['is_uninstallable'] ) {
 								/* translators: 1: Plugin name, 2: Plugin author. */
@@ -364,44 +401,68 @@ if ( $action ) {
 								echo '<li>', sprintf( _x( '%1$s by %2$s', 'plugin' ), '<strong>' . $plugin['Name'] . '</strong>', '<em>' . $plugin['AuthorName'] ) . '</em>', '</li>';
 							}
 						}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						?>
 					</ul>
 				<p>
 				<?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				if ( $data_to_delete ) {
 					_e( 'Are you sure you want to delete these files and data?' );
 				} else {
 					_e( 'Are you sure you want to delete these files?' );
 				}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				?>
 				</p>
 				<form method="post" action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" style="display:inline;">
 					<input type="hidden" name="verify-delete" value="1" />
 					<input type="hidden" name="action" value="delete-selected" />
 					<?php
+<<<<<<< HEAD
 
 					foreach ( (array) $plugins as $plugin ) {
 						echo '<input type="hidden" name="checked[]" value="' . esc_attr( $plugin ) . '" />';
 					}
 
+=======
+					foreach ( (array) $plugins as $plugin ) {
+						echo '<input type="hidden" name="checked[]" value="' . esc_attr( $plugin ) . '" />';
+					}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					?>
 					<?php wp_nonce_field( 'bulk-plugins' ); ?>
 					<?php submit_button( $data_to_delete ? __( 'Yes, delete these files and data' ) : __( 'Yes, delete these files' ), '', 'submit', false ); ?>
 				</form>
 				<?php
+<<<<<<< HEAD
 
 				$referer = wp_get_referer();
 
+=======
+				$referer = wp_get_referer();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				?>
 				<form method="post" action="<?php echo $referer ? esc_url( $referer ) : ''; ?>" style="display:inline;">
 					<?php submit_button( __( 'No, return me to the plugin list' ), '', 'submit', false ); ?>
 				</form>
+<<<<<<< HEAD
 				</div>
 				<?php
 
+=======
+			</div>
+				<?php
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				require_once ABSPATH . 'wp-admin/admin-footer.php';
 				exit;
 			} else {
@@ -414,14 +475,23 @@ if ( $action ) {
 			set_transient( 'plugins_delete_result_' . $user_ID, $delete_result );
 			wp_redirect( self_admin_url( "plugins.php?deleted=$plugins_to_delete&plugin_status=$status&paged=$page&s=$s" ) );
 			exit;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		case 'clear-recent-list':
 			if ( ! is_network_admin() ) {
 				update_option( 'recently_activated', array() );
 			} else {
 				update_site_option( 'recently_activated', array() );
 			}
+<<<<<<< HEAD
 
 			break;
+=======
+			break;
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		case 'resume':
 			if ( is_multisite() ) {
 				return;
@@ -441,6 +511,7 @@ if ( $action ) {
 
 			wp_redirect( self_admin_url( "plugins.php?resume=true&plugin_status=$status&paged=$page&s=$s" ) );
 			exit;
+<<<<<<< HEAD
 		case 'enable-auto-update':
 		case 'disable-auto-update':
 		case 'enable-auto-update-selected':
@@ -513,6 +584,9 @@ if ( $action ) {
 
 			wp_redirect( $redirect );
 			exit;
+=======
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		default:
 			if ( isset( $_POST['checked'] ) ) {
 				check_admin_referer( 'bulk-plugins' );
@@ -565,6 +639,7 @@ get_current_screen()->add_help_tab(
 	)
 );
 
+<<<<<<< HEAD
 $help_sidebar_autoupdates = '';
 
 if ( current_user_can( 'update_plugins' ) && wp_is_auto_update_enabled_for_type( 'plugin' ) ) {
@@ -586,6 +661,11 @@ get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
 	'<p>' . __( '<a href="https://wordpress.org/support/article/managing-plugins/">Documentation on Managing Plugins</a>' ) . '</p>' .
 	$help_sidebar_autoupdates .
+=======
+get_current_screen()->set_help_sidebar(
+	'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
+	'<p>' . __( '<a href="https://wordpress.org/support/article/managing-plugins/">Documentation on Managing Plugins</a>' ) . '</p>' .
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	'<p>' . __( '<a href="https://wordpress.org/support/">Support</a>' ) . '</p>'
 );
 
@@ -615,7 +695,13 @@ if ( ! empty( $invalid ) ) {
 		echo '</p></div>';
 	}
 }
+<<<<<<< HEAD
 
+=======
+?>
+
+<?php
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 if ( isset( $_GET['error'] ) ) :
 
 	if ( isset( $_GET['main'] ) ) {
@@ -636,11 +722,17 @@ if ( isset( $_GET['error'] ) ) :
 	} else {
 		$errmsg = __( 'Plugin could not be activated because it triggered a <strong>fatal error</strong>.' );
 	}
+<<<<<<< HEAD
 
 	?>
 	<div id="message" class="error"><p><?php echo $errmsg; ?></p>
 	<?php
 
+=======
+	?>
+	<div id="message" class="error"><p><?php echo $errmsg; ?></p>
+	<?php
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( ! isset( $_GET['main'] ) && ! isset( $_GET['charsout'] ) && wp_verify_nonce( $_GET['_error_nonce'], 'plugin-activation-error_' . $plugin ) ) {
 		$iframe_url = add_query_arg(
 			array(
@@ -650,19 +742,32 @@ if ( isset( $_GET['error'] ) ) :
 			),
 			admin_url( 'plugins.php' )
 		);
+<<<<<<< HEAD
 
 		?>
 		<iframe style="border:0" width="100%" height="70px" src="<?php echo esc_url( $iframe_url ); ?>"></iframe>
 		<?php
 	}
 
+=======
+		?>
+	<iframe style="border:0" width="100%" height="70px" src="<?php echo esc_url( $iframe_url ); ?>"></iframe>
+		<?php
+	}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	?>
 	</div>
 	<?php
 elseif ( isset( $_GET['deleted'] ) ) :
+<<<<<<< HEAD
 	$delete_result = get_transient( 'plugins_delete_result_' . $user_ID );
 	// Delete it once we're done.
 	delete_transient( 'plugins_delete_result_' . $user_ID );
+=======
+		$delete_result = get_transient( 'plugins_delete_result_' . $user_ID );
+		// Delete it once we're done.
+		delete_transient( 'plugins_delete_result_' . $user_ID );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	if ( is_wp_error( $delete_result ) ) :
 		?>
@@ -681,7 +786,11 @@ elseif ( isset( $_GET['deleted'] ) ) :
 		<div id="message" class="updated notice is-dismissible">
 			<p>
 				<?php
+<<<<<<< HEAD
 				if ( 1 === (int) $_GET['deleted'] ) {
+=======
+				if ( 1 == (int) $_GET['deleted'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					_e( 'The selected plugin has been deleted.' );
 				} else {
 					_e( 'The selected plugins have been deleted.' );
@@ -689,7 +798,11 @@ elseif ( isset( $_GET['deleted'] ) ) :
 				?>
 			</p>
 		</div>
+<<<<<<< HEAD
 	<?php endif; ?>
+=======
+		<?php endif; ?>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 <?php elseif ( isset( $_GET['activate'] ) ) : ?>
 	<div id="message" class="updated notice is-dismissible"><p><?php _e( 'Plugin activated.' ); ?></p></div>
 <?php elseif ( isset( $_GET['activate-multi'] ) ) : ?>
@@ -698,6 +811,7 @@ elseif ( isset( $_GET['deleted'] ) ) :
 	<div id="message" class="updated notice is-dismissible"><p><?php _e( 'Plugin deactivated.' ); ?></p></div>
 <?php elseif ( isset( $_GET['deactivate-multi'] ) ) : ?>
 	<div id="message" class="updated notice is-dismissible"><p><?php _e( 'Selected plugins deactivated.' ); ?></p></div>
+<<<<<<< HEAD
 <?php elseif ( 'update-selected' === $action ) : ?>
 	<div id="message" class="updated notice is-dismissible"><p><?php _e( 'All selected plugins are up to date.' ); ?></p></div>
 <?php elseif ( isset( $_GET['resume'] ) ) : ?>
@@ -710,6 +824,12 @@ elseif ( isset( $_GET['deleted'] ) ) :
 	<div id="message" class="updated notice is-dismissible"><p><?php _e( 'Selected plugins will be auto-updated.' ); ?></p></div>
 <?php elseif ( isset( $_GET['disabled-auto-update-multi'] ) ) : ?>
 	<div id="message" class="updated notice is-dismissible"><p><?php _e( 'Selected plugins will no longer be auto-updated.' ); ?></p></div>
+=======
+<?php elseif ( 'update-selected' == $action ) : ?>
+	<div id="message" class="updated notice is-dismissible"><p><?php _e( 'All selected plugins are up to date.' ); ?></p></div>
+<?php elseif ( isset( $_GET['resume'] ) ) : ?>
+	<div id="message" class="updated notice is-dismissible"><p><?php _e( 'Plugin resumed.' ); ?></p></div>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 <?php endif; ?>
 
 <div class="wrap">

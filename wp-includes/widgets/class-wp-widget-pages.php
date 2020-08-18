@@ -40,8 +40,12 @@ class WP_Widget_Pages extends WP_Widget {
 	 * @param array $instance Settings for the current Pages widget instance.
 	 */
 	public function widget( $args, $instance ) {
+<<<<<<< HEAD
 		$default_title = __( 'Pages' );
 		$title         = ! empty( $instance['title'] ) ? $instance['title'] : $default_title;
+=======
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Pages' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		/**
 		 * Filters the widget title.
@@ -90,6 +94,7 @@ class WP_Widget_Pages extends WP_Widget {
 			if ( $title ) {
 				echo $args['before_title'] . $title . $args['after_title'];
 			}
+<<<<<<< HEAD
 
 			$format = current_theme_supports( 'html5', 'navigation-widgets' ) ? 'html5' : 'xhtml';
 
@@ -113,6 +118,13 @@ class WP_Widget_Pages extends WP_Widget {
 				echo '</nav>';
 			}
 
+=======
+			?>
+		<ul>
+			<?php echo $out; ?>
+		</ul>
+			<?php
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			echo $args['after_widget'];
 		}
 	}
@@ -130,7 +142,11 @@ class WP_Widget_Pages extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance          = $old_instance;
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
+<<<<<<< HEAD
 		if ( in_array( $new_instance['sortby'], array( 'post_title', 'menu_order', 'ID' ), true ) ) {
+=======
+		if ( in_array( $new_instance['sortby'], array( 'post_title', 'menu_order', 'ID' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$instance['sortby'] = $new_instance['sortby'];
 		} else {
 			$instance['sortby'] = 'menu_order';
@@ -163,7 +179,10 @@ class WP_Widget_Pages extends WP_Widget {
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 		</p>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'sortby' ) ); ?>"><?php _e( 'Sort by:' ); ?></label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'sortby' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'sortby' ) ); ?>" class="widefat">
@@ -172,7 +191,10 @@ class WP_Widget_Pages extends WP_Widget {
 				<option value="ID"<?php selected( $instance['sortby'], 'ID' ); ?>><?php _e( 'Page ID' ); ?></option>
 			</select>
 		</p>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'exclude' ) ); ?>"><?php _e( 'Exclude:' ); ?></label>
 			<input type="text" value="<?php echo esc_attr( $instance['exclude'] ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'exclude' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'exclude' ) ); ?>" class="widefat" />

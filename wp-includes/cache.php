@@ -111,6 +111,7 @@ function wp_cache_flush() {
  * @see WP_Object_Cache::get()
  * @global WP_Object_Cache $wp_object_cache Object cache global instance.
  *
+<<<<<<< HEAD
  * @param int|string $key   The key under which the cache contents are stored.
  * @param string     $group Optional. Where the cache contents are grouped. Default empty.
  * @param bool       $force Optional. Whether to force an update of the local cache
@@ -118,6 +119,16 @@ function wp_cache_flush() {
  * @param bool       $found Optional. Whether the key was found in the cache (passed by reference).
  *                          Disambiguates a return of false, a storable value. Default null.
  * @return mixed|false The cache contents on success, false on failure to retrieve contents.
+=======
+ * @param int|string  $key    The key under which the cache contents are stored.
+ * @param string      $group  Optional. Where the cache contents are grouped. Default empty.
+ * @param bool        $force  Optional. Whether to force an update of the local cache from the persistent
+ *                            cache. Default false.
+ * @param bool        $found  Optional. Whether the key was found in the cache (passed by reference).
+ *                            Disambiguates a return of false, a storable value. Default null.
+ * @return bool|mixed False on failure to retrieve contents or the cache
+ *                    contents on success
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function wp_cache_get( $key, $group = '', $force = false, &$found = null ) {
 	global $wp_object_cache;
@@ -126,6 +137,7 @@ function wp_cache_get( $key, $group = '', $force = false, &$found = null ) {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves multiple values from the cache in one call.
  *
  * @since 5.5.0
@@ -146,6 +158,8 @@ function wp_cache_get_multiple( $keys, $group = '', $force = false ) {
 }
 
 /**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * Increment numeric cache item's value
  *
  * @since 3.3.0

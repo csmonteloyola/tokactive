@@ -212,7 +212,11 @@ class WP_Themes_List_Table extends WP_List_Table {
 				'<a href="%s" class="activatelink" title="%s">%s</a>',
 				$activate_link,
 				/* translators: %s: Theme name. */
+<<<<<<< HEAD
 				esc_attr( sprintf( _x( 'Activate &#8220;%s&#8221;', 'theme' ), $title ) ),
+=======
+				esc_attr( sprintf( __( 'Activate &#8220;%s&#8221;' ), $title ) ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				__( 'Activate' )
 			);
 
@@ -302,14 +306,22 @@ class WP_Themes_List_Table extends WP_List_Table {
 	public function search_theme( $theme ) {
 		// Search the features.
 		foreach ( $this->features as $word ) {
+<<<<<<< HEAD
 			if ( ! in_array( $word, $theme->get( 'Tags' ), true ) ) {
+=======
+			if ( ! in_array( $word, $theme->get( 'Tags' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				return false;
 			}
 		}
 
 		// Match all phrases.
 		foreach ( $this->search_terms as $word ) {
+<<<<<<< HEAD
 			if ( in_array( $word, $theme->get( 'Tags' ), true ) ) {
+=======
+			if ( in_array( $word, $theme->get( 'Tags' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				continue;
 			}
 

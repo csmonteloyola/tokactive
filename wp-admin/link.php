@@ -35,7 +35,11 @@ switch ( $action ) {
 		check_admin_referer( 'bulk-bookmarks' );
 
 		// For each link id (in $linkcheck[]) change category to selected value.
+<<<<<<< HEAD
 		if ( count( $linkcheck ) === 0 ) {
+=======
+		if ( count( $linkcheck ) == 0 ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			wp_redirect( $this_file );
 			exit;
 		}
@@ -56,7 +60,11 @@ switch ( $action ) {
 		check_admin_referer( 'bulk-bookmarks' );
 
 		// For each link id (in $linkcheck[]) change category to selected value.
+<<<<<<< HEAD
 		if ( count( $linkcheck ) === 0 ) {
+=======
+		if ( count( $linkcheck ) == 0 ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			wp_redirect( $this_file );
 			exit;
 		}

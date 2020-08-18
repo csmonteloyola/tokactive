@@ -82,12 +82,20 @@ this["wp"] = this["wp"] || {}; this["wp"]["i18n"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 452);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 442);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /******/ })
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 197:
+=======
+/***/ 188:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/* global window, exports, define */
@@ -326,6 +334,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/* global window, exports, define */
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 452:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -392,6 +401,14 @@ function sprintf_sprintf(format) {
   }
 }
 
+=======
+/***/ 442:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
 var defineProperty = __webpack_require__(5);
 
@@ -899,7 +916,25 @@ Tannin.prototype.dcnpgettext = function( domain, context, singular, plural, n ) 
 	return index === 0 ? singular : plural;
 };
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/i18n/build-module/create-i18n.js
+=======
+// EXTERNAL MODULE: ./node_modules/memize/index.js
+var memize = __webpack_require__(46);
+var memize_default = /*#__PURE__*/__webpack_require__.n(memize);
+
+// EXTERNAL MODULE: ./node_modules/sprintf-js/src/sprintf.js
+var sprintf = __webpack_require__(188);
+var sprintf_default = /*#__PURE__*/__webpack_require__.n(sprintf);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/i18n/build-module/index.js
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setLocaleData", function() { return setLocaleData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__", function() { return __; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_x", function() { return _x; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_n", function() { return _n; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_nx", function() { return _nx; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sprintf", function() { return build_module_sprintf; });
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -910,8 +945,15 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
  * External dependencies
  */
 
+<<<<<<< HEAD
 /**
  * @typedef {Record<string,any>} LocaleData
+=======
+
+
+/**
+ * @typedef {{[key: string]: any}} LocaleData
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 
 /**
@@ -923,13 +965,17 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 var DEFAULT_LOCALE_DATA = {
   '': {
+<<<<<<< HEAD
     /** @param {number} n */
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
     plural_forms: function plural_forms(n) {
       return n === 1 ? 0 : 1;
     }
   }
 };
 /**
+<<<<<<< HEAD
  * An i18n instance
  *
  * @typedef {Object} I18n
@@ -1121,6 +1167,24 @@ var i18n = create_i18n_createI18n();
  * @typedef {import('./create-i18n').LocaleData} LocaleData
  */
 
+=======
+ * Log to console, once per message; or more precisely, per referentially equal
+ * argument set. Because Jed throws errors, we log these to the console instead
+ * to avoid crashing the application.
+ *
+ * @param {...*} args Arguments to pass to `console.error`
+ */
+
+var logErrorOnce = memize_default()(console.error); // eslint-disable-line no-console
+
+/**
+ * The underlying instance of Tannin to which exported functions interface.
+ *
+ * @type {Tannin}
+ */
+
+var i18n = new Tannin({});
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * Merges locale data into the Tannin instance by domain. Accepts data in a
  * Jed-formatted JSON object shape.
@@ -1131,7 +1195,46 @@ var i18n = create_i18n_createI18n();
  * @param {string}     [domain] Domain for which configuration applies.
  */
 
+<<<<<<< HEAD
 var default_i18n_setLocaleData = i18n.setLocaleData.bind(i18n);
+=======
+function setLocaleData(data) {
+  var domain = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'default';
+  i18n.data[domain] = _objectSpread({}, DEFAULT_LOCALE_DATA, {}, i18n.data[domain], {}, data); // Populate default domain configuration (supported locale date which omits
+  // a plural forms expression).
+
+  i18n.data[domain][''] = _objectSpread({}, DEFAULT_LOCALE_DATA[''], {}, i18n.data[domain]['']);
+}
+/**
+ * Wrapper for Tannin's `dcnpgettext`. Populates default locale data if not
+ * otherwise previously assigned.
+ *
+ * @param {string|undefined} domain   Domain to retrieve the translated text.
+ * @param {string|undefined} context  Context information for the translators.
+ * @param {string}           single   Text to translate if non-plural. Used as
+ *                                    fallback return value on a caught error.
+ * @param {string}           [plural] The text to be used if the number is
+ *                                    plural.
+ * @param {number}           [number] The number to compare against to use
+ *                                    either the singular or plural form.
+ *
+ * @return {string} The translated string.
+ */
+
+function dcnpgettext() {
+  var domain = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default';
+  var context = arguments.length > 1 ? arguments[1] : undefined;
+  var single = arguments.length > 2 ? arguments[2] : undefined;
+  var plural = arguments.length > 3 ? arguments[3] : undefined;
+  var number = arguments.length > 4 ? arguments[4] : undefined;
+
+  if (!i18n.data[domain]) {
+    setLocaleData(undefined, domain);
+  }
+
+  return i18n.dcnpgettext(domain, context, single, plural, number);
+}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * Retrieve the translation of text.
  *
@@ -1143,7 +1246,14 @@ var default_i18n_setLocaleData = i18n.setLocaleData.bind(i18n);
  * @return {string} Translated text.
  */
 
+<<<<<<< HEAD
 var default_i18n_ = i18n.__.bind(i18n);
+=======
+
+function __(text, domain) {
+  return dcnpgettext(domain, undefined, text);
+}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * Retrieve translated string with gettext context.
  *
@@ -1156,7 +1266,13 @@ var default_i18n_ = i18n.__.bind(i18n);
  * @return {string} Translated context string without pipe.
  */
 
+<<<<<<< HEAD
 var default_i18n_x = i18n._x.bind(i18n);
+=======
+function _x(text, context, domain) {
+  return dcnpgettext(domain, context, text);
+}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * Translates and retrieves the singular or plural form based on the supplied
  * number.
@@ -1172,7 +1288,13 @@ var default_i18n_x = i18n._x.bind(i18n);
  * @return {string} The translated singular or plural form.
  */
 
+<<<<<<< HEAD
 var default_i18n_n = i18n._n.bind(i18n);
+=======
+function _n(single, plural, number, domain) {
+  return dcnpgettext(domain, undefined, single, plural, number);
+}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * Translates and retrieves the singular or plural form based on the supplied
  * number, with gettext context.
@@ -1189,6 +1311,7 @@ var default_i18n_n = i18n._n.bind(i18n);
  * @return {string} The translated singular or plural form.
  */
 
+<<<<<<< HEAD
 var default_i18n_nx = i18n._nx.bind(i18n);
 /**
  * Check if current locale is RTL.
@@ -1234,6 +1357,40 @@ function _defineProperty(obj, key, value) {
 /***/ }),
 
 /***/ 60:
+=======
+function _nx(single, plural, number, context, domain) {
+  return dcnpgettext(domain, context, single, plural, number);
+}
+/**
+ * Returns a formatted string. If an error occurs in applying the format, the
+ * original format string is returned.
+ *
+ * @param {string}    format The format of the string to generate.
+ * @param {...string} args   Arguments to apply to the format.
+ *
+ * @see http://www.diveintojavascript.com/projects/javascript-sprintf
+ *
+ * @return {string} The formatted string.
+ */
+
+function build_module_sprintf(format) {
+  try {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return sprintf_default.a.sprintf.apply(sprintf_default.a, [format].concat(args));
+  } catch (error) {
+    logErrorOnce('sprintf error: \n\n' + error.toString());
+    return format;
+  }
+}
+
+
+/***/ }),
+
+/***/ 46:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1399,6 +1556,31 @@ function memize( fn, options ) {
 module.exports = memize;
 
 
+<<<<<<< HEAD
+=======
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _defineProperty; });
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ })
 
 /******/ });

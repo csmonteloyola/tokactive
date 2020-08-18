@@ -21,10 +21,13 @@ $credits = wp_credits();
 <div class="wrap about__container">
 
 	<div class="about__header">
+<<<<<<< HEAD
 		<div class="about__header-text">
 			<?php _e( 'Speed. Search. Security.' ); ?>
 		</div>
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<div class="about__header-title">
 			<p>
 				<?php _e( 'WordPress' ); ?>
@@ -32,6 +35,15 @@ $credits = wp_credits();
 			</p>
 		</div>
 
+<<<<<<< HEAD
+=======
+		<div class="about__header-text">
+			<p>
+				<?php _e( 'Building more with blocks, faster and easier.' ); ?>
+			</p>
+		</div>
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<nav class="about__header-navigation nav-tab-wrapper wp-clearfix" aria-label="<?php esc_attr_e( 'Secondary menu' ); ?>">
 			<a href="about.php" class="nav-tab"><?php _e( 'What&#8217;s New' ); ?></a>
 			<a href="credits.php" class="nav-tab nav-tab-active" aria-current="page"><?php _e( 'Credits' ); ?></a>
@@ -74,6 +86,13 @@ $credits = wp_credits();
 
 			<?php endif; ?>
 		</div>
+<<<<<<< HEAD
+=======
+
+		<div class="about__image aligncenter">
+			<img src="data:image/svg+xml;charset=utf8,%3Csvg width='1000' height='300' viewbox='0 0 1000 300' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23F3F4F5' d='M0 0h1000v300H0z'/%3E%3Cpath style='mix-blend-mode:multiply' d='M39.6 140.22l931.1 3.36.8 76.5-929.5 6.6-2.4-86.46z' fill='%23216DD2'/%3E%3Cpath style='mix-blend-mode:multiply' d='M963.7 275.14s-.9-59.58-1-64.14c-.1-4.2-932.3 1.74-932.3 1.74L29 268.48v8.4' fill='%237FCDE6'/%3E%3Cpath style='mix-blend-mode:multiply' d='M958 73.32L47.8 70.26l1.2 78.66 907.3 4.26 1.7-79.86z' fill='%23072CF0'/%3E%3Cpath style='mix-blend-mode:multiply' d='M34 91.32l910.4-2.16L939.2 21 33.3 23.82l.7 67.5z' fill='%230188D9'/%3E%3C/svg%3E" alt="" />
+		</div>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	</div>
 
 <?php

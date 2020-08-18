@@ -1,9 +1,13 @@
 {
 	"name": "core/social-link",
 	"category": "widgets",
+<<<<<<< HEAD
 	"parent": [
 		"core/social-links"
 	],
+=======
+	"icon": "share",
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	"attributes": {
 		"url": {
 			"type": "string"
@@ -14,10 +18,13 @@
 		"label": {
 			"type": "string"
 		}
+<<<<<<< HEAD
 	},
 	"supports": {
 		"reusable": false,
 		"html": false,
 		"lightBlockWrapper": true
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 }

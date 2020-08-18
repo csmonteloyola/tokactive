@@ -34,6 +34,7 @@ class WP_REST_Block_Renderer_Controller extends WP_REST_Controller {
 	 * @see register_rest_route()
 	 */
 	public function register_routes() {
+<<<<<<< HEAD
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base . '/(?P<name>[a-z0-9-]+/[a-z0-9-]+)',
@@ -96,6 +97,49 @@ class WP_REST_Block_Renderer_Controller extends WP_REST_Controller {
 				'schema' => array( $this, 'get_public_item_schema' ),
 			)
 		);
+=======
+		$block_types = WP_Block_Type_Registry::get_instance()->get_all_registered();
+
+		foreach ( $block_types as $block_type ) {
+			if ( ! $block_type->is_dynamic() ) {
+				continue;
+			}
+
+			register_rest_route(
+				$this->namespace,
+				'/' . $this->rest_base . '/(?P<name>' . $block_type->name . ')',
+				array(
+					'args'   => array(
+						'name' => array(
+							'description' => __( 'Unique registered name for the block.' ),
+							'type'        => 'string',
+						),
+					),
+					array(
+						'methods'             => WP_REST_Server::READABLE,
+						'callback'            => array( $this, 'get_item' ),
+						'permission_callback' => array( $this, 'get_item_permissions_check' ),
+						'args'                => array(
+							'context'    => $this->get_context_param( array( 'default' => 'view' ) ),
+							'attributes' => array(
+								/* translators: %s: The name of the block. */
+								'description'          => sprintf( __( 'Attributes for %s block' ), $block_type->name ),
+								'type'                 => 'object',
+								'additionalProperties' => false,
+								'properties'           => $block_type->get_attributes(),
+								'default'              => array(),
+							),
+							'post_id'    => array(
+								'description' => __( 'ID of the post context.' ),
+								'type'        => 'integer',
+							),
+						),
+					),
+					'schema' => array( $this, 'get_public_item_schema' ),
+				)
+			);
+		}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -157,11 +201,17 @@ class WP_REST_Block_Renderer_Controller extends WP_REST_Controller {
 			// Set up postdata since this will be needed if post_id was set.
 			setup_postdata( $post );
 		}
+<<<<<<< HEAD
 
 		$registry   = WP_Block_Type_Registry::get_instance();
 		$registered = $registry->get_registered( $request['name'] );
 
 		if ( null === $registered || ! $registered->is_dynamic() ) {
+=======
+		$registry = WP_Block_Type_Registry::get_instance();
+
+		if ( null === $registry->get_registered( $request['name'] ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return new WP_Error(
 				'block_invalid',
 				__( 'Invalid block.' ),

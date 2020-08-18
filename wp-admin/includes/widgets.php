@@ -126,6 +126,11 @@ function wp_list_widget_controls( $sidebar, $sidebar_name = '' ) {
  *
  * @global array $wp_registered_widgets
  *
+<<<<<<< HEAD
+=======
+ * @staticvar int $i
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param array $params
  * @return array
  */
@@ -190,7 +195,11 @@ function wp_widget_control( $sidebar_args ) {
 
 	$widget_id  = $sidebar_args['widget_id'];
 	$sidebar_id = isset( $sidebar_args['id'] ) ? $sidebar_args['id'] : false;
+<<<<<<< HEAD
 	$key        = $sidebar_id ? array_search( $widget_id, $sidebars_widgets[ $sidebar_id ], true ) : '-1'; // Position of widget in sidebar.
+=======
+	$key        = $sidebar_id ? array_search( $widget_id, $sidebars_widgets[ $sidebar_id ] ) : '-1'; // Position of widget in sidebar.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	$control    = isset( $wp_registered_widget_controls[ $widget_id ] ) ? $wp_registered_widget_controls[ $widget_id ] : array();
 	$widget     = $wp_registered_widgets[ $widget_id ];
 
@@ -223,7 +232,11 @@ function wp_widget_control( $sidebar_args ) {
 	 * We aren't showing a widget control, we're outputting a template
 	 * for a multi-widget control.
 	 */
+<<<<<<< HEAD
 	if ( isset( $sidebar_args['_display'] ) && 'template' === $sidebar_args['_display'] && $widget_number ) {
+=======
+	if ( isset( $sidebar_args['_display'] ) && 'template' == $sidebar_args['_display'] && $widget_number ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		// number == -1 implies a template where id numbers are replaced by a generic '__i__'.
 		$control['params'][0]['number'] = -1;
 		// With id_base widget id's are constructed like {$id_base}-{$id_number}.

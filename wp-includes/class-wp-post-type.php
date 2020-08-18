@@ -200,7 +200,11 @@ final class WP_Post_Type {
 	 * Do `remove_meta_box()` and `add_meta_box()` calls in the callback. Default null.
 	 *
 	 * @since 4.6.0
+<<<<<<< HEAD
 	 * @var callable $register_meta_box_cb
+=======
+	 * @var string $register_meta_box_cb
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public $register_meta_box_cb = null;
 
@@ -454,9 +458,13 @@ final class WP_Post_Type {
 		}
 
 		// Back compat with quirky handling in version 3.0. #14122.
+<<<<<<< HEAD
 		if ( empty( $args['capabilities'] )
 			&& null === $args['map_meta_cap'] && in_array( $args['capability_type'], array( 'post', 'page' ), true )
 		) {
+=======
+		if ( empty( $args['capabilities'] ) && null === $args['map_meta_cap'] && in_array( $args['capability_type'], array( 'post', 'page' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$args['map_meta_cap'] = true;
 		}
 
@@ -485,7 +493,11 @@ final class WP_Post_Type {
 			}
 		}
 
+<<<<<<< HEAD
 		if ( false !== $args['rewrite'] && ( is_admin() || get_option( 'permalink_structure' ) ) ) {
+=======
+		if ( false !== $args['rewrite'] && ( is_admin() || '' != get_option( 'permalink_structure' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( ! is_array( $args['rewrite'] ) ) {
 				$args['rewrite'] = array();
 			}
@@ -554,7 +566,11 @@ final class WP_Post_Type {
 			$wp->add_query_var( $this->query_var );
 		}
 
+<<<<<<< HEAD
 		if ( false !== $this->rewrite && ( is_admin() || get_option( 'permalink_structure' ) ) ) {
+=======
+		if ( false !== $this->rewrite && ( is_admin() || '' != get_option( 'permalink_structure' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( $this->hierarchical ) {
 				add_rewrite_tag( "%$this->name%", '(.+?)', $this->query_var ? "{$this->query_var}=" : "post_type=$this->name&pagename=" );
 			} else {

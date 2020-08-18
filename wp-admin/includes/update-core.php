@@ -11,7 +11,10 @@
  * Stores files to be deleted.
  *
  * @since 2.7.0
+<<<<<<< HEAD
  *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @global array $_old_files
  * @var array
  * @name $_old_files
@@ -793,11 +796,14 @@ $_old_files = array(
 	// 5.4
 	'wp-admin/js/wp-fullscreen-stub.js',
 	'wp-admin/js/wp-fullscreen-stub.min.js',
+<<<<<<< HEAD
 	// 5.5
 	'wp-admin/css/ie.css',
 	'wp-admin/css/ie.min.css',
 	'wp-admin/css/ie-rtl.css',
 	'wp-admin/css/ie-rtl.min.css',
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 );
 
 /**
@@ -961,6 +967,7 @@ function update_core( $from, $to ) {
 	}
 
 	$php_update_message = '';
+<<<<<<< HEAD
 
 	if ( function_exists( 'wp_get_update_php_url' ) ) {
 		/* translators: %s: URL to Update PHP page. */
@@ -972,6 +979,14 @@ function update_core( $from, $to ) {
 		if ( function_exists( 'wp_get_update_php_annotation' ) ) {
 			$annotation = wp_get_update_php_annotation();
 
+=======
+	if ( function_exists( 'wp_get_update_php_url' ) ) {
+		/* translators: %s: URL to Update PHP page. */
+		$php_update_message = '</p><p>' . sprintf( __( '<a href="%s">Learn more about updating PHP</a>.' ), esc_url( wp_get_update_php_url() ) );
+
+		if ( function_exists( 'wp_get_update_php_annotation' ) ) {
+			$annotation = wp_get_update_php_annotation();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( $annotation ) {
 				$php_update_message .= '</p><p><em>' . $annotation . '</em>';
 			}
@@ -1047,7 +1062,11 @@ function update_core( $from, $to ) {
 		}
 		if ( is_array( $checksums ) ) {
 			foreach ( $checksums as $file => $checksum ) {
+<<<<<<< HEAD
 				if ( 'wp-content' === substr( $file, 0, 10 ) ) {
+=======
+				if ( 'wp-content' == substr( $file, 0, 10 ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					continue;
 				}
 				if ( ! file_exists( ABSPATH . $file ) ) {
@@ -1056,7 +1075,11 @@ function update_core( $from, $to ) {
 				if ( ! file_exists( $working_dir_local . $file ) ) {
 					continue;
 				}
+<<<<<<< HEAD
 				if ( '.' === dirname( $file ) && in_array( pathinfo( $file, PATHINFO_EXTENSION ), array( 'html', 'txt' ), true ) ) {
+=======
+				if ( '.' === dirname( $file ) && in_array( pathinfo( $file, PATHINFO_EXTENSION ), array( 'html', 'txt' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					continue;
 				}
 				if ( md5_file( ABSPATH . $file ) === $checksum ) {
@@ -1120,13 +1143,21 @@ function update_core( $from, $to ) {
 	$failed = array();
 	if ( isset( $checksums ) && is_array( $checksums ) ) {
 		foreach ( $checksums as $file => $checksum ) {
+<<<<<<< HEAD
 			if ( 'wp-content' === substr( $file, 0, 10 ) ) {
+=======
+			if ( 'wp-content' == substr( $file, 0, 10 ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				continue;
 			}
 			if ( ! file_exists( $working_dir_local . $file ) ) {
 				continue;
 			}
+<<<<<<< HEAD
 			if ( '.' === dirname( $file ) && in_array( pathinfo( $file, PATHINFO_EXTENSION ), array( 'html', 'txt' ), true ) ) {
+=======
+			if ( '.' === dirname( $file ) && in_array( pathinfo( $file, PATHINFO_EXTENSION ), array( 'html', 'txt' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$skip[] = $file;
 				continue;
 			}
@@ -1193,7 +1224,11 @@ function update_core( $from, $to ) {
 	$wp_filesystem->delete( $maintenance_file );
 
 	// 3.5 -> 3.5+ - an empty twentytwelve directory was created upon upgrade to 3.5 for some users, preventing installation of Twenty Twelve.
+<<<<<<< HEAD
 	if ( '3.5' === $old_wp_version ) {
+=======
+	if ( '3.5' == $old_wp_version ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( is_dir( WP_CONTENT_DIR . '/themes/twentytwelve' ) && ! file_exists( WP_CONTENT_DIR . '/themes/twentytwelve/style.css' ) ) {
 			$wp_filesystem->delete( $wp_filesystem->wp_themes_dir() . 'twentytwelve/' );
 		}
@@ -1209,18 +1244,29 @@ function update_core( $from, $to ) {
 		foreach ( (array) $_new_bundled_files as $file => $introduced_version ) {
 			// If a $development_build or if $introduced version is greater than what the site was previously running.
 			if ( $development_build || version_compare( $introduced_version, $old_wp_version, '>' ) ) {
+<<<<<<< HEAD
 				$directory = ( '/' === $file[ strlen( $file ) - 1 ] );
 
 				list( $type, $filename ) = explode( '/', $file, 2 );
+=======
+				$directory             = ( '/' == $file[ strlen( $file ) - 1 ] );
+				list($type, $filename) = explode( '/', $file, 2 );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 				// Check to see if the bundled items exist before attempting to copy them.
 				if ( ! $wp_filesystem->exists( $from . $distro . 'wp-content/' . $file ) ) {
 					continue;
 				}
 
+<<<<<<< HEAD
 				if ( 'plugins' === $type ) {
 					$dest = $wp_filesystem->wp_plugins_dir();
 				} elseif ( 'themes' === $type ) {
+=======
+				if ( 'plugins' == $type ) {
+					$dest = $wp_filesystem->wp_plugins_dir();
+				} elseif ( 'themes' == $type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					// Back-compat, ::wp_themes_dir() did not return trailingslash'd pre-3.2.
 					$dest = trailingslashit( $wp_filesystem->wp_themes_dir() );
 				} else {
@@ -1310,7 +1356,11 @@ function update_core( $from, $to ) {
 	 */
 	do_action( '_core_updated_successfully', $wp_version );
 
+<<<<<<< HEAD
 	// Clear the option that blocks auto-updates after failures, now that we've been successful.
+=======
+	// Clear the option that blocks auto updates after failures, now that we've been successful.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( function_exists( 'delete_site_option' ) ) {
 		delete_site_option( 'auto_core_update_failed' );
 	}
@@ -1320,6 +1370,7 @@ function update_core( $from, $to ) {
 
 /**
  * Copies a directory from one location to another via the WordPress Filesystem Abstraction.
+<<<<<<< HEAD
  *
  * Assumes that WP_Filesystem() has already been called and setup.
  *
@@ -1335,6 +1386,17 @@ function update_core( $from, $to ) {
  *
  * @see copy_dir()
  * @link https://core.trac.wordpress.org/ticket/17173
+=======
+ * Assumes that WP_Filesystem() has already been called and setup.
+ *
+ * This is a temporary function for the 3.1 -> 3.2 upgrade, as well as for those upgrading to
+ * 3.7+
+ *
+ * @ignore
+ * @since 3.2.0
+ * @since 3.7.0 Updated not to use a regular expression for the skip list
+ * @see copy_dir()
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @global WP_Filesystem_Base $wp_filesystem
  *
@@ -1356,7 +1418,11 @@ function _copy_dir( $from, $to, $skip_list = array() ) {
 			continue;
 		}
 
+<<<<<<< HEAD
 		if ( 'f' === $fileinfo['type'] ) {
+=======
+		if ( 'f' == $fileinfo['type'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( ! $wp_filesystem->copy( $from . $filename, $to . $filename, true, FS_CHMOD_FILE ) ) {
 				// If copy failed, chmod file to 0644 and try again.
 				$wp_filesystem->chmod( $to . $filename, FS_CHMOD_FILE );
@@ -1364,12 +1430,16 @@ function _copy_dir( $from, $to, $skip_list = array() ) {
 					return new WP_Error( 'copy_failed__copy_dir', __( 'Could not copy file.' ), $to . $filename );
 				}
 			}
+<<<<<<< HEAD
 
 			// `wp_opcache_invalidate()` only exists in WordPress 5.5, so don't run it when upgrading to 5.5.
 			if ( function_exists( 'wp_opcache_invalidate' ) ) {
 				wp_opcache_invalidate( $to . $filename );
 			}
 		} elseif ( 'd' === $fileinfo['type'] ) {
+=======
+		} elseif ( 'd' == $fileinfo['type'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( ! $wp_filesystem->is_dir( $to . $filename ) ) {
 				if ( ! $wp_filesystem->mkdir( $to . $filename, FS_CHMOD_DIR ) ) {
 					return new WP_Error( 'mkdir_failed__copy_dir', __( 'Could not create directory.' ), $to . $filename );
@@ -1417,11 +1487,19 @@ function _redirect_to_about_wordpress( $new_version ) {
 	}
 
 	// Ensure we only run this on the update-core.php page. The Core_Upgrader may be used in other contexts.
+<<<<<<< HEAD
 	if ( 'update-core.php' !== $pagenow ) {
 		return;
 	}
 
 	if ( 'do-core-upgrade' !== $action && 'do-core-reinstall' !== $action ) {
+=======
+	if ( 'update-core.php' != $pagenow ) {
+		return;
+	}
+
+	if ( 'do-core-upgrade' != $action && 'do-core-reinstall' != $action ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return;
 	}
 
@@ -1429,7 +1507,11 @@ function _redirect_to_about_wordpress( $new_version ) {
 	load_default_textdomain();
 
 	// See do_core_upgrade().
+<<<<<<< HEAD
 	show_message( __( 'WordPress updated successfully.' ) );
+=======
+	show_message( __( 'WordPress updated successfully' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	// self_admin_url() won't exist when upgrading from <= 3.0, so relative URLs are intentional.
 	show_message(
@@ -1457,7 +1539,11 @@ window.location = 'about.php?updated';
 
 	// Include admin-footer.php and exit.
 	require_once ABSPATH . 'wp-admin/admin-footer.php';
+<<<<<<< HEAD
 	exit;
+=======
+	exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**

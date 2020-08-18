@@ -13,21 +13,33 @@
  *
  * @global string $wp_version
  */
+<<<<<<< HEAD
 $wp_version = '5.5';
+=======
+$wp_version = '5.4.2';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 /**
  * Holds the WordPress DB revision, increments when changes are made to the WordPress DB schema.
  *
  * @global int $wp_db_version
  */
+<<<<<<< HEAD
 $wp_db_version = 48748;
+=======
+$wp_db_version = 47018;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 /**
  * Holds the TinyMCE version.
  *
  * @global string $tinymce_version
  */
+<<<<<<< HEAD
 $tinymce_version = '49100-20200624';
+=======
+$tinymce_version = '4960-20190918';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 /**
  * Holds the required PHP version.

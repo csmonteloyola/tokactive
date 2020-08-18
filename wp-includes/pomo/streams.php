@@ -18,7 +18,11 @@ if ( ! class_exists( 'POMO_Reader', false ) ) :
 		 * PHP5 constructor.
 		 */
 		function __construct() {
+<<<<<<< HEAD
 			$this->is_overloaded = ( ( ini_get( 'mbstring.func_overload' ) & 2 ) != 0 ) && function_exists( 'mb_substr' ); // phpcs:ignore PHPCompatibility.IniDirectives.RemovedIniDirectives.mbstring_func_overloadDeprecated
+=======
+			$this->is_overloaded = ( ( ini_get( 'mbstring.func_overload' ) & 2 ) != 0 ) && function_exists( 'mb_substr' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$this->_pos          = 0;
 		}
 
@@ -54,7 +58,11 @@ if ( ! class_exists( 'POMO_Reader', false ) ) :
 			if ( 4 != $this->strlen( $bytes ) ) {
 				return false;
 			}
+<<<<<<< HEAD
 			$endian_letter = ( 'big' === $this->endian ) ? 'N' : 'V';
+=======
+			$endian_letter = ( 'big' == $this->endian ) ? 'N' : 'V';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$int           = unpack( $endian_letter, $bytes );
 			return reset( $int );
 		}
@@ -71,7 +79,11 @@ if ( ! class_exists( 'POMO_Reader', false ) ) :
 			if ( 4 * $count != $this->strlen( $bytes ) ) {
 				return false;
 			}
+<<<<<<< HEAD
 			$endian_letter = ( 'big' === $this->endian ) ? 'N' : 'V';
+=======
+			$endian_letter = ( 'big' == $this->endian ) ? 'N' : 'V';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return unpack( $endian_letter . $count, $bytes );
 		}
 

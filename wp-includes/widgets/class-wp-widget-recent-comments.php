@@ -69,6 +69,11 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 	 * @since 5.4.0 Creates a unique HTML ID for the `<ul>` element
 	 *              if more than one instance is displayed on the page.
 	 *
+<<<<<<< HEAD
+=======
+	 * @staticvar bool $first_instance
+	 *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param array $args     Display arguments including 'before_title', 'after_title',
 	 *                        'before_widget', and 'after_widget'.
 	 * @param array $instance Settings for the current Recent Comments widget instance.
@@ -82,8 +87,12 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 
 		$output = '';
 
+<<<<<<< HEAD
 		$default_title = __( 'Recent Comments' );
 		$title         = ( ! empty( $instance['title'] ) ) ? $instance['title'] : $default_title;
+=======
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Comments' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
@@ -124,6 +133,7 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 		$recent_comments_id = ( $first_instance ) ? 'recentcomments' : "recentcomments-{$this->number}";
 		$first_instance     = false;
 
+<<<<<<< HEAD
 		$format = current_theme_supports( 'html5', 'navigation-widgets' ) ? 'html5' : 'xhtml';
 
 		/** This filter is documented in wp-includes/widgets/class-wp-nav-menu-widget.php */
@@ -136,6 +146,8 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 			$output    .= '<nav role="navigation" aria-label="' . esc_attr( $aria_label ) . '">';
 		}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$output .= '<ul id="' . esc_attr( $recent_comments_id ) . '">';
 		if ( is_array( $comments ) && $comments ) {
 			// Prime cache for associated posts. (Prime post term cache if we need it for permalinks.)
@@ -154,11 +166,14 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 			}
 		}
 		$output .= '</ul>';
+<<<<<<< HEAD
 
 		if ( 'html5' === $format ) {
 			$output .= '</nav>';
 		}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$output .= $args['after_widget'];
 
 		echo $output;
@@ -192,6 +207,7 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 		$title  = isset( $instance['title'] ) ? $instance['title'] : '';
 		$number = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
 		?>
+<<<<<<< HEAD
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
@@ -201,6 +217,13 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of comments to show:' ); ?></label>
 			<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" />
 		</p>
+=======
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of comments to show:' ); ?></label>
+		<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" /></p>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<?php
 	}
 

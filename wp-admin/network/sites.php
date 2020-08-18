@@ -117,13 +117,21 @@ if ( isset( $_GET['action'] ) ) {
 					<input type="hidden" name="id" value="<?php echo esc_attr( $id ); ?>" />
 					<input type="hidden" name="_wp_http_referer" value="<?php echo esc_attr( wp_get_referer() ); ?>" />
 					<?php wp_nonce_field( $site_action . '_' . $id, '_wpnonce', false ); ?>
+<<<<<<< HEAD
 					<p><?php printf( $manage_actions[ $site_action ], $site_address ); ?></p>
+=======
+					<p><?php echo sprintf( $manage_actions[ $site_action ], $site_address ); ?></p>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					<?php submit_button( __( 'Confirm' ), 'primary' ); ?>
 				</form>
 			</div>
 		<?php
 		require_once ABSPATH . 'wp-admin/admin-footer.php';
+<<<<<<< HEAD
 		exit;
+=======
+		exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	} elseif ( array_key_exists( $_GET['action'], $manage_actions ) ) {
 		$action = $_GET['action'];
 		check_admin_referer( $action . '_' . $id );
@@ -210,7 +218,11 @@ if ( isset( $_GET['action'] ) ) {
 								</div>
 								<?php
 								require_once ABSPATH . 'wp-admin/admin-footer.php';
+<<<<<<< HEAD
 								exit;
+=======
+								exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							break;
 
 							case 'spam':
@@ -223,6 +235,7 @@ if ( isset( $_GET['action'] ) ) {
 						wp_die( __( 'Sorry, you are not allowed to change the current site.' ) );
 					}
 				}
+<<<<<<< HEAD
 
 				if ( ! in_array( $doaction, array( 'delete', 'spam', 'notspam' ), true ) ) {
 					$redirect_to = wp_get_referer();
@@ -233,6 +246,15 @@ if ( isset( $_GET['action'] ) ) {
 
 					wp_safe_redirect( $redirect_to );
 					exit;
+=======
+				if ( ! in_array( $doaction, array( 'delete', 'spam', 'notspam' ), true ) ) {
+					$redirect_to = wp_get_referer();
+					$blogs       = (array) $_POST['allblogs'];
+					/** This action is documented in wp-admin/network/site-themes.php */
+					$redirect_to = apply_filters( 'handle_network_bulk_actions-' . get_current_screen()->id, $redirect_to, $doaction, $blogs, $id ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+					wp_safe_redirect( $redirect_to );
+					exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 			} else {
 				// Process query defined by WP_MS_Site_List_Table::extra_table_nav().
@@ -240,7 +262,10 @@ if ( isset( $_GET['action'] ) ) {
 					array( '_wp_http_referer', '_wpnonce' ),
 					add_query_arg( $_POST, network_admin_url( 'sites.php' ) )
 				);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				wp_redirect( $location );
 				exit;
 			}
@@ -274,7 +299,10 @@ if ( isset( $_GET['action'] ) ) {
 			 * @param string $id The ID of the site being deactivated.
 			 */
 			do_action( 'deactivate_blog', $id );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			update_blog_status( $id, 'deleted', '1' );
 			break;
 
@@ -295,7 +323,11 @@ if ( isset( $_GET['action'] ) ) {
 
 	if ( ! empty( $updated_action ) ) {
 		wp_safe_redirect( add_query_arg( array( 'updated' => $updated_action ), wp_get_referer() ) );
+<<<<<<< HEAD
 		exit;
+=======
+		exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 }
 

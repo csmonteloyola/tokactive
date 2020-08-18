@@ -231,7 +231,11 @@ function apply_filters_ref_array( $tag, $args ) {
 	// Do 'all' actions first.
 	if ( isset( $wp_filter['all'] ) ) {
 		$wp_current_filter[] = $tag;
+<<<<<<< HEAD
 		$all_args            = func_get_args(); // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue.NeedsInspection
+=======
+		$all_args            = func_get_args();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		_wp_call_all_hook( $all_args );
 	}
 
@@ -364,7 +368,11 @@ function doing_filter( $filter = null ) {
 		return ! empty( $wp_current_filter );
 	}
 
+<<<<<<< HEAD
 	return in_array( $filter, $wp_current_filter, true );
+=======
+	return in_array( $filter, $wp_current_filter );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -453,7 +461,11 @@ function do_action( $tag, ...$arg ) {
 	// Do 'all' actions first.
 	if ( isset( $wp_filter['all'] ) ) {
 		$wp_current_filter[] = $tag;
+<<<<<<< HEAD
 		$all_args            = func_get_args(); // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue.NeedsInspection
+=======
+		$all_args            = func_get_args();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		_wp_call_all_hook( $all_args );
 	}
 
@@ -526,7 +538,11 @@ function do_action_ref_array( $tag, $args ) {
 	// Do 'all' actions first.
 	if ( isset( $wp_filter['all'] ) ) {
 		$wp_current_filter[] = $tag;
+<<<<<<< HEAD
 		$all_args            = func_get_args(); // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue.NeedsInspection
+=======
+		$all_args            = func_get_args();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		_wp_call_all_hook( $all_args );
 	}
 
@@ -620,10 +636,17 @@ function remove_all_actions( $tag, $priority = false ) {
  * @param string $tag         The name of the filter hook.
  * @param array  $args        Array of additional function arguments to be passed to apply_filters().
  * @param string $version     The version of WordPress that deprecated the hook.
+<<<<<<< HEAD
  * @param string $replacement Optional. The hook that should have been used. Default empty.
  * @param string $message     Optional. A message regarding the change. Default empty.
  */
 function apply_filters_deprecated( $tag, $args, $version, $replacement = '', $message = '' ) {
+=======
+ * @param string $replacement Optional. The hook that should have been used. Default null.
+ * @param string $message     Optional. A message regarding the change. Default null.
+ */
+function apply_filters_deprecated( $tag, $args, $version, $replacement = null, $message = null ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( ! has_filter( $tag ) ) {
 		return $args[0];
 	}
@@ -647,10 +670,17 @@ function apply_filters_deprecated( $tag, $args, $version, $replacement = '', $me
  * @param string $tag         The name of the action hook.
  * @param array  $args        Array of additional function arguments to be passed to do_action().
  * @param string $version     The version of WordPress that deprecated the hook.
+<<<<<<< HEAD
  * @param string $replacement Optional. The hook that should have been used. Default empty.
  * @param string $message     Optional. A message regarding the change. Default empty.
  */
 function do_action_deprecated( $tag, $args, $version, $replacement = '', $message = '' ) {
+=======
+ * @param string $replacement Optional. The hook that should have been used. Default null.
+ * @param string $message     Optional. A message regarding the change. Default null.
+ */
+function do_action_deprecated( $tag, $args, $version, $replacement = null, $message = null ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( ! has_action( $tag ) ) {
 		return;
 	}
@@ -709,6 +739,12 @@ function plugin_basename( $file ) {
  *
  * @global array $wp_plugin_paths
  *
+<<<<<<< HEAD
+=======
+ * @staticvar string $wp_plugin_path
+ * @staticvar string $wpmu_plugin_path
+ *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param string $file Known path to the file.
  * @return bool Whether the path was able to be registered.
  */

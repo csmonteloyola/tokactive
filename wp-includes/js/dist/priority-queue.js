@@ -82,11 +82,16 @@ this["wp"] = this["wp"] || {}; this["wp"]["priorityQueue"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 467);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 451);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /******/ })
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 467:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -104,6 +109,17 @@ __webpack_require__.d(__webpack_exports__, "createQueue", function() { return /*
 
 /**
  * @return {(callback: Callback) => void} RequestIdleCallback
+=======
+/***/ 451:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/priority-queue/build-module/request-idle-callback.js
+/**
+ * @return {typeof window.requestIdleCallback|typeof window.requestAnimationFrame|((callback:(timestamp:number)=>void)=>void)}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function createRequestIdleCallback() {
   if (typeof window === 'undefined') {
@@ -119,6 +135,10 @@ function createRequestIdleCallback() {
 /* harmony default export */ var request_idle_callback = (createRequestIdleCallback());
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/priority-queue/build-module/index.js
+<<<<<<< HEAD
+=======
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createQueue", function() { return build_module_createQueue; });
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /**
  * Internal dependencies
  */
@@ -148,19 +168,25 @@ function createRequestIdleCallback() {
  */
 
 /**
+<<<<<<< HEAD
  * Reset the queue.
  *
  * @typedef {()=>void} WPPriorityQueueReset
  */
 
 /**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * Priority queue instance.
  *
  * @typedef {Object} WPPriorityQueue
  *
  * @property {WPPriorityQueueAdd}   add   Add callback to queue for context.
  * @property {WPPriorityQueueFlush} flush Flush queue for context.
+<<<<<<< HEAD
  * @property {WPPriorityQueueReset} reset Reset queue.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 
 /**
@@ -183,7 +209,11 @@ function createRequestIdleCallback() {
  * queue.add( ctx2, () => console.log( 'This will be printed second' ) );
  *```
  *
+<<<<<<< HEAD
  * @return {WPPriorityQueue} Queue object with `add`, `flush` and `reset` methods.
+=======
+ * @return {WPPriorityQueue} Queue object with `add` and `flush` methods.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 
 var build_module_createQueue = function createQueue() {
@@ -193,17 +223,28 @@ var build_module_createQueue = function createQueue() {
 
   var elementsMap = new WeakMap();
   var isRunning = false;
+<<<<<<< HEAD
   /* eslint-disable jsdoc/valid-types */
 
   /**
    * Callback to process as much queue as time permits.
    *
+=======
+  /**
+   * Callback to process as much queue as time permits.
+   *
+   * @type {IdleRequestCallback & FrameRequestCallback}
+   *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
    * @param {IdleDeadline|number} deadline Idle callback deadline object, or
    *                                       animation frame timestamp.
    */
 
+<<<<<<< HEAD
   /* eslint-enable */
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
   var runWaitingList = function runWaitingList(deadline) {
     var hasTimeRemaining = typeof deadline === 'number' ? function () {
       return false;
@@ -277,6 +318,7 @@ var build_module_createQueue = function createQueue() {
     callback();
     return true;
   };
+<<<<<<< HEAD
   /**
    * Reset the queue without running the pending callbacks.
    *
@@ -294,6 +336,12 @@ var build_module_createQueue = function createQueue() {
     add: add,
     flush: flush,
     reset: reset
+=======
+
+  return {
+    add: add,
+    flush: flush
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
   };
 };
 

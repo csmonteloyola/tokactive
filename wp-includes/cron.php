@@ -130,8 +130,13 @@ function wp_schedule_single_event( $timestamp, $hook, $args = array() ) {
 	 *
 	 * @since 3.1.0
 	 *
+<<<<<<< HEAD
 	 * @param stdClass|false $event {
 	 *     An object containing an event's data, or boolean false to prevent the event from being scheduled.
+=======
+	 * @param stdClass $event {
+	 *     An object containing an event's data.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 *     @type string       $hook      Action hook to execute when the event is run.
 	 *     @type int          $timestamp Unix timestamp (UTC) for when to next run the event.
@@ -402,7 +407,11 @@ function wp_clear_scheduled_hook( $hook, $args = array() ) {
 	// Previously, this function took the arguments as discrete vars rather than an array like the rest of the API.
 	if ( ! is_array( $args ) ) {
 		_deprecated_argument( __FUNCTION__, '3.0.0', __( 'This argument has changed to an array to match the behavior of the other cron functions.' ) );
+<<<<<<< HEAD
 		$args = array_slice( func_get_args(), 1 ); // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue.NeedsInspection
+=======
+		$args = array_slice( func_get_args(), 1 );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -851,7 +860,11 @@ function wp_get_schedules() {
  * @since 5.1.0 {@see 'get_schedule'} filter added.
  *
  * @param string $hook Action hook to identify the event.
+<<<<<<< HEAD
  * @param array  $args Optional. Arguments passed to the event's callback function.
+=======
+ * @param array $args Optional. Arguments passed to the event's callback function.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|false False, if no schedule. Schedule name on success.
  */
 function wp_get_schedule( $hook, $args = array() ) {

@@ -402,13 +402,21 @@ class WP_REST_Request implements ArrayAccess {
 	 * @since 5.3.0
 	 *
 	 * @param string $key Parameter name.
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return bool True if a param exists for the given key.
 	 */
 	public function has_param( $key ) {
 		$order = $this->get_parameter_order();
 
 		foreach ( $order as $type ) {
+<<<<<<< HEAD
 			if ( is_array( $this->params[ $type ] ) && array_key_exists( $key, $this->params[ $type ] ) ) {
+=======
+			if ( array_key_exists( $key, $this->params[ $type ] ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				return true;
 			}
 		}
@@ -419,16 +427,20 @@ class WP_REST_Request implements ArrayAccess {
 	/**
 	 * Sets a parameter on the request.
 	 *
+<<<<<<< HEAD
 	 * If the given parameter key exists in any parameter type an update will take place,
 	 * otherwise a new param will be created in the first parameter type (respecting
 	 * get_parameter_order()).
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @since 4.4.0
 	 *
 	 * @param string $key   Parameter name.
 	 * @param mixed  $value Parameter value.
 	 */
 	public function set_param( $key, $value ) {
+<<<<<<< HEAD
 		$order     = $this->get_parameter_order();
 		$found_key = false;
 
@@ -442,6 +454,10 @@ class WP_REST_Request implements ArrayAccess {
 		if ( ! $found_key ) {
 			$this->params[ $order[0] ][ $key ] = $value;
 		}
+=======
+		$order                             = $this->get_parameter_order();
+		$this->params[ $order[0] ][ $key ] = $value;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**

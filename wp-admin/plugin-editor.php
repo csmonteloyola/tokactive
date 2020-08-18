@@ -11,7 +11,11 @@ require_once __DIR__ . '/admin.php';
 
 if ( is_multisite() && ! is_network_admin() ) {
 	wp_redirect( network_admin_url( 'plugin-editor.php' ) );
+<<<<<<< HEAD
 	exit;
+=======
+	exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 if ( ! current_user_can( 'edit_plugins' ) ) {
@@ -28,7 +32,11 @@ if ( empty( $plugins ) ) {
 	?>
 	<div class="wrap">
 		<h1><?php echo esc_html( $title ); ?></h1>
+<<<<<<< HEAD
 		<div id="message" class="error"><p><?php _e( 'No plugins are currently available.' ); ?></p></div>
+=======
+		<div id="message" class="error"><p><?php _e( 'You do not appear to have any plugins available at this time.' ); ?></p></div>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	</div>
 	<?php
 	require_once ABSPATH . 'wp-admin/admin-footer.php';
@@ -112,7 +120,11 @@ if ( ! is_file( $real_file ) ) {
 	if ( preg_match( '/\.([^.]+)$/', $real_file, $matches ) ) {
 		$ext = strtolower( $matches[1] );
 		// If extension is not in the acceptable list, skip it.
+<<<<<<< HEAD
 		if ( ! in_array( $ext, $editable_extensions, true ) ) {
+=======
+		if ( ! in_array( $ext, $editable_extensions ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			wp_die( sprintf( '<p>%s</p>', __( 'Files of this type are not editable.' ) ) );
 		}
 	}
@@ -161,7 +173,11 @@ if ( ! empty( $posted_content ) ) {
 	$content = file_get_contents( $real_file );
 }
 
+<<<<<<< HEAD
 if ( '.php' === substr( $real_file, strrpos( $real_file, '.' ) ) ) {
+=======
+if ( '.php' == substr( $real_file, strrpos( $real_file, '.' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	$functions = wp_doc_link_parse( $content );
 
 	if ( ! empty( $functions ) ) {
@@ -197,18 +213,32 @@ $content = esc_textarea( $content );
 	if ( is_plugin_active( $plugin ) ) {
 		if ( is_writeable( $real_file ) ) {
 			/* translators: %s: Plugin file name. */
+<<<<<<< HEAD
 			printf( __( 'Editing %s (active)' ), '<strong>' . esc_html( $file ) . '</strong>' );
 		} else {
 			/* translators: %s: Plugin file name. */
 			printf( __( 'Browsing %s (active)' ), '<strong>' . esc_html( $file ) . '</strong>' );
+=======
+			echo sprintf( __( 'Editing %s (active)' ), '<strong>' . esc_html( $file ) . '</strong>' );
+		} else {
+			/* translators: %s: Plugin file name. */
+			echo sprintf( __( 'Browsing %s (active)' ), '<strong>' . esc_html( $file ) . '</strong>' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	} else {
 		if ( is_writeable( $real_file ) ) {
 			/* translators: %s: Plugin file name. */
+<<<<<<< HEAD
 			printf( __( 'Editing %s (inactive)' ), '<strong>' . esc_html( $file ) . '</strong>' );
 		} else {
 			/* translators: %s: Plugin file name. */
 			printf( __( 'Browsing %s (inactive)' ), '<strong>' . esc_html( $file ) . '</strong>' );
+=======
+			echo sprintf( __( 'Editing %s (inactive)' ), '<strong>' . esc_html( $file ) . '</strong>' );
+		} else {
+			/* translators: %s: Plugin file name. */
+			echo sprintf( __( 'Browsing %s (inactive)' ), '<strong>' . esc_html( $file ) . '</strong>' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 	}
 	?>
@@ -221,7 +251,11 @@ $content = esc_textarea( $content );
 		<?php
 		foreach ( $plugins as $plugin_key => $a_plugin ) {
 			$plugin_name = $a_plugin['Name'];
+<<<<<<< HEAD
 			if ( $plugin_key === $plugin ) {
+=======
+			if ( $plugin_key == $plugin ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$selected = " selected='selected'";
 			} else {
 				$selected = '';
@@ -244,7 +278,11 @@ $content = esc_textarea( $content );
 	<?php
 	$plugin_editable_files = array();
 	foreach ( $plugin_files as $plugin_file ) {
+<<<<<<< HEAD
 		if ( preg_match( '/\.([^.]+)$/', $plugin_file, $matches ) && in_array( $matches[1], $editable_extensions, true ) ) {
+=======
+		if ( preg_match( '/\.([^.]+)$/', $plugin_file, $matches ) && in_array( $matches[1], $editable_extensions ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$plugin_editable_files[] = $plugin_file;
 		}
 	}
@@ -277,7 +315,11 @@ $content = esc_textarea( $content );
 
 	<?php if ( is_writeable( $real_file ) ) : ?>
 		<div class="editor-notices">
+<<<<<<< HEAD
 		<?php if ( in_array( $plugin, (array) get_option( 'active_plugins', array() ), true ) ) { ?>
+=======
+		<?php if ( in_array( $plugin, (array) get_option( 'active_plugins', array() ) ) ) { ?>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			<div class="notice notice-warning inline active-plugin-edit-warning">
 				<p><?php _e( '<strong>Warning:</strong> Making changes to active plugins is not recommended.' ); ?></p>
 			</div>

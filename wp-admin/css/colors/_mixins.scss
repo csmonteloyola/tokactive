@@ -34,4 +34,17 @@
 		border-color: darken( $button-color, 15% );
 		box-shadow: inset 0 2px 5px -3px darken( $button-color, 50% );
 	}
+<<<<<<< HEAD
+=======
+
+	&[disabled],
+	&:disabled,
+	&.button-primary-disabled,
+	&.disabled {
+		color: hsl( hue( $button-color ), 10%, 80% ) !important;
+		background: darken( $button-color, 8% ) !important;
+		border-color: darken( $button-color, 8% ) !important;
+		text-shadow: none !important;
+	}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }

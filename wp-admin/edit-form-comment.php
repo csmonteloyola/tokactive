@@ -118,7 +118,11 @@ switch ( $comment->comment_approved ) {
 <label><input type="radio"<?php checked( $comment->comment_approved, 'spam' ); ?> name="comment_status" value="spam" /><?php _ex( 'Spam', 'comment status' ); ?></label>
 </fieldset>
 </div><!-- .misc-pub-section -->
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 <div class="misc-pub-section curtime misc-pub-curtime">
 <?php
 $submitted = sprintf(

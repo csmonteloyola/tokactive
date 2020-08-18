@@ -585,7 +585,11 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 			return $prepared_comment;
 		}
 
+<<<<<<< HEAD
 		$prepared_comment['comment_type'] = 'comment';
+=======
+		$prepared_comment['comment_type'] = '';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		/*
 		 * Do not allow a comment to be created with missing or empty
@@ -682,11 +686,19 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 		 * Filters a comment before it is inserted via the REST API.
 		 *
 		 * Allows modification of the comment right before it is inserted via wp_insert_comment().
+<<<<<<< HEAD
 		 * Returning a WP_Error value from the filter will short-circuit insertion and allow
 		 * skipping further processing.
 		 *
 		 * @since 4.7.0
 		 * @since 4.8.0 `$prepared_comment` can now be a WP_Error to short-circuit insertion.
+=======
+		 * Returning a WP_Error value from the filter will shortcircuit insertion and allow
+		 * skipping further processing.
+		 *
+		 * @since 4.7.0
+		 * @since 4.8.0 `$prepared_comment` can now be a WP_Error to shortcircuit insertion.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 *
 		 * @param array|WP_Error  $prepared_comment The prepared comment data for wp_insert_comment().
 		 * @param WP_REST_Request $request          Request used to insert the comment.
@@ -868,9 +880,15 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 				);
 			}
 
+<<<<<<< HEAD
 			$updated = wp_update_comment( wp_slash( (array) $prepared_args ), true );
 
 			if ( is_wp_error( $updated ) ) {
+=======
+			$updated = wp_update_comment( wp_slash( (array) $prepared_args ) );
+
+			if ( false === $updated ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				return new WP_Error(
 					'rest_comment_failed_edit',
 					__( 'Updating comment failed.' ),
@@ -1774,7 +1792,11 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 		}
 
 		if ( post_password_required( $post ) ) {
+<<<<<<< HEAD
 			$result = current_user_can( 'edit_post', $post->ID );
+=======
+			$result = current_user_can( $post_type->cap->edit_post, $post->ID );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		} else {
 			$result = $posts_controller->check_read_permission( $post );
 		}

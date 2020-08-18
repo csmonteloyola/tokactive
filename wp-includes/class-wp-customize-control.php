@@ -204,7 +204,11 @@ class WP_Customize_Control {
 	 *                                                 'textarea', 'radio', 'select', and 'dropdown-pages'. Additional
 	 *                                                 input types such as 'email', 'url', 'number', 'hidden', and
 	 *                                                 'date' are supported implicitly. Default 'text'.
+<<<<<<< HEAD
 	 *     @type callable             $active_callback Active callback.
+=======
+	 *     @type callback             $active_callback Active callback.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * }
 	 */
 	public function __construct( $manager, $id, $args = array() ) {

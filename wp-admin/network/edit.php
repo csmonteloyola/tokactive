@@ -38,4 +38,8 @@ do_action( 'wpmuadminedit' );
 do_action( "network_admin_edit_{$action}" );
 
 wp_redirect( network_admin_url() );
+<<<<<<< HEAD
 exit;
+=======
+exit();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c

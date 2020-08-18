@@ -70,6 +70,11 @@ function _wp_admin_bar_init() {
  * @since 5.4.0 Called on 'wp_body_open' action first, with 'wp_footer' as a fallback.
  *
  * @global WP_Admin_Bar $wp_admin_bar
+<<<<<<< HEAD
+=======
+ *
+ * @staticvar bool $rendered
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function wp_admin_bar_render() {
 	global $wp_admin_bar;
@@ -311,7 +316,11 @@ function wp_admin_bar_my_account_menu( $wp_admin_bar ) {
 			array(
 				'parent' => 'user-actions',
 				'id'     => 'edit-profile',
+<<<<<<< HEAD
 				'title'  => __( 'Edit Profile' ),
+=======
+				'title'  => __( 'Edit My Profile' ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				'href'   => $profile_url,
 			)
 		);
@@ -425,9 +434,13 @@ function wp_admin_bar_customize_menu( $wp_admin_bar ) {
 	}
 
 	// Don't show if the user cannot edit a given customize_changeset post currently being previewed.
+<<<<<<< HEAD
 	if ( is_customize_preview() && $wp_customize->changeset_post_id()
 		&& ! current_user_can( get_post_type_object( 'customize_changeset' )->cap->edit_post, $wp_customize->changeset_post_id() )
 	) {
+=======
+	if ( is_customize_preview() && $wp_customize->changeset_post_id() && ! current_user_can( get_post_type_object( 'customize_changeset' )->cap->edit_post, $wp_customize->changeset_post_id() ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return;
 	}
 
@@ -692,11 +705,15 @@ function wp_admin_bar_shortlink_menu( $wp_admin_bar ) {
  * @global WP_Query $wp_the_query WordPress Query object.
  * @global int      $user_id      The ID of the user being edited. Not to be confused with the
  *                                global $user_ID, which contains the ID of the current user.
+<<<<<<< HEAD
  * @global int      $post_id      The ID of the post when editing comments for a single post.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param WP_Admin_Bar $wp_admin_bar
  */
 function wp_admin_bar_edit_menu( $wp_admin_bar ) {
+<<<<<<< HEAD
 	global $tag, $wp_the_query, $user_id, $post_id;
 
 	if ( is_admin() ) {
@@ -717,11 +734,30 @@ function wp_admin_bar_edit_menu( $wp_admin_bar ) {
 
 		if ( ( 'post' === $current_screen->base || 'edit-comments' === $current_screen->base )
 			&& 'add' !== $current_screen->action
+=======
+	global $tag, $wp_the_query, $user_id;
+
+	if ( is_admin() ) {
+		$current_screen = get_current_screen();
+		$post           = get_post();
+		if ( 'post' == $current_screen->base ) {
+			$post_type_object = get_post_type_object( $post->post_type );
+		} elseif ( 'edit' == $current_screen->base ) {
+			$post_type_object = get_post_type_object( $current_screen->post_type );
+		}
+
+		if ( 'post' == $current_screen->base
+			&& 'add' != $current_screen->action
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			&& ( $post_type_object )
 			&& current_user_can( 'read_post', $post->ID )
 			&& ( $post_type_object->public )
 			&& ( $post_type_object->show_in_admin_bar ) ) {
+<<<<<<< HEAD
 			if ( 'draft' === $post->post_status ) {
+=======
+			if ( 'draft' == $post->post_status ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$preview_link = get_preview_post_link( $post );
 				$wp_admin_bar->add_node(
 					array(
@@ -740,7 +776,11 @@ function wp_admin_bar_edit_menu( $wp_admin_bar ) {
 					)
 				);
 			}
+<<<<<<< HEAD
 		} elseif ( 'edit' === $current_screen->base
+=======
+		} elseif ( 'edit' == $current_screen->base
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			&& ( $post_type_object )
 			&& ( $post_type_object->public )
 			&& ( $post_type_object->show_in_admin_bar )
@@ -753,7 +793,11 @@ function wp_admin_bar_edit_menu( $wp_admin_bar ) {
 					'href'  => get_post_type_archive_link( $current_screen->post_type ),
 				)
 			);
+<<<<<<< HEAD
 		} elseif ( 'term' === $current_screen->base && isset( $tag ) && is_object( $tag ) && ! is_wp_error( $tag ) ) {
+=======
+		} elseif ( 'term' == $current_screen->base && isset( $tag ) && is_object( $tag ) && ! is_wp_error( $tag ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$tax = get_taxonomy( $tag->taxonomy );
 			if ( is_taxonomy_viewable( $tax ) ) {
 				$wp_admin_bar->add_node(
@@ -764,7 +808,11 @@ function wp_admin_bar_edit_menu( $wp_admin_bar ) {
 					)
 				);
 			}
+<<<<<<< HEAD
 		} elseif ( 'user-edit' === $current_screen->base && isset( $user_id ) ) {
+=======
+		} elseif ( 'user-edit' == $current_screen->base && isset( $user_id ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$user_object = get_userdata( $user_id );
 			$view_link   = get_author_posts_url( $user_object->ID );
 			if ( $user_object->exists() && $view_link ) {
@@ -1212,7 +1260,11 @@ function is_admin_bar_showing() {
 	}
 
 	if ( ! isset( $show_admin_bar ) ) {
+<<<<<<< HEAD
 		if ( ! is_user_logged_in() || 'wp-login.php' === $pagenow ) {
+=======
+		if ( ! is_user_logged_in() || 'wp-login.php' == $pagenow ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$show_admin_bar = false;
 		} else {
 			$show_admin_bar = _get_admin_bar_pref();
@@ -1241,8 +1293,13 @@ function is_admin_bar_showing() {
  * @access private
  *
  * @param string $context Context of this preference check. Defaults to 'front'. The 'admin'
+<<<<<<< HEAD
  *                        preference is no longer used.
  * @param int    $user    Optional. ID of the user to check, defaults to 0 for current user.
+=======
+ *  preference is no longer used.
+ * @param int $user Optional. ID of the user to check, defaults to 0 for current user.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return bool Whether the admin bar should be showing for this user.
  */
 function _get_admin_bar_pref( $context = 'front', $user = 0 ) {

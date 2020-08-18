@@ -13,10 +13,17 @@ class WP_HTTP_IXR_Client extends IXR_Client {
 	public $error;
 
 	/**
+<<<<<<< HEAD
 	 * @param string      $server
 	 * @param string|bool $path
 	 * @param int|bool    $port
 	 * @param int         $timeout
+=======
+	 * @param string $server
+	 * @param string|bool $path
+	 * @param int|bool $port
+	 * @param int $timeout
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function __construct( $server, $path = false, $port = false, $timeout = 15 ) {
 		if ( ! $path ) {
@@ -46,6 +53,7 @@ class WP_HTTP_IXR_Client extends IXR_Client {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @since 3.1.0
 	 * @since 5.5.0 Formalized the existing `...$args` parameter by adding it
 	 *              to the function signature.
@@ -53,6 +61,12 @@ class WP_HTTP_IXR_Client extends IXR_Client {
 	 * @return bool
 	 */
 	public function query( ...$args ) {
+=======
+	 * @return bool
+	 */
+	public function query() {
+		$args    = func_get_args();
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$method  = array_shift( $args );
 		$request = new IXR_Request( $method, $args );
 		$xml     = $request->getXml();

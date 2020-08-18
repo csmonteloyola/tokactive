@@ -148,6 +148,7 @@ body.post-new-php .submitbox .submitdelete {
 }
 
 /* Post Screen */
+<<<<<<< HEAD
 
 /* Only highlight drop zones when dragging and only in the 2 columns layout. */
 .is-dragging-metaboxes .metabox-holder .postbox-container .meta-box-sortables {
@@ -162,6 +163,10 @@ body.post-new-php .submitbox .submitdelete {
 	 */
 	min-height: 60px;
 	margin-bottom: 20px;
+=======
+#post-body #normal-sortables {
+	min-height: 50px;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .postbox {
@@ -648,6 +653,14 @@ form#tags-filter {
 	max-width: 100%;
 }
 
+<<<<<<< HEAD
+=======
+.ie8 #poststuff .inside #parent_id,
+.ie8 #poststuff .inside #page_template {
+	width: 250px;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .post-attributes-label-wrapper {
 	margin-bottom: 0.5em;
 }
@@ -725,18 +738,26 @@ form#tags-filter {
 }
 
 .text-removed .policy-text {
+<<<<<<< HEAD
+=======
+	font-style: italic;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	color: #666;
 	font-weight: 600;
 }
 
 .privacy-text-actions {
+<<<<<<< HEAD
 	display: inline-block;
 	width: 100%;
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	height: 32px;
 	line-height: 2.46153846;
 	padding-bottom: 6px;
 }
 
+<<<<<<< HEAD
 .privacy-text-actions .success {
 	display: none;
 	color: #40860a;
@@ -749,6 +770,8 @@ form#tags-filter {
 	height: 32px;
 }
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .wp-privacy-policy-guide .policy-text h2 {
 	margin: 1.2em 0 1em;
 	padding: 0;
@@ -758,12 +781,17 @@ form#tags-filter {
 	font-style: italic;
 }
 
+<<<<<<< HEAD
 .privacy-text-section .return-to-top {
+=======
+.privacy-text-section a.return-to-top {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	float: left;
 	margin-left: -250px;
 	margin-top: 6px;
 }
 
+<<<<<<< HEAD
 #wpbody:target:before {
 	content: "";
 	display: block;
@@ -771,6 +799,8 @@ form#tags-filter {
 	margin-top: -50px;
 }
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .hide-privacy-policy-tutorial {
 	background-color: #fff;
 }
@@ -956,7 +986,11 @@ strong.privacy-policy-tutorial {
 }
 
 a.post-format-icon:hover:before {
+<<<<<<< HEAD
 	color: #006799;
+=======
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 #post-formats-select {
@@ -1119,6 +1153,10 @@ p.description,
 span.description,
 .form-wrap p {
 	font-size: 13px;
+<<<<<<< HEAD
+=======
+	font-style: italic;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 p.description code {
@@ -1466,10 +1504,14 @@ table.links-table {
 	}
 }
 
+<<<<<<< HEAD
 /*
  * The edit attachment screen auto-switches to one column layout when the
  * viewport is smaller than 1200 pixels.
  */
+=======
+/* one column on the attachment editor screen */
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 @media only screen and (max-width: 1200px) {
 	.post-type-attachment #poststuff {
 		min-width: 0;
@@ -1486,7 +1528,11 @@ table.links-table {
 
 	.post-type-attachment #poststuff #postbox-container-1 .empty-container,
 	.post-type-attachment #poststuff #postbox-container-1 #side-sortables:empty {
+<<<<<<< HEAD
 		outline: none;
+=======
+		border: 0 none;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		height: 0;
 		min-height: 0;
 	}
@@ -1496,12 +1542,15 @@ table.links-table {
 		width: auto;
 	}
 
+<<<<<<< HEAD
 	.is-dragging-metaboxes.post-type-attachment #post-body .meta-box-sortables {
 		outline: none;
 		min-height: 0;
 		margin-bottom: 0;
 	}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/* hide the radio buttons for column prefs */
 	.post-type-attachment .screen-layout,
 	.post-type-attachment .columns-prefs {
@@ -1526,6 +1575,10 @@ table.links-table {
 
 	#poststuff #postbox-container-1 .empty-container,
 	#poststuff #postbox-container-1 #side-sortables:empty {
+<<<<<<< HEAD
+=======
+		border: 0 none;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		height: 0;
 		min-height: 0;
 	}
@@ -1535,6 +1588,7 @@ table.links-table {
 		width: auto;
 	}
 
+<<<<<<< HEAD
 	/* Increase min-height while dragging for the #side-sortables and any potential sortables area with custom ID. */
 	.is-dragging-metaboxes #poststuff #postbox-container-1 .empty-container,
 	.is-dragging-metaboxes #poststuff #postbox-container-1 #side-sortables:empty,
@@ -1544,6 +1598,8 @@ table.links-table {
 		min-height: 60px;
 	}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/* hide the radio buttons for column prefs */
 	.screen-layout,
 	.columns-prefs {
@@ -1793,11 +1849,19 @@ table.links-table {
 		float: none;
 		width: auto;
 		height: 100%;
+<<<<<<< HEAD
 		display: flex;
 		flex-direction: column;
 	}
 
 	.privacy-text-section .return-to-top {
 		margin: 2em 0 0;
+=======
+	}
+
+	.privacy-text-section a.return-to-top {
+		float: none;
+		margin: 0;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 }

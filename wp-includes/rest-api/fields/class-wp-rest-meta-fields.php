@@ -70,7 +70,11 @@ abstract class WP_REST_Meta_Fields {
 	 *
 	 * @param int             $object_id Object ID to fetch meta for.
 	 * @param WP_REST_Request $request   Full details about the request.
+<<<<<<< HEAD
 	 * @return array Array containing the meta values keyed by name.
+=======
+	 * @return object|WP_Error Object containing the meta values by name, otherwise WP_Error object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function get_value( $object_id, $request ) {
 		$fields   = $this->get_registered_fields();
@@ -269,6 +273,7 @@ abstract class WP_REST_Meta_Fields {
 			);
 		}
 
+<<<<<<< HEAD
 		$current_values = get_metadata( $meta_type, $object_id, $meta_key, false );
 		$subtype        = get_object_subtype( $meta_type, $object_id );
 
@@ -284,6 +289,15 @@ abstract class WP_REST_Meta_Fields {
 					}
 				)
 			);
+=======
+		$current = get_metadata( $meta_type, $object_id, $meta_key, false );
+
+		$to_remove = $current;
+		$to_add    = $values;
+
+		foreach ( $to_add as $add_key => $value ) {
+			$remove_keys = array_keys( $to_remove, $value, true );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			if ( empty( $remove_keys ) ) {
 				continue;
@@ -367,9 +381,25 @@ abstract class WP_REST_Meta_Fields {
 		// Do the exact same check for a duplicate value as in update_metadata() to avoid update_metadata() returning false.
 		$old_value = get_metadata( $meta_type, $object_id, $meta_key );
 		$subtype   = get_object_subtype( $meta_type, $object_id );
+<<<<<<< HEAD
 
 		if ( 1 === count( $old_value ) && $this->is_meta_value_same_as_stored_value( $meta_key, $subtype, $old_value[0], $value ) ) {
 			return true;
+=======
+		$args      = $this->get_registered_fields()[ $meta_key ];
+
+		if ( 1 === count( $old_value ) ) {
+			$sanitized = sanitize_meta( $meta_key, $value, $meta_type, $subtype );
+
+			if ( in_array( $args['type'], array( 'string', 'number', 'integer', 'boolean' ), true ) ) {
+				// The return value of get_metadata will always be a string for scalar types.
+				$sanitized = (string) $sanitized;
+			}
+
+			if ( $sanitized === $old_value[0] ) {
+				return true;
+			}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		if ( ! update_metadata( $meta_type, $object_id, wp_slash( $meta_key ), wp_slash_strings_only( $value ) ) ) {
@@ -388,6 +418,7 @@ abstract class WP_REST_Meta_Fields {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Checks if the user provided value is equivalent to a stored value for the given meta key.
 	 *
 	 * @since 5.5.0
@@ -411,6 +442,8 @@ abstract class WP_REST_Meta_Fields {
 	}
 
 	/**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * Retrieves all the registered meta fields.
 	 *
 	 * @since 4.7.0

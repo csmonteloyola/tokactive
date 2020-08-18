@@ -114,6 +114,7 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 <div class="wrap">
 	<h1><?php echo esc_html( $title ); ?></h1>
 
+<<<<<<< HEAD
 	<?php
 	if ( ! empty( $_GET['admin_email_remind_later'] ) ) :
 		/** This filter is documented in wp-login.php */
@@ -143,13 +144,21 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 		<?php endif; ?>
 	<?php endif; ?>
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 <?php
 if ( has_action( 'welcome_panel' ) && current_user_can( 'edit_theme_options' ) ) :
 	$classes = 'welcome-panel';
 
+<<<<<<< HEAD
 	$option = (int) get_user_meta( get_current_user_id(), 'show_welcome_panel', true );
 	// 0 = hide, 1 = toggled to show or single site creator, 2 = multisite site owner.
 	$hide = ( 0 === $option || ( 2 === $option && wp_get_current_user()->user_email !== get_option( 'admin_email' ) ) );
+=======
+	$option = get_user_meta( get_current_user_id(), 'show_welcome_panel', true );
+	// 0 = hide, 1 = toggled to show or single site creator, 2 = multisite site owner.
+	$hide = 0 == $option || ( 2 == $option && wp_get_current_user()->user_email != get_option( 'admin_email' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( $hide ) {
 		$classes .= ' hidden';
 	}

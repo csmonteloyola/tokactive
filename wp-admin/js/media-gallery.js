@@ -23,7 +23,11 @@ jQuery(function($) {
 			img_size = $( 'input[name="attachments[' + id + '][image-size]"]:checked').val();
 
 			/**
+<<<<<<< HEAD
 			 * This Ajax action has been deprecated since 3.5.0, see custom-background.php
+=======
+			 * This AJAX action has been deprecated since 3.5.0, see custom-background.php
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 */
 			jQuery.post(ajaxurl, {
 				action: 'set-background-image',

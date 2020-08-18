@@ -35,7 +35,11 @@ if ( ! can_edit_network( $details->site_id ) ) {
 $parsed_scheme = parse_url( $details->siteurl, PHP_URL_SCHEME );
 $is_main_site  = is_main_site( $id );
 
+<<<<<<< HEAD
 if ( isset( $_REQUEST['action'] ) && 'update-site' === $_REQUEST['action'] ) {
+=======
+if ( isset( $_REQUEST['action'] ) && 'update-site' == $_REQUEST['action'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	check_admin_referer( 'edit-site' );
 
 	switch_to_blog( $id );
@@ -72,9 +76,14 @@ if ( isset( $_REQUEST['action'] ) && 'update-site' === $_REQUEST['action'] ) {
 
 	$existing_details     = get_site( $id );
 	$blog_data_checkboxes = array( 'public', 'archived', 'spam', 'mature', 'deleted' );
+<<<<<<< HEAD
 
 	foreach ( $blog_data_checkboxes as $c ) {
 		if ( ! in_array( (int) $existing_details->$c, array( 0, 1 ), true ) ) {
+=======
+	foreach ( $blog_data_checkboxes as $c ) {
+		if ( ! in_array( $existing_details->$c, array( 0, 1 ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$blog_data[ $c ] = $existing_details->$c;
 		} else {
 			$blog_data[ $c ] = isset( $_POST['blog'][ $c ] ) ? 1 : 0;
@@ -117,7 +126,11 @@ if ( isset( $_REQUEST['action'] ) && 'update-site' === $_REQUEST['action'] ) {
 
 if ( isset( $_GET['update'] ) ) {
 	$messages = array();
+<<<<<<< HEAD
 	if ( 'updated' === $_GET['update'] ) {
+=======
+	if ( 'updated' == $_GET['update'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$messages[] = __( 'Site info updated.' );
 	}
 }
@@ -195,7 +208,11 @@ if ( ! empty( $messages ) ) {
 			<fieldset>
 			<legend class="screen-reader-text"><?php _e( 'Set site attributes' ); ?></legend>
 			<?php foreach ( $attribute_fields as $field_key => $field_label ) : ?>
+<<<<<<< HEAD
 				<label><input type="checkbox" name="blog[<?php echo $field_key; ?>]" value="1" <?php checked( (bool) $details->$field_key, true ); ?> <?php disabled( ! in_array( (int) $details->$field_key, array( 0, 1 ), true ) ); ?> />
+=======
+				<label><input type="checkbox" name="blog[<?php echo $field_key; ?>]" value="1" <?php checked( (bool) $details->$field_key, true ); ?> <?php disabled( ! in_array( $details->$field_key, array( 0, 1 ) ) ); ?> />
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				<?php echo $field_label; ?></label><br/>
 			<?php endforeach; ?>
 			<fieldset>

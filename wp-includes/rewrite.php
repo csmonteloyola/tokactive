@@ -247,7 +247,11 @@ function remove_permastruct( $name ) {
 function add_feed( $feedname, $function ) {
 	global $wp_rewrite;
 
+<<<<<<< HEAD
 	if ( ! in_array( $feedname, $wp_rewrite->feeds, true ) ) {
+=======
+	if ( ! in_array( $feedname, $wp_rewrite->feeds ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$wp_rewrite->feeds[] = $feedname;
 	}
 
@@ -269,7 +273,11 @@ function add_feed( $feedname, $function ) {
  * @global WP_Rewrite $wp_rewrite WordPress rewrite component.
  *
  * @param bool $hard Whether to update .htaccess (hard flush) or just update
+<<<<<<< HEAD
  *                   rewrite_rules option (soft flush). Default is true (hard).
+=======
+ *                   rewrite_rules transient (soft flush). Default is true (hard).
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function flush_rewrite_rules( $hard = true ) {
 	global $wp_rewrite;
@@ -364,7 +372,11 @@ function wp_resolve_numeric_slug_conflicts( $query_vars = array() ) {
 
 	// Identify the 'postname' position in the permastruct array.
 	$permastructs   = array_values( array_filter( explode( '/', get_option( 'permalink_structure' ) ) ) );
+<<<<<<< HEAD
 	$postname_index = array_search( '%postname%', $permastructs, true );
+=======
+	$postname_index = array_search( '%postname%', $permastructs );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	if ( false === $postname_index ) {
 		return $query_vars;
@@ -515,7 +527,11 @@ function url_to_postid( $url ) {
 		$url = str_replace( '://www.', '://', $url );
 	}
 
+<<<<<<< HEAD
 	if ( trim( $url, '/' ) === home_url() && 'page' === get_option( 'show_on_front' ) ) {
+=======
+	if ( trim( $url, '/' ) === home_url() && 'page' == get_option( 'show_on_front' ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$page_on_front = get_option( 'page_on_front' );
 
 		if ( $page_on_front && get_post( $page_on_front ) instanceof WP_Post ) {
@@ -596,7 +612,11 @@ function url_to_postid( $url ) {
 			parse_str( $query, $query_vars );
 			$query = array();
 			foreach ( (array) $query_vars as $key => $value ) {
+<<<<<<< HEAD
 				if ( in_array( (string) $key, $wp->public_query_vars, true ) ) {
+=======
+				if ( in_array( $key, $wp->public_query_vars ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$query[ $key ] = $value;
 					if ( isset( $post_type_query_vars[ $key ] ) ) {
 						$query['post_type'] = $post_type_query_vars[ $key ];

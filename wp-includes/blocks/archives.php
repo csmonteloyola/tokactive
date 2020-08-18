@@ -116,9 +116,32 @@ function render_block_core_archives( $attributes ) {
  * Register archives block.
  */
 function register_block_core_archives() {
+<<<<<<< HEAD
 	register_block_type_from_metadata(
 		__DIR__ . '/archives',
 		array(
+=======
+	register_block_type(
+		'core/archives',
+		array(
+			'attributes'      => array(
+				'align'             => array(
+					'type' => 'string',
+					'enum' => array( 'left', 'center', 'right', 'wide', 'full' ),
+				),
+				'className'         => array(
+					'type' => 'string',
+				),
+				'displayAsDropdown' => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'showPostCounts'    => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+			),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			'render_callback' => 'render_block_core_archives',
 		)
 	);

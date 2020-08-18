@@ -10,7 +10,10 @@
 class WP_Site_Health_Auto_Updates {
 	/**
 	 * WP_Site_Health_Auto_Updates constructor.
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @since 5.2.0
 	 */
 	public function __construct() {
@@ -66,7 +69,11 @@ class WP_Site_Health_Auto_Updates {
 	 * @return array The test results.
 	 */
 	public function test_constants( $constant, $value ) {
+<<<<<<< HEAD
 		if ( defined( $constant ) && constant( $constant ) !== $value ) {
+=======
+		if ( defined( $constant ) && constant( $constant ) != $value ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return array(
 				'description' => sprintf(
 					/* translators: %s: Name of the constant used. */
@@ -163,11 +170,19 @@ class WP_Site_Health_Auto_Updates {
 	 *
 	 * @since 5.3.0
 	 *
+<<<<<<< HEAD
 	 * @return array|bool The test results. False if auto-updates are enabled.
 	 */
 	public function test_wp_automatic_updates_disabled() {
 		if ( ! class_exists( 'WP_Automatic_Updater' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/class-wp-automatic-updater.php';
+=======
+	 * @return array|bool The test results. False if auto updates are enabled.
+	 */
+	public function test_wp_automatic_updates_disabled() {
+		if ( ! class_exists( 'WP_Automatic_Updater' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/class-wp-automatic-updates.php';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		$auto_updates = new WP_Automatic_Updater();
@@ -187,7 +202,11 @@ class WP_Site_Health_Auto_Updates {
 	 *
 	 * @since 5.2.0
 	 *
+<<<<<<< HEAD
 	 * @return array|bool The test results. False if the auto-updates failed.
+=======
+	 * @return array|bool The test results. False if the auto updates failed.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	function test_if_failed_update() {
 		$failed = get_site_option( 'auto_core_update_failed' );
@@ -246,7 +265,11 @@ class WP_Site_Health_Auto_Updates {
 				$check_dirs[] = $context_dir;
 
 				// Once we've hit '/' or 'C:\', we need to stop. dirname will keep returning the input here.
+<<<<<<< HEAD
 				if ( dirname( $context_dir ) === $context_dir ) {
+=======
+				if ( dirname( $context_dir ) == $context_dir ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					break;
 				}
 
@@ -348,7 +371,11 @@ class WP_Site_Health_Auto_Updates {
 
 		WP_Filesystem();
 
+<<<<<<< HEAD
 		if ( 'direct' !== $wp_filesystem->method ) {
+=======
+		if ( 'direct' != $wp_filesystem->method ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return false;
 		}
 
@@ -379,7 +406,11 @@ class WP_Site_Health_Auto_Updates {
 
 		$unwritable_files = array();
 		foreach ( array_keys( $checksums ) as $file ) {
+<<<<<<< HEAD
 			if ( 'wp-content' === substr( $file, 0, 10 ) ) {
+=======
+			if ( 'wp-content' == substr( $file, 0, 10 ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				continue;
 			}
 			if ( ! file_exists( ABSPATH . $file ) ) {

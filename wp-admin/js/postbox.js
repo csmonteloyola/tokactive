@@ -7,11 +7,18 @@
  * @output wp-admin/js/postbox.js
  */
 
+<<<<<<< HEAD
 /* global ajaxurl, postboxes */
 
 (function($) {
 	var $document = $( document ),
 		__ = wp.i18n.__;
+=======
+/* global ajaxurl, postBoxL10n, postboxes */
+
+(function($) {
+	var $document = $( document );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	/**
 	 * This object contains all function to handle the behaviour of the post boxes. The post boxes are the boxes you see
@@ -42,7 +49,11 @@
 		 */
 		handle_click : function () {
 			var $el = $( this ),
+<<<<<<< HEAD
 				p = $el.closest( '.postbox' ),
+=======
+				p = $el.parent( '.postbox' ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				id = p.attr( 'id' ),
 				ariaExpandedValue;
 
@@ -51,6 +62,10 @@
 			}
 
 			p.toggleClass( 'closed' );
+<<<<<<< HEAD
+=======
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			ariaExpandedValue = ! p.hasClass( 'closed' );
 
 			if ( $el.hasClass( 'handlediv' ) ) {
@@ -89,6 +104,7 @@
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Handles clicks on the move up/down buttons.
 		 *
 		 * @since 5.5.0
@@ -240,6 +256,8 @@
 		},
 
 		/**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * Adds event handlers to all postboxes and screen option on the current page.
 		 *
 		 * @since 2.7.0
@@ -253,17 +271,24 @@
 		 * @return {void}
 		 */
 		add_postbox_toggles : function (page, args) {
+<<<<<<< HEAD
 			var $handles = $( '.postbox .hndle, .postbox .handlediv' ),
 				$orderButtons = $( '.postbox .handle-order-higher, .postbox .handle-order-lower' );
+=======
+			var $handles = $( '.postbox .hndle, .postbox .handlediv' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			this.page = page;
 			this.init( page, args );
 
 			$handles.on( 'click.postboxes', this.handle_click );
 
+<<<<<<< HEAD
 			// Handle the order of the postboxes.
 			$orderButtons.on( 'click.postboxes', this.handleOrder );
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			/**
 			 * @since 2.7.0
 			 */
@@ -277,8 +302,11 @@
 			 * Event handler for the postbox dismiss button. After clicking the button
 			 * the postbox will be hidden.
 			 *
+<<<<<<< HEAD
 			 * As of WordPress 5.5, this is only used for the browser update nag.
 			 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 * @since 3.2.0
 			 *
 			 * @return {void}
@@ -366,6 +394,10 @@
 				$handleButtons = $( '.postbox .handlediv' );
 
 			$.extend( this, args || {} );
+<<<<<<< HEAD
+=======
+			$('#wpbody-content').css('overflow','hidden');
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$('.meta-box-sortables').sortable({
 				placeholder: 'sortable-placeholder',
 				connectWith: '.meta-box-sortables',
@@ -392,6 +424,7 @@
 						.end();
 				},
 				opacity: 0.65,
+<<<<<<< HEAD
 				start: function() {
 					$( 'body' ).addClass( 'is-dragging-metaboxes' );
 					// Refresh the cached positions of all the sortable items so that the min-height set while dragging works.
@@ -402,12 +435,20 @@
 
 					$( 'body' ).removeClass( 'is-dragging-metaboxes' );
 
+=======
+				stop: function() {
+					var $el = $( this );
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					if ( $el.find( '#dashboard_browser_nag' ).is( ':visible' ) && 'dashboard_browser_nag' != this.firstChild.id ) {
 						$el.sortable('cancel');
 						return;
 					}
 
+<<<<<<< HEAD
 					postboxes.updateOrderButtonsProperties();
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					postboxes.save_order(page);
 				},
 				receive: function(e,ui) {
@@ -426,6 +467,7 @@
 
 			this._mark_area();
 
+<<<<<<< HEAD
 			// Update the "move" buttons properties.
 			this.updateOrderButtonsProperties();
 			$document.on( 'postbox-toggled', this.updateOrderButtonsProperties );
@@ -434,6 +476,12 @@
 			$handleButtons.each( function () {
 				var $el = $( this );
 				$el.attr( 'aria-expanded', ! $el.closest( '.postbox' ).hasClass( 'closed' ) );
+=======
+			// Set the handle buttons `aria-expanded` attribute initial value on page load.
+			$handleButtons.each( function () {
+				var $el = $( this );
+				$el.attr( 'aria-expanded', ! $el.parent( '.postbox' ).hasClass( 'closed' ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			});
 		},
 
@@ -496,6 +544,7 @@
 				postVars[ 'order[' + this.id.split( '-' )[0] + ']' ] = $( this ).sortable( 'toArray' ).join( ',' );
 			} );
 
+<<<<<<< HEAD
 			$.post(
 				ajaxurl,
 				postVars,
@@ -505,6 +554,9 @@
 					}
 				}
 			);
+=======
+			$.post( ajaxurl, postVars );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		},
 
 		/**
@@ -522,6 +574,7 @@
 		 * @return {void}
 		 */
 		_mark_area : function() {
+<<<<<<< HEAD
 			var visible = $( 'div.postbox:visible' ).length,
 				visibleSortables = $( '#dashboard-widgets .meta-box-sortables:visible, #post-body .meta-box-sortables:visible' ),
 				areAllVisibleSortablesEmpty = true;
@@ -564,6 +617,28 @@
 					$( this ).attr( 'data-emptyString', emptySortableText );
 				}
 			} );
+=======
+			var visible = $('div.postbox:visible').length, side = $('#post-body #side-sortables');
+
+			$( '#dashboard-widgets .meta-box-sortables:visible' ).each( function() {
+				var t = $(this);
+
+				if ( visible == 1 || t.children('.postbox:visible').length ) {
+					t.removeClass('empty-container');
+				}
+				else {
+					t.addClass('empty-container');
+					t.attr('data-emptyString', postBoxL10n.postBoxEmptyString);
+				}
+			});
+
+			if ( side.length ) {
+				if ( side.children('.postbox:visible').length )
+					side.removeClass('empty-container');
+				else if ( $('#postbox-container-1').css('width') == '280px' )
+					side.addClass('empty-container');
+			}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		},
 
 		/**

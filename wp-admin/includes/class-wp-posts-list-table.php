@@ -135,6 +135,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @global string   $mode             List table view mode.
 	 * @global array    $avail_post_stati
 	 * @global WP_Query $wp_query         WordPress Query object.
@@ -149,6 +150,15 @@ class WP_Posts_List_Table extends WP_List_Table {
 		} else {
 			$mode = get_user_setting( 'posts_list_mode', 'list' );
 		}
+=======
+	 * @global array    $avail_post_stati
+	 * @global WP_Query $wp_query         WordPress Query object.
+	 * @global int      $per_page
+	 * @global string   $mode
+	 */
+	public function prepare_items() {
+		global $avail_post_stati, $wp_query, $per_page, $mode;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		// Is going to call wp().
 		$avail_post_stati = wp_edit_posts_query();
@@ -168,7 +178,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 		} else {
 			$post_counts = (array) wp_count_posts( $post_type, 'readable' );
 
+<<<<<<< HEAD
 			if ( isset( $_REQUEST['post_status'] ) && in_array( $_REQUEST['post_status'], $avail_post_stati, true ) ) {
+=======
+			if ( isset( $_REQUEST['post_status'] ) && in_array( $_REQUEST['post_status'], $avail_post_stati ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$total_items = $post_counts[ $_REQUEST['post_status'] ];
 			} elseif ( isset( $_REQUEST['show_sticky'] ) && $_REQUEST['show_sticky'] ) {
 				$total_items = $this->sticky_posts_count;
@@ -184,6 +198,16 @@ class WP_Posts_List_Table extends WP_List_Table {
 			}
 		}
 
+<<<<<<< HEAD
+=======
+		if ( ! empty( $_REQUEST['mode'] ) ) {
+			$mode = 'excerpt' === $_REQUEST['mode'] ? 'excerpt' : 'list';
+			set_user_setting( 'posts_list_mode', $mode );
+		} else {
+			$mode = get_user_setting( 'posts_list_mode', 'list' );
+		}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$this->is_trash = isset( $_REQUEST['post_status'] ) && 'trash' === $_REQUEST['post_status'];
 
 		$this->set_pagination_args(
@@ -346,7 +370,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 
 			$status_name = $status->name;
 
+<<<<<<< HEAD
 			if ( ! in_array( $status_name, $avail_post_stati, true ) || empty( $num_posts->$status_name ) ) {
+=======
+			if ( ! in_array( $status_name, $avail_post_stati ) || empty( $num_posts->$status_name ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				continue;
 			}
 
@@ -391,7 +419,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 			);
 
 			// Sticky comes after Publish, or if not listed, after All.
+<<<<<<< HEAD
 			$split        = 1 + array_search( ( isset( $status_links['publish'] ) ? 'publish' : 'all' ), array_keys( $status_links ), true );
+=======
+			$split        = 1 + array_search( ( isset( $status_links['publish'] ) ? 'publish' : 'all' ), array_keys( $status_links ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$status_links = array_merge( array_slice( $status_links, 0, $split ), $sticky_link, array_slice( $status_links, $split ) );
 		}
 
@@ -415,7 +447,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 
 		if ( current_user_can( $post_type_obj->cap->delete_posts ) ) {
 			if ( $this->is_trash || ! EMPTY_TRASH_DAYS ) {
+<<<<<<< HEAD
 				$actions['delete'] = __( 'Delete permanently' );
+=======
+				$actions['delete'] = __( 'Delete Permanently' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			} else {
 				$actions['trash'] = __( 'Move to Trash' );
 			}
@@ -469,13 +505,18 @@ class WP_Posts_List_Table extends WP_List_Table {
 	 * @since 5.2.0
 	 * @access protected
 	 *
+<<<<<<< HEAD
 	 * @param string $post_type Post type slug.
+=======
+	 * @param string $post_type Post type key.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	protected function formats_dropdown( $post_type ) {
 		/**
 		 * Filters whether to remove the 'Formats' drop-down from the post list table.
 		 *
 		 * @since 5.2.0
+<<<<<<< HEAD
 		 * @since 5.5.0 The `$post_type` parameter was added.
 		 *
 		 * @param bool   $disable   Whether to disable the drop-down. Default false.
@@ -487,6 +528,12 @@ class WP_Posts_List_Table extends WP_List_Table {
 
 		// Return if the post type doesn't have post formats or if we're in the Trash.
 		if ( ! is_object_in_taxonomy( $post_type, 'post_format' ) || $this->is_trash ) {
+=======
+		 *
+		 * @param bool $disable Whether to disable the drop-down. Default false.
+		 */
+		if ( apply_filters( 'disable_formats_dropdown', false ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return;
 		}
 
@@ -498,8 +545,16 @@ class WP_Posts_List_Table extends WP_List_Table {
 			)
 		);
 
+<<<<<<< HEAD
 		// Return if there are no posts using formats.
 		if ( ! $used_post_formats ) {
+=======
+		/*
+		 * Return if the post type doesn't have post formats, or there are no posts using formats,
+		 * or if we're in the Trash.
+		 */
+		if ( ! is_object_in_taxonomy( $post_type, 'post_format' ) || ! $used_post_formats || $this->is_trash ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return;
 		}
 
@@ -534,7 +589,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 		?>
 		<div class="alignleft actions">
 		<?php
+<<<<<<< HEAD
 		if ( 'top' === $which ) {
+=======
+		if ( 'top' === $which && ! is_singular() ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			ob_start();
 
 			$this->months_dropdown( $this->screen->post_type );
@@ -595,6 +654,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @global string $mode List table view mode.
 	 *
 	 * @return array
@@ -605,6 +665,12 @@ class WP_Posts_List_Table extends WP_List_Table {
 		$mode_class = esc_attr( 'table-view-' . $mode );
 
 		return array( 'widefat', 'fixed', 'striped', $mode_class, is_post_type_hierarchical( $this->screen->post_type ) ? 'pages' : 'posts' );
+=======
+	 * @return array
+	 */
+	protected function get_table_classes() {
+		return array( 'widefat', 'fixed', 'striped', is_post_type_hierarchical( $this->screen->post_type ) ? 'pages' : 'posts' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -654,7 +720,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 		}
 
 		$post_status = ! empty( $_REQUEST['post_status'] ) ? $_REQUEST['post_status'] : 'all';
+<<<<<<< HEAD
 		if ( post_type_supports( $post_type, 'comments' ) && ! in_array( $post_status, array( 'pending', 'draft', 'future' ), true ) ) {
+=======
+		if ( post_type_supports( $post_type, 'comments' ) && ! in_array( $post_status, array( 'pending', 'draft', 'future' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$posts_columns['comments'] = '<span class="vers comment-grey-bubble" title="' . esc_attr__( 'Comments' ) . '"><span class="screen-reader-text">' . __( 'Comments' ) . '</span></span>';
 		}
 
@@ -711,7 +781,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 	 * @global WP_Query $wp_query WordPress Query object.
 	 * @global int $per_page
 	 * @param array $posts
+<<<<<<< HEAD
 	 * @param int   $level
+=======
+	 * @param int $level
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function display_rows( $posts = array(), $level = 0 ) {
 		global $wp_query, $per_page;
@@ -731,7 +805,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 
 	/**
 	 * @param array $posts
+<<<<<<< HEAD
 	 * @param int   $level
+=======
+	 * @param int $level
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	private function _display_rows( $posts, $level = 0 ) {
 		$post_type = $this->screen->post_type;
@@ -756,8 +834,13 @@ class WP_Posts_List_Table extends WP_List_Table {
 	 * @global wpdb    $wpdb WordPress database abstraction object.
 	 * @global WP_Post $post Global post object.
 	 * @param array $pages
+<<<<<<< HEAD
 	 * @param int   $pagenum
 	 * @param int   $per_page
+=======
+	 * @param int $pagenum
+	 * @param int $per_page
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	private function _display_rows_hierarchical( $pages, $pagenum = 1, $per_page = 20 ) {
 		global $wpdb;
@@ -862,11 +945,19 @@ class WP_Posts_List_Table extends WP_List_Table {
 	 * @since 4.2.0 Added the `$to_display` parameter.
 	 *
 	 * @param array $children_pages
+<<<<<<< HEAD
 	 * @param int   $count
 	 * @param int   $parent
 	 * @param int   $level
 	 * @param int   $pagenum
 	 * @param int   $per_page
+=======
+	 * @param int $count
+	 * @param int $parent
+	 * @param int $level
+	 * @param int $pagenum
+	 * @param int $per_page
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param array $to_display List of pages to be displayed. Passed by reference.
 	 */
 	private function _page_rows( &$children_pages, &$count, $parent, $level, $pagenum, $per_page, &$to_display ) {
@@ -1048,10 +1139,14 @@ class WP_Posts_List_Table extends WP_List_Table {
 		}
 		echo "</strong>\n";
 
+<<<<<<< HEAD
 		if ( 'excerpt' === $mode
 			&& ! is_post_type_hierarchical( $this->screen->post_type )
 			&& current_user_can( 'read_post', $post->ID )
 		) {
+=======
+		if ( ! is_post_type_hierarchical( $this->screen->post_type ) && 'excerpt' === $mode && current_user_can( 'read_post', $post->ID ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( post_password_required( $post ) ) {
 				echo '<span class="protected-post-excerpt">' . esc_html( get_the_excerpt() ) . '</span>';
 			} else {
@@ -1076,6 +1171,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 
 		if ( '0000-00-00 00:00:00' === $post->post_date ) {
 			$t_time    = __( 'Unpublished' );
+<<<<<<< HEAD
 			$time_diff = 0;
 		} else {
 			$t_time = sprintf(
@@ -1089,6 +1185,21 @@ class WP_Posts_List_Table extends WP_List_Table {
 
 			$time      = get_post_timestamp( $post );
 			$time_diff = time() - $time;
+=======
+			$h_time    = $t_time;
+			$time_diff = 0;
+		} else {
+			$t_time    = get_the_time( __( 'Y/m/d g:i:s a' ), $post );
+			$time      = get_post_timestamp( $post );
+			$time_diff = time() - $time;
+
+			if ( $time && $time_diff > 0 && $time_diff < DAY_IN_SECONDS ) {
+				/* translators: %s: Human-readable time difference. */
+				$h_time = sprintf( __( '%s ago' ), human_time_diff( $time ) );
+			} else {
+				$h_time = get_the_time( __( 'Y/m/d' ), $post );
+			}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		if ( 'publish' === $post->post_status ) {
@@ -1119,6 +1230,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 			echo $status . '<br />';
 		}
 
+<<<<<<< HEAD
 		/**
 		 * Filters the published time of the post.
 		 *
@@ -1133,6 +1245,29 @@ class WP_Posts_List_Table extends WP_List_Table {
 		 * @param string  $mode        The list display mode ('excerpt' or 'list').
 		 */
 		echo apply_filters( 'post_date_column_time', $t_time, $post, 'date', $mode );
+=======
+		if ( 'excerpt' === $mode ) {
+			/**
+			 * Filters the published time of the post.
+			 *
+			 * If `$mode` equals 'excerpt', the published time and date are both displayed.
+			 * If `$mode` equals 'list' (default), the publish date is displayed, with the
+			 * time and date together available as an abbreviation definition.
+			 *
+			 * @since 2.5.1
+			 *
+			 * @param string  $t_time      The published time.
+			 * @param WP_Post $post        Post object.
+			 * @param string  $column_name The column name.
+			 * @param string  $mode        The list display mode ('excerpt' or 'list').
+			 */
+			echo apply_filters( 'post_date_column_time', $t_time, $post, 'date', $mode );
+		} else {
+
+			/** This filter is documented in wp-admin/includes/class-wp-posts-list-table.php */
+			echo '<span title="' . $t_time . '">' . apply_filters( 'post_date_column_time', $h_time, $post, 'date', $mode ) . '</span>';
+		}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -1194,7 +1329,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 				$term_links = array();
 				foreach ( $terms as $t ) {
 					$posts_in_term_qv = array();
+<<<<<<< HEAD
 					if ( 'post' !== $post->post_type ) {
+=======
+					if ( 'post' != $post->post_type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						$posts_in_term_qv['post_type'] = $post->post_type;
 					}
 					if ( $taxonomy_object->query_var ) {
@@ -1339,7 +1478,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 		$actions          = array();
 		$title            = _draft_or_post_title();
 
+<<<<<<< HEAD
 		if ( $can_edit_post && 'trash' !== $post->post_status ) {
+=======
+		if ( $can_edit_post && 'trash' != $post->post_status ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$actions['edit'] = sprintf(
 				'<a href="%s" aria-label="%s">%s</a>',
 				get_edit_post_link( $post->ID ),
@@ -1388,7 +1531,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 		}
 
 		if ( is_post_type_viewable( $post_type_object ) ) {
+<<<<<<< HEAD
 			if ( in_array( $post->post_status, array( 'pending', 'draft', 'future' ), true ) ) {
+=======
+			if ( in_array( $post->post_status, array( 'pending', 'draft', 'future' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				if ( $can_edit_post ) {
 					$preview_link    = get_preview_post_link( $post );
 					$actions['view'] = sprintf(
@@ -1399,7 +1546,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 						__( 'Preview' )
 					);
 				}
+<<<<<<< HEAD
 			} elseif ( 'trash' !== $post->post_status ) {
+=======
+			} elseif ( 'trash' != $post->post_status ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$actions['view'] = sprintf(
 					'<a href="%s" rel="bookmark" aria-label="%s">%s</a>',
 					get_permalink( $post->ID ),
@@ -1718,7 +1869,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 							<?php endif; // $bulk ?>
 							<?php
 							/** This filter is documented in wp-admin/includes/meta-boxes.php */
+<<<<<<< HEAD
 							$default_title = apply_filters( 'default_page_template_title', __( 'Default template' ), 'quick-edit' );
+=======
+							$default_title = apply_filters( 'default_page_template_title', __( 'Default Template' ), 'quick-edit' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							?>
 							<option value="default"><?php echo esc_html( $default_title ); ?></option>
 							<?php page_template_dropdown( '', $screen->post_type ); ?>

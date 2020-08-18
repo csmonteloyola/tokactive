@@ -95,7 +95,11 @@
 	 * @since 4.7.0
 	 * @alias wp.customize.Menus.insertAutoDraftPost
 	 *
+<<<<<<< HEAD
 	 * @param {Object} params - Parameters for the draft post to create.
+=======
+	 * @param {object} params - Parameters for the draft post to create.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {string} params.post_type - Post type to add.
 	 * @param {string} params.post_title - Post title to use.
 	 * @return {jQuery.promise} Promise resolved with the added post.
@@ -216,9 +220,15 @@
 				}
 			} );
 
+<<<<<<< HEAD
 			// Clear the search results and trigger an `input` event to fire a new search.
 			this.$clearResults.on( 'click', function() {
 				self.$search.val( '' ).focus().trigger( 'input' );
+=======
+			// Clear the search results and trigger a `keyup` event to fire a new search.
+			this.$clearResults.on( 'click', function() {
+				self.$search.val( '' ).focus().trigger( 'keyup' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			} );
 
 			this.$el.on( 'input', '#custom-menu-item-name.invalid, #custom-menu-item-url.invalid', function() {
@@ -387,7 +397,11 @@
 		 * @since 4.7.0 Changed function signature to take list of item types instead of single type/object.
 		 * @access private
 		 *
+<<<<<<< HEAD
 		 * @param {Array.<Object>} itemTypes List of objects containing type and key.
+=======
+		 * @param {Array.<object>} itemTypes List of objects containing type and key.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {string} deprecated Formerly the object parameter.
 		 * @return {void}
 		 */
@@ -733,7 +747,11 @@
 			$( 'body' ).removeClass( 'adding-menu-items' );
 			$( '#available-menu-items .menu-item-handle.item-added' ).removeClass( 'item-added' );
 
+<<<<<<< HEAD
 			this.$search.val( '' ).trigger( 'input' );
+=======
+			this.$search.val( '' ).trigger( 'keyup' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		},
 
 		// Add a few keyboard enhancements to the panel.
@@ -905,7 +923,11 @@
 		 *
 		 * @since 4.3.0
 		 *
+<<<<<<< HEAD
 		 * @param {string} id
+=======
+		 * @param {String} id
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {Object} options
 		 */
 		initialize: function( id, options ) {
@@ -1819,10 +1841,17 @@
 				/*
 				 * If the menu item deleted is the only of its instance left,
 				 * remove the check icon of this menu item in the right panel.
+<<<<<<< HEAD
 				 */
 				_.each( addedItems, function( addedItem ) {
 					var menuItemId, menuItemControl, matches;
 
+=======
+				 */ 
+				_.each( addedItems, function( addedItem ) {
+					var menuItemId, menuItemControl, matches;
+						
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					// This is because menu item that's deleted is just hidden.
 					if ( ! $( addedItem ).is( ':visible' ) ) {
 						return;
@@ -2212,7 +2241,11 @@
 		 *
 		 * @private
 		 *
+<<<<<<< HEAD
 		 * @param {number} offset 1|-1
+=======
+		 * @param {Number} offset 1|-1
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		_changePosition: function( offset ) {
 			var control = this,
@@ -2272,7 +2305,11 @@
 		 *
 		 * @private
 		 *
+<<<<<<< HEAD
 		 * @param {number} offset 1|-1
+=======
+		 * @param {Number} offset 1|-1
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		_changeDepth: function( offset ) {
 			if ( 1 !== offset && -1 !== offset ) {
@@ -2655,7 +2692,11 @@
 		 * Notice that the UI aspects here are handled by wpNavMenu.initSortables()
 		 * which is called in MenuSection.onChangeExpanded()
 		 *
+<<<<<<< HEAD
 		 * @param {Object} menuList - The element that has sortable().
+=======
+		 * @param {object} menuList - The element that has sortable().
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		_setupSortable: function( menuList ) {
 			var control = this;
@@ -2854,7 +2895,11 @@
 		/**
 		 * Enable/disable the reordering UI
 		 *
+<<<<<<< HEAD
 		 * @param {boolean} showOrHide to enable/disable reordering
+=======
+		 * @param {Boolean} showOrHide to enable/disable reordering
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		toggleReordering: function( showOrHide ) {
 			var addNewItemBtn = this.container.find( '.add-new-menu-item' ),
@@ -2994,7 +3039,11 @@
 		/**
 		 * Add a new item to this menu.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} item - Value for the nav_menu_item setting to be created.
+=======
+		 * @param {object} item - Value for the nav_menu_item setting to be created.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {wp.customize.Menus.controlConstructor.nav_menu_item} The newly-created nav_menu_item control instance.
 		 */
 		addItemToMenu: function( item ) {
@@ -3135,9 +3184,15 @@
 	 *
 	 * @alias wp.customize.Menus.applySavedData
 	 *
+<<<<<<< HEAD
 	 * @param {Object} data
 	 * @param {Array} data.nav_menu_updates
 	 * @param {Array} data.nav_menu_item_updates
+=======
+	 * @param {object} data
+	 * @param {array} data.nav_menu_updates
+	 * @param {array} data.nav_menu_item_updates
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.Menus.applySavedData = function( data ) {
 
@@ -3394,7 +3449,11 @@
 	 * @alias wp.customize.Menus.getMenuItemControl
 	 *
 	 * @param {string} menuItemId
+<<<<<<< HEAD
 	 * @return {Object|null}
+=======
+	 * @return {object|null}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.Menus.getMenuItemControl = function( menuItemId ) {
 		return api.control( menuItemIdToSettingId( menuItemId ) );
@@ -3403,7 +3462,11 @@
 	/**
 	 * @alias wp.customize.Menus~menuItemIdToSettingId
 	 *
+<<<<<<< HEAD
 	 * @param {string} menuItemId
+=======
+	 * @param {String} menuItemId
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	function menuItemIdToSettingId( menuItemId ) {
 		return 'nav_menu_item[' + menuItemId + ']';

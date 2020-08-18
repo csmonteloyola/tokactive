@@ -209,6 +209,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 *
 	 * @param int $width
 	 * @param int $height
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return true|WP_Error
 	 */
 	protected function update_size( $width = null, $height = null ) {
@@ -241,9 +245,15 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 *
 	 * @since 3.5.0
 	 *
+<<<<<<< HEAD
 	 * @param int|null $max_w Image width.
 	 * @param int|null $max_h Image height.
 	 * @param bool     $crop
+=======
+	 * @param  int|null $max_w Image width.
+	 * @param  int|null $max_h Image height.
+	 * @param  bool     $crop
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return bool|WP_Error
 	 */
 	public function resize( $max_w, $max_h, $crop = false ) {
@@ -305,8 +315,13 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 		);
 
 		/**
+<<<<<<< HEAD
 		 * Set the filter value if '$filter_name' name is in the allowed list and the related
 		 * Imagick constant is defined or fall back to the default filter.
+=======
+		 * Set the filter value if '$filter_name' name is in our whitelist and the related
+		 * Imagick constant is defined or fall back to our default filter.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		if ( in_array( $filter_name, $allowed_filters, true ) && defined( 'Imagick::' . $filter_name ) ) {
 			$filter = constant( 'Imagick::' . $filter_name );
@@ -509,12 +524,21 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 *
 	 * @since 3.5.0
 	 *
+<<<<<<< HEAD
 	 * @param int  $src_x   The start x position to crop from.
 	 * @param int  $src_y   The start y position to crop from.
 	 * @param int  $src_w   The width to crop.
 	 * @param int  $src_h   The height to crop.
 	 * @param int  $dst_w   Optional. The destination width.
 	 * @param int  $dst_h   Optional. The destination height.
+=======
+	 * @param int  $src_x The start x position to crop from.
+	 * @param int  $src_y The start y position to crop from.
+	 * @param int  $src_w The width to crop.
+	 * @param int  $src_h The height to crop.
+	 * @param int  $dst_w Optional. The destination width.
+	 * @param int  $dst_h Optional. The destination height.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param bool $src_abs Optional. If the source crop points are absolute.
 	 * @return bool|WP_Error
 	 */
@@ -662,8 +686,13 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 
 	/**
 	 * @param Imagick $image
+<<<<<<< HEAD
 	 * @param string  $filename
 	 * @param string  $mime_type
+=======
+	 * @param string $filename
+	 * @param string $mime_type
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return array|WP_Error
 	 */
 	protected function _save( $image, $filename = null, $mime_type = null ) {

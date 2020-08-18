@@ -22,6 +22,10 @@
 			shortlink,
 			skipLink,
 			mobileEvent,
+<<<<<<< HEAD
+=======
+			fontFaceRegex,
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			adminBarSearchInput,
 			i;
 
@@ -36,6 +40,10 @@
 		shortlink = document.getElementById( 'wp-admin-bar-get-shortlink' );
 		skipLink = adminBar.querySelector( '.screen-reader-shortcut' );
 		mobileEvent = /Mobile\/.+Safari/.test( navigator.userAgent ) ? 'touchstart' : 'click';
+<<<<<<< HEAD
+=======
+		fontFaceRegex = /Android (1.0|1.1|1.5|1.6|2.0|2.1)|Nokia|Opera Mini|w(eb)?OSBrowser|webOS|UCWEB|Windows Phone OS 7|XBLWP7|ZuneWP7|MSIE 7/;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		// Remove nojs class after the DOM is loaded.
 		removeClass( adminBar, 'nojs' );
@@ -109,6 +117,18 @@
 			window.scrollBy( 0, -32 );
 		}
 
+<<<<<<< HEAD
+=======
+		// Add no-font-face class to body if needed.
+		if (
+			navigator.userAgent &&
+			fontFaceRegex.test( navigator.userAgent ) &&
+			! hasClass( document.body, 'no-font-face' )
+		) {
+			addClass( document.body, 'no-font-face' );
+		}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		// Clear sessionStorage on logging out.
 		if ( adminBarLogout ) {
 			adminBarLogout.addEventListener( 'click', emptySessionStorage );
@@ -294,8 +314,13 @@
 	 * @since 5.3.1
 	 *
 	 * @param {HTMLElement} element The HTML element.
+<<<<<<< HEAD
 	 * @param {string}      className The class name.
 	 * @return {boolean} Whether the element has the className.
+=======
+	 * @param {String}      className The class name.
+	 * @return {bool} Whether the element has the className.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	function hasClass( element, className ) {
 		var classNames;
@@ -320,7 +345,11 @@
 	 * @since 5.3.1
 	 *
 	 * @param {HTMLElement} element The HTML element.
+<<<<<<< HEAD
 	 * @param {string}      className The class name.
+=======
+	 * @param {String}      className The class name.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	function addClass( element, className ) {
 		if ( ! element ) {
@@ -344,7 +373,11 @@
 	 * @since 5.3.1
 	 *
 	 * @param {HTMLElement} element The HTML element.
+<<<<<<< HEAD
 	 * @param {string}      className The class name.
+=======
+	 * @param {String}      className The class name.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	function removeClass( element, className ) {
 		var testName,

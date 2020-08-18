@@ -413,7 +413,11 @@ wp.customHtmlWidgets = ( function( $ ) {
 	 *
 	 * @alias wp.customHtmlWidgets.init
 	 *
+<<<<<<< HEAD
 	 * @param {Object} settings - Options for code editor, exported from PHP.
+=======
+	 * @param {object} settings - Options for code editor, exported from PHP.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @return {void}
 	 */

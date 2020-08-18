@@ -90,9 +90,15 @@ abstract class WP_Image_Editor {
 	 * @since 3.5.0
 	 * @abstract
 	 *
+<<<<<<< HEAD
 	 * @param int|null $max_w Image width.
 	 * @param int|null $max_h Image height.
 	 * @param bool     $crop
+=======
+	 * @param  int|null $max_w Image width.
+	 * @param  int|null $max_h Image height.
+	 * @param  bool     $crop
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return bool|WP_Error
 	 */
 	abstract public function resize( $max_w, $max_h, $crop = false );
@@ -122,12 +128,21 @@ abstract class WP_Image_Editor {
 	 * @since 3.5.0
 	 * @abstract
 	 *
+<<<<<<< HEAD
 	 * @param int  $src_x   The start x position to crop from.
 	 * @param int  $src_y   The start y position to crop from.
 	 * @param int  $src_w   The width to crop.
 	 * @param int  $src_h   The height to crop.
 	 * @param int  $dst_w   Optional. The destination width.
 	 * @param int  $dst_h   Optional. The destination height.
+=======
+	 * @param int $src_x The start x position to crop from.
+	 * @param int $src_y The start y position to crop from.
+	 * @param int $src_w The width to crop.
+	 * @param int $src_h The height to crop.
+	 * @param int $dst_w Optional. The destination width.
+	 * @param int $dst_h Optional. The destination height.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param bool $src_abs Optional. If the source crop points are absolute.
 	 * @return bool|WP_Error
 	 */
@@ -205,7 +220,11 @@ abstract class WP_Image_Editor {
 	 *
 	 * @since 4.0.0
 	 *
+<<<<<<< HEAD
 	 * @return int Compression Quality. Range: [1,100]
+=======
+	 * @return int $quality Compression Quality. Range: [1,100]
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function get_quality() {
 		if ( ! $this->quality ) {
@@ -231,7 +250,11 @@ abstract class WP_Image_Editor {
 			 * Applies only during initial editor instantiation, or when set_quality() is run
 			 * manually without the `$quality` argument.
 			 *
+<<<<<<< HEAD
 			 * The WP_Image_Editor::set_quality() method has priority over the filter.
+=======
+			 * set_quality() has priority over the filter.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 *
 			 * @since 3.5.0
 			 *
@@ -240,14 +263,22 @@ abstract class WP_Image_Editor {
 			 */
 			$quality = apply_filters( 'wp_editor_set_quality', $this->default_quality, $this->mime_type );
 
+<<<<<<< HEAD
 			if ( 'image/jpeg' === $this->mime_type ) {
+=======
+			if ( 'image/jpeg' == $this->mime_type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				/**
 				 * Filters the JPEG compression quality for backward-compatibility.
 				 *
 				 * Applies only during initial editor instantiation, or when set_quality() is run
 				 * manually without the `$quality` argument.
 				 *
+<<<<<<< HEAD
 				 * The WP_Image_Editor::set_quality() method has priority over the filter.
+=======
+				 * set_quality() has priority over the filter.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				 *
 				 * The filter is evaluated under two contexts: 'image_resize', and 'edit_image',
 				 * (when a JPEG image is saved to file).
@@ -473,8 +504,13 @@ abstract class WP_Image_Editor {
 	 * @since 3.5.0
 	 *
 	 * @param string|stream $filename
+<<<<<<< HEAD
 	 * @param callable      $function
 	 * @param array         $arguments
+=======
+	 * @param callable $function
+	 * @param array $arguments
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return bool
 	 */
 	protected function make_image( $filename, $function, $arguments ) {
@@ -545,7 +581,11 @@ abstract class WP_Image_Editor {
 	 * @return string|false
 	 */
 	protected static function get_extension( $mime_type = null ) {
+<<<<<<< HEAD
 		$extensions = explode( '|', array_search( $mime_type, wp_get_mime_types(), true ) );
+=======
+		$extensions = explode( '|', array_search( $mime_type, wp_get_mime_types() ) );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		if ( empty( $extensions[0] ) ) {
 			return false;

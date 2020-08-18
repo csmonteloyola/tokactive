@@ -18,7 +18,10 @@ class WP_Ajax_Response {
 	 * Constructor - Passes args to WP_Ajax_Response::add().
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @see WP_Ajax_Response::add()
 	 *
 	 * @param string|array $args Optional. Will be passed to add() method.
@@ -55,7 +58,11 @@ class WP_Ajax_Response {
 	 *     @type int|false       $old_id       The previous response ID. Used as the value for the response type
 	 *                                         `old_id` attribute. False hides the attribute. Default false.
 	 *     @type string          $position     Value of the response type `position` attribute. Accepts 1 (bottom),
+<<<<<<< HEAD
 	 *                                         -1 (top), HTML ID (after), or -HTML ID (before). Default 1 (bottom).
+=======
+	 *                                         -1 (top), html ID (after), or -html ID (before). Default 1 (bottom).
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *     @type string|WP_Error $data         The response content/message. Also accepts a WP_Error object if the
 	 *                                         ID does not exist. Default empty.
 	 *     @type array           $supplemental An array of extra strings that will be output within a `<supplemental>`

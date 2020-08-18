@@ -41,11 +41,17 @@ final class WP_Recovery_Mode_Email_Service {
 	 *
 	 * @param int   $rate_limit Number of seconds before another email can be sent.
 	 * @param array $error      Error details from {@see error_get_last()}
+<<<<<<< HEAD
 	 * @param array $extension {
 	 *     The extension that caused the error.
 	 *
 	 *     @type string $slug The extension slug. The plugin or theme's directory.
 	 *     @type string $type The extension type. Either 'plugin' or 'theme'.
+=======
+	 * @param array $extension  The extension that caused the error. {
+	 *      @type string $slug The extension slug. The plugin or theme's directory.
+	 *      @type string $type The extension type. Either 'plugin' or 'theme'.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * }
 	 * @return true|WP_Error True if email sent, WP_Error otherwise.
 	 */
@@ -103,6 +109,10 @@ final class WP_Recovery_Mode_Email_Service {
 	 * @param int   $rate_limit Number of seconds before another email can be sent.
 	 * @param array $error      Error details from {@see error_get_last()}
 	 * @param array $extension  Extension that caused the error.
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return bool Whether the email was sent successfully.
 	 */
 	private function send_recovery_mode_email( $rate_limit, $error, $extension ) {
@@ -135,7 +145,11 @@ final class WP_Recovery_Mode_Email_Service {
 		 *
 		 * @since 5.2.0
 		 *
+<<<<<<< HEAD
 		 * @param string $message The Message to include in the email.
+=======
+		 * @param $message string The Message to include in the email.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		$support = apply_filters( 'recovery_email_support_info', __( 'Please contact your host for assistance with investigating this issue further.' ) );
 
@@ -144,7 +158,11 @@ final class WP_Recovery_Mode_Email_Service {
 		 *
 		 * @since 5.3.0
 		 *
+<<<<<<< HEAD
 		 * @param array $message An associative array of debug information.
+=======
+		 * @param $message array An associated array of debug information.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		$debug = apply_filters( 'recovery_email_debug_info', $this->get_debug( $extension ) );
 

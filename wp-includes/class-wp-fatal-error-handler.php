@@ -30,11 +30,14 @@ class WP_Fatal_Error_Handler {
 			return;
 		}
 
+<<<<<<< HEAD
 		// Do not trigger the fatal error handler while updates are being installed.
 		if ( wp_is_maintenance_mode() ) {
 			return;
 		}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		try {
 			// Bail if no error found.
 			$error = $this->detect_error();

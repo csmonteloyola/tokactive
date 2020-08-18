@@ -23,9 +23,12 @@ class WP_Debug_Data {
 	 * Static function for generating site debug data when required.
 	 *
 	 * @since 5.2.0
+<<<<<<< HEAD
 	 * @since 5.3.0 Added database charset, database collation,
 	 *              and timezone information.
 	 * @since 5.5.0 Added pretty permalinks support information.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @throws ImagickException
 	 * @global wpdb $wpdb WordPress database abstraction object.
@@ -40,7 +43,10 @@ class WP_Debug_Data {
 		$permalink_structure    = get_option( 'permalink_structure' );
 		$is_ssl                 = is_ssl();
 		$users_can_register     = get_option( 'users_can_register' );
+<<<<<<< HEAD
 		$blog_public            = get_option( 'blog_public' );
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$default_comment_status = get_option( 'default_comment_status' );
 		$is_multisite           = is_multisite();
 		$core_version           = get_bloginfo( 'version' );
@@ -104,11 +110,14 @@ class WP_Debug_Data {
 					'value' => $users_can_register ? __( 'Yes' ) : __( 'No' ),
 					'debug' => $users_can_register,
 				),
+<<<<<<< HEAD
 				'blog_public'            => array(
 					'label' => __( 'Is this site discouraging search engines?' ),
 					'value' => $blog_public ? __( 'No' ) : __( 'Yes' ),
 					'debug' => $blog_public,
 				),
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				'default_comment_status' => array(
 					'label' => __( 'Default comment status' ),
 					'value' => 'open' === $default_comment_status ? _x( 'Open', 'comment status' ) : _x( 'Closed', 'comment status' ),
@@ -328,7 +337,11 @@ class WP_Debug_Data {
 		$is_writable_wp_content_dir     = wp_is_writable( WP_CONTENT_DIR );
 		$is_writable_upload_dir         = wp_is_writable( $upload_dir['basedir'] );
 		$is_writable_wp_plugin_dir      = wp_is_writable( WP_PLUGIN_DIR );
+<<<<<<< HEAD
 		$is_writable_template_directory = wp_is_writable( get_theme_root( get_template() ) );
+=======
+		$is_writable_template_directory = wp_is_writable( get_template_directory() . '/..' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$info['wp-filesystem'] = array(
 			'label'       => __( 'Filesystem Permissions' ),
@@ -519,6 +532,7 @@ class WP_Debug_Data {
 			'value' => ( is_array( $imagick_version ) ? $imagick_version['versionString'] : $imagick_version ),
 		);
 
+<<<<<<< HEAD
 		if ( ! function_exists( 'ini_get' ) ) {
 			$info['wp-media']['fields']['ini_get'] = array(
 				'label' => __( 'File upload settings' ),
@@ -560,6 +574,8 @@ class WP_Debug_Data {
 			);
 		}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		// If Imagick is used as our editor, provide some more information about its limitations.
 		if ( 'WP_Image_Editor_Imagick' === _wp_image_editor_choose() && isset( $imagick ) && $imagick instanceof Imagick ) {
 			$limits = array(
@@ -694,6 +710,7 @@ class WP_Debug_Data {
 				'label' => __( 'PHP time limit' ),
 				'value' => ini_get( 'max_execution_time' ),
 			);
+<<<<<<< HEAD
 
 			if ( WP_Site_Health::get_instance()->php_memory_limit !== ini_get( 'memory_limit' ) ) {
 				$info['wp-server']['fields']['memory_limit']       = array(
@@ -720,6 +737,21 @@ class WP_Debug_Data {
 				'value' => ini_get( 'upload_max_filesize' ),
 			);
 			$info['wp-server']['fields']['php_post_max_size'] = array(
+=======
+			$info['wp-server']['fields']['memory_limit']        = array(
+				'label' => __( 'PHP memory limit' ),
+				'value' => ini_get( 'memory_limit' ),
+			);
+			$info['wp-server']['fields']['max_input_time']      = array(
+				'label' => __( 'Max input time' ),
+				'value' => ini_get( 'max_input_time' ),
+			);
+			$info['wp-server']['fields']['upload_max_size']     = array(
+				'label' => __( 'Upload max filesize' ),
+				'value' => ini_get( 'upload_max_filesize' ),
+			);
+			$info['wp-server']['fields']['php_post_max_size']   = array(
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				'label' => __( 'PHP post max size' ),
 				'value' => ini_get( 'post_max_size' ),
 			);
@@ -758,6 +790,7 @@ class WP_Debug_Data {
 			'debug' => $imagick_loaded,
 		);
 
+<<<<<<< HEAD
 		// Pretty permalinks.
 		$pretty_permalinks_supported = got_url_rewrite();
 
@@ -767,6 +800,8 @@ class WP_Debug_Data {
 			'debug' => $pretty_permalinks_supported,
 		);
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		// Check if a .htaccess file exists.
 		if ( is_file( ABSPATH . '.htaccess' ) ) {
 			// If the file exists, grab the content of it.
@@ -905,6 +940,7 @@ class WP_Debug_Data {
 		// List all available plugins.
 		$plugins        = get_plugins();
 		$plugin_updates = get_plugin_updates();
+<<<<<<< HEAD
 		$transient      = get_site_transient( 'update_plugins' );
 
 		$auto_updates = array();
@@ -914,6 +950,8 @@ class WP_Debug_Data {
 		if ( $auto_updates_enabled ) {
 			$auto_updates = (array) get_site_option( 'auto_update_plugins', array() );
 		}
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		foreach ( $plugins as $plugin_path => $plugin ) {
 			$plugin_part = ( is_plugin_active( $plugin_path ) ) ? 'wp-plugins-active' : 'wp-plugins-inactive';
@@ -948,6 +986,7 @@ class WP_Debug_Data {
 				$plugin_version_string_debug .= sprintf( ' (latest version: %s)', $plugin_updates[ $plugin_path ]->update->new_version );
 			}
 
+<<<<<<< HEAD
 			if ( $auto_updates_enabled ) {
 				if ( isset( $transient->response[ $plugin_path ] ) ) {
 					$item = $transient->response[ $plugin_path ];
@@ -1003,6 +1042,8 @@ class WP_Debug_Data {
 				$plugin_version_string_debug .= ', ' . $auto_updates_string;
 			}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$info[ $plugin_part ]['fields'][ sanitize_text_field( $plugin['Name'] ) ] = array(
 				'label' => $plugin['Name'],
 				'value' => $plugin_version_string,
@@ -1022,17 +1063,23 @@ class WP_Debug_Data {
 
 		$active_theme  = wp_get_theme();
 		$theme_updates = get_theme_updates();
+<<<<<<< HEAD
 		$transient     = get_site_transient( 'update_themes' );
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$active_theme_version       = $active_theme->version;
 		$active_theme_version_debug = $active_theme_version;
 
+<<<<<<< HEAD
 		$auto_updates         = array();
 		$auto_updates_enabled = wp_is_auto_update_enabled_for_type( 'theme' );
 		if ( $auto_updates_enabled ) {
 			$auto_updates = (array) get_site_option( 'auto_update_themes', array() );
 		}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( array_key_exists( $active_theme->stylesheet, $theme_updates ) ) {
 			$theme_update_new_version = $theme_updates[ $active_theme->stylesheet ]->update['new_version'];
 
@@ -1099,6 +1146,7 @@ class WP_Debug_Data {
 			),
 		);
 
+<<<<<<< HEAD
 		if ( $auto_updates_enabled ) {
 			if ( isset( $transient->response[ $active_theme->stylesheet ] ) ) {
 				$item = $transient->response[ $active_theme->stylesheet ];
@@ -1141,6 +1189,8 @@ class WP_Debug_Data {
 			);
 		}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$parent_theme = $active_theme->parent();
 
 		if ( $parent_theme ) {
@@ -1186,6 +1236,7 @@ class WP_Debug_Data {
 					'value' => get_template_directory(),
 				),
 			);
+<<<<<<< HEAD
 
 			if ( $auto_updates_enabled ) {
 				if ( isset( $transient->response[ $parent_theme->stylesheet ] ) ) {
@@ -1228,6 +1279,8 @@ class WP_Debug_Data {
 					'debug' => $parent_theme_auto_update_string,
 				);
 			}
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		// Populate a list of all themes available in the install.
@@ -1277,6 +1330,7 @@ class WP_Debug_Data {
 				$theme_version_string_debug .= sprintf( ' (latest version: %s)', $theme_updates[ $theme_slug ]->update['new_version'] );
 			}
 
+<<<<<<< HEAD
 			if ( $auto_updates_enabled ) {
 				if ( isset( $transient->response[ $theme_slug ] ) ) {
 					$item = $transient->response[ $theme_slug ];
@@ -1324,6 +1378,8 @@ class WP_Debug_Data {
 				$theme_version_string_debug .= ',' . $auto_updates_string;
 			}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$info['wp-themes-inactive']['fields'][ sanitize_text_field( $theme->name ) ] = array(
 				'label' => sprintf(
 					/* translators: 1: Theme name. 2: Theme slug. */
@@ -1399,8 +1455,13 @@ class WP_Debug_Data {
 	 *
 	 * @since 5.2.0
 	 *
+<<<<<<< HEAD
 	 * @param array  $info_array Information gathered from the `WP_Debug_Data::debug_data` function.
 	 * @param string $type       The data type to return, either 'info' or 'debug'.
+=======
+	 * @param array $info_array Information gathered from the `WP_Debug_Data::debug_data` function.
+	 * @param string $type      The data type to return, either 'info' or 'debug'.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string The formatted data.
 	 */
 	public static function format( $info_array, $type ) {

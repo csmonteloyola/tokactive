@@ -20,7 +20,11 @@ window.wpAjax = jQuery.extend( {
 	parseAjaxResponse: function( x, r, e ) { // 1 = good, 0 = strange (bad data?), -1 = you lack permission.
 		var parsed = {}, re = jQuery('#' + r).empty(), err = '';
 
+<<<<<<< HEAD
 		if ( x && typeof x === 'object' && x.getElementsByTagName('wp_ajax') ) {
+=======
+		if ( x && typeof x == 'object' && x.getElementsByTagName('wp_ajax') ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			parsed.responses = [];
 			parsed.errors = false;
 			jQuery('response', x).each( function() {
@@ -51,7 +55,11 @@ window.wpAjax = jQuery.extend( {
 		}
 		if ( isNaN(x) ) { return !re.html('<div class="error"><p>' + x + '</p></div>'); }
 		x = parseInt(x,10);
+<<<<<<< HEAD
 		if ( -1 === x ) { return !re.html('<div class="error"><p>' + wpAjax.noPerm + '</p></div>'); }
+=======
+		if ( -1 == x ) { return !re.html('<div class="error"><p>' + wpAjax.noPerm + '</p></div>'); }
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		else if ( 0 === x ) { return !re.html('<div class="error"><p>' + wpAjax.broken  + '</p></div>'); }
 		return true;
 	},

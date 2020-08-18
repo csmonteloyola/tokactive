@@ -128,6 +128,7 @@ class WP_Dependencies {
 	 * Processes a dependency.
 	 *
 	 * @since 2.6.0
+<<<<<<< HEAD
 	 * @since 5.5.0 Added the `$group` parameter.
 	 *
 	 * @param string    $handle Name of the item. Should be unique.
@@ -136,6 +137,13 @@ class WP_Dependencies {
 	 * @return bool True on success, false if not set.
 	 */
 	public function do_item( $handle, $group = false ) {
+=======
+	 *
+	 * @param string $handle Name of the item. Should be unique.
+	 * @return bool True on success, false if not set.
+	 */
+	public function do_item( $handle ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return isset( $this->registered[ $handle ] );
 	}
 

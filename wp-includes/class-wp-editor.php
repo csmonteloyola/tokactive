@@ -310,10 +310,20 @@ final class _WP_Editors {
 	/**
 	 * @since 3.3.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @global string $tinymce_version
+	 *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param string $editor_id Unique editor identifier, e.g. 'content'.
 	 * @param array  $set       Array of editor arguments.
 	 */
 	public static function editor_settings( $editor_id, $set ) {
+<<<<<<< HEAD
+=======
+		global $tinymce_version;
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( empty( self::$first_init ) ) {
 			if ( is_admin() ) {
 				add_action( 'admin_print_footer_scripts', array( __CLASS__, 'editor_js' ), 50 );
@@ -455,7 +465,11 @@ final class _WP_Editors {
 					 */
 					$plugins = array_unique( apply_filters( 'tiny_mce_plugins', $plugins, $editor_id ) );
 
+<<<<<<< HEAD
 					$key = array_search( 'spellchecker', $plugins, true );
+=======
+					$key = array_search( 'spellchecker', $plugins );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					if ( false !== $key ) {
 						// Remove 'spellchecker' from the internal plugins if added with 'tiny_mce_plugins' filter to prevent errors.
 						// It can be added with 'mce_external_plugins'.
@@ -520,7 +534,11 @@ final class _WP_Editors {
 									$strings .= @file_get_contents( $path . $mce_locale . '_dlg.js' ) . "\n";
 								}
 
+<<<<<<< HEAD
 								if ( 'en' !== $mce_locale && empty( $strings ) ) {
+=======
+								if ( 'en' != $mce_locale && empty( $strings ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 									if ( @is_file( $path . 'en.js' ) ) {
 										$str1     = @file_get_contents( $path . 'en.js' );
 										$strings .= preg_replace( '/([\'"])en\./', '$1' . $mce_locale . '.', $str1, 1 ) . "\n";
@@ -830,8 +848,13 @@ final class _WP_Editors {
 				$options .= $key . ':' . $val . ',';
 				continue;
 			} elseif ( ! empty( $value ) && is_string( $value ) && (
+<<<<<<< HEAD
 				( '{' === $value[0] && '}' === $value[ strlen( $value ) - 1 ] ) ||
 				( '[' === $value[0] && ']' === $value[ strlen( $value ) - 1 ] ) ||
+=======
+				( '{' == $value[0] && '}' == $value[ strlen( $value ) - 1 ] ) ||
+				( '[' == $value[0] && ']' == $value[ strlen( $value ) - 1 ] ) ||
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				preg_match( '/^\(?function ?\(/', $value ) ) ) {
 
 				$options .= $key . ':' . $value . ',';
@@ -1449,8 +1472,12 @@ final class _WP_Editors {
 	 * @since 3.9.0
 	 *
 	 * @param string $mce_locale The locale used for the editor.
+<<<<<<< HEAD
 	 * @param bool   $json_only  Optional. Whether to include the JavaScript calls to tinymce.addI18n() and
 	 *                           tinymce.ScriptLoader.markDone().
+=======
+	 * @param bool $json_only optional Whether to include the JavaScript calls to tinymce.addI18n() and tinymce.ScriptLoader.markDone().
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string Translation object, JSON encoded.
 	 */
 	public static function wp_mce_translation( $mce_locale = '', $json_only = false ) {
@@ -1536,7 +1563,13 @@ final class _WP_Editors {
 	 *
 	 * @since 4.8.0
 	 *
+<<<<<<< HEAD
 	 * @global bool $concatenate_scripts
+=======
+	 * @global string $tinymce_version
+	 * @global bool   $concatenate_scripts
+	 * @global bool   $compress_scripts
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public static function print_tinymce_scripts() {
 		global $concatenate_scripts;
@@ -1771,7 +1804,11 @@ final class _WP_Editors {
 		// Build results.
 		$results = array();
 		foreach ( $posts as $post ) {
+<<<<<<< HEAD
 			if ( 'post' === $post->post_type ) {
+=======
+			if ( 'post' == $post->post_type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$info = mysql2date( __( 'Y/m/d' ), $post->post_date );
 			} else {
 				$info = $pts[ $post->post_type ]->labels->singular_name;
@@ -1795,9 +1832,15 @@ final class _WP_Editors {
 		 * @see 'wp_link_query_args' filter
 		 *
 		 * @param array $results {
+<<<<<<< HEAD
 		 *     An array of associative arrays of query results.
 		 *
 		 *     @type array ...$0 {
+=======
+		 *     An associative array of query results.
+		 *
+		 *     @type array {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 *         @type int    $ID        Post ID.
 		 *         @type string $title     The trimmed, escaped post title.
 		 *         @type string $permalink Post permalink.

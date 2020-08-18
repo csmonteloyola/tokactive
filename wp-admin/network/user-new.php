@@ -30,7 +30,11 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __( '<a href="https://wordpress.org/support/forum/multisite/">Support Forums</a>' ) . '</p>'
 );
 
+<<<<<<< HEAD
 if ( isset( $_REQUEST['action'] ) && 'add-user' === $_REQUEST['action'] ) {
+=======
+if ( isset( $_REQUEST['action'] ) && 'add-user' == $_REQUEST['action'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	check_admin_referer( 'add-user', '_wpnonce_add-user' );
 
 	if ( ! current_user_can( 'manage_network_users' ) ) {
@@ -44,7 +48,10 @@ if ( isset( $_REQUEST['action'] ) && 'add-user' === $_REQUEST['action'] ) {
 	$user = wp_unslash( $_POST['user'] );
 
 	$user_details = wpmu_validate_user_signup( $user['username'], $user['email'] );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( is_wp_error( $user_details['errors'] ) && $user_details['errors']->has_errors() ) {
 		$add_user_errors = $user_details['errors'];
 	} else {
@@ -62,7 +69,10 @@ if ( isset( $_REQUEST['action'] ) && 'add-user' === $_REQUEST['action'] ) {
 			 * @param int $user_id ID of the newly created user.
 			 */
 			do_action( 'network_user_new_created_user', $user_id );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			wp_redirect(
 				add_query_arg(
 					array(
@@ -79,7 +89,11 @@ if ( isset( $_REQUEST['action'] ) && 'add-user' === $_REQUEST['action'] ) {
 
 if ( isset( $_GET['update'] ) ) {
 	$messages = array();
+<<<<<<< HEAD
 	if ( 'added' === $_GET['update'] ) {
+=======
+	if ( 'added' == $_GET['update'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$edit_link = '';
 		if ( isset( $_GET['user_id'] ) ) {
 			$user_id_new = absint( $_GET['user_id'] );

@@ -74,11 +74,15 @@ function wp_initial_constants() {
 
 	// Add define( 'WP_DEBUG', true ); to wp-config.php to enable display of notices during development.
 	if ( ! defined( 'WP_DEBUG' ) ) {
+<<<<<<< HEAD
 		if ( 'development' === wp_get_environment_type() ) {
 			define( 'WP_DEBUG', true );
 		} else {
 			define( 'WP_DEBUG', false );
 		}
+=======
+		define( 'WP_DEBUG', false );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	// Add define( 'WP_DEBUG_DISPLAY', null ); to wp-config.php to use the globally configured setting
@@ -405,7 +409,10 @@ function wp_templating_constants() {
 	 * It will be used as the fallback if the current theme doesn't exist.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @see WP_Theme::get_core_default_theme()
 	 */
 	if ( ! defined( 'WP_DEFAULT_THEME' ) ) {

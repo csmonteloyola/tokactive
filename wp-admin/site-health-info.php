@@ -99,7 +99,11 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 			<button type="button" class="button copy-button" data-clipboard-text="<?php echo esc_attr( WP_Debug_Data::format( $info, 'debug' ) ); ?>">
 				<?php _e( 'Copy site info to clipboard' ); ?>
 			</button>
+<<<<<<< HEAD
 			<span class="success hidden" aria-hidden="true"><?php _e( 'Copied!' ); ?></span>
+=======
+			<span class="success" aria-hidden="true"><?php _e( 'Copied!' ); ?></span>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		</div>
 	</div>
 

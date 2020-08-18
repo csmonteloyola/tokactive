@@ -139,7 +139,11 @@ function get_the_title( $post = 0 ) {
 			 */
 			$protected_title_format = apply_filters( 'protected_title_format', $prepend, $post );
 			$title                  = sprintf( $protected_title_format, $title );
+<<<<<<< HEAD
 		} elseif ( isset( $post->post_status ) && 'private' === $post->post_status ) {
+=======
+		} elseif ( isset( $post->post_status ) && 'private' == $post->post_status ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			/* translators: %s: Private post title. */
 			$prepend = __( 'Private: %s' );
@@ -238,7 +242,11 @@ function get_the_guid( $post = 0 ) {
  * @since 0.71
  *
  * @param string $more_link_text Optional. Content for when there is more text.
+<<<<<<< HEAD
  * @param bool   $strip_teaser   Optional. Strip teaser content before the more text. Default false.
+=======
+ * @param bool   $strip_teaser   Optional. Strip teaser content before the more text. Default is false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function the_content( $more_link_text = null, $strip_teaser = false ) {
 	$content = get_the_content( $more_link_text, $strip_teaser );
@@ -269,8 +277,13 @@ function the_content( $more_link_text = null, $strip_teaser = false ) {
  * @global int   $multipage Boolean indicator for whether multiple pages are in play.
  *
  * @param string             $more_link_text Optional. Content for when there is more text.
+<<<<<<< HEAD
  * @param bool               $strip_teaser   Optional. Strip teaser content before the more text. Default false.
  * @param WP_Post|object|int $post           Optional. WP_Post instance or Post ID/object. Default null.
+=======
+ * @param bool               $strip_teaser   Optional. Strip teaser content before the more text. Default is false.
+ * @param WP_Post|object|int $post           Optional. WP_Post instance or Post ID/object. Default is null.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string
  */
 function get_the_content( $more_link_text = null, $strip_teaser = false, $post = null ) {
@@ -282,9 +295,13 @@ function get_the_content( $more_link_text = null, $strip_teaser = false, $post =
 		return '';
 	}
 
+<<<<<<< HEAD
 	// Use the globals if the $post parameter was not specified,
 	// but only after they have been set up in setup_postdata().
 	if ( null === $post && did_action( 'the_post' ) ) {
+=======
+	if ( null === $post ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$elements = compact( 'page', 'more', 'preview', 'pages', 'multipage' );
 	} else {
 		$elements = generate_postdata( $_post );
@@ -456,7 +473,11 @@ function has_excerpt( $post = 0 ) {
  */
 function post_class( $class = '', $post_id = null ) {
 	// Separates classes with a single space, collates classes for post DIV.
+<<<<<<< HEAD
 	echo 'class="' . esc_attr( join( ' ', get_post_class( $class, $post_id ) ) ) . '"';
+=======
+	echo 'class="' . join( ' ', get_post_class( $class, $post_id ) ) . '"';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -558,7 +579,11 @@ function get_post_class( $class = '', $post_id = null ) {
 				}
 
 				// 'post_tag' uses the 'tag' prefix for backward compatibility.
+<<<<<<< HEAD
 				if ( 'post_tag' === $taxonomy ) {
+=======
+				if ( 'post_tag' == $taxonomy ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$classes[] = 'tag-' . $term_class;
 				} else {
 					$classes[] = sanitize_html_class( $taxonomy . '-' . $term_class, $taxonomy . '-' . $term->term_id );
@@ -592,7 +617,11 @@ function get_post_class( $class = '', $post_id = null ) {
  */
 function body_class( $class = '' ) {
 	// Separates class names with a single space, collates class names for body element.
+<<<<<<< HEAD
 	echo 'class="' . esc_attr( join( ' ', get_body_class( $class ) ) ) . '"';
+=======
+	echo 'class="' . join( ' ', get_body_class( $class ) ) . '"';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -952,7 +981,11 @@ function wp_link_pages( $args = '' ) {
 
 	$output = '';
 	if ( $multipage ) {
+<<<<<<< HEAD
 		if ( 'number' === $parsed_args['next_or_number'] ) {
+=======
+		if ( 'number' == $parsed_args['next_or_number'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$output .= $parsed_args['before'];
 			for ( $i = 1; $i <= $numpages; $i++ ) {
 				$link = $parsed_args['link_before'] . str_replace( '%', $i, $parsed_args['pagelink'] ) . $parsed_args['link_after'];
@@ -1034,9 +1067,15 @@ function _wp_link_page( $i ) {
 	if ( 1 == $i ) {
 		$url = get_permalink();
 	} else {
+<<<<<<< HEAD
 		if ( ! get_option( 'permalink_structure' ) || in_array( $post->post_status, array( 'draft', 'pending' ), true ) ) {
 			$url = add_query_arg( 'page', $i, get_permalink() );
 		} elseif ( 'page' === get_option( 'show_on_front' ) && get_option( 'page_on_front' ) == $post->ID ) {
+=======
+		if ( '' == get_option( 'permalink_structure' ) || in_array( $post->post_status, array( 'draft', 'pending' ) ) ) {
+			$url = add_query_arg( 'page', $i, get_permalink() );
+		} elseif ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_on_front' ) == $post->ID ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$url = trailingslashit( get_permalink() ) . user_trailingslashit( "$wp_rewrite->pagination_base/" . $i, 'single_paged' );
 		} else {
 			$url = trailingslashit( get_permalink() ) . user_trailingslashit( $i, 'single_paged' );
@@ -1074,7 +1113,11 @@ function post_custom( $key = '' ) {
 
 	if ( ! isset( $custom[ $key ] ) ) {
 		return false;
+<<<<<<< HEAD
 	} elseif ( 1 === count( $custom[ $key ] ) ) {
+=======
+	} elseif ( 1 == count( $custom[ $key ] ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return $custom[ $key ][0];
 	} else {
 		return $custom[ $key ];
@@ -1397,7 +1440,11 @@ function wp_page_menu( $args = array() ) {
 	);
 	$args     = wp_parse_args( $args, $defaults );
 
+<<<<<<< HEAD
 	if ( ! in_array( $args['item_spacing'], array( 'preserve', 'discard' ), true ) ) {
+=======
+	if ( ! in_array( $args['item_spacing'], array( 'preserve', 'discard' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		// Invalid value, fall back to default.
 		$args['item_spacing'] = $defaults['item_spacing'];
 	}
@@ -1438,7 +1485,11 @@ function wp_page_menu( $args = array() ) {
 		}
 		$menu .= '<li ' . $class . '><a href="' . home_url( '/' ) . '">' . $args['link_before'] . $text . $args['link_after'] . '</a></li>';
 		// If the front page is a page, add it to the exclude list.
+<<<<<<< HEAD
 		if ( 'page' === get_option( 'show_on_front' ) ) {
+=======
+		if ( get_option( 'show_on_front' ) == 'page' ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			if ( ! empty( $list_args['exclude'] ) ) {
 				$list_args['exclude'] .= ',';
 			} else {
@@ -1522,9 +1573,12 @@ function walk_page_tree( $pages, $depth, $current_page, $r ) {
 	if ( empty( $r['walker'] ) ) {
 		$walker = new Walker_Page;
 	} else {
+<<<<<<< HEAD
 		/**
 		 * @var Walker $walker
 		 */
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$walker = $r['walker'];
 	}
 
@@ -1547,16 +1601,22 @@ function walk_page_tree( $pages, $depth, $current_page, $r ) {
  * @uses Walker_PageDropdown to create HTML dropdown content.
  * @see Walker_PageDropdown::walk() for parameters and return description.
  *
+<<<<<<< HEAD
  * @param mixed ...$args Elements array, maximum hierarchical depth and optional additional arguments.
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string
  */
 function walk_page_dropdown_tree( ...$args ) {
 	if ( empty( $args[2]['walker'] ) ) { // The user's options are the third parameter.
 		$walker = new Walker_PageDropdown;
 	} else {
+<<<<<<< HEAD
 		/**
 		 * @var Walker $walker
 		 */
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$walker = $args[2]['walker'];
 	}
 
@@ -1573,9 +1633,15 @@ function walk_page_dropdown_tree( ...$args ) {
  * @since 2.0.0
  *
  * @param int|WP_Post $id Optional. Post ID or post object.
+<<<<<<< HEAD
  * @param bool        $fullsize     Optional. Whether to use full size. Default false.
  * @param bool        $deprecated   Deprecated. Not used.
  * @param bool        $permalink    Optional. Whether to include permalink. Default false.
+=======
+ * @param bool        $fullsize     Optional, default is false. Whether to use full size.
+ * @param bool        $deprecated   Deprecated. Not used.
+ * @param bool        $permalink    Optional, default is false. Whether to include permalink.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function the_attachment_link( $id = 0, $fullsize = false, $deprecated = false, $permalink = false ) {
 	if ( ! empty( $deprecated ) ) {
@@ -1599,7 +1665,11 @@ function the_attachment_link( $id = 0, $fullsize = false, $deprecated = false, $
  * @param string|array $size      Optional. Image size. Accepts any valid image size, or an array
  *                                of width and height values in pixels (in that order).
  *                                Default 'thumbnail'.
+<<<<<<< HEAD
  * @param bool         $permalink Optional. Whether to add permalink to image. Default false.
+=======
+ * @param bool         $permalink Optional, Whether to add permalink to image. Default false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @param bool         $icon      Optional. Whether the attachment is an icon. Default false.
  * @param string|false $text      Optional. Link text to use. Activated by passing a string, false otherwise.
  *                                Default false.
@@ -1621,7 +1691,11 @@ function wp_get_attachment_link( $id = 0, $size = 'thumbnail', $permalink = fals
 
 	if ( $text ) {
 		$link_text = $text;
+<<<<<<< HEAD
 	} elseif ( $size && 'none' !== $size ) {
+=======
+	} elseif ( $size && 'none' != $size ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$link_text = wp_get_attachment_image( $_post->ID, $size, $icon, $attr );
 	} else {
 		$link_text = '';
@@ -1798,7 +1872,11 @@ function get_page_template_slug( $post = null ) {
 
 	$template = get_post_meta( $post->ID, '_wp_page_template', true );
 
+<<<<<<< HEAD
 	if ( ! $template || 'default' === $template ) {
+=======
+	if ( ! $template || 'default' == $template ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return '';
 	}
 
@@ -1811,7 +1889,11 @@ function get_page_template_slug( $post = null ) {
  * @since 2.6.0
  *
  * @param int|object $revision Revision ID or revision object.
+<<<<<<< HEAD
  * @param bool       $link     Optional. Whether to link to revision's page. Default true.
+=======
+ * @param bool       $link     Optional, default is true. Link to revisions's page?
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|false i18n formatted datetimestamp or localized 'Current Revision'.
  */
 function wp_post_revision_title( $revision, $link = true ) {
@@ -1820,7 +1902,11 @@ function wp_post_revision_title( $revision, $link = true ) {
 		return $revision;
 	}
 
+<<<<<<< HEAD
 	if ( ! in_array( $revision->post_type, array( 'post', 'page', 'revision' ), true ) ) {
+=======
+	if ( ! in_array( $revision->post_type, array( 'post', 'page', 'revision' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return false;
 	}
 
@@ -1852,7 +1938,11 @@ function wp_post_revision_title( $revision, $link = true ) {
  * @since 3.6.0
  *
  * @param int|object $revision Revision ID or revision object.
+<<<<<<< HEAD
  * @param bool       $link     Optional. Whether to link to revision's page. Default true.
+=======
+ * @param bool       $link     Optional, default is true. Link to revisions's page?
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @return string|false gravatar, user, i18n formatted datetimestamp or localized 'Current Revision'.
  */
 function wp_post_revision_title_expanded( $revision, $link = true ) {
@@ -1861,7 +1951,11 @@ function wp_post_revision_title_expanded( $revision, $link = true ) {
 		return $revision;
 	}
 
+<<<<<<< HEAD
 	if ( ! in_array( $revision->post_type, array( 'post', 'page', 'revision' ), true ) ) {
+=======
+	if ( ! in_array( $revision->post_type, array( 'post', 'page', 'revision' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return false;
 	}
 

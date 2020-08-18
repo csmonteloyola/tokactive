@@ -42,7 +42,11 @@ if ( current_user_can( 'install_plugins' ) ) {
 // Detect and redirect invalid importers like 'movabletype', which is registered as 'mt'.
 if ( ! empty( $_GET['invalid'] ) && isset( $popular_importers[ $_GET['invalid'] ] ) ) {
 	$importer_id = $popular_importers[ $_GET['invalid'] ]['importer-id'];
+<<<<<<< HEAD
 	if ( $importer_id !== $_GET['invalid'] ) { // Prevent redirect loops.
+=======
+	if ( $importer_id != $_GET['invalid'] ) { // Prevent redirect loops.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		wp_redirect( admin_url( 'admin.php?import=' . $importer_id ) );
 		exit;
 	}
@@ -156,7 +160,11 @@ if ( empty( $importers ) ) {
 						esc_attr( $plugin_slug ),
 						esc_attr( $data[0] ),
 						/* translators: %s: Importer name. */
+<<<<<<< HEAD
 						esc_attr( sprintf( _x( 'Install %s now', 'plugin' ), $data[0] ) ),
+=======
+						esc_attr( sprintf( __( 'Install %s now' ), $data[0] ) ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						__( 'Install Now' )
 					);
 				} else {

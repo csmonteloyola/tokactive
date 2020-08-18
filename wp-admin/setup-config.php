@@ -63,8 +63,12 @@ if ( file_exists( ABSPATH . 'wp-config.php' ) ) {
 			__( 'The file %1$s already exists. If you need to reset any of the configuration items in this file, please delete it first. You may try <a href="%2$s">installing now</a>.' ),
 			'<code>wp-config.php</code>',
 			'install.php'
+<<<<<<< HEAD
 		) . '</p>',
 		409
+=======
+		) . '</p>'
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	);
 }
 
@@ -76,8 +80,12 @@ if ( @file_exists( ABSPATH . '../wp-config.php' ) && ! @file_exists( ABSPATH . '
 			__( 'The file %1$s already exists one level above your WordPress installation. If you need to reset any of the configuration items in this file, please delete it first. You may try <a href="%2$s">installing now</a>.' ),
 			'<code>wp-config.php</code>',
 			'install.php'
+<<<<<<< HEAD
 		) . '</p>',
 		409
+=======
+		) . '</p>'
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	);
 }
 
@@ -106,7 +114,11 @@ function setup_config_display_header( $body_classes = array() ) {
 	header( 'Content-Type: text/html; charset=utf-8' );
 	?>
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html<?php echo $dir_attr; ?>>
+=======
+<html xmlns="http://www.w3.org/1999/xhtml"<?php echo $dir_attr; ?>>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 <head>
 	<meta name="viewport" content="width=device-width" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -115,7 +127,11 @@ function setup_config_display_header( $body_classes = array() ) {
 	<?php wp_admin_css( 'install', true ); ?>
 </head>
 <body class="<?php echo implode( ' ', $body_classes ); ?>">
+<<<<<<< HEAD
 <p id="logo"><?php _e( 'WordPress' ); ?></p>
+=======
+<p id="logo"><a href="<?php echo esc_url( __( 'https://wordpress.org/' ) ); ?>"><?php _e( 'WordPress' ); ?></a></p>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	<?php
 } // End function setup_config_display_header();
 
@@ -354,7 +370,11 @@ switch ( $step ) {
 
 		$key = 0;
 		foreach ( $config_file as $line_num => $line ) {
+<<<<<<< HEAD
 			if ( '$table_prefix =' === substr( $line, 0, 15 ) ) {
+=======
+			if ( '$table_prefix =' == substr( $line, 0, 15 ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$config_file[ $line_num ] = '$table_prefix = \'' . addcslashes( $prefix, "\\'" ) . "';\r\n";
 				continue;
 			}

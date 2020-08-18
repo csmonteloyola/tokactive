@@ -67,7 +67,11 @@ get_current_screen()->add_help_tab(
 		'content' =>
 		'<p>' . __( 'You can add or edit links on this screen by entering information in each of the boxes. Only the link&#8217;s web address and name (the text you want to display on your site as the link) are required fields.' ) . '</p>' .
 		'<p>' . __( 'The boxes for link name, web address, and description have fixed positions, while the others may be repositioned using drag and drop. You can also hide boxes you don&#8217;t use in the Screen Options tab, or minimize boxes by clicking on the title bar of the box.' ) . '</p>' .
+<<<<<<< HEAD
 		'<p>' . __( 'XFN stands for <a href="https://gmpg.org/xfn/">XHTML Friends Network</a>, which is optional. WordPress allows the generation of XFN attributes to show how you are related to the authors/owners of the site to which you are linking.' ) . '</p>',
+=======
+		'<p>' . __( 'XFN stands for <a href="http://gmpg.org/xfn/">XHTML Friends Network</a>, which is optional. WordPress allows the generation of XFN attributes to show how you are related to the authors/owners of the site to which you are linking.' ) . '</p>',
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	)
 );
 
@@ -108,7 +112,11 @@ wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
 
 <div id="poststuff">
 
+<<<<<<< HEAD
 <div id="post-body" class="metabox-holder columns-<?php echo ( 1 === get_current_screen()->get_columns() ) ? '1' : '2'; ?>">
+=======
+<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 <div id="post-body-content">
 <div id="namediv" class="stuffbox">
 <h2><label for="link_name"><?php _ex( 'Name', 'link name' ); ?></label></h2>
@@ -122,7 +130,11 @@ wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
 <h2><label for="link_url"><?php _e( 'Web Address' ); ?></label></h2>
 <div class="inside">
 	<input type="text" name="link_url" size="30" maxlength="255" class="code" value="<?php echo esc_attr( $link->link_url ); ?>" id="link_url" />
+<<<<<<< HEAD
 	<p><?php _e( 'Example: <code>https://wordpress.org/</code> &#8212; don&#8217;t forget the <code>https://</code>' ); ?></p>
+=======
+	<p><?php _e( 'Example: <code>http://wordpress.org/</code> &#8212; don&#8217;t forget the <code>http://</code>' ); ?></p>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 </div>
 </div>
 

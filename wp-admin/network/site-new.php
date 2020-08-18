@@ -33,7 +33,11 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __( '<a href="https://wordpress.org/support/forum/multisite/">Support Forums</a>' ) . '</p>'
 );
 
+<<<<<<< HEAD
 if ( isset( $_REQUEST['action'] ) && 'add-site' === $_REQUEST['action'] ) {
+=======
+if ( isset( $_REQUEST['action'] ) && 'add-site' == $_REQUEST['action'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	check_admin_referer( 'add-blog', '_wpnonce_add-blog' );
 
 	if ( ! is_array( $_POST['blog'] ) ) {
@@ -52,7 +56,11 @@ if ( isset( $_REQUEST['action'] ) && 'add-site' === $_REQUEST['action'] ) {
 	if ( ! is_subdomain_install() ) {
 		$subdirectory_reserved_names = get_subdirectory_reserved_names();
 
+<<<<<<< HEAD
 		if ( in_array( $domain, $subdirectory_reserved_names, true ) ) {
+=======
+		if ( in_array( $domain, $subdirectory_reserved_names ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			wp_die(
 				sprintf(
 					/* translators: %s: Reserved names list. */
@@ -73,7 +81,11 @@ if ( isset( $_REQUEST['action'] ) && 'add-site' === $_REQUEST['action'] ) {
 	if ( isset( $_POST['WPLANG'] ) ) {
 		if ( '' === $_POST['WPLANG'] ) {
 			$meta['WPLANG'] = ''; // en_US
+<<<<<<< HEAD
 		} elseif ( in_array( $_POST['WPLANG'], get_available_languages(), true ) ) {
+=======
+		} elseif ( in_array( $_POST['WPLANG'], get_available_languages() ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$meta['WPLANG'] = $_POST['WPLANG'];
 		} elseif ( current_user_can( 'install_languages' ) && wp_can_install_language_pack() ) {
 			$language = wp_download_language_pack( wp_unslash( $_POST['WPLANG'] ) );
@@ -139,7 +151,10 @@ if ( isset( $_REQUEST['action'] ) && 'add-site' === $_REQUEST['action'] ) {
 	$wpdb->hide_errors();
 	$id = wpmu_create_blog( $newdomain, $path, $title, $user_id, $meta, get_current_network_id() );
 	$wpdb->show_errors();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( ! is_wp_error( $id ) ) {
 		if ( ! is_super_admin( $user_id ) && ! get_user_option( 'primary_blog', $user_id ) ) {
 			update_user_option( $user_id, 'primary_blog', $id, true );
@@ -188,7 +203,11 @@ Name: %3$s'
 
 if ( isset( $_GET['update'] ) ) {
 	$messages = array();
+<<<<<<< HEAD
 	if ( 'added' === $_GET['update'] ) {
+=======
+	if ( 'added' == $_GET['update'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$messages[] = sprintf(
 			/* translators: 1: Dashboard URL, 2: Network admin edit URL. */
 			__( 'Site added. <a href="%1$s">Visit Dashboard</a> or <a href="%2$s">Edit Site</a>' ),
@@ -232,12 +251,20 @@ printf(
 			<th scope="row"><label for="site-address"><?php _e( 'Site Address (URL)' ); ?> <span class="required">*</span></label></th>
 			<td>
 			<?php if ( is_subdomain_install() ) { ?>
+<<<<<<< HEAD
 				<input name="blog[domain]" type="text" class="regular-text ltr" id="site-address" aria-describedby="site-address-desc" autocapitalize="none" autocorrect="off" required /><span class="no-break">.<?php echo preg_replace( '|^www\.|', '', get_network()->domain ); ?></span>
+=======
+				<input name="blog[domain]" type="text" class="regular-text" id="site-address" aria-describedby="site-address-desc" autocapitalize="none" autocorrect="off" required /><span class="no-break">.<?php echo preg_replace( '|^www\.|', '', get_network()->domain ); ?></span>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				<?php
 			} else {
 				echo get_network()->domain . get_network()->path
 				?>
+<<<<<<< HEAD
 				<input name="blog[domain]" type="text" class="regular-text ltr" id="site-address" aria-describedby="site-address-desc" autocapitalize="none" autocorrect="off" required />
+=======
+				<input name="blog[domain]" type="text" class="regular-text" id="site-address" aria-describedby="site-address-desc" autocapitalize="none" autocorrect="off" required />
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				<?php
 			}
 			echo '<p class="description" id="site-address-desc">' . __( 'Only lowercase letters (a-z), numbers, and hyphens are allowed.' ) . '</p>';
@@ -261,7 +288,11 @@ printf(
 					$lang = get_site_option( 'WPLANG' );
 
 					// Use English if the default isn't available.
+<<<<<<< HEAD
 					if ( ! in_array( $lang, $languages, true ) ) {
+=======
+					if ( ! in_array( $lang, $languages ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						$lang = '';
 					}
 

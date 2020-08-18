@@ -108,7 +108,11 @@
 		/**
 		 * Initialize the video handler.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} settings Video settings.
+=======
+		 * @param {object} settings Video settings.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		initialize: function( settings ) {
 			var handler = this,
@@ -217,7 +221,11 @@
 		 * Whether the handler can process a video.
 		 *
 		 * @abstract
+<<<<<<< HEAD
 		 * @param {Object} settings Video settings.
+=======
+		 * @param {object} settings Video settings.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {boolean}
 		 */
 		test: function() {
@@ -239,7 +247,11 @@
 	 *
 	 * @memberOf wp
 	 *
+<<<<<<< HEAD
 	 * @param {Object} protoProps Properties to apply to the prototype.
+=======
+	 * @param {object} protoProps Properties to apply to the prototype.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return CustomHandler The subclass.
 	 */
 	BaseHandler.extend = function( protoProps ) {
@@ -271,7 +283,11 @@
 		/**
 		 * Whether the native handler supports a video.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} settings Video settings.
+=======
+		 * @param {object} settings Video settings.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {boolean}
 		 */
 		test: function( settings ) {
@@ -345,7 +361,11 @@
 		/**
 		 * Whether the handler supports a video.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} settings Video settings.
+=======
+		 * @param {object} settings Video settings.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {boolean}
 		 */
 		test: function( settings ) {

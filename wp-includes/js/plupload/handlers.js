@@ -148,7 +148,11 @@ function prepareMediaItemInit( fileObj ) {
 	// Replace the original filename with the new (unique) one assigned during upload.
 	jQuery( '.filename.original', item ).replaceWith( jQuery( '.filename.new', item ) );
 
+<<<<<<< HEAD
 	// Bind Ajax to the new Delete button.
+=======
+	// Bind AJAX to the new Delete button.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	jQuery( 'a.delete', item ).click( function(){
 		// Tell the server to delete it. TODO: Handle exceptions.
 		jQuery.ajax({
@@ -166,7 +170,11 @@ function prepareMediaItemInit( fileObj ) {
 		return false;
 	});
 
+<<<<<<< HEAD
 	// Bind Ajax to the new Undo button.
+=======
+	// Bind AJAX to the new Undo button.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	jQuery( 'a.undo', item ).click( function(){
 		// Tell the server to untrash it. TODO: Handle exceptions.
 		jQuery.ajax({
@@ -568,11 +576,14 @@ jQuery( document ).ready( function( $ ) {
 			uploadStart();
 
 			plupload.each( files, function( file ) {
+<<<<<<< HEAD
 				if ( file.type === 'image/heic' && up.settings.heic_upload_error ) {
 					// Show error but do not block uploading.
 					wpQueueError( pluploadL10n.unsupported_image )
 				}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				fileQueued( file );
 			});
 

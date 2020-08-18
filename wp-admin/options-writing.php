@@ -142,7 +142,11 @@ if ( apply_filters( 'enable_post_by_email_configuration', true ) ) {
 	<?php
 	printf(
 		/* translators: 1, 2, 3: Examples of random email addresses. */
+<<<<<<< HEAD
 		__( 'To post to WordPress by email, you must set up a secret email account with POP3 access. Any mail received at this address will be posted, so it&#8217;s a good idea to keep this address very secret. Here are three random strings you could use: %1$s, %2$s, %3$s.' ),
+=======
+		__( 'To post to WordPress by email you must set up a secret email account with POP3 access. Any mail received at this address will be posted, so it&#8217;s a good idea to keep this address very secret. Here are three random strings you could use: %1$s, %2$s, %3$s.' ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		sprintf( '<kbd>%s</kbd>', wp_generate_password( 8, false ) ),
 		sprintf( '<kbd>%s</kbd>', wp_generate_password( 8, false ) ),
 		sprintf( '<kbd>%s</kbd>', wp_generate_password( 8, false ) )

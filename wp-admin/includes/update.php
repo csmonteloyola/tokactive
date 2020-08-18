@@ -95,7 +95,11 @@ function find_core_auto_update() {
 	$auto_update = false;
 	$upgrader    = new WP_Automatic_Updater;
 	foreach ( $updates->updates as $update ) {
+<<<<<<< HEAD
 		if ( 'autoupdate' !== $update->response ) {
+=======
+		if ( 'autoupdate' != $update->response ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			continue;
 		}
 
@@ -285,7 +289,11 @@ function update_nag() {
 
 	global $pagenow;
 
+<<<<<<< HEAD
 	if ( 'update-core.php' === $pagenow ) {
+=======
+	if ( 'update-core.php' == $pagenow ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		return;
 	}
 
@@ -318,8 +326,12 @@ function update_nag() {
 			$cur->current
 		);
 	}
+<<<<<<< HEAD
 
 	echo "<div class='update-nag notice notice-warning inline'>$msg</div>";
+=======
+	echo "<div class='update-nag'>$msg</div>";
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -436,12 +448,16 @@ function wp_plugin_update_row( $file, $plugin_data ) {
 	$details_url = self_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $response->slug . '&section=changelog&TB_iframe=true&width=600&height=800' );
 
 	/** @var WP_Plugins_List_Table $wp_list_table */
+<<<<<<< HEAD
 	$wp_list_table = _get_list_table(
 		'WP_Plugins_List_Table',
 		array(
 			'screen' => get_current_screen(),
 		)
 	);
+=======
+	$wp_list_table = _get_list_table( 'WP_Plugins_List_Table' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	if ( is_network_admin() || ! is_multisite() ) {
 		if ( is_network_admin() ) {
@@ -509,7 +525,11 @@ function wp_plugin_update_row( $file, $plugin_data ) {
 					sprintf(
 						'class="update-link" aria-label="%s"',
 						/* translators: %s: Plugin name. */
+<<<<<<< HEAD
 						esc_attr( sprintf( _x( 'Update %s now', 'plugin' ), $plugin_name ) )
+=======
+						esc_attr( sprintf( __( 'Update %s now' ), $plugin_name ) )
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					)
 				);
 			} else {
@@ -642,12 +662,15 @@ function wp_theme_update_row( $theme_key, $theme ) {
 
 	$active = $theme->is_allowed( 'network' ) ? ' active' : '';
 
+<<<<<<< HEAD
 	$requires_wp  = isset( $response['requires'] ) ? $response['requires'] : null;
 	$requires_php = isset( $response['requires_php'] ) ? $response['requires_php'] : null;
 
 	$compatible_wp  = is_wp_version_compatible( $requires_wp );
 	$compatible_php = is_php_version_compatible( $requires_php );
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	printf(
 		'<tr class="plugin-update-tr%s" id="%s" data-slug="%s">' .
 		'<td colspan="%s" class="plugin-update colspanchange">' .
@@ -658,6 +681,7 @@ function wp_theme_update_row( $theme_key, $theme ) {
 		$wp_list_table->get_column_count()
 	);
 
+<<<<<<< HEAD
 	if ( $compatible_wp && $compatible_php ) {
 		if ( ! current_user_can( 'update_themes' ) ) {
 			printf(
@@ -762,6 +786,53 @@ function wp_theme_update_row( $theme_key, $theme ) {
 				wp_update_php_annotation( '</p><p><em>', '</em>' );
 			}
 		}
+=======
+	if ( ! current_user_can( 'update_themes' ) ) {
+		printf(
+			/* translators: 1: Theme name, 2: Details URL, 3: Additional link attributes, 4: Version number. */
+			__( 'There is a new version of %1$s available. <a href="%2$s" %3$s>View version %4$s details</a>.' ),
+			$theme['Name'],
+			esc_url( $details_url ),
+			sprintf(
+				'class="thickbox open-plugin-details-modal" aria-label="%s"',
+				/* translators: 1: Theme name, 2: Version number. */
+				esc_attr( sprintf( __( 'View %1$s version %2$s details' ), $theme['Name'], $response['new_version'] ) )
+			),
+			$response['new_version']
+		);
+	} elseif ( empty( $response['package'] ) ) {
+		printf(
+			/* translators: 1: Theme name, 2: Details URL, 3: Additional link attributes, 4: Version number. */
+			__( 'There is a new version of %1$s available. <a href="%2$s" %3$s>View version %4$s details</a>. <em>Automatic update is unavailable for this theme.</em>' ),
+			$theme['Name'],
+			esc_url( $details_url ),
+			sprintf(
+				'class="thickbox open-plugin-details-modal" aria-label="%s"',
+				/* translators: 1: Theme name, 2: Version number. */
+				esc_attr( sprintf( __( 'View %1$s version %2$s details' ), $theme['Name'], $response['new_version'] ) )
+			),
+			$response['new_version']
+		);
+	} else {
+		printf(
+			/* translators: 1: Theme name, 2: Details URL, 3: Additional link attributes, 4: Version number, 5: Update URL, 6: Additional link attributes. */
+			__( 'There is a new version of %1$s available. <a href="%2$s" %3$s>View version %4$s details</a> or <a href="%5$s" %6$s>update now</a>.' ),
+			$theme['Name'],
+			esc_url( $details_url ),
+			sprintf(
+				'class="thickbox open-plugin-details-modal" aria-label="%s"',
+				/* translators: 1: Theme name, 2: Version number. */
+				esc_attr( sprintf( __( 'View %1$s version %2$s details' ), $theme['Name'], $response['new_version'] ) )
+			),
+			$response['new_version'],
+			wp_nonce_url( self_admin_url( 'update.php?action=upgrade-theme&theme=' ) . $theme_key, 'upgrade-theme_' . $theme_key ),
+			sprintf(
+				'class="update-link" aria-label="%s"',
+				/* translators: %s: Theme name. */
+				esc_attr( sprintf( __( 'Update %s now' ), $theme['Name'] ) )
+			)
+		);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -830,7 +901,11 @@ function maintenance_nag() {
 		$msg = __( 'An automated WordPress update has failed to complete! Please notify the site administrator.' );
 	}
 
+<<<<<<< HEAD
 	echo "<div class='update-nag notice notice-warning inline'>$msg</div>";
+=======
+	echo "<div class='update-nag'>$msg</div>";
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /**
@@ -1004,6 +1079,7 @@ function wp_recovery_mode_nag() {
 	</div>
 	<?php
 }
+<<<<<<< HEAD
 
 /**
  * Checks whether auto-updates are enabled.
@@ -1081,3 +1157,5 @@ function wp_get_auto_update_message() {
 
 	return $message;
 }
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c

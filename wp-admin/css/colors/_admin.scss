@@ -31,6 +31,7 @@ span.wp-media-buttons-icon:before {
 	color: currentColor;
 }
 
+<<<<<<< HEAD
 .wp-core-ui .button-link {
 	color: $link;
 
@@ -58,6 +59,8 @@ span.wp-media-buttons-icon:before {
 .wp-core-ui .button-link-delete:focus {
 	color: #dc3232;
 }
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 /* Forms */
 
@@ -140,6 +143,7 @@ textarea:focus {
 		box-shadow: 0 0 0 1px #32373c;
 	}
 
+<<<<<<< HEAD
 	@if ( $low-contrast-theme != "true" ) {
 		.button,
 		.button-secondary {
@@ -169,6 +173,8 @@ textarea:focus {
 		}
 	}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	.button-primary {
 		@include button( $button-color );
 	}
@@ -208,6 +214,7 @@ textarea:focus {
 
 
 /* List tables */
+<<<<<<< HEAD
 @if $low-contrast-theme == "true" {
 	.wrap .page-title-action:hover {
 		color: $menu-text;
@@ -230,6 +237,13 @@ textarea:focus {
 		color: darken($highlight-color, 20);;
 		box-shadow: 0 0 0 1px lighten($highlight-color, 10);
 	}
+=======
+
+.wrap .add-new-h2:hover, /* deprecated */
+.wrap .page-title-action:hover {
+	color: $menu-text;
+	background-color: $menu-background;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .view-switch a.current:before {
@@ -343,7 +357,12 @@ ul#adminmenu > li.current > a.current:after {
 #adminmenu li.wp-has-current-submenu.opensub div.wp-menu-image:before,
 #adminmenu li:hover div.wp-menu-image:before,
 #adminmenu li a:focus div.wp-menu-image:before,
+<<<<<<< HEAD
 #adminmenu li.opensub div.wp-menu-image:before {
+=======
+#adminmenu li.opensub div.wp-menu-image:before,
+.ie8 #adminmenu li.opensub div.wp-menu-image:before {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	color: $menu-current-icon;
 }
 
@@ -651,6 +670,7 @@ div#wp-responsive-toggle a:before {
 .mce-container.mce-menu .mce-menu-item-preview.mce-active {
 	background: $highlight-color;
 }
+<<<<<<< HEAD
 
 /* Customizer */
 #customize-controls .control-section:hover > .accordion-section-title,
@@ -759,3 +779,5 @@ div#wp-responsive-toggle a:before {
 .wp-full-overlay-footer .devices button:focus:before {
 	color: $highlight-color;
 }
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c

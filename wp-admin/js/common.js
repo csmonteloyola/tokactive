@@ -2,7 +2,11 @@
  * @output wp-admin/js/common.js
  */
 
+<<<<<<< HEAD
 /* global setUserSetting, ajaxurl, alert, confirm, pagenow */
+=======
+/* global setUserSetting, ajaxurl, commonL10n, alert, confirm, pagenow */
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /* global columns, screenMeta */
 
 /**
@@ -15,8 +19,12 @@
 ( function( $, window, undefined ) {
 	var $document = $( document ),
 		$window = $( window ),
+<<<<<<< HEAD
 		$body = $( document.body ),
 		__ = wp.i18n.__;
+=======
+		$body = $( document.body );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 /**
  * Removed in 3.3.0, needed for back-compatibility.
@@ -137,7 +145,11 @@ window.columns = {
 	 *
 	 * @since 3.1.0
 	 *
+<<<<<<< HEAD
 	 * @param {number} diff The modifier for the column span.
+=======
+	 * @param {int} diff The modifier for the column span.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	colSpanChange : function(diff) {
 		var $t = $('table').find('.colspanchange'), n;
@@ -189,7 +201,12 @@ window.showNotice = {
 	 * @return {boolean} Returns true if the message is confirmed.
 	 */
 	warn : function() {
+<<<<<<< HEAD
 		if ( confirm( __( 'You are about to permanently delete these items from your site.\nThis action cannot be undone.\n\'Cancel\' to stop, \'OK\' to delete.' ) ) ) {
+=======
+		var msg = commonL10n.warnDelete || '';
+		if ( confirm(msg) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return true;
 		}
 
@@ -384,7 +401,11 @@ $permalinkStructure.on( 'focus', function( event ) {
  * If the structure is already used in the custom permalink structure,
  * it will be disabled.
  *
+<<<<<<< HEAD
  * @param {Object} button Button jQuery object.
+=======
+ * @param {object} button Button jQuery object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  */
 function changeStructureTagButtonState( button ) {
 	if ( -1 !== $permalinkStructure.val().indexOf( button.text().trim() ) ) {
@@ -474,6 +495,10 @@ $document.ready( function() {
 		currentPage = pageInput.val(),
 		isIOS = /iPhone|iPad|iPod/.test( navigator.userAgent ),
 		isAndroid = navigator.userAgent.indexOf( 'Android' ) !== -1,
+<<<<<<< HEAD
+=======
+		isIE8 = $( document.documentElement ).hasClass( 'ie8' ),
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$adminMenuWrap = $( '#adminmenuwrap' ),
 		$wpwrap = $( '#wpwrap' ),
 		$adminmenu = $( '#adminmenu' ),
@@ -757,10 +782,18 @@ $document.ready( function() {
 	function makeNoticesDismissible() {
 		$( '.notice.is-dismissible' ).each( function() {
 			var $el = $( this ),
+<<<<<<< HEAD
 				$button = $( '<button type="button" class="notice-dismiss"><span class="screen-reader-text"></span></button>' );
 
 			// Ensure plain text.
 			$button.find( '.screen-reader-text' ).text( __( 'Dismiss this notice.' ) );
+=======
+				$button = $( '<button type="button" class="notice-dismiss"><span class="screen-reader-text"></span></button>' ),
+				btnText = commonL10n.dismiss || '';
+
+			// Ensure plain text.
+			$button.find( '.screen-reader-text' ).text( btnText );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$button.on( 'click.wp-dismiss-notice', function( event ) {
 				event.preventDefault();
 				$el.fadeTo( 100, 0, function() {
@@ -1058,7 +1091,11 @@ $document.ready( function() {
 		var windowPos = $window.scrollTop(),
 			resizing = ! event || event.type !== 'scroll';
 
+<<<<<<< HEAD
 		if ( isIOS || $adminmenu.data( 'wp-responsive' ) ) {
+=======
+		if ( isIOS || isIE8 || $adminmenu.data( 'wp-responsive' ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return;
 		}
 
@@ -1558,6 +1595,7 @@ $document.ready( function() {
 	 */
 	$document.on( 'wp-menu-state-set wp-collapse-menu', function( event, eventData ) {
 		var $collapseButton = $( '#collapse-button' ),
+<<<<<<< HEAD
 			ariaExpanded, ariaLabelText;
 
 		if ( 'folded' === eventData.state ) {
@@ -1566,6 +1604,14 @@ $document.ready( function() {
 		} else {
 			ariaExpanded = 'true';
 			ariaLabelText = __( 'Collapse Main menu' );
+=======
+			ariaExpanded = 'true',
+			ariaLabelText = commonL10n.collapseMenu;
+
+		if ( 'folded' === eventData.state ) {
+			ariaExpanded = 'false';
+			ariaLabelText = commonL10n.expandMenu;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		$collapseButton.attr({
@@ -1606,6 +1652,7 @@ $document.ready( function() {
 	});
 });
 
+<<<<<<< HEAD
 /**
  * Hides the update button for expired plugin or theme uploads.
  *
@@ -1641,6 +1688,8 @@ $document.ready( function( $ ) {
 	);
 } );
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 // Fire a custom jQuery event at the end of window resize.
 ( function() {
 	var timeout;

@@ -82,7 +82,11 @@ this["wp"] = this["wp"] || {}; this["wp"]["primitives"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 463);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 447);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -152,12 +156,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 15:
+=======
+/***/ 19:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectWithoutProperties; });
+<<<<<<< HEAD
 /* harmony import */ var _objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(41);
+=======
+/* harmony import */ var _objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(43);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
@@ -180,7 +192,11 @@ function _objectWithoutProperties(source, excluded) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 41:
+=======
+/***/ 43:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -202,6 +218,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 463:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -223,11 +240,23 @@ __webpack_require__.d(__webpack_exports__, "SVG", function() { return /* reexpor
 __webpack_require__.d(__webpack_exports__, "HorizontalRule", function() { return /* reexport */ HorizontalRule; });
 __webpack_require__.d(__webpack_exports__, "BlockQuotation", function() { return /* reexport */ BlockQuotation; });
 
+=======
+/***/ 447:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
 var defineProperty = __webpack_require__(5);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+<<<<<<< HEAD
 var objectWithoutProperties = __webpack_require__(15);
+=======
+var objectWithoutProperties = __webpack_require__(19);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
 var classnames = __webpack_require__(11);
@@ -252,6 +281,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
  * WordPress dependencies
  */
 
+<<<<<<< HEAD
  // Disable reason: JSDoc linter doesn't seem to parse the union (`&`) correctly.
 
 /* eslint-disable jsdoc/valid-types */
@@ -265,10 +295,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
  *
  * @return {JSX.Element} Circle component
  */
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 var svg_Circle = function Circle(props) {
   return Object(external_this_wp_element_["createElement"])('circle', props);
 };
+<<<<<<< HEAD
 /**
  * @param {import('react').ComponentPropsWithoutRef<'g'>} props
  *
@@ -349,6 +382,32 @@ var svg_Stop = function Stop(props) {
  * @return {JSX.Element} Stop component
  */
 
+=======
+var svg_G = function G(props) {
+  return Object(external_this_wp_element_["createElement"])('g', props);
+};
+var svg_Path = function Path(props) {
+  return Object(external_this_wp_element_["createElement"])('path', props);
+};
+var svg_Polygon = function Polygon(props) {
+  return Object(external_this_wp_element_["createElement"])('polygon', props);
+};
+var svg_Rect = function Rect(props) {
+  return Object(external_this_wp_element_["createElement"])('rect', props);
+};
+var svg_Defs = function Defs(props) {
+  return Object(external_this_wp_element_["createElement"])('defs', props);
+};
+var svg_RadialGradient = function RadialGradient(props) {
+  return Object(external_this_wp_element_["createElement"])('radialGradient', props);
+};
+var svg_LinearGradient = function LinearGradient(props) {
+  return Object(external_this_wp_element_["createElement"])('linearGradient', props);
+};
+var svg_Stop = function Stop(props) {
+  return Object(external_this_wp_element_["createElement"])('stop', props);
+};
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 var svg_SVG = function SVG(_ref) {
   var className = _ref.className,
       isPressed = _ref.isPressed,
@@ -359,8 +418,13 @@ var svg_SVG = function SVG(_ref) {
       'is-pressed': isPressed
     }) || undefined,
     role: 'img',
+<<<<<<< HEAD
     'aria-hidden': true,
     focusable: false
+=======
+    'aria-hidden': 'true',
+    focusable: 'false'
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
   }); // Disable reason: We need to have a way to render HTML tag for web.
   // eslint-disable-next-line react/forbid-elements
 
@@ -375,6 +439,21 @@ var HorizontalRule = 'hr';
 var BlockQuotation = 'blockquote';
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/primitives/build-module/index.js
+<<<<<<< HEAD
+=======
+/* concated harmony reexport Circle */__webpack_require__.d(__webpack_exports__, "Circle", function() { return svg_Circle; });
+/* concated harmony reexport G */__webpack_require__.d(__webpack_exports__, "G", function() { return svg_G; });
+/* concated harmony reexport Path */__webpack_require__.d(__webpack_exports__, "Path", function() { return svg_Path; });
+/* concated harmony reexport Polygon */__webpack_require__.d(__webpack_exports__, "Polygon", function() { return svg_Polygon; });
+/* concated harmony reexport Rect */__webpack_require__.d(__webpack_exports__, "Rect", function() { return svg_Rect; });
+/* concated harmony reexport Defs */__webpack_require__.d(__webpack_exports__, "Defs", function() { return svg_Defs; });
+/* concated harmony reexport RadialGradient */__webpack_require__.d(__webpack_exports__, "RadialGradient", function() { return svg_RadialGradient; });
+/* concated harmony reexport LinearGradient */__webpack_require__.d(__webpack_exports__, "LinearGradient", function() { return svg_LinearGradient; });
+/* concated harmony reexport Stop */__webpack_require__.d(__webpack_exports__, "Stop", function() { return svg_Stop; });
+/* concated harmony reexport SVG */__webpack_require__.d(__webpack_exports__, "SVG", function() { return svg_SVG; });
+/* concated harmony reexport HorizontalRule */__webpack_require__.d(__webpack_exports__, "HorizontalRule", function() { return HorizontalRule; });
+/* concated harmony reexport BlockQuotation */__webpack_require__.d(__webpack_exports__, "BlockQuotation", function() { return BlockQuotation; });
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 
 

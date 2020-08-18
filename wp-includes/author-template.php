@@ -15,7 +15,11 @@
  *
  * @since 1.5.0
  *
+<<<<<<< HEAD
  * @global WP_User $authordata The current author's data.
+=======
+ * @global object $authordata The current author's DB object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param string $deprecated Deprecated.
  * @return string|null The author's display name.
@@ -32,7 +36,11 @@ function get_the_author( $deprecated = '' ) {
 	 *
 	 * @since 2.9.0
 	 *
+<<<<<<< HEAD
 	 * @param string|null $display_name The author's display name.
+=======
+	 * @param string $authordata->display_name The author's display name.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	return apply_filters( 'the_author', is_object( $authordata ) ? $authordata->display_name : null );
 }
@@ -49,7 +57,10 @@ function get_the_author( $deprecated = '' ) {
  * return it. However, backward compatibility has to be maintained.
  *
  * @since 0.71
+<<<<<<< HEAD
  *
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  * @see get_the_author()
  * @link https://developer.wordpress.org/reference/functions/the_author/
  *
@@ -99,7 +110,11 @@ function get_the_modified_author() {
 		 *
 		 * @since 2.8.0
 		 *
+<<<<<<< HEAD
 		 * @param string $display_name The author's display name.
+=======
+		 * @param string $last_user->display_name The author's display name.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		return apply_filters( 'the_modified_author', $last_user->display_name );
 	}
@@ -152,7 +167,11 @@ function the_modified_author() {
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
  * @global WP_User $authordata The current author's data.
+=======
+ * @global object $authordata The current author's DB object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param string    $field   Optional. The user field to retrieve. Default empty.
  * @param int|false $user_id Optional. User ID.
@@ -168,7 +187,11 @@ function get_the_author_meta( $field = '', $user_id = false ) {
 		$authordata = get_userdata( $user_id );
 	}
 
+<<<<<<< HEAD
 	if ( in_array( $field, array( 'login', 'pass', 'nicename', 'email', 'url', 'registered', 'activation_key', 'status' ), true ) ) {
+=======
+	if ( in_array( $field, array( 'login', 'pass', 'nicename', 'email', 'url', 'registered', 'activation_key', 'status' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$field = 'user_' . $field;
 	}
 
@@ -287,7 +310,11 @@ function the_author_posts() {
  *
  * @since 4.4.0
  *
+<<<<<<< HEAD
  * @global WP_User $authordata The current author's data.
+=======
+ * @global object $authordata The current author's DB object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @return string An HTML link to the author page, or an empty string if $authordata isn't defined.
  */
@@ -350,7 +377,11 @@ function get_author_posts_url( $author_id, $author_nicename = '' ) {
 		$file = home_url( '/' );
 		$link = $file . '?author=' . $auth_ID;
 	} else {
+<<<<<<< HEAD
 		if ( '' === $author_nicename ) {
+=======
+		if ( '' == $author_nicename ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$user = get_userdata( $author_id );
 			if ( ! empty( $user->user_nicename ) ) {
 				$author_nicename = $user->user_nicename;
@@ -366,7 +397,11 @@ function get_author_posts_url( $author_id, $author_nicename = '' ) {
 	 * @since 2.1.0
 	 *
 	 * @param string $link            The URL to the author's page.
+<<<<<<< HEAD
 	 * @param int    $author_id       The author's ID.
+=======
+	 * @param int    $author_id       The author's id.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param string $author_nicename The author's nice name.
 	 */
 	$link = apply_filters( 'author_link', $link, $author_id, $author_nicename );
@@ -468,7 +503,11 @@ function wp_list_authors( $args = '' ) {
 			continue; // No need to go further to process HTML.
 		}
 
+<<<<<<< HEAD
 		if ( 'list' === $args['style'] ) {
+=======
+		if ( 'list' == $args['style'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$return .= '<li>';
 		}
 
@@ -514,7 +553,11 @@ function wp_list_authors( $args = '' ) {
 		}
 
 		$return .= $link;
+<<<<<<< HEAD
 		$return .= ( 'list' === $args['style'] ) ? '</li>' : ', ';
+=======
+		$return .= ( 'list' == $args['style'] ) ? '</li>' : ', ';
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	$return = rtrim( $return, ', ' );

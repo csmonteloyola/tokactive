@@ -10,7 +10,11 @@
  * @requires jQuery
  */
 
+<<<<<<< HEAD
 /* global ajaxurl, _wpMediaGridSettings, showNotice, findPosts */
+=======
+/* global ajaxurl, attachMediaBoxL10n, _wpMediaGridSettings, showNotice, findPosts */
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 ( function( $ ){
 	window.findPosts = {
@@ -124,12 +128,20 @@
 				spinner.removeClass( 'is-active' );
 			}).done( function( x ) {
 				if ( ! x.success ) {
+<<<<<<< HEAD
 					$( '#find-posts-response' ).text( wp.i18n.__( 'An error has occurred. Please reload the page and try again.' ) );
+=======
+					$( '#find-posts-response' ).text( attachMediaBoxL10n.error );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				}
 
 				$( '#find-posts-response' ).html( x.data );
 			}).fail( function() {
+<<<<<<< HEAD
 				$( '#find-posts-response' ).text( wp.i18n.__( 'An error has occurred. Please reload the page and try again.' ) );
+=======
+				$( '#find-posts-response' ).text( attachMediaBoxL10n.error );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			});
 		}
 	};
@@ -147,14 +159,21 @@
 		if ( $mediaGridWrap.length && window.wp && window.wp.media ) {
 			settings = _wpMediaGridSettings;
 
+<<<<<<< HEAD
 			var frame = window.wp.media({
+=======
+			window.wp.media({
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				frame: 'manage',
 				container: $mediaGridWrap,
 				library: settings.queryVars
 			}).open();
+<<<<<<< HEAD
 
 			// Fire a global ready event.
 			$mediaGridWrap.trigger( 'wp-media-grid-ready', frame );
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		// Prevents form submission if no post has been selected.

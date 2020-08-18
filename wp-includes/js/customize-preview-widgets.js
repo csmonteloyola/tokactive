@@ -318,7 +318,11 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 		 *
 		 * @throws {Error} If there's no settingId.
 		 * @throws {Error} If the setting doesn't exist in the API.
+<<<<<<< HEAD
 		 * @throws {Error} If the API doesn't pass an array of widget IDs.
+=======
+		 * @throws {Error} If the API doesn't pass an array of widget ids.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 *
 		 * @return {Array} A shallow copy of the array containing widget IDs.
 		 */
@@ -631,7 +635,11 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 	 * @memberOf wp.customize.widgetsPreview
 	 *
 	 * @since 3.9.0
+<<<<<<< HEAD
 	 * @param {string} widgetId ID of the widget.
+=======
+	 * @param  {string} widgetId ID of the widget.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @return {void}
 	 */

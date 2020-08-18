@@ -107,11 +107,15 @@ if ( isset( $GLOBALS['wp_settings']['media']['embeds'] ) ) :
 <h2 class="title"><?php _e( 'Uploading Files' ); ?></h2>
 <table class="form-table" role="presentation">
 	<?php
+<<<<<<< HEAD
 	/*
 	 * If upload_url_path is not the default (empty),
 	 * or upload_path is not the default ('wp-content/uploads' or empty),
 	 * they can be edited, otherwise they're locked.
 	 */
+=======
+	// If upload_url_path is not the default (empty), and upload_path is not the default ('wp-content/uploads' or empty).
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( get_option( 'upload_url_path' ) || ( get_option( 'upload_path' ) != 'wp-content/uploads' && get_option( 'upload_path' ) ) ) :
 		?>
 <tr>

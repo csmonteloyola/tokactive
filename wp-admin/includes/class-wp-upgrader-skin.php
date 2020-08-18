@@ -15,6 +15,7 @@
  */
 class WP_Upgrader_Skin {
 
+<<<<<<< HEAD
 	/**
 	 * Holds the upgrader data.
 	 *
@@ -40,12 +41,17 @@ class WP_Upgrader_Skin {
 	 *
 	 * @var bool
 	 */
+=======
+	public $upgrader;
+	public $done_header = false;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	public $done_footer = false;
 
 	/**
 	 * Holds the result of an upgrade.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 *
 	 * @var string|bool|WP_Error
 	 */
@@ -69,6 +75,15 @@ class WP_Upgrader_Skin {
 	 *
 	 * @param array $args Optional. The WordPress upgrader skin arguments to
 	 *                    override default options. Default empty array.
+=======
+	 * @var string|bool|WP_Error
+	 */
+	public $result  = false;
+	public $options = array();
+
+	/**
+	 * @param array $args
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function __construct( $args = array() ) {
 		$defaults      = array(
@@ -200,16 +215,22 @@ class WP_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Action to perform before an update.
 	 *
 	 * @since 2.8.0
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function before() {}
 
 	/**
+<<<<<<< HEAD
 	 * Action to perform following an update.
 	 *
 	 * @since 2.8.0
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function after() {}
 
@@ -250,6 +271,7 @@ class WP_Upgrader_Skin {
 	/**
 	 */
 	public function bulk_footer() {}
+<<<<<<< HEAD
 
 	/**
 	 * Hides the `process_failed` error message when updating by uploading a zip file.
@@ -262,4 +284,6 @@ class WP_Upgrader_Skin {
 	public function hide_process_failed( $wp_error ) {
 		return false;
 	}
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }

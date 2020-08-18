@@ -82,12 +82,20 @@ this["wp"] = this["wp"] || {}; this["wp"]["tokenList"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 432);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 416);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /******/ })
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 19:
+=======
+/***/ 13:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110,6 +118,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 2:
 /***/ (function(module, exports) {
 
@@ -118,6 +127,9 @@ function _createClass(Constructor, protoProps, staticProps) {
 /***/ }),
 
 /***/ 20:
+=======
+/***/ 14:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -130,23 +142,45 @@ function _classCallCheck(instance, Constructor) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 24:
+=======
+/***/ 2:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["lodash"]; }());
+
+/***/ }),
+
+/***/ 23:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["regeneratorRuntime"]; }());
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 432:
+=======
+/***/ 416:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TokenList; });
+<<<<<<< HEAD
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(19);
+=======
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(23);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
 
@@ -163,17 +197,29 @@ __webpack_require__.r(__webpack_exports__);
  * @see https://dom.spec.whatwg.org/#domtokenlist
  */
 
+<<<<<<< HEAD
 var TokenList = /*#__PURE__*/function () {
+=======
+var TokenList =
+/*#__PURE__*/
+function () {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
   /**
    * Constructs a new instance of TokenList.
    *
    * @param {string} initialValue Initial value to assign.
    */
   function TokenList() {
+<<<<<<< HEAD
+=======
+    var _this = this;
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
     var initialValue = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(this, TokenList);
 
+<<<<<<< HEAD
     this.value = initialValue; // Disable reason: These are type hints on the class.
 
     /* eslint-disable no-unused-expressions */
@@ -191,10 +237,28 @@ var TokenList = /*#__PURE__*/function () {
 
   /**
    * @param {Parameters<Array<string>['entries']>} args
+=======
+    this.value = initialValue;
+    ['entries', 'forEach', 'keys', 'values'].forEach(function (fn) {
+      _this[fn] = function () {
+        var _this$_valueAsArray;
+
+        return (_this$_valueAsArray = _this._valueAsArray)[fn].apply(_this$_valueAsArray, arguments);
+      };
+    });
+  }
+  /**
+   * Returns the associated set as string.
+   *
+   * @see https://dom.spec.whatwg.org/#dom-domtokenlist-value
+   *
+   * @return {string} Token set as string.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
    */
 
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(TokenList, [{
+<<<<<<< HEAD
     key: "entries",
     value: function entries() {
       var _this$_valueAsArray;
@@ -245,6 +309,8 @@ var TokenList = /*#__PURE__*/function () {
      */
 
   }, {
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
     key: "toString",
 
     /**
@@ -268,7 +334,13 @@ var TokenList = /*#__PURE__*/function () {
 
   }, {
     key: Symbol.iterator,
+<<<<<<< HEAD
     value: /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function value() {
+=======
+    value:
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function value() {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function value$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {

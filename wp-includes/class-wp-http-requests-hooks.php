@@ -32,8 +32,13 @@ class WP_HTTP_Requests_Hooks extends Requests_Hooks {
 	/**
 	 * Constructor.
 	 *
+<<<<<<< HEAD
 	 * @param string $url     URL to request.
 	 * @param array  $request Request data in WP_Http format.
+=======
+	 * @param string $url URL to request.
+	 * @param array $request Request data in WP_Http format.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public function __construct( $url, $request ) {
 		$this->url     = $url;
@@ -43,8 +48,13 @@ class WP_HTTP_Requests_Hooks extends Requests_Hooks {
 	/**
 	 * Dispatch a Requests hook to a native WordPress action.
 	 *
+<<<<<<< HEAD
 	 * @param string $hook       Hook name.
 	 * @param array  $parameters Parameters to pass to callbacks.
+=======
+	 * @param string $hook Hook name.
+	 * @param array $parameters Parameters to pass to callbacks.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return boolean True if hooks were run, false if nothing was hooked.
 	 */
 	public function dispatch( $hook, $parameters = array() ) {

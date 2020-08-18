@@ -115,12 +115,22 @@ window.wp = window.wp || {};
 		 *
 		 * @since 5.3.0
 		 *
+<<<<<<< HEAD
 		 * @param {string}        message Error message.
 		 * @param {object}        data    Error data from Plupload.
 		 * @param {plupload.File} file    File that was uploaded.
 		 */
 		tryAgain = function( message, data, file ) {
 			var times, id;
+=======
+		 * @param  {string}        message  Error message.
+		 * @param  {object}        data     Error data from Plupload.
+		 * @param  {plupload.File} file     File that was uploaded.
+		 */
+		tryAgain = function( message, data, file ) {
+			var times;
+			var id;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			if ( ! data || ! data.responseHeaders ) {
 				error( pluploadL10n.http_error_image, data, file, 'no-retry' );
@@ -203,6 +213,7 @@ window.wp = window.wp || {};
 		 * Add a new error to the errors collection, so other modules can track
 		 * and display errors. @see wp.Uploader.errors.
 		 *
+<<<<<<< HEAD
 		 * @param {string}        message Error message.
 		 * @param {object}        data    Error data from Plupload.
 		 * @param {plupload.File} file    File that was uploaded.
@@ -211,6 +222,16 @@ window.wp = window.wp || {};
 		error = function( message, data, file, retry ) {
 			var isImage = file.type && file.type.indexOf( 'image/' ) === 0,
 				status = data && data.status;
+=======
+		 * @param  {string}        message  Error message.
+		 * @param  {object}        data     Error data from Plupload.
+		 * @param  {plupload.File} file     File that was uploaded.
+		 * @param  {string}        retry    Whether to try again to create image sub-sizes. Passing 'no-retry' will prevent it.
+		 */
+		error = function( message, data, file, retry ) {
+			var isImage = file.type && file.type.indexOf( 'image/' ) === 0;
+			var status  = data && data.status;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 			// If the file is an image and the error is HTTP 5xx try to create sub-sizes again.
 			if ( retry !== 'no-retry' && isImage && status >= 500 && status < 600 ) {
@@ -326,6 +347,7 @@ window.wp = window.wp || {};
 			this.browser.on( 'mouseenter', this.refresh );
 		} else {
 			this.uploader.disableBrowse( true );
+<<<<<<< HEAD
 		}
 
 		$( self ).on( 'uploader:ready', function() {
@@ -336,6 +358,12 @@ window.wp = window.wp || {};
 				} );
 		} );
 
+=======
+			// If HTML5 mode, hide the auto-created file container.
+			$('#' + this.uploader.id + '_html5_container').hide();
+		}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		/**
 		 * After files were filtered and added to the queue, create a model for each.
 		 *
@@ -351,6 +379,7 @@ window.wp = window.wp || {};
 					return;
 				}
 
+<<<<<<< HEAD
 				if ( file.type === 'image/heic' && up.settings.heic_upload_error ) {
 					// Show error but do not block uploading.
 					Uploader.errors.unshift({
@@ -360,6 +389,8 @@ window.wp = window.wp || {};
 					});
 				}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				// Generate attributes for a new `Attachment` model.
 				attributes = _.extend({
 					file:      file,
@@ -535,7 +566,11 @@ window.wp = window.wp || {};
 
 				/*
 				 * If the browser node is not attached to the DOM,
+<<<<<<< HEAD
 				 * use a temporary container to house it, as the browser button shims
+=======
+				 * use a temporary container to house it, as the browser button shims 
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				 * require the button to exist in the DOM at all times.
 				 */
 				if ( ! attached ) {

@@ -45,6 +45,7 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 				),
 			)
 		);
+<<<<<<< HEAD
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base . '/(?P<id>[\d]+)/edit',
@@ -55,6 +56,8 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 				'args'                => $this->get_edit_media_item_args(),
 			)
 		);
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	}
 
 	/**
@@ -119,12 +122,26 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 		}
 
 		// Attaching media to a post requires ability to edit said post.
+<<<<<<< HEAD
 		if ( ! empty( $request['post'] ) && ! current_user_can( 'edit_post', (int) $request['post'] ) ) {
 			return new WP_Error(
 				'rest_cannot_edit',
 				__( 'Sorry, you are not allowed to upload media to this post.' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
+=======
+		if ( ! empty( $request['post'] ) ) {
+			$parent           = get_post( (int) $request['post'] );
+			$post_parent_type = get_post_type_object( $parent->post_type );
+
+			if ( ! current_user_can( $post_parent_type->cap->edit_post, $request['post'] ) ) {
+				return new WP_Error(
+					'rest_cannot_edit',
+					__( 'Sorry, you are not allowed to upload media to this post.' ),
+					array( 'status' => rest_authorization_required_code() )
+				);
+			}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		}
 
 		return true;
@@ -375,7 +392,11 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	/**
 	 * Checks if a given request can perform post processing on an attachment.
 	 *
+<<<<<<< HEAD
 	 * @since 5.3.0
+=======
+	 * @sicne 5.3.0
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return true|WP_Error True if the request has access to update the item, WP_Error object otherwise.
@@ -385,6 +406,7 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Checks if a given request has access to editing media.
 	 *
 	 * @since 5.5.0
@@ -633,6 +655,8 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	}
 
 	/**
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * Prepares a single attachment for create or update.
 	 *
 	 * @since 4.7.0
@@ -1272,6 +1296,7 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 		return true;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Gets the request args for the edit item route.
 	 *
@@ -1322,4 +1347,6 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 		);
 	}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }

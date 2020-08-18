@@ -42,7 +42,11 @@
 
 .media-frame a:hover,
 .media-frame a:active {
+<<<<<<< HEAD
 	color: #006799;
+=======
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .media-frame a:focus {
@@ -237,11 +241,19 @@
 
 .media-modal-close:hover,
 .media-modal-close:active {
+<<<<<<< HEAD
 	color: #006799;
 }
 
 .media-modal-close:focus {
 	color: #006799;
+=======
+	color: #00a0d2;
+}
+
+.media-modal-close:focus {
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	border-color: #5b9dd9;
 	box-shadow: 0 0 3px rgba(0, 115, 170, 0.8);
 	/* Only visible in Windows High Contrast mode */
@@ -458,6 +470,7 @@
 	font-size: 12px;
 }
 
+<<<<<<< HEAD
 .media-sidebar .copy-to-clipboard-container,
 .attachment-details .copy-to-clipboard-container {
 	flex-wrap: wrap;
@@ -478,6 +491,8 @@
 	text-align: right;
 }
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .compat-item label span {
 	text-align: left;
 }
@@ -1598,7 +1613,11 @@
 
 .media-selection .button-link:hover,
 .media-selection .button-link:focus {
+<<<<<<< HEAD
 	color: #006799;
+=======
+	color: #00a0d2;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .media-selection .button-link:last-child {
@@ -1999,8 +2018,12 @@
 	display: block;
 }
 
+<<<<<<< HEAD
 .media-modal .imgedit-wrap div.updated, /* Back-compat for pre-5.5 */
 .media-modal .imgedit-wrap .notice {
+=======
+.media-modal .imgedit-wrap div.updated {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	margin: 0;
 	margin-bottom: 16px;
 }
@@ -2561,6 +2584,7 @@
 		padding: 8px 2px 2px;
 	}
 
+<<<<<<< HEAD
 	/* Needs high specificity. */
 	.media-sidebar .setting .copy-to-clipboard-container,
 	.attachment-details .attachment-info .copy-to-clipboard-container {
@@ -2573,6 +2597,8 @@
 		margin: 0 1px;
 	}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	.media-sidebar .setting .value,
 	.attachment-details .setting .value {
 		float: none;
@@ -2746,6 +2772,7 @@
 	.media-frame-toolbar .media-toolbar {
 		bottom: -54px;
 	}
+<<<<<<< HEAD
 
 	.mode-grid .attachments-browser .media-toolbar-primary {
 		display: block;
@@ -2756,6 +2783,14 @@
 		font-size: 14px;
 		line-height: 2.71428571;
 	}
+=======
+}
+
+@media screen and (max-width: 782px) {
+	.mode-grid .attachments-browser .media-toolbar-primary {
+		display: block;
+	}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 /* Responsive on portrait and landscape */

@@ -188,7 +188,11 @@ class Language_Pack_Upgrader extends WP_Upgrader {
 			return true;
 		}
 
+<<<<<<< HEAD
 		if ( 'upgrader_process_complete' === current_filter() ) {
+=======
+		if ( 'upgrader_process_complete' == current_filter() ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$this->skin->feedback( 'starting_upgrade' );
 		}
 
@@ -232,9 +236,15 @@ class Language_Pack_Upgrader extends WP_Upgrader {
 			$this->skin->language_update = $language_update;
 
 			$destination = WP_LANG_DIR;
+<<<<<<< HEAD
 			if ( 'plugin' === $language_update->type ) {
 				$destination .= '/plugins';
 			} elseif ( 'theme' === $language_update->type ) {
+=======
+			if ( 'plugin' == $language_update->type ) {
+				$destination .= '/plugins';
+			} elseif ( 'theme' == $language_update->type ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$destination .= '/themes';
 			}
 
@@ -335,9 +345,15 @@ class Language_Pack_Upgrader extends WP_Upgrader {
 		$po = false;
 		$mo = false;
 		foreach ( (array) $files as $file => $filedata ) {
+<<<<<<< HEAD
 			if ( '.po' === substr( $file, -3 ) ) {
 				$po = true;
 			} elseif ( '.mo' === substr( $file, -3 ) ) {
+=======
+			if ( '.po' == substr( $file, -3 ) ) {
+				$po = true;
+			} elseif ( '.mo' == substr( $file, -3 ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$mo = true;
 			}
 		}

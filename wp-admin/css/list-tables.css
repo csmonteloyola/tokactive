@@ -62,6 +62,16 @@
 	text-align: center;
 }
 
+<<<<<<< HEAD
+=======
+.ie8 .column-response .comment-count-no-comments,
+.ie8 .column-response .comment-count-approved,
+.ie8 .column-comments .comment-count-no-comments,
+.ie8 .column-comments .comment-count-approved {
+	min-width: 0;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .column-response .post-com-count-no-comments:after,
 .column-response .post-com-count-approved:after,
 .column-comments .post-com-count-no-comments:after,
@@ -75,6 +85,7 @@
 	border-right: 5px solid transparent;
 }
 
+<<<<<<< HEAD
 .column-response a.post-com-count-approved:hover .comment-count-approved,
 .column-response a.post-com-count-approved:focus .comment-count-approved,
 .column-comments a.post-com-count-approved:hover .comment-count-approved,
@@ -86,6 +97,19 @@
 .column-response a.post-com-count-approved:focus:after,
 .column-comments a.post-com-count-approved:hover:after,
 .column-comments a.post-com-count-approved:focus:after {
+=======
+.column-response .post-com-count-approved:hover .comment-count-approved,
+.column-response .post-com-count-approved:focus .comment-count-approved,
+.column-comments .post-com-count-approved:hover .comment-count-approved,
+.column-comments .post-com-count-approved:focus .comment-count-approved {
+	background: #0073aa;
+}
+
+.column-response .post-com-count-approved:hover:after,
+.column-response .post-com-count-approved:focus:after,
+.column-comments .post-com-count-approved:hover:after,
+.column-comments .post-com-count-approved:focus:after {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	border-top-color: #0073aa;
 }
 
@@ -295,6 +319,10 @@ table.fixed {
 }
 
 .fixed .column-posts,
+<<<<<<< HEAD
+=======
+.fixed .column-date,
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .fixed .column-parent,
 .fixed .column-links,
 .fixed .column-author,
@@ -302,10 +330,13 @@ table.fixed {
 	width: 10%;
 }
 
+<<<<<<< HEAD
 .fixed .column-date {
 	width: 14%;
 }
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .column-date span[title] {
 	-webkit-text-decoration: dotted underline;
 	text-decoration: dotted underline;
@@ -393,6 +424,13 @@ table.media .column-title .filename {
 	width: 20%;
 }
 
+<<<<<<< HEAD
+=======
+#comments-form .fixed .column-date {
+	width: 14%;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 #commentsdiv.postbox .inside {
 	margin: 0;
 	padding: 0;
@@ -505,6 +543,13 @@ th.asc a:focus span.sorting-indicator:before {
 		0 0 2px 1px rgba(30, 140, 190, 0.8);
 }
 
+<<<<<<< HEAD
+=======
+.ie8 .wp-list-table .toggle-row:focus:before {
+	outline: #5b9dd9 solid 1px;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .wp-list-table .toggle-row:active {
 	box-shadow: none;
 }
@@ -1068,6 +1113,14 @@ ul.cat-checklist {
 	max-width: 80%;
 }
 
+<<<<<<< HEAD
+=======
+.ie8 .inline-edit-row #post_parent,
+.ie8 .inline-edit-row select[name="page_template"] {
+	width: 250px;
+}
+
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .quick-edit-row-post fieldset label.inline-edit-status {
 	float: left;
 }
@@ -1235,10 +1288,13 @@ ul.cat-checklist {
 	width: 85px;
 }
 
+<<<<<<< HEAD
 .plugins .column-auto-updates {
 	width: 14.2em;
 }
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 .plugins .inactive .plugin-title strong {
 	font-weight: 400;
 }
@@ -1448,7 +1504,11 @@ div.action-links,
 .plugin-card .name,
 .plugin-card .desc {
 	margin-left: 148px; /* icon + margin */
+<<<<<<< HEAD
 	margin-right: 128px; /* action links + margin */
+=======
+	margin-right: 120px; /* action links */
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 .plugin-card .action-links {
@@ -1461,6 +1521,10 @@ div.action-links,
 .plugin-action-buttons {
 	clear: right;
 	float: right;
+<<<<<<< HEAD
+=======
+	margin-left: 2em;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	margin-bottom: 1em;
 	text-align: right;
 }
@@ -1632,6 +1696,13 @@ div.action-links,
 	.plugin-card .desc p:first-of-type {
 		margin-top: 0;
 	}
+<<<<<<< HEAD
+=======
+
+	.fixed .column-date {
+		width: 14%;
+	}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 }
 
 @media screen and (max-width: 782px) {
@@ -2094,6 +2165,7 @@ div.action-links,
 		line-height: 1.5;
 	}
 
+<<<<<<< HEAD
 	.plugins tbody th.check-column {
 		padding: 8px 0 0 5px;
 	}
@@ -2104,6 +2176,8 @@ div.action-links,
 		padding-left: 9px;
 	}
 
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	/* Add New plugins page */
 	table.plugin-install .column-name,
 	table.plugin-install .column-version,

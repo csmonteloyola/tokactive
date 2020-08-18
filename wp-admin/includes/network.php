@@ -52,6 +52,7 @@ function allow_subdomain_install() {
  */
 function allow_subdirectory_install() {
 	global $wpdb;
+<<<<<<< HEAD
 
 	/**
 	 * Filters whether to enable the subdirectory installation feature in Multisite.
@@ -61,6 +62,15 @@ function allow_subdirectory_install() {
 	 * @param bool $allow Whether to enable the subdirectory installation feature in Multisite.
 	 *                    Default false.
 	 */
+=======
+		/**
+		 * Filters whether to enable the subdirectory installation feature in Multisite.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param bool $allow Whether to enable the subdirectory installation feature in Multisite. Default is false.
+		 */
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	if ( apply_filters( 'allow_subdirectory_install', false ) ) {
 		return true;
 	}
@@ -99,9 +109,14 @@ function get_clean_basedomain() {
 /**
  * Prints step 1 for Network installation process.
  *
+<<<<<<< HEAD
  * @todo Realistically, step 1 should be a welcome screen explaining what a Network is and such.
  *       Navigating to Tools > Network should not be a sudden "Welcome to a new install process!
  *       Fill this out and click here." See also contextual help todo.
+=======
+ * @todo Realistically, step 1 should be a welcome screen explaining what a Network is and such. Navigating to Tools > Network
+ *  should not be a sudden "Welcome to a new install process! Fill this out and click here." See also contextual help todo.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @since 3.0.0
  *
@@ -138,7 +153,11 @@ function network_step1( $errors = false ) {
 
 	$hostname  = get_clean_basedomain();
 	$has_ports = strstr( $hostname, ':' );
+<<<<<<< HEAD
 	if ( ( false !== $has_ports && ! in_array( $has_ports, array( ':80', ':443' ), true ) ) ) {
+=======
+	if ( ( false !== $has_ports && ! in_array( $has_ports, array( ':80', ':443' ) ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		echo '<div class="error"><p><strong>' . __( 'Error:' ) . '</strong> ' . __( 'You cannot install a network of sites with your server address.' ) . '</p></div>';
 		echo '<p>' . sprintf(
 			/* translators: %s: Port number. */
@@ -165,14 +184,22 @@ function network_step1( $errors = false ) {
 		$error_codes = $errors->get_error_codes();
 	}
 
+<<<<<<< HEAD
 	if ( ! empty( $_POST['sitename'] ) && ! in_array( 'empty_sitename', $error_codes, true ) ) {
+=======
+	if ( ! empty( $_POST['sitename'] ) && ! in_array( 'empty_sitename', $error_codes ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$site_name = $_POST['sitename'];
 	} else {
 		/* translators: %s: Default network title. */
 		$site_name = sprintf( __( '%s Sites' ), get_option( 'blogname' ) );
 	}
 
+<<<<<<< HEAD
 	if ( ! empty( $_POST['email'] ) && ! in_array( 'invalid_email', $error_codes, true ) ) {
+=======
+	if ( ! empty( $_POST['email'] ) && ! in_array( 'invalid_email', $error_codes ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$admin_email = $_POST['email'];
 	} else {
 		$admin_email = get_option( 'admin_email' );
@@ -381,13 +408,21 @@ function network_step1( $errors = false ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb     WordPress database abstraction object.
  * @global bool $is_nginx Whether the server software is Nginx or something else.
+=======
+ * @global wpdb $wpdb WordPress database abstraction object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
  *
  * @param WP_Error $errors
  */
 function network_step2( $errors = false ) {
+<<<<<<< HEAD
 	global $wpdb, $is_nginx;
+=======
+	global $wpdb;
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	$hostname          = get_clean_basedomain();
 	$slashed_home      = trailingslashit( get_option( 'home' ) );
@@ -620,6 +655,7 @@ define('BLOG_ID_CURRENT_SITE', 1);
 	</ol>
 
 		<?php
+<<<<<<< HEAD
 	elseif ( $is_nginx ) : // End iis7_supports_permalinks(). Link to Nginx documentation instead:
 
 		echo '<li><p>';
@@ -631,6 +667,9 @@ define('BLOG_ID_CURRENT_SITE', 1);
 		echo '</p></li>';
 
 	else : // End $is_nginx. Construct an .htaccess file instead:
+=======
+	else : // End iis7_supports_permalinks(). Construct an .htaccess file instead:
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 		$ms_files_rewriting = '';
 		if ( is_multisite() && get_site_option( 'ms_files_rewriting' ) ) {
@@ -672,7 +711,11 @@ EOF;
 	</ol>
 
 		<?php
+<<<<<<< HEAD
 	endif; // End IIS/Nginx/Apache code branches.
+=======
+	endif; // End IIS/Apache code branches.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 
 	if ( ! is_multisite() ) {
 		?>

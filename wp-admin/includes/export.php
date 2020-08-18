@@ -96,7 +96,11 @@ function export_wp( $args = array() ) {
 	header( 'Content-Disposition: attachment; filename=' . $filename );
 	header( 'Content-Type: text/xml; charset=' . get_option( 'blog_charset' ), true );
 
+<<<<<<< HEAD
 	if ( 'all' !== $args['content'] && post_type_exists( $args['content'] ) ) {
+=======
+	if ( 'all' != $args['content'] && post_type_exists( $args['content'] ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$ptype = get_post_type_object( $args['content'] );
 		if ( ! $ptype->can_export ) {
 			$args['content'] = 'post';
@@ -111,14 +115,22 @@ function export_wp( $args = array() ) {
 		$where = $wpdb->prepare( "{$wpdb->posts}.post_type IN (" . implode( ',', $esses ) . ')', $post_types );
 	}
 
+<<<<<<< HEAD
 	if ( $args['status'] && ( 'post' === $args['content'] || 'page' === $args['content'] ) ) {
+=======
+	if ( $args['status'] && ( 'post' == $args['content'] || 'page' == $args['content'] ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$where .= $wpdb->prepare( " AND {$wpdb->posts}.post_status = %s", $args['status'] );
 	} else {
 		$where .= " AND {$wpdb->posts}.post_status != 'auto-draft'";
 	}
 
 	$join = '';
+<<<<<<< HEAD
 	if ( $args['category'] && 'post' === $args['content'] ) {
+=======
+	if ( $args['category'] && 'post' == $args['content'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$term = term_exists( $args['category'], 'category' );
 		if ( $term ) {
 			$join   = "INNER JOIN {$wpdb->term_relationships} ON ({$wpdb->posts}.ID = {$wpdb->term_relationships}.object_id)";
@@ -126,7 +138,11 @@ function export_wp( $args = array() ) {
 		}
 	}
 
+<<<<<<< HEAD
 	if ( in_array( $args['content'], array( 'post', 'page', 'attachment' ), true ) ) {
+=======
+	if ( 'post' == $args['content'] || 'page' == $args['content'] || 'attachment' == $args['content'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		if ( $args['author'] ) {
 			$where .= $wpdb->prepare( " AND {$wpdb->posts}.post_author = %d", $args['author'] );
 		}
@@ -154,7 +170,11 @@ function export_wp( $args = array() ) {
 		$cat  = get_term( $term['term_id'], 'category' );
 		$cats = array( $cat->term_id => $cat );
 		unset( $term, $cat );
+<<<<<<< HEAD
 	} elseif ( 'all' === $args['content'] ) {
+=======
+	} elseif ( 'all' == $args['content'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		$categories = (array) get_categories( array( 'get' => 'all' ) );
 		$tags       = (array) get_tags( array( 'get' => 'all' ) );
 
@@ -328,7 +348,11 @@ function export_wp( $args = array() ) {
 			/**
 			 * Filters whether to selectively skip term meta used for WXR exports.
 			 *
+<<<<<<< HEAD
 			 * Returning a truthy value from the filter will skip the current meta
+=======
+			 * Returning a truthy value to the filter will skip the current meta
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 * object from being exported.
 			 *
 			 * @since 4.6.0
@@ -428,7 +452,11 @@ function export_wp( $args = array() ) {
 	 * @return bool
 	 */
 	function wxr_filter_postmeta( $return_me, $meta_key ) {
+<<<<<<< HEAD
 		if ( '_edit_lock' === $meta_key ) {
+=======
+		if ( '_edit_lock' == $meta_key ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$return_me = true;
 		}
 		return $return_me;
@@ -501,7 +529,11 @@ function export_wp( $args = array() ) {
 	<?php endforeach; ?>
 	<?php foreach ( $terms as $t ) : ?>
 	<wp:term>
+<<<<<<< HEAD
 		<wp:term_id><?php echo intval( $t->term_id ); ?></wp:term_id>
+=======
+		<wp:term_id><?php echo wxr_cdata( $t->term_id ); ?></wp:term_id>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		<wp:term_taxonomy><?php echo wxr_cdata( $t->taxonomy ); ?></wp:term_taxonomy>
 		<wp:term_slug><?php echo wxr_cdata( $t->slug ); ?></wp:term_slug>
 		<wp:term_parent><?php echo wxr_cdata( $t->parent ? $terms[ $t->parent ]->slug : '' ); ?></wp:term_parent>
@@ -513,7 +545,11 @@ function export_wp( $args = array() ) {
 	</wp:term>
 	<?php endforeach; ?>
 	<?php
+<<<<<<< HEAD
 	if ( 'all' === $args['content'] ) {
+=======
+	if ( 'all' == $args['content'] ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		wxr_nav_menu_terms();}
 	?>
 
@@ -595,7 +631,11 @@ function export_wp( $args = array() ) {
 					/**
 					 * Filters whether to selectively skip post meta used for WXR exports.
 					 *
+<<<<<<< HEAD
 					 * Returning a truthy value from the filter will skip the current meta
+=======
+					 * Returning a truthy value to the filter will skip the current meta
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					 * object from being exported.
 					 *
 					 * @since 3.3.0
@@ -638,7 +678,11 @@ function export_wp( $args = array() ) {
 						/**
 						 * Filters whether to selectively skip comment meta used for WXR exports.
 						 *
+<<<<<<< HEAD
 						 * Returning a truthy value from the filter will skip the current meta
+=======
+						 * Returning a truthy value to the filter will skip the current meta
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 						 * object from being exported.
 						 *
 						 * @since 4.0.0

@@ -45,7 +45,11 @@ class WP_Date_Query {
 	 * The value comparison operator. Can be changed via the query arguments.
 	 *
 	 * @since 3.7.0
+<<<<<<< HEAD
 	 * @var string
+=======
+	 * @var array
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	public $compare = '=';
 
@@ -69,10 +73,17 @@ class WP_Date_Query {
 	 * @since 4.0.0 The $inclusive logic was updated to include all times within the date range.
 	 * @since 4.1.0 Introduced 'dayofweek_iso' time type parameter.
 	 *
+<<<<<<< HEAD
 	 * @param array  $date_query {
 	 *     Array of date query clauses.
 	 *
 	 *     @type array ...$0 {
+=======
+	 * @param array $date_query {
+	 *     Array of date query clauses.
+	 *
+	 *     @type array {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *         @type string $column   Optional. The column to query against. If undefined, inherits the value of
 	 *                                the `$default_column` parameter. Accepts 'post_date', 'post_date_gmt',
 	 *                                'post_modified','post_modified_gmt', 'comment_date', 'comment_date_gmt'.
@@ -81,7 +92,11 @@ class WP_Date_Query {
 	 *                                'IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN'. Default '='.
 	 *         @type string $relation Optional. The boolean relationship between the date queries. Accepts 'OR' or 'AND'.
 	 *                                Default 'OR'.
+<<<<<<< HEAD
 	 *         @type array  ...$0 {
+=======
+	 *         @type array {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *             Optional. An array of first-order clause parameters, or another fully-formed date query.
 	 *
 	 *             @type string|array $before {
@@ -177,12 +192,21 @@ class WP_Date_Query {
 	 * Recursive-friendly query sanitizer.
 	 *
 	 * Ensures that each query-level clause has a 'relation' key, and that
+<<<<<<< HEAD
 	 * each first-order clause contains all the necessary keys from `$defaults`.
+=======
+	 * each first-order clause contains all the necessary keys from
+	 * `$defaults`.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @since 4.1.0
 	 *
 	 * @param array $queries
 	 * @param array $parent_query
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return array Sanitized queries.
 	 */
 	public function sanitize_query( $queries, $parent_query = null ) {
@@ -240,7 +264,11 @@ class WP_Date_Query {
 	 *
 	 * @since 4.1.0
 	 *
+<<<<<<< HEAD
 	 * @param array $query Query clause.
+=======
+	 * @param  array $query Query clause.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return bool True if this is a first-order clause.
 	 */
 	protected function is_first_order_clause( $query ) {
@@ -257,9 +285,13 @@ class WP_Date_Query {
 	 * @return string The comparison operator.
 	 */
 	public function get_compare( $query ) {
+<<<<<<< HEAD
 		if ( ! empty( $query['compare'] )
 			&& in_array( $query['compare'], array( '=', '!=', '>', '>=', '<', '<=', 'IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN' ), true )
 		) {
+=======
+		if ( ! empty( $query['compare'] ) && in_array( $query['compare'], array( '=', '!=', '>', '>=', '<', '<=', 'IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			return strtoupper( $query['compare'] );
 		}
 
@@ -275,7 +307,11 @@ class WP_Date_Query {
 	 *
 	 * @since 4.1.0
 	 *
+<<<<<<< HEAD
 	 * @param array $date_query The date_query array.
+=======
+	 * @param  array $date_query The date_query array.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return bool  True if all values in the query are valid, false if one or more fail.
 	 */
 	public function validate_date_values( $date_query = array() ) {
@@ -462,10 +498,17 @@ class WP_Date_Query {
 	/**
 	 * Validates a column name parameter.
 	 *
+<<<<<<< HEAD
 	 * Column names without a table prefix (like 'post_date') are checked against a list of
 	 * allowed and known tables, and then, if found, have a table prefix (such as 'wp_posts.')
 	 * prepended. Prefixed column names (such as 'wp_posts.post_date') bypass this allowed
 	 * check, and are only sanitized to remove illegal characters.
+=======
+	 * Column names without a table prefix (like 'post_date') are checked against a whitelist of
+	 * known tables, and then, if found, have a table prefix (such as 'wp_posts.') prepended.
+	 * Prefixed column names (such as 'wp_posts.post_date') bypass this whitelist check,
+	 * and are only sanitized to remove illegal characters.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 *
 	 * @since 3.7.0
 	 *
@@ -500,7 +543,11 @@ class WP_Date_Query {
 			 *                                'post_modified_gmt', 'comment_date', 'comment_date_gmt',
 			 *                                'user_registered'
 			 */
+<<<<<<< HEAD
 			if ( ! in_array( $column, apply_filters( 'date_query_valid_columns', $valid_columns ), true ) ) {
+=======
+			if ( ! in_array( $column, apply_filters( 'date_query_valid_columns', $valid_columns ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				$column = 'post_date';
 			}
 
@@ -526,7 +573,11 @@ class WP_Date_Query {
 
 			// If it's a known column name, add the appropriate table prefix.
 			foreach ( $known_columns as $table_name => $table_columns ) {
+<<<<<<< HEAD
 				if ( in_array( $column, $table_columns, true ) ) {
+=======
+				if ( in_array( $column, $table_columns ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$column = $table_name . '.' . $column;
 					break;
 				}
@@ -677,7 +728,11 @@ class WP_Date_Query {
 	 *
 	 * @since 3.7.0
 	 *
+<<<<<<< HEAD
 	 * @param array $query Date query arguments.
+=======
+	 * @param  array $query Date query arguments.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return array {
 	 *     Array containing JOIN and WHERE SQL clauses to append to the main query.
 	 *
@@ -694,8 +749,13 @@ class WP_Date_Query {
 	 *
 	 * @since 4.1.0
 	 *
+<<<<<<< HEAD
 	 * @param array $query        Date query clause.
 	 * @param array $parent_query Parent query of the current date query.
+=======
+	 * @param  array $query        Date query clause.
+	 * @param  array $parent_query Parent query of the current date query.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return array {
 	 *     Array containing JOIN and WHERE SQL clauses to append to the main query.
 	 *
@@ -797,8 +857,13 @@ class WP_Date_Query {
 	 *
 	 * @since 3.7.0
 	 *
+<<<<<<< HEAD
 	 * @param string       $compare The compare operator to use.
 	 * @param string|array $value   The value.
+=======
+	 * @param string $compare The compare operator to use
+	 * @param string|array $value The value
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string|false|int The value to be used in SQL or false on error.
 	 */
 	public function build_value( $compare, $value ) {
@@ -822,7 +887,11 @@ class WP_Date_Query {
 
 			case 'BETWEEN':
 			case 'NOT BETWEEN':
+<<<<<<< HEAD
 				if ( ! is_array( $value ) || 2 !== count( $value ) ) {
+=======
+				if ( ! is_array( $value ) || 2 != count( $value ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 					$value = array( $value, $value );
 				} else {
 					$value = array_values( $value );
@@ -956,11 +1025,19 @@ class WP_Date_Query {
 	 *
 	 * @since 3.7.0
 	 *
+<<<<<<< HEAD
 	 * @param string   $column  The column to query against. Needs to be pre-validated!
 	 * @param string   $compare The comparison operator. Needs to be pre-validated!
 	 * @param int|null $hour    Optional. An hour value (0-23).
 	 * @param int|null $minute  Optional. A minute value (0-59).
 	 * @param int|null $second  Optional. A second value (0-59).
+=======
+	 * @param string $column The column to query against. Needs to be pre-validated!
+	 * @param string $compare The comparison operator. Needs to be pre-validated!
+	 * @param int|null $hour Optional. An hour value (0-23).
+	 * @param int|null $minute Optional. A minute value (0-59).
+	 * @param int|null $second Optional. A second value (0-59).
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return string|false A query part or false on failure.
 	 */
 	public function build_time_query( $column, $compare, $hour = null, $minute = null, $second = null ) {
@@ -972,7 +1049,11 @@ class WP_Date_Query {
 		}
 
 		// Complex combined queries aren't supported for multi-value queries.
+<<<<<<< HEAD
 		if ( in_array( $compare, array( 'IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN' ), true ) ) {
+=======
+		if ( in_array( $compare, array( 'IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN' ) ) ) {
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			$return = array();
 
 			$value = $this->build_value( $compare, $hour );

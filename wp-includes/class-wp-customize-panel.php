@@ -371,7 +371,11 @@ class WP_Customize_Panel {
 				<span class="preview-notice">
 				<?php
 					/* translators: %s: The site/panel title in the Customizer. */
+<<<<<<< HEAD
 					printf( __( 'You are customizing %s' ), '<strong class="panel-title">{{ data.title }}</strong>' );
+=======
+					echo sprintf( __( 'You are customizing %s' ), '<strong class="panel-title">{{ data.title }}</strong>' );
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				?>
 				</span>
 				<# if ( data.description ) { #>

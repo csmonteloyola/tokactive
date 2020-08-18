@@ -150,11 +150,17 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 	</h4>
 	<div id="health-check-accordion-block-{{ data.test }}" class="health-check-accordion-panel" hidden="hidden">
 		{{{ data.description }}}
+<<<<<<< HEAD
 		<# if ( data.actions ) { #>
 			<div class="actions">
 				{{{ data.actions }}}
 			</div>
 		<# } #>
+=======
+		<div class="actions">
+			<p class="button-container">{{{ data.actions }}}</p>
+		</div>
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	</div>
 </script>
 

@@ -25,7 +25,11 @@
 		 * @since 4.9.0
 		 *
 		 * @param {string} code - Code.
+<<<<<<< HEAD
 		 * @param {Object} params - Params.
+=======
+		 * @param {object} params - Params.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		initialize: function( code, params ) {
 			var notification = this;
@@ -94,7 +98,11 @@
 		 * @constructs wp.customize.Notifications
 		 * @augments   wp.customize.Values
 		 *
+<<<<<<< HEAD
 		 * @param {Object}  options - Options.
+=======
+		 * @param {object}  options - Options.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {jQuery}  [options.container] - Container element for notifications. This can be injected later.
 		 * @param {boolean} [options.alt] - Whether alternative style should be used when rendering notifications.
 		 *
@@ -174,7 +182,11 @@
 		 * Notifications may be sorted by type followed by added time.
 		 *
 		 * @since 4.9.0
+<<<<<<< HEAD
 		 * @param {Object}  args - Args.
+=======
+		 * @param {object}  args - Args.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {boolean} [args.sort=false] - Whether to return the notifications sorted.
 		 * @return {Array.<wp.customize.Notification>} Notifications.
 		 */
@@ -362,10 +374,17 @@
 		 *
 		 * @param {string}  id                          - The setting ID.
 		 * @param {*}       value                       - The initial value of the setting.
+<<<<<<< HEAD
 		 * @param {Object}  [options={}]                - Options.
 		 * @param {string}  [options.transport=refresh] - The transport to use for previewing. Supports 'refresh' and 'postMessage'.
 		 * @param {boolean} [options.dirty=false]       - Whether the setting should be considered initially dirty.
 		 * @param {Object}  [options.previewer]         - The Previewer instance to sync with. Defaults to wp.customize.previewer.
+=======
+		 * @param {object}  [options={}]                - Options.
+		 * @param {string}  [options.transport=refresh] - The transport to use for previewing. Supports 'refresh' and 'postMessage'.
+		 * @param {boolean} [options.dirty=false]       - Whether the setting should be considered initially dirty.
+		 * @param {object}  [options.previewer]         - The Previewer instance to sync with. Defaults to wp.customize.previewer.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		initialize: function( id, value, options ) {
 			var setting = this, params;
@@ -495,9 +514,15 @@
 	 * @since 4.7.0
 	 * @access public
 	 *
+<<<<<<< HEAD
 	 * @param {Object} [options] Options.
 	 * @param {boolean} [options.unsaved=false] Whether only values not saved yet into a changeset will be returned (differential changes).
 	 * @return {Object} Dirty setting values.
+=======
+	 * @param {object} [options] Options.
+	 * @param {boolean} [options.unsaved=false] Whether only values not saved yet into a changeset will be returned (differential changes).
+	 * @return {object} Dirty setting values.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.dirtyValues = function dirtyValues( options ) {
 		var values = {};
@@ -528,9 +553,15 @@
 	 * @since 4.7.0
 	 * @access public
 	 *
+<<<<<<< HEAD
 	 * @param {Object}  [changes] - Mapping of setting IDs to setting params each normally including a value property, or mapping to null.
 	 *                             If not provided, then the changes will still be obtained from unsaved dirty settings.
 	 * @param {Object}  [args] - Additional options for the save request.
+=======
+	 * @param {object}  [changes] - Mapping of setting IDs to setting params each normally including a value property, or mapping to null.
+	 *                             If not provided, then the changes will still be obtained from unsaved dirty settings.
+	 * @param {object}  [args] - Additional options for the save request.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {boolean} [args.autosave=false] - Whether changes will be stored in autosave revision if the changeset has been promoted from an auto-draft.
 	 * @param {boolean} [args.force=false] - Send request to update even when there are no changes to submit. This can be used to request the latest status of the changeset on the server.
 	 * @param {string}  [args.title] - Title to update in the changeset. Optional.
@@ -736,7 +767,11 @@
 	 *
 	 * @param {(wp.customize.Panel|wp.customize.Section|wp.customize.Control)} a
 	 * @param {(wp.customize.Panel|wp.customize.Section|wp.customize.Control)} b
+<<<<<<< HEAD
 	 * @return {number}
+=======
+	 * @return {Number}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.utils.prioritySort = function ( a, b ) {
 		if ( a.priority() === b.priority() && typeof a.params.instanceNumber === 'number' && typeof b.params.instanceNumber === 'number' ) {
@@ -796,7 +831,11 @@
 	 * @since 4.9.0
 	 *
 	 * @param {jQuery} button - The element to highlight.
+<<<<<<< HEAD
 	 * @param {Object} [options] - Options.
+=======
+	 * @param {object} [options] - Options.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {number} [options.delay=0] - Delay in milliseconds.
 	 * @param {jQuery} [options.focusTarget] - A target for user focus that defaults to the highlighted element.
 	 *                                         If the user focuses the target before the delay passes, the reminder
@@ -850,7 +889,11 @@
 	 *
 	 * @since 4.9.0
 	 *
+<<<<<<< HEAD
 	 * @return {number} Current timestamp.
+=======
+	 * @return {int} Current timestamp.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.utils.getCurrentTimestamp = function getCurrentTimestamp() {
 		var currentDate, currentClientTimestamp, timestampDifferential;
@@ -869,8 +912,13 @@
 	 *
 	 * @since 4.9.0
 	 *
+<<<<<<< HEAD
 	 * @param {string|number|Date} datetime - Date time or timestamp of the future date.
 	 * @return {number} remainingTime - Remaining time in milliseconds.
+=======
+	 * @param {string|int|Date} datetime - Date time or timestamp of the future date.
+	 * @return {int} remainingTime - Remaining time in milliseconds.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.utils.getRemainingTime = function getRemainingTime( datetime ) {
 		var millisecondsDivider = 1000, remainingTime, timestamp;
@@ -940,7 +988,11 @@
 		 * @borrows wp.customize~focus as focus
 		 *
 		 * @param {string}  id - The ID for the container.
+<<<<<<< HEAD
 		 * @param {Object}  options - Object containing one property: params.
+=======
+		 * @param {object}  options - Object containing one property: params.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {string}  options.title - Title shown when panel is collapsed and expanded.
 		 * @param {string}  [options.description] - Description shown at the top of the panel.
 		 * @param {number}  [options.priority=100] - The sort priority for the panel.
@@ -948,7 +1000,11 @@
 		 * @param {string}  [options.type=default] - The type of the panel. See wp.customize.panelConstructor.
 		 * @param {string}  [options.content] - The markup to be used for the panel container. If empty, a JS template is used.
 		 * @param {boolean} [options.active=true] - Whether the panel is active or not.
+<<<<<<< HEAD
 		 * @param {Object}  [options.params] - Deprecated wrapper for the above properties.
+=======
+		 * @param {object}  [options.params] - Deprecated wrapper for the above properties.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		initialize: function ( id, options ) {
 			var container = this;
@@ -1055,8 +1111,13 @@
 		 *
 		 * @since 4.1.0
 		 *
+<<<<<<< HEAD
 		 * @param {string} parentType
 		 * @param {string} childType
+=======
+		 * @param {String} parentType
+		 * @param {String} childType
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {Array}
 		 */
 		_children: function ( parentType, childType ) {
@@ -1154,9 +1215,15 @@
 		/**
 		 * @since 4.1.0
 		 *
+<<<<<<< HEAD
 		 * @param {boolean} active
 		 * @param {Object}  [params]
 		 * @return {boolean} False if state already applied.
+=======
+		 * @param {Boolean} active
+		 * @param {Object}  [params]
+		 * @return {Boolean} False if state already applied.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		_toggleActive: function ( active, params ) {
 			var self = this;
@@ -1175,7 +1242,11 @@
 
 		/**
 		 * @param {Object} [params]
+<<<<<<< HEAD
 		 * @return {boolean} False if already active.
+=======
+		 * @return {Boolean} False if already active.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		activate: function ( params ) {
 			return this._toggleActive( true, params );
@@ -1183,7 +1254,11 @@
 
 		/**
 		 * @param {Object} [params]
+<<<<<<< HEAD
 		 * @return {boolean} False if already inactive.
+=======
+		 * @return {Boolean} False if already inactive.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		deactivate: function ( params ) {
 			return this._toggleActive( false, params );
@@ -1200,10 +1275,17 @@
 		/**
 		 * Handle the toggle logic for expand/collapse.
 		 *
+<<<<<<< HEAD
 		 * @param {boolean}  expanded - The new state to apply.
 		 * @param {Object}   [params] - Object containing options for expand/collapse.
 		 * @param {Function} [params.completeCallback] - Function to call when expansion/collapse is complete.
 		 * @return {boolean} False if state already applied or active state is false.
+=======
+		 * @param {Boolean}  expanded - The new state to apply.
+		 * @param {Object}   [params] - Object containing options for expand/collapse.
+		 * @param {Function} [params.completeCallback] - Function to call when expansion/collapse is complete.
+		 * @return {Boolean} False if state already applied or active state is false.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		_toggleExpanded: function( expanded, params ) {
 			var instance = this, previousCompleteCallback;
@@ -1240,7 +1322,11 @@
 
 		/**
 		 * @param {Object} [params]
+<<<<<<< HEAD
 		 * @return {boolean} False if already expanded or if inactive.
+=======
+		 * @return {Boolean} False if already expanded or if inactive.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		expand: function ( params ) {
 			return this._toggleExpanded( true, params );
@@ -1248,7 +1334,11 @@
 
 		/**
 		 * @param {Object} [params]
+<<<<<<< HEAD
 		 * @return {boolean} False if already collapsed.
+=======
+		 * @return {Boolean} False if already collapsed.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		collapse: function ( params ) {
 			return this._toggleExpanded( false, params );
@@ -1409,7 +1499,11 @@
 		 * @since 4.1.0
 		 *
 		 * @param {string}  id - The ID for the section.
+<<<<<<< HEAD
 		 * @param {Object}  options - Options.
+=======
+		 * @param {object}  options - Options.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {string}  options.title - Title shown when section is collapsed and expanded.
 		 * @param {string}  [options.description] - Description shown at the top of the section.
 		 * @param {number}  [options.priority=100] - The sort priority for the section.
@@ -1418,7 +1512,11 @@
 		 * @param {boolean} [options.active=true] - Whether the section is active or not.
 		 * @param {string}  options.panel - The ID for the panel this section is associated with.
 		 * @param {string}  [options.customizeAction] - Additional context information shown before the section title when expanded.
+<<<<<<< HEAD
 		 * @param {Object}  [options.params] - Deprecated wrapper for the above properties.
+=======
+		 * @param {object}  [options.params] - Deprecated wrapper for the above properties.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		initialize: function ( id, options ) {
 			var section = this, params;
@@ -1545,7 +1643,11 @@
 		 *
 		 * @since 4.1.0
 		 *
+<<<<<<< HEAD
 		 * @return {boolean}
+=======
+		 * @return {Boolean}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		isContextuallyActive: function () {
 			var section = this,
@@ -1575,7 +1677,11 @@
 		 *
 		 * @since 4.1.0
 		 *
+<<<<<<< HEAD
 		 * @param {boolean} expanded
+=======
+		 * @param {Boolean} expanded
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {Object}  args
 		 */
 		onChangeExpanded: function ( expanded, args ) {
@@ -1697,7 +1803,11 @@
 		 * @since 4.9.0
 		 *
 		 * @param {string} id - ID.
+<<<<<<< HEAD
 		 * @param {Object} options - Options.
+=======
+		 * @param {object} options - Options.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {void}
 		 */
 		initialize: function( id, options ) {
@@ -1799,7 +1909,11 @@
 		 *
 		 * @since 4.2.0
 		 *
+<<<<<<< HEAD
 		 * @return {boolean}
+=======
+		 * @return {Boolean}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		isContextuallyActive: function () {
 			return this.active();
@@ -1951,9 +2065,15 @@
 		 *
 		 * @since 4.2.0
 		 *
+<<<<<<< HEAD
 		 * @param {boolean}  expanded
 		 * @param {Object}   args
 		 * @param {boolean}  args.unchanged
+=======
+		 * @param {Boolean}  expanded
+		 * @param {Object}   args
+		 * @param {Boolean}  args.unchanged
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {Function} args.completeCallback
 		 * @return {void}
 		 */
@@ -2166,8 +2286,13 @@
 		 * Loads controls into the section from data received from loadThemes().
 		 *
 		 * @since 4.9.0
+<<<<<<< HEAD
 		 * @param {Array}  themes - Array of theme data to create controls with.
 		 * @param {number} page   - Page of results being loaded.
+=======
+		 * @param {Array} themes - Array of theme data to create controls with.
+		 * @param {integer} page - Page of results being loaded.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {void}
 		 */
 		loadControls: function( themes, page ) {
@@ -2412,7 +2537,11 @@
 		 *
 		 * @since 4.9.0
 		 *
+<<<<<<< HEAD
 		 * @return {number} Visible count.
+=======
+		 * @return {int} Visible count.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		getVisibleCount: function() {
 			return this.contentContainer.find( 'li.customize-control:visible' ).length;
@@ -2559,7 +2688,11 @@
 		 *
 		 * @since 4.2.0
 		 *
+<<<<<<< HEAD
 		 * @param {Object} theme - Theme.
+=======
+		 * @param {object} theme - Theme.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {Function} [callback] - Callback once the details have been shown.
 		 * @return {void}
 		 */
@@ -2667,7 +2800,11 @@
 		 *
 		 * @since 4.9.0
 		 *
+<<<<<<< HEAD
 		 * @param {boolean}  expanded - The expanded state to transition to.
+=======
+		 * @param {Boolean}  expanded - The expanded state to transition to.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {Object}   [args] - Args.
 		 * @param {boolean}  [args.unchanged] - Whether the state is already known to not be changed, and so short-circuit with calling completeCallback early.
 		 * @param {Function} [args.completeCallback] - Function to call when the slideUp/slideDown has completed.
@@ -2762,14 +2899,22 @@
 		 * @since 4.1.0
 		 *
 		 * @param {string}  id - The ID for the panel.
+<<<<<<< HEAD
 		 * @param {Object}  options - Object containing one property: params.
+=======
+		 * @param {object}  options - Object containing one property: params.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {string}  options.title - Title shown when panel is collapsed and expanded.
 		 * @param {string}  [options.description] - Description shown at the top of the panel.
 		 * @param {number}  [options.priority=100] - The sort priority for the panel.
 		 * @param {string}  [options.type=default] - The type of the panel. See wp.customize.panelConstructor.
 		 * @param {string}  [options.content] - The markup to be used for the panel container. If empty, a JS template is used.
 		 * @param {boolean} [options.active=true] - Whether the panel is active or not.
+<<<<<<< HEAD
 		 * @param {Object}  [options.params] - Deprecated wrapper for the above properties.
+=======
+		 * @param {object}  [options.params] - Deprecated wrapper for the above properties.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		initialize: function ( id, options ) {
 			var panel = this, params;
@@ -2905,9 +3050,15 @@
 		 *
 		 * @since 4.1.0
 		 *
+<<<<<<< HEAD
 		 * @param {boolean}  expanded
 		 * @param {Object}   args
 		 * @param {boolean}  args.unchanged
+=======
+		 * @param {Boolean}  expanded
+		 * @param {Object}   args
+		 * @param {Boolean}  args.unchanged
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {Function} args.completeCallback
 		 * @return {void}
 		 */
@@ -3036,7 +3187,11 @@
 		 * @since 4.9.0
 		 *
 		 * @param {string} id - The ID for the panel.
+<<<<<<< HEAD
 		 * @param {Object} options - Options.
+=======
+		 * @param {object} options - Options.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {void}
 		 */
 		initialize: function( id, options ) {
@@ -3133,9 +3288,15 @@
 		 *
 		 * @since 4.9.0
 		 *
+<<<<<<< HEAD
 		 * @param {boolean}  expanded - Expanded state.
 		 * @param {Object}   args - Args.
 		 * @param {boolean}  args.unchanged - Whether or not the state changed.
+=======
+		 * @param {Boolean}  expanded - Expanded state.
+		 * @param {Object}   args - Args.
+		 * @param {Boolean}  args.unchanged - Whether or not the state changed.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {Function} args.completeCallback - Callback to execute when the animation completes.
 		 * @return {void}
 		 */
@@ -3482,8 +3643,13 @@
 		 * @borrows wp.customize~Container#_toggleActive as this#_toggleActive
 		 *
 		 * @param {string} id                       - Unique identifier for the control instance.
+<<<<<<< HEAD
 		 * @param {Object} options                  - Options hash for the control instance.
 		 * @param {Object} options.type             - Type of control (e.g. text, radio, dropdown-pages, etc.)
+=======
+		 * @param {object} options                  - Options hash for the control instance.
+		 * @param {object} options.type             - Type of control (e.g. text, radio, dropdown-pages, etc.)
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {string} [options.content]        - The HTML content for the control or at least its container. This should normally be left blank and instead supplying a templateId.
 		 * @param {string} [options.templateId]     - Template ID for control's content.
 		 * @param {string} [options.priority=10]    - Order of priority to show the control within the section.
@@ -3496,7 +3662,11 @@
 		 * @param {string} options.label            - Label.
 		 * @param {string} options.description      - Description.
 		 * @param {number} [options.instanceNumber] - Order in which this instance was created in relation to other instances.
+<<<<<<< HEAD
 		 * @param {Object} [options.params]         - Deprecated wrapper for the above properties.
+=======
+		 * @param {object} [options.params]         - Deprecated wrapper for the above properties.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {void}
 		 */
 		initialize: function( id, options ) {
@@ -3900,9 +4070,15 @@
 		 *
 		 * @since 4.1.0
 		 *
+<<<<<<< HEAD
 		 * @param {boolean}  active
 		 * @param {Object}   args
 		 * @param {number}   args.duration
+=======
+		 * @param {Boolean}  active
+		 * @param {Object}   args
+		 * @param {Number}   args.duration
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {Function} args.completeCallback
 		 */
 		onChangeActive: function ( active, args ) {
@@ -4355,7 +4531,11 @@
 		/**
 		 * Called when the "Remove" link is clicked. Empties the setting.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} event jQuery Event object
+=======
+		 * @param {object} event jQuery Event object
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		removeFile: function( event ) {
 			if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
@@ -4440,7 +4620,11 @@
 
 		/**
 		 * Callback handler for when an attachment is selected in the media modal.
+<<<<<<< HEAD
 		 * Does an additional Ajax request for setting the background context.
+=======
+		 * Does an additional AJAX request for setting the background context.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		select: function() {
 			api.UploadControl.prototype.select.apply( this, arguments );
@@ -4565,7 +4749,11 @@
 		/**
 		 * After the image has been cropped, apply the cropped image data to the setting.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} croppedImage Cropped attachment data.
+=======
+		 * @param {object} croppedImage Cropped attachment data.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		onCropped: function( croppedImage ) {
 			this.setImageFromAttachment( croppedImage );
@@ -4641,6 +4829,7 @@
 		/**
 		 * Return whether the image must be cropped, based on required dimensions.
 		 *
+<<<<<<< HEAD
 		 * @param {boolean} flexW
 		 * @param {boolean} flexH
 		 * @param {number}  dstW
@@ -4648,6 +4837,15 @@
 		 * @param {number}  imgW
 		 * @param {number}  imgH
 		 * @return {boolean}
+=======
+		 * @param {bool} flexW
+		 * @param {bool} flexH
+		 * @param {int}  dstW
+		 * @param {int}  dstH
+		 * @param {int}  imgW
+		 * @param {int}  imgH
+		 * @return {bool}
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		mustBeCropped: function( flexW, flexH, dstW, dstH, imgW, imgH ) {
 			if ( true === flexW && true === flexH ) {
@@ -4684,7 +4882,11 @@
 		/**
 		 * Updates the setting and re-renders the control UI.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} attachment
+=======
+		 * @param {object} attachment
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		setImageFromAttachment: function( attachment ) {
 			this.params.attachment = attachment;
@@ -4770,7 +4972,11 @@
 		/**
 		 * Updates the setting and re-renders the control UI.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} attachment
+=======
+		 * @param {object} attachment
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		setImageFromAttachment: function( attachment ) {
 			var sizes = [ 'site_icon-32', 'thumbnail', 'full' ], link,
@@ -4799,7 +5005,11 @@
 		/**
 		 * Called when the "Remove" link is clicked. Empties the setting.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} event jQuery Event object
+=======
+		 * @param {object} event jQuery Event object
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		removeFile: function( event ) {
 			if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
@@ -5009,7 +5219,11 @@
 		/**
 		 * After the image has been cropped, apply the cropped image data to the setting.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} croppedImage Cropped attachment data.
+=======
+		 * @param {object} croppedImage Cropped attachment data.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		onCropped: function(croppedImage) {
 			var url = croppedImage.url,
@@ -5022,7 +5236,11 @@
 		/**
 		 * If cropping was skipped, apply the image data directly to the setting.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} selection
+=======
+		 * @param {object} selection
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		onSkippedCrop: function(selection) {
 			var url = selection.get('url'),
@@ -5036,10 +5254,17 @@
 		 * header image data and inserts it into the user-uploaded headers
 		 * collection.
 		 *
+<<<<<<< HEAD
 		 * @param {string} url
 		 * @param {number} attachmentId
 		 * @param {number} width
 		 * @param {number} height
+=======
+		 * @param {String} url
+		 * @param {Number} attachmentId
+		 * @param {Number} width
+		 * @param {Number} height
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		setImageFromURL: function(url, attachmentId, width, height) {
 			var choice, data = {};
@@ -5245,7 +5470,11 @@
 		 *
 		 * @since 4.9.0
 		 * @param {string} id      - Unique identifier for the control instance.
+<<<<<<< HEAD
 		 * @param {Object} options - Options hash for the control instance.
+=======
+		 * @param {object} options - Options hash for the control instance.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {void}
 		 */
 		initialize: function( id, options ) {
@@ -5384,7 +5613,11 @@
 		 * Initialize syntax-highlighting editor.
 		 *
 		 * @since 4.9.0
+<<<<<<< HEAD
 		 * @param {Object} codeEditorSettings - Code editor settings.
+=======
+		 * @param {object} codeEditorSettings - Code editor settings.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {void}
 		 */
 		initSyntaxHighlightingEditor: function( codeEditorSettings ) {
@@ -5626,7 +5859,11 @@
 		 * @since 4.9.0
 		 *
 		 * @param {string} datetime - Date/Time string. Accepts Y-m-d[ H:i[:s]] format.
+<<<<<<< HEAD
 		 * @return {Object|null} Returns object containing date components or null if parse error.
+=======
+		 * @return {object|null} Returns object containing date components or null if parse error.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		parseDateTime: function parseDateTime( datetime ) {
 			var control = this, matches, date, midDayHour = 12;
@@ -6218,10 +6455,17 @@
 		 * @constructs wp.customize.PreviewFrame
 		 * @augments   wp.customize.Messenger
 		 *
+<<<<<<< HEAD
 		 * @param {Object} params.container
 		 * @param {Object} params.previewUrl
 		 * @param {Object} params.query
 		 * @param {Object} options
+=======
+		 * @param {object} params.container
+		 * @param {object} params.previewUrl
+		 * @param {object} params.query
+		 * @param {object} options
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		initialize: function( params, options ) {
 			var deferred = $.Deferred();
@@ -6248,7 +6492,11 @@
 		/**
 		 * Run the preview request.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} deferred jQuery Deferred object to be resolved with
+=======
+		 * @param {object} deferred jQuery Deferred object to be resolved with
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 *                          the request.
 		 */
 		run: function( deferred ) {
@@ -6456,12 +6704,20 @@
 		 * @constructs wp.customize.Previewer
 		 * @augments   wp.customize.Messenger
 		 *
+<<<<<<< HEAD
 		 * @param {Array}  params.allowedUrls
+=======
+		 * @param {array}  params.allowedUrls
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {string} params.container   A selector or jQuery element for the preview
 		 *                                    frame to be placed.
 		 * @param {string} params.form
 		 * @param {string} params.previewUrl  The URL to preview.
+<<<<<<< HEAD
 		 * @param {Object} options
+=======
+		 * @param {object} options
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		initialize: function( params, options ) {
 			var previewer = this,
@@ -6609,11 +6865,19 @@
 		 * @since 4.7.0
 		 * @access public
 		 *
+<<<<<<< HEAD
 		 * @param {Object} data - Data from preview.
 		 * @param {string} data.currentUrl - Current URL.
 		 * @param {Object} data.activePanels - Active panels.
 		 * @param {Object} data.activeSections Active sections.
 		 * @param {Object} data.activeControls Active controls.
+=======
+		 * @param {object} data - Data from preview.
+		 * @param {string} data.currentUrl - Current URL.
+		 * @param {object} data.activePanels - Active panels.
+		 * @param {object} data.activeSections Active sections.
+		 * @param {object} data.activeControls Active controls.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @return {void}
 		 */
 		ready: function( data ) {
@@ -6917,8 +7181,13 @@
 	 * @since 4.6.0
 	 * @private
 	 *
+<<<<<<< HEAD
 	 * @param {Object}  args
 	 * @param {Object}  args.settingValidities
+=======
+	 * @param {object}  args
+	 * @param {object}  args.settingValidities
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @param {boolean} [args.focusInvalidControl=false]
 	 * @return {void}
 	 */
@@ -6993,7 +7262,11 @@
 	 *
 	 * @since 4.6.0
 	 * @param {string[]} settingIds Setting IDs.
+<<<<<<< HEAD
 	 * @return {Object<string, wp.customize.Control>} Mapping setting ids to arrays of controls.
+=======
+	 * @return {object<string, wp.customize.Control>} Mapping setting ids to arrays of controls.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 */
 	api.findControlsForSettings = function findControlsForSettings( settingIds ) {
 		var controls = {}, settingControls;
@@ -7401,9 +7674,15 @@
 			 * @since 4.7.0 Added options param.
 			 * @access public
 			 *
+<<<<<<< HEAD
 			 * @param {Object}  [options] Options.
 			 * @param {boolean} [options.excludeCustomizedSaved=false] Exclude saved settings in customized response (values pending writing to changeset).
 			 * @return {Object} Query vars.
+=======
+			 * @param {object}  [options] Options.
+			 * @param {boolean} [options.excludeCustomizedSaved=false] Exclude saved settings in customized response (values pending writing to changeset).
+			 * @return {object} Query vars.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 */
 			query: function( options ) {
 				var queryVars = {
@@ -7439,7 +7718,11 @@
 			 * @since 3.4.0
 			 * @since 4.7.0 Added args param and return value.
 			 *
+<<<<<<< HEAD
 			 * @param {Object} [args] Args.
+=======
+			 * @param {object} [args] Args.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 * @param {string} [args.status=publish] Status.
 			 * @param {string} [args.date] Date, in local time in MySQL format.
 			 * @param {string} [args.title] Title
@@ -8121,14 +8404,21 @@
 				 * @since 4.9.0
 				 *
 				 * @param {string} [code] - Code.
+<<<<<<< HEAD
 				 * @param {Object} [params] - Params.
+=======
+				 * @param {object} [params] - Params.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 				 */
 				initialize: function( code, params ) {
 					var notification = this, _code, _params;
 					_code = code || 'changeset_locked';
 					_params = _.extend(
 						{
+<<<<<<< HEAD
 							message: '',
+=======
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 							type: 'warning',
 							containerClasses: '',
 							lockUser: {}
@@ -8210,8 +8500,13 @@
 			 *
 			 * @since 4.9.0
 			 *
+<<<<<<< HEAD
 			 * @param {Object} [args] - Args.
 			 * @param {Object} [args.lockUser] - Lock user data.
+=======
+			 * @param {object} [args] - Args.
+			 * @param {object} [args.lockUser] - Lock user data.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 * @param {boolean} [args.allowOverride=false] - Whether override is allowed.
 			 * @return {void}
 			 */
@@ -8637,7 +8932,11 @@
 			 * @since 4.7.0
 			 * @access private
 			 *
+<<<<<<< HEAD
 			 * @param {Object} header - Header.
+=======
+			 * @param {object} header - Header.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 			 * @param {number} scrollTop - Scroll top.
 			 * @param {number} scrollDirection - Scroll direction, negative number being up and positive being down.
 			 * @return {void}

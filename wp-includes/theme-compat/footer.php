@@ -32,7 +32,11 @@ _deprecated_file(
 </div>
 </div>
 
+<<<<<<< HEAD
 <!-- Gorgeous design by Michael Heilemann - http://binarybonsai.com/ -->
+=======
+<!-- Gorgeous design by Michael Heilemann - http://binarybonsai.com/kubrick/ -->
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 <?php /* "Just what do you think you're doing Dave?" */ ?>
 
 		<?php wp_footer(); ?>

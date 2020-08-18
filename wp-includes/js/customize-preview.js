@@ -102,8 +102,13 @@
 	 */
 	api.Preview = api.Messenger.extend(/** @lends wp.customize.Preview.prototype */{
 		/**
+<<<<<<< HEAD
 		 * @param {Object} params  - Parameters to configure the messenger.
 		 * @param {Object} options - Extend any instance parameter or method with this object.
+=======
+		 * @param {object} params  - Parameters to configure the messenger.
+		 * @param {object} options - Extend any instance parameter or method with this object.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 */
 		initialize: function( params, options ) {
 			var preview = this, urlParser = document.createElement( 'a' );
@@ -276,8 +281,13 @@
 	 * @param {string} element.search Query string.
 	 * @param {string} element.pathname Path.
 	 * @param {string} element.host Host.
+<<<<<<< HEAD
 	 * @param {Object} [options]
 	 * @param {Object} [options.allowAdminAjax=false] Allow admin-ajax.php requests.
+=======
+	 * @param {object} [options]
+	 * @param {object} [options.allowAdminAjax=false] Allow admin-ajax.php requests.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 	 * @return {boolean} Is appropriate for changeset link.
 	 */
 	api.isLinkPreviewable = function isLinkPreviewable( element, options ) {
@@ -399,10 +409,17 @@
 		/**
 		 * Rewrite Ajax requests to inject customizer state.
 		 *
+<<<<<<< HEAD
 		 * @param {Object} options Options.
 		 * @param {string} options.type Type.
 		 * @param {string} options.url URL.
 		 * @param {Object} originalOptions Original options.
+=======
+		 * @param {object} options Options.
+		 * @param {string} options.type Type.
+		 * @param {string} options.url URL.
+		 * @param {object} originalOptions Original options.
+>>>>>>> 902e8d80fabcb61ed5c3b481d4a1821e7cec249c
 		 * @param {XMLHttpRequest} xhr XHR.
 		 * @return {void}
 		 */
