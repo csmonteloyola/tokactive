@@ -44,10 +44,10 @@
 	define('QA_MYSQL_PASSWORD', '4G0xa5U0sh3P');
 	define('QA_MYSQL_DATABASE', 'epiz_26405887_tokactive');  */
 
-	define('QA_MYSQL_HOSTNAME', 'lg7j30weuqckmw07.cbetxkdyhwsb.us-east-1.rds.amazonaws.com');
-	define('QA_MYSQL_USERNAME', 'il5dkoopuz22tzy5');
-	define('QA_MYSQL_PASSWORD', 'lk5ohsobrn1mygui');
-	define('QA_MYSQL_DATABASE', 'y39e7llnfuselsl2');
+	define('QA_MYSQL_HOSTNAME', 'localhost:3306');
+	define('QA_MYSQL_USERNAME', 'cp542250_tok');
+	define('QA_MYSQL_PASSWORD', 'Girl&Mars000');
+	define('QA_MYSQL_DATABASE', 'cp542250_tokactiv_dev');
 
 /*
 Ultra-concise installation instructions:
@@ -149,6 +149,7 @@ More detailed installation instructions here: http://www.question2answer.org/
 
 	define('QA_WORDPRESS_INTEGRATE_PATH', '/PATH/TO/WORDPRESS');
 */
+define('QA_WORDPRESS_INTEGRATE_PATH', '../');
 
 /*
 	Out-of-the-box Joomla! 3.x integration - to integrate with your Joomla! site, define
