@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/cp542250/public_html/development
+    - export DEPLOYPATH=/home/cp542250/public_html/development/
     - /bin/cp -R tokactiv $DEPLOYPATH
