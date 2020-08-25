@@ -34,22 +34,32 @@
 	define('QA_MYSQL_PORT', '3306');
 */
 
-	define('QA_MYSQL_HOSTNAME', 'sql309.epizy.com');
+	/* define('QA_MYSQL_HOSTNAME', 'localhost');
+	define('QA_MYSQL_USERNAME', 'root');
+	define('QA_MYSQL_PASSWORD', '');
+	define('QA_MYSQL_DATABASE', 'tokactive'); */
+
+	/* define('QA_MYSQL_HOSTNAME', 'sql309.epizy.com'); 
 	define('QA_MYSQL_USERNAME', 'epiz_26405887');
 	define('QA_MYSQL_PASSWORD', '4G0xa5U0sh3P');
-	define('QA_MYSQL_DATABASE', 'epiz_26405887_tokactive');
+	define('QA_MYSQL_DATABASE', 'epiz_26405887_tokactive');  */
+
+	define('QA_MYSQL_HOSTNAME', 'localhost:3306');
+	define('QA_MYSQL_USERNAME', 'cp542250_tok');
+	define('QA_MYSQL_PASSWORD', 'Girl&Mars000');
+	define('QA_MYSQL_DATABASE', 'cp542250_tokactiv_dev');
 
 /*
-	Ultra-concise installation instructions:
+Ultra-concise installation instructions:
 
-	1. Create a MySQL database.
-	2. Create a MySQL user with full permissions for that database.
-	3. Rename this file to qa-config.php.
-	4. Set the above four definitions and save.
-	5. Place all the Question2Answer files on your server.
-	6. Open the appropriate URL, and follow the instructions.
+1. Create a MySQL database.
+2. Create a MySQL user with full permissions for that database.
+3. Rename this file to qa-config.php.
+4. Set the above four definitions and save.
+5. Place all the Question2Answer files on your server.
+6. Open the appropriate URL, and follow the instructions.
 
-	More detailed installation instructions here: http://www.question2answer.org/
+More detailed installation instructions here: http://www.question2answer.org/
 */
 
 /*
@@ -140,6 +150,7 @@
 	define('QA_WORDPRESS_INTEGRATE_PATH', '/PATH/TO/WORDPRESS');
 */
 define('QA_WORDPRESS_INTEGRATE_PATH', '../');
+
 /*
 	Out-of-the-box Joomla! 3.x integration - to integrate with your Joomla! site, define
 	QA_JOOMLA_INTEGRATE_PATH. as the full path to the Joomla! directory. If your Q2A
